@@ -1,0 +1,233 @@
+
+-- если еще не смотрел в workshop_commonlib.lua, то посмотри
+
+--[[
+	Чтобы найти нужную функцию, можно нажать Ctrl+F и ввести название интересующей характеристики
+	Список статов:
+	
+	HitPoint            - здоровье
+	Regen               - регенерация
+	Armor               - броня
+	
+	ImmuneToAttack      - сопротивление типу атаки
+	ImmuneToSource      - сопротивление стихии атаки
+	
+	Attack1Damage       - урон первичной атаки
+	Attack2Damage       - урон вторичной атаки
+	Attack1Power        - точность первичной атаки
+	Attack2Power        - точность первичной атаки
+	Attack1Heal         - сила лечения первичной атаки
+	Attack2Heal         - сила лечения первичной атаки
+	Attack1CritDamage   - критический урон первичной атаки
+	Attack2CritDamage   - критический урон первичной атаки
+	Attack1CritPower    - шанс критического урона первичной атаки
+	Attack2CritPower    - шанс критического урона первичной атаки
+	Attack1Drain        - вампиризм первичной атаки
+	Attack2Drain        - вампиризм первичной атаки
+	AttackInitiative    - инициатива
+	
+	XpGain              - получаемый в бою опыт
+	
+	Negotiate           - сопротивление ворам
+	Movement            - очки движения
+	Scout               - дальность обзора
+	Leadership          - лидерство
+	LowerCost           - скидка у торговцев
+	FastRetreat         - быстрое отступление лидером отряда
+	
+	LeaderAbility       - навыки лидера отряда
+	MoveAbility         - навыки перемещения по поверхностям
+--]]
+--[[
+	Остальные обозначения:
+	
+	set_                - устанавливаем значение для параметра
+	base                - бонус повлияет на базовое значение характеристики
+	(value)             - в скобках указываем величину бонуса. Любое число. Например, (15), (-5), (0.2) и т.д.
+	_Flat               - то, что мы задали, написав вместо value, добавится к характерстике. Например set_baseArmor_Flat(10) означает, что к базовой броне добавится 10
+	_Percent            - характерстика будет умножена на 1 + value / 100. Например set_baseAttack1Damage_Percent(15) означает, что базовый урон первичной атаки будет увеличен на 15%
+	_Once               - защита
+	_Always             - иммунитет
+	
+	({[sourceType1] = value1, [sourceType2] = value2}) - можно задать список сопротивлений (sourceType) и величину бонуса (value), 
+	количество пар sourceType и value может быть любым (и не надо терять фигурные и квадратные скобки)
+	
+	Например, хочу иммунитет к Огню, Смерти и Разуму:
+	set_ImmuneToSource_Always({[Source.Fire] = 1, [Source.Death] = 1, [Source.Mind] = 1})
+	Еще хочу защиту от Воздуха:
+	set_ImmuneToSource_Once({[Source.Air] = 1})
+	
+	Теперь поясню, зачем там "= 1"
+	Так как может быть много всяких источников бонусов, то может возникнуть желание их комбинировать,
+	или бонусы могут менять свою величину в зависимости от обстоятельств.
+	Поэтому можно задать величину меньше 1, но нескольким источникам бонуса,
+	и когда игрок выполнит условия так, что суммарно бонус станет больше или равен 1,
+	он получит сопротивление.
+	Если же суммарно бонус станет меньше или равен -1,
+	то юнит лишится базового сопротивления (то, что имеет без применения аур, в том числе и своих, заклинаний, зелий и подобного).
+	Это же справедливо и для сопротивления типам атак, навыков лидера и навыков передвижения
+	
+	Список типов стихий (например, чтобы указать Воду, нужно написать Source.Water):
+	Weapon - оружие
+	Mind   - разум
+	Life   - жизнь
+	Death  - смерть
+	Fire   - огонь
+	Water  - вода
+	Earth  - земля
+	Air    - воздух
+	
+	
+	({[attackType1] = value1, [attackType2] = value2}) - аналогично сопротивлению стихиям можно задать список сопротивлений типам атак (attackType) 
+	и величину бонуса (value), количество пар attackType и value может быть любым (и не надо терять фигурные и квадратные скобки)
+	
+	Список типов атак (например, чтобы указать Паралич, нужно написать Attack.Paralyze):
+	Damage          - обычный урон
+	Drain           - вампиризм
+	Paralyze        - паралич
+	Heal            - лечение
+	Fear            - страх
+	BoostDamage     - увеличение урона
+	Petrify         - окаменение
+	LowerDamage     - ослабление
+	LowerInitiative - замедление
+	Poison          - яд
+	Frostbite       - обмороженние
+	Revive          - воскрешение
+	DrainOverflow   - тауматургия
+	Cure            - очищение
+	Summon          - призыв
+	DrainLevel      - снижение уровня
+	GiveAttack      - дать дополнительный ход
+	Doppelganger    - имитация
+	TransformSelf   - смена своей формы
+	TransformOther  - превращение врага
+	Blister         - ожог
+	BestowWards     - бафы через модификаторы
+	Shatter         - разбитие брони
+	
+	Например, хочу защиту от Яда и Страха:
+	set_ImmuneToAttack_Once({[Attack.Poison] = 1, [Attack.Fear] = 1})
+	
+	
+	({[ability1] = value1, [ability2] = value2}) - аналогично сопротивлениям можно задать список навыков (ability) 
+	и величину бонуса (value), количество пар ability и value может быть любым (и не надо терять фигурные и квадратные скобки)
+	
+	Список навыков (например, чтобы указать Неподкупность, нужно написать Ability.Incorruptible):
+	Incorruptible   - Неподкупность
+	Rod             - способность устанавливать жезлы
+	WandScrollUse   - использование Посохов и Свитков
+	WeaponArmorUse  - использование Артефактов
+	BannerUse       - использование Знамен
+	JewelryUse      - использование Книг и Реликвий
+	TravelItemUse   - использование Сапогов
+	OrbUse          - использование Сфер
+	TalismanUse     - использование Талисманов
+	
+	Например, хочу использование Посохов и Свитков:
+	set_LeaderAbility({[Ability.WandScrollUse] = 1})
+	
+	({[moveAbiliy1] = value1, [moveAbiliy2] = value2}) - аналогично сопротивлениям можно задать список навыков перемещения (moveAbiliy) 
+	и величину бонуса (value), количество пар moveAbiliy и value может быть любым (и не надо терять фигурные и квадратные скобки)
+	
+	Список навыков передвижения (например, чтобы указать Хождение по лесу, нужно написать Ground.Forest):
+	Plain   - получать бонус от дорог
+	Forest  - хождение по лесу
+	Water   - мореплавание
+	
+	Например, хочу Мореплавание:
+	set_MoveAbility({[Ground.Water] = 1})
+--]]
+
+
+-- User functions list
+
+-- 
+set_baseHitPoint_Percent(value)
+
+-- 
+set_baseAttack1Power_Percent(value)
+
+-- 
+set_baseAttack2Power_Percent(value)
+
+-- 
+set_baseAttack1Damage_Percent(value)
+
+-- 
+set_baseAttack2Damage_Percent(value)
+
+-- 
+set_baseAttack1Heal_Percent(value)
+
+-- 
+set_baseAttack2Heal_Percent(value)
+
+-- 
+set_baseAttackInitiative_Percent(value)
+
+-- 
+set_baseRegen_Flat(value)
+
+-- 
+set_baseArmor_Flat(value)
+
+-- 
+set_baseNegotiate_Flat(value)
+
+-- 
+set_XpGain_Percent(value)
+
+-- 
+set_Movement_Percent(value)
+
+-- 
+set_Movement_Flat(value)
+
+-- 
+set_Attack1CritDamage_Flat(value)
+
+-- 
+set_Attack2CritDamage_Flat(value)
+
+-- 
+set_Attack1CritPower_Flat(value)
+
+-- 
+set_Attack2CritPower_Flat(value)
+
+-- 
+set_Attack1Drain_Flat(value)
+
+-- 
+set_Attack2Drain_Flat(value)
+
+-- 
+set_Scout_Flat(value)
+
+-- 
+set_Leadership_Flat(value)
+
+-- 
+set_LowerCost_Flat(value)
+
+-- 
+set_ImmuneToSource_Once({[sourceType1] = value1, [sourceType2] = value2, ...})
+
+-- 
+set_ImmuneToSource_Always({[sourceType1] = value1, [sourceType2] = value2, ...})
+
+-- 
+set_ImmuneToAttack_Once({[attackType1] = value1, [attackType2] = value2, ...})
+
+-- 
+set_ImmuneToAttack_Always({[attackType1] = value1, [attackType2] = value2, ...})
+
+-- 
+set_LeaderAbility({[ability1] = value1, [ability2] = value2, ...})
+
+-- 
+set_MoveAbility({[moveAbiliy1] = value1, [moveAbiliy2] = value2, ...})
+
+-- 
+set_FastRetreat(value)

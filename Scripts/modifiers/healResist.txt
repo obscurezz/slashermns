@@ -1,0 +1,20 @@
+function getModifierDescTxt()
+	return Id.new("x500tg1001")
+end
+
+function canApplyAsLowerSpell()
+	return true
+end
+
+function canApplyAsBoostSpell()
+	return false
+end
+
+function getImmuneToAttack(unit, attack, prev)
+	if attack == Attack.Heal
+	or attack == Attack.Cure then
+		return Immune.Once
+	end
+	return prev
+end
+

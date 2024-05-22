@@ -1,0 +1,56 @@
+
+-- это пример, который при желании можно добавить в конец workshop_commonlib.lua
+
+-- считаем первым игрока за Орды Нежити (порядок не важен)
+player1:set_race(Race.Undead)
+
+-- первый игрок [player1]
+-- получает независимо от обстоятельств [get_constantStatsBonus()]
+-- бонус к базовому урону первичной атаки в размере 15% [set_baseAttack1Damage_Percent(15)]
+player1:get_constantStatsBonus():set_baseAttack1Damage_Percent(15)
+
+-- и вторичной атаки [set_baseAttack2Damage_Percent(15)]
+player1:get_constantStatsBonus():set_baseAttack2Damage_Percent(15)
+
+-- первый игрок [player1]
+-- получает на своей территории [get_yourTerrainStatsBonus()]
+-- бонус к обзору в размере 1 [set_baseScout_Flat(1)]
+player1:get_yourTerrainStatsBonus():set_Scout_Flat(1)
+
+
+-- считаем вторым игрока за Кланы (порядок не важен)
+player2:set_race(Race.Dwarf)
+
+-- второй игрок [player2]
+-- получает за каждого юнита отличающегося от остальных в отряде [get_perDifferentUnitStatsBonus()]
+-- бонус к базовой броне в размере 3 [set_baseArmor_Flat(3)]
+player2:get_perDifferentUnitStatsBonus():set_baseArmor_Flat(3)
+
+-- в боях против второго игрока [player2]
+-- нейтралы будут выбирать цели случайным образом, а не по приоритетам
+-- [get_specialSettings():set_neutralsSelectTargetsRandomly(true)]
+player2:get_specialSettings():set_neutralsSelectTargetsRandomly(true)
+
+-- у второго игрока [player2]
+-- отряды под предводительством жезловиков, находящиеся на территории игрока, [get_yourTerrainStatsBonus(GroupLeaderType.Rod)]
+-- получат защиту от Воды [set_ImmuneToSource_Once({[Source.Water] = 1})]
+player2:get_yourTerrainStatsBonus(GroupLeaderType.Rod):set_ImmuneToSource_Once({[Source.Water] = 1})
+
+
+-- при желании можно давать какие-то бонусы нейтралам
+player3:set_race(Race.Neutral)
+
+-- у третьего игрока [player3]
+-- атаки обычным уроном, вампиризмом или тауматургией будут иметь разброс,
+-- зависящий от точности до применения модификаторов,
+-- но базовая точность данных атак становится 100%
+-- 'SpreadMode.MinMax' означает, что урон будет или минимальный, или максимальный
+-- [get_specialSettings():set_damageSpreadMode(SpreadMode.MinMax)]
+player3:get_specialSettings():set_damageSpreadMode(SpreadMode.MinMax)
+
+-- у третьего игрока [player3]
+-- независимо от обстоятельств [get_constantStatsBonus()]
+-- все юниты получат защиту от Воздуха [set_ImmuneToSource_Once({[Source.Air] = 1})]
+player3:get_constantStatsBonus():set_ImmuneToSource_Once({[Source.Air] = 1})
+
+

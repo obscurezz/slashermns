@@ -1,0 +1,17 @@
+
+local _setValue_lowerCostFloatPart  = {}
+function svSetLowerCostFloatPart(unit, value)
+	_setValue_lowerCostFloatPart[unit.id.value] = value
+	return 0
+end
+function svRoundLowerCost(unit, value, prev)
+	local uid = unit.id.value
+	local sum = _setValue_lowerCostFloatPart[uid] + prev + value
+	local intPart, floatPart = _valueCap_LowerCost(unit, sum)
+	_setValue_lowerCostFloatPart[uid] = floatPart
+	return intPart
+end
+
+function svFlatEffectLowerCost(unit, prev, value)
+	return svRoundLowerCost(unit, value, prev)
+end
