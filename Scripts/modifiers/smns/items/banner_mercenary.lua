@@ -21,12 +21,12 @@ function getAttackInitiative(unit, prev)
     local Leader = _GroupInfo_getCurrentGroupLeader()
     local impl = _getImpl(Leader)
     local lship = impl.leadership
-	return svMultimplyInitiative(unit, prev, 0.03 * (lship - 1))
+	return svMultimplyInitiative(unit, prev, 0.02 * (lship - 1))
 end
 
 function getAttackDamage(unit, prev)
     local Leader = _GroupInfo_getCurrentGroupLeader()
     local impl = _getImpl(Leader)
     local lship = impl.leadership
-	return svMultimplyDamage1(unit, prev, 0.03 * (lship - 1))
+	return svMultimplyDamage1(unit, prev, 0.02 * (lship - 1))
 end

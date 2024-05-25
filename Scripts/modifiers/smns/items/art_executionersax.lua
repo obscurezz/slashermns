@@ -11,33 +11,23 @@ function getModifierDescTxt(unit, prev)
 end
 
 function getAttackDamage(unit, prev)
-	local bonus = smnsConditions_getCorpseBonus(unit, 3)
-	local base_damage = 5
-	return svMultimplyDamage1(unit, prev, (base_damage + bonus) * 0.01)
+	return svMultimplyDamage1(unit, prev, 0.15)
 end
 
 function getAttackCritHit(unit, prev)
-	local bonus = smnsConditions_getCorpseBonus(unit, 3)
-	if bonus > 0 then
 		return true
-	end
-	return prev
+	
 end
 
 function getAttack2CritHit(unit, prev)
-	local bonus = smnsConditions_getCorpseBonus(unit, 3)
-	if bonus > 0 then
 		return true
-	end
-	return prev
+	
 end
 
 function getAttackCritDamage(unit, prev)
-	local bonus = smnsConditions_getCorpseBonus(unit, 3)
-	return svAddCrit1Damage(unit, prev, bonus)
+	return svAddCrit1Damage(unit, prev, 10)
 end
 
 function getAttack2CritDamage(unit, prev)
-	local bonus = smnsConditions_getCorpseBonus(unit, 3)
-	return svAddCrit2Damage(unit, prev, bonus)
+	return svAddCrit1Damage(unit, prev, 10)
 end

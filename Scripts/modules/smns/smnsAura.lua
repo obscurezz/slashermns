@@ -154,17 +154,7 @@ function _smns_flatRegenBonus(unit, prev)
 --Покровительство END
 
 
---Тварь +10 регена за труп
-	if _GroupInfo_UnitHasModifierValue(unit, Spawn10RegenPerCorpse) then
-		RegenerationBonus = smnsConditions_getCorpseBonus(unit, 10)
-	end
-	--END
 
-	--Тиамат +15 регена за труп
-	if _GroupInfo_UnitHasModifierValue(unit, Timamat15regenPerCorpse) then
-		RegenerationBonus = smnsConditions_getCorpseBonus(unit, 15)
-	end
---END
 
 	return RegenerationBonus
 end
@@ -576,6 +566,18 @@ function _smns_flatInitiativeBonus(unit, prev)
 		result = result - 5 * AvangardAmount
 	end
 	--Авангард END
+
+--Тварь +5 ини за труп
+	if _GroupInfo_UnitHasModifierValue(unit, Spawn10RegenPerCorpse) then
+		result = smnsConditions_getCorpseBonus(unit, 4)
+	end
+	--END
+
+	--Тиамат +15 регена за труп
+	if _GroupInfo_UnitHasModifierValue(unit, Timamat15regenPerCorpse) then
+		result = smnsConditions_getCorpseBonus(unit, 7)
+	end
+--END
 
 --Пророчество
 --flat initiative

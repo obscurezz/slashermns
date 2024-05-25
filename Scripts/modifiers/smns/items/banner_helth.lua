@@ -14,5 +14,5 @@ function getHitPoint(unit, prev)
 end
 
 function getRegen(unit, prev)
-	return prev + 13
+	return prev + 30
 end

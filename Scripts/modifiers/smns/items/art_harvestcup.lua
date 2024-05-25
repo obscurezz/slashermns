@@ -19,6 +19,6 @@ function getHitPoint(unit, prev)
 end
 
 function getAttackDrain(unit, damage, prev)
-	local base_effect = 0.1
+	local base_effect = 0.2
 	return svAddDrain1(unit, prev, damage, (base_effect + 0.01 * math.min(_getBattleWins(unit), 15)))
 end

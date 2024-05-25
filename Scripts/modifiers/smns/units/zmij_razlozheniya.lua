@@ -11,7 +11,7 @@ function getModifierDescTxt(unit, prev)
 	return prev
 end
 
-function getAttackPower(unit, prev)
+function getArmor(unit, prev)
 	_get_Group_and_Mods(unit)
 	
 	local AnyMageHigherThanT4 = Id.new('g070um0093').value
@@ -26,12 +26,12 @@ function getAttackPower(unit, prev)
 			if u.hp > 0 then
 				local modUnits = _GroupInfo_UnitModifiers(u)
 				if _GroupInfo_UnitModifierAmount(modUnits, AnyMageHigherThanT4) > 0 then
-					currentBonus = currentBonus + 5
+					currentBonus = currentBonus + 10
 				end
 			end
 		end
 	
-		return svFlatEffectPower1(unit, prev, currentBonus)
+		return svFlatEffectArmor(unit, prev, currentBonus)
 	end
 	return prev
 	

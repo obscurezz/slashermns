@@ -13,9 +13,9 @@ function getRegen(unit, prev)
 	return prev + 25
 end
 
-function getImmuneToAttack(unit, attack, prev)
-	if attack == Attack.Drain then
-		return svAttackImmunityClass(unit, attack, prev, Immune.Once)
+function getImmuneToSource(unit, source, prev)
+		if source == 8 then
+		return svSourceImmunityClass(unit, source, prev, Immune.Always)
 	end
 	return prev
 end

@@ -17,7 +17,7 @@ function getRegen(unit, prev)
 	or statsCheck_isHealAttack(a2)
 	or statsCheck_isCurseAttack(a1)
 	or statsCheck_isCurseAttack(a2) then
-		return prev + 5
+		return prev + 30
 	else
 		return prev
 	end
