@@ -761,7 +761,7 @@ function _smns_ImmuneToAttack(unit, attack, prev, currentValue)
 --Бореалис с Рефаимом защита от ослабления
 	if _GroupInfo_UnitHasModifierValue(unit, Borealis) and _GroupInfo_stackHasModifierAmount(RefaimInParty) > 0 and currentValue ~= Immune.Always then
 		if attack == Attack.LowerDamage then
-			result = Immune.Once
+			result = Immune.Always
 		end
 	end
 --END
@@ -1037,10 +1037,10 @@ function _smns_ImmuneToSource(unit, source, prev, currentValue)
 --Щит стихий
 	local p = _GroupInfo_getUnitPlayer(unit)
 	if p ~= nil and p.race ~= Race.Neutral then
-		local RM = p.bank.runicMana > 400
-		local IM = p.bank.infernalMana > 400
-		local LM = p.bank.lifeMana > 400
-		local EM = p.bank.groveMana > 400
+		local RM = p.bank.runicMana > 300
+		local IM = p.bank.infernalMana > 300
+		local LM = p.bank.lifeMana > 300
+		local EM = p.bank.groveMana > 300
 
 
 		if ((source == Source.Fire and IM) or (source == Source.Water and RM) or (source == Source.Earth and EM) or (source == Source.Air and LM)) 

@@ -17,5 +17,5 @@ function getImmuneToSource(unit, source, prev)
 end
 
 function getXpNext(unit, prev)
-   return svMultimplyXpNext(unit, prev, -0.05)
+   return svMultimplyXpNext(unit, prev, -0.1)
 end

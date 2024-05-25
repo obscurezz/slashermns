@@ -11,7 +11,7 @@ function getModifierDescTxt(unit, prev)
 end
 
 function getAttackDrain(unit, damage, prev)
-    return svAddDrain1(unit, prev, damage, 0.20)
+    return svAddDrain1(unit, prev, damage, 0.16)
 end
 
 function getAttackCritHit(unit, prev)
@@ -19,7 +19,7 @@ function getAttackCritHit(unit, prev)
 end
 
 function getAttackCritDamage(unit, prev)
-    return svAddCrit1Damage(unit, prev, 20)
+    return svAddCrit1Damage(unit, prev, 16)
 end
 
 function getAttackCritPower(unit, prev)
@@ -27,7 +27,7 @@ function getAttackCritPower(unit, prev)
 end
 
 function getAttack2Drain(unit, damage, prev)
-    return svAddDrain2(unit, prev, damage, 0.20)
+    return svAddDrain2(unit, prev, damage, 0.16)
 end
 
 function getAttack2CritHit(unit, prev)
@@ -35,7 +35,7 @@ function getAttack2CritHit(unit, prev)
 end
 
 function getAttack2CritDamage(unit, prev)
-    return svAddCrit2Damage(unit, prev, 20)
+    return svAddCrit2Damage(unit, prev, 16)
 end
 
 function getAttack2CritPower(unit, prev)

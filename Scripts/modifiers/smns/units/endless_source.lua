@@ -15,7 +15,7 @@ function getAttack2Damage(unit, prev)
 	if p ~= nil and p.race ~= Race.Neutral then
 		local IM = math.min(1000, p.bank.infernalMana)
 
-		local value = 0.02 * math.floor(IM / 40)
+		local value = 0.02 * math.floor(IM / 50)
 
 		return svMultimplyDamage2(unit, prev, value)
 	end
@@ -26,7 +26,7 @@ function getAttack2Power(unit, prev)
 	local p = _GroupInfo_getUnitPlayer(unit)
 	if p ~= nil and p.race ~= Race.Neutral then
 		local IM = math.min(1000, p.bank.infernalMana)
-		local value = math.floor(IM / 40)
+		local value = math.floor(IM / 50)
 
 		smnsInfo_SetApplyAccuracyBuffToAttack2(true)
 		local res = svFlatEffectPower2(unit, prev, value)

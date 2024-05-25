@@ -59,5 +59,5 @@ end
 
 function getAttackDamage(unit, prev)
 	local mana_criteria = math.min(1000, _getPlayerBank(unit).infernalMana)
-	return svFlatEffectDamage1(unit, prev, 0.03 * mana_criteria)
+	return svMultimplyDamage1(unit, prev, 0.03 * mana_criteria)
 end
