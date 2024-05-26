@@ -319,8 +319,11 @@ function _smns_multiplicativeDamageHealBonus(unit, prev, attackN, unitMods)
 -- Некромантия +%Урон END
 
 	--древняя тьма
-	if _GroupInfo_UnitHasModifierValue(unit, ElderVampire) and smnsConditions_allPartyLowerThan50(unit) then
-		BonusDMG = BonusDMG + 25
+	if _GroupInfo_UnitHasModifierValue(unit, ElderVampire) then
+		local maxHP = getScenario():getUnit(unit.id).hpMax
+		if unit.hp / maxHP < 0.5 then
+			BonusDMG = BonusDMG + 25
+		end
 	end
 	--древняя тьма END
 
@@ -642,8 +645,11 @@ end
 -- Кровавое братство END
 
 	--древняя тьма
-	if _GroupInfo_UnitHasModifierValue(unit, ElderVampire) and smnsConditions_allPartyLowerThan50(unit) then
-		result = result + 10
+	if _GroupInfo_UnitHasModifierValue(unit, ElderVampire) then
+		local maxHP = getScenario():getUnit(unit.id).hpMax
+		if unit.hp / maxHP < 0.5 then
+			result = result + 10
+		end
 	end
 	--древняя тьма END
 
