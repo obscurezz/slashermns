@@ -1689,7 +1689,7 @@ function _smns_CritDamage(unit)
 	local BonusCritDamage = 0
 
 	if smns_scenario.day >= 15 then
-		BonusCritDamage = BonusCritDamage - _Guard_CritDrain_Deboost_Effect(unit) * 0.01 * unit.impl.attack1.damage
+		BonusCritDamage = BonusCritDamage - (0.01 * _Guard_CritDrain_Deboost_Effect(unit)) * (0.01 * unit.impl.attack1.critDamage) * unit.impl.attack1.damage
 	end
 
 	return BonusCritDamage
