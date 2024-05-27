@@ -165,6 +165,20 @@ function _smns_flatArmorBonus(unit, prev)
 	local BonusArmor = 0 + _Grymturs_Deboost_Effect(unit)
 	local mods = _GroupInfo_UnitModifiers(unit)
 
+	--Броня предков
+		if _GroupInfo_stackHasModifierAmount(ArcaneArmor) > 0 then
+			local p = _GroupInfo_getUnitPlayer(unit)
+				if p ~= nil and p.race ~= Race.Neutral then
+					local EM = p.bank.groveMana
+					local mana_criteria = math.min(1000, EM)
+					BonusArmor = BonusArmor + math.floor(mana_criteria/55)
+				end
+		end
+	
+
+
+	--Броня предков END
+	
 	--Покров Мортис
 	if _GroupInfo_stackHasModifierAmount(DlanMortis) > 0 and (_GroupInfo_UnitHasModifierValue(unit, NecroLead) or _GroupInfo_UnitHasModifierValue(unit, NecromanceryMod)) then
 		local u
@@ -1698,9 +1712,28 @@ function _smns_CritDamage(unit)
 		BonusCritDamage = BonusCritDamage - (0.01 * _Guard_CritDrain_Deboost_Effect(unit)) * (0.01 * unit.impl.attack1.critDamage) * unit.impl.attack1.damage
 	end
 
-	return BonusCritDamage
-end
+	
 
+--Бафф дерева
+if unitGroup ~= nil then
+        if _GroupInfo_stackHasModifierAmount(TreeBaff) > 0 then
+            local u
+            local mAmount
+            local unitGroupSlots = unitGroup.slots
+            for i = 1, #unitGroupSlots do
+                u = unitGroupSlots[i].unit
+                if u ~= nil and u.hp > 0 then
+                    mAmount = _GroupInfo_UnitModifierAmount(_GroupInfo_UnitModifiers(u), TreeBaff)
+                    if mAmount > 0 then
+                        BonusCritDamage = BonusCritDamage + 20 + 3*(u.impl.level - u.baseImpl.level)
+                    end
+                end
+            end
+        end
+    end
+--Бафф дерева END
+return BonusCritDamage
+end
 -- changes critical damage chance
 function _smns_CritPower(unit)
 	local mods = _GroupInfo_UnitModifiers(unit)

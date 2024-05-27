@@ -14,7 +14,9 @@ function getAttackCritHit(unit, prev)
 end
 
 function getAttackCritDamage(unit, prev)
-    return svAddCrit1Damage(unit, prev, 20)
+	
+	local Baff = 20 + math.min(12, 3 * (unit.impl.level - unit.baseImpl.level))
+    return svAddCrit1Damage(unit, prev, Baff)
 end
 
 function getAttack2CritHit(unit, prev)
@@ -22,7 +24,8 @@ function getAttack2CritHit(unit, prev)
 end
 
 function getAttack2CritDamage(unit, prev)
-    return svAddCrit2Damage(unit, prev, 20)
+	local Baff = 20 + math.min(12, 3 * (unit.impl.level - unit.baseImpl.level))
+    return svAddCrit2Damage(unit, prev, Baff)
 end
 
 

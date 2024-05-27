@@ -144,3 +144,7 @@ TearsOfSinners = Id.new('g070um0273').value
 HardenedSteelBufferII = Id.new('g070um0276').value
 
 CapitalGuardian = Id.new('g070um0183').value
+
+--Patch 2.2
+ArcaneArmor = Id.new('g070um0300').value
+TreeBaff = Id.new('g070um0166').value
