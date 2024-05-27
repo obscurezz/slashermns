@@ -42,8 +42,6 @@ function getAttack2CritPower(unit, prev)
     return svAddCrit2Power(unit, prev, 10)
 end
 
-function getModifierIconName(unit, prev)
-    return 'G040UM0317'
-end
+
 
 

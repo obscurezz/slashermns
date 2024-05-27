@@ -147,4 +147,3 @@ CapitalGuardian = Id.new('g070um0183').value
 
 --Patch 2.2
 ArcaneArmor = Id.new('g070um0300').value
-TreeBaff = Id.new('g070um0166').value

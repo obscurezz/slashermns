@@ -10,9 +10,7 @@ function getModifierDescTxt(unit, prev)
     return _modifCustomTxt_MaxAttackCritDamage(unit, prev)
 end
 
-function getAttackDrain(unit, damage, prev)
-    return svAddDrain1(unit, prev, damage, 0.28)
-end
+
 
 function getAttackCritHit(unit, prev)
     return true
@@ -26,9 +24,6 @@ function getAttackCritPower(unit, prev)
     return svAddCrit1Power(unit, prev, 10)
 end
 
-function getAttack2Drain(unit, damage, prev)
-    return svAddDrain2(unit, prev, damage, 0.28)
-end
 
 function getAttack2CritHit(unit, prev)
     return true

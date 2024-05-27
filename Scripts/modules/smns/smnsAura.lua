@@ -1713,25 +1713,6 @@ function _smns_CritDamage(unit)
 	end
 
 	
-
---Бафф дерева
-if unitGroup ~= nil then
-        if _GroupInfo_stackHasModifierAmount(TreeBaff) > 0 then
-            local u
-            local mAmount
-            local unitGroupSlots = unitGroup.slots
-            for i = 1, #unitGroupSlots do
-                u = unitGroupSlots[i].unit
-                if u ~= nil and u.hp > 0 then
-                    mAmount = _GroupInfo_UnitModifierAmount(_GroupInfo_UnitModifiers(u), TreeBaff)
-                    if mAmount > 0 then
-                        BonusCritDamage = BonusCritDamage + 20 + 3*(u.impl.level - u.baseImpl.level)
-                    end
-                end
-            end
-        end
-    end
---Бафф дерева END
 return BonusCritDamage
 end
 -- changes critical damage chance
