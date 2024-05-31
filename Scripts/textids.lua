@@ -217,4 +217,19 @@ textids = {
         -- Fallback text "Could not generate scenario map after %NUM% attempts.\nPlease, adjust template contents or settings"
         limitExceeded = "X015TA0038",
     },
+	resourceMarket = {
+        -- Resource market site description for encyclopedia
+        -- Fallback text is "(Resource market)"
+        encyDesc = "X070TA1005",
+        -- Infinite amount of resources string.
+        -- Fallback text is "Inf."
+        infiniteAmount = "X070TA1006",
+        -- Exchange description for market window in game.
+        -- The text must contain keywords "%RES1%" and "%RES2%".
+        -- Fallback text is "You offer %RES1% to get %RES2% in return."
+        exchangeDesc = "X070TA1007",
+        -- Exchange is not available hint for market window in game.
+        -- Fallback text is "N/A"
+        exchangeNotAvailable = "X070TA1008",
+    }
 }
