@@ -334,7 +334,7 @@ function _smns_multiplicativeDamageHealBonus(unit, prev, attackN, unitMods)
 
 	--древняя тьма
 	if _GroupInfo_UnitHasModifierValue(unit, ElderVampire) then
-		local maxHP = getScenario():getUnit(unit.id).hpMax
+		local maxHP = smns_scenario:getUnit(unit.id).hpMax
 		if unit.hp / maxHP < 0.5 then
 			BonusDMG = BonusDMG + 25
 		end
@@ -660,7 +660,7 @@ end
 
 	--древняя тьма
 	if _GroupInfo_UnitHasModifierValue(unit, ElderVampire) then
-		local maxHP = getScenario():getUnit(unit.id).hpMax
+		local maxHP = smns_scenario:getUnit(unit.id).hpMax
 		if unit.hp / maxHP < 0.5 then
 			result = result + 10
 		end
@@ -839,6 +839,16 @@ function _smns_ImmuneToAttack(unit, attack, prev, currentValue)
 		end
 	end
 	--дыхание распада END
+
+	--жидкое пламя
+	if attack == Attack.Blister and _Flamethrower_Deboost_Effect(unit) == 1 then
+		if currentValue == Immune.Always then
+			result = Immune.Once
+		elseif currentValue == Immune.Once then
+			result = Immune.NotImmune
+		end
+	end
+	--жидкое пламя END
 
 	--страж столицы снимает резист к разрушению
 	if smns_scenario.day >= 10 then	
@@ -1700,13 +1710,24 @@ function _smns_flatDamageHealBonus(unit, prev, attackN, unitMods)
 	local mods = _GroupInfo_UnitModifiers(unit)
 	local BonusFlatDamage = 0
 
+	--alchemist +flame damage
+	if _GroupInfo_UnitHasModifierValue(unit, OvenMasterOrFlamethrower) and _GroupInfo_stackHasModifierAmount(AlchemistFlame) > 0 and _GroupInfo_stackHasModifierAmount(EiraFlame) == 0 then
+		BonusFlatDamage = BonusFlatDamage + 15
+	end
+	--END alchemist +flame damage
+	--eira +flame damage
+	if _GroupInfo_UnitHasModifierValue(unit, OvenMasterOrFlamethrower) and _GroupInfo_stackHasModifierAmount(EiraFlame) > 0 then
+		BonusFlatDamage = BonusFlatDamage + 30
+	end
+	--END eira +flame damage
+
 	return BonusFlatDamage
 end
 
 -- changes critical damage
 function _smns_CritDamage(unit)
 	local mods = _GroupInfo_UnitModifiers(unit)
-	local BonusCritDamage = 0
+	local BonusCritDamage = 0 - (0.01 * _ForestSeal_Deboost_Effect(unit)) * (0.01 * unit.impl.attack1.critDamage) * unit.impl.attack1.damage
 
 	if smns_scenario.day >= 15 then
 		BonusCritDamage = BonusCritDamage - (0.01 * _Guard_CritDrain_Deboost_Effect(unit)) * (0.01 * unit.impl.attack1.critDamage) * unit.impl.attack1.damage
@@ -1734,7 +1755,7 @@ end
 -- changes critical drain
 function _smns_multiplicativeAttackDrain(unit, damage, prev)
 	local mods = _GroupInfo_UnitModifiers(unit)
-	local BonusMultiplyDrain = 0
+	local BonusMultiplyDrain = 0 - _ForestSeal_Deboost_Effect(unit)
 
 	if smns_scenario.day >= 20 then
 		BonusMultiplyDrain = BonusMultiplyDrain - _Guard_CritDrain_Deboost_Effect(unit)
