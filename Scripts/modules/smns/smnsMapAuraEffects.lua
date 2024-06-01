@@ -51,6 +51,22 @@ function _Guard_CritDrain_Deboost_Effect(unit)
 	return _unitAura_NearestGroupsAuraEffect(unit, effectFunction_1, radius, for_what_diplomacy_apply)
 end
 
+function ForestSealDeboost(group, groupModifiers, groupModifiersDead)
+	if _GroupInfo_UnitModifierAmount(groupModifiers, ForestSeal) > 0 then
+		return 15
+	end
+
+	return 0
+end
+
+function _ForestSeal_Deboost_Effect(unit)
+	local effectFunction_1 = ForestSealDeboost
+	local radius = 1
+	local for_what_diplomacy_apply = {diplomacyStatus_War}
+	
+	return _unitAura_NearestGroupsAuraEffect(unit, effectFunction_1, radius, for_what_diplomacy_apply)
+end
+
 function SpawnTiamatDeboost(group, groupModifiers, groupModifiersDead)
 	if _GroupInfo_UnitModifierAmount(groupModifiers, AbyssalFearII) > 0 then
 		return -10

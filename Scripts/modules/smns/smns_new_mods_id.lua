@@ -151,3 +151,4 @@ OvenMasterOrFlamethrower = Id.new('g070um0303').value
 AlchemistFlame = Id.new('g070um0304').value
 EiraFlame = Id.new('g070um0305').value
 FlamethrowerDeboost = Id.new('g070um0306').value
+ForestSeal = Id.new('g070um0307').value

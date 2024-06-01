@@ -334,7 +334,7 @@ function _smns_multiplicativeDamageHealBonus(unit, prev, attackN, unitMods)
 
 	--древняя тьма
 	if _GroupInfo_UnitHasModifierValue(unit, ElderVampire) then
-		local maxHP = getScenario():getUnit(unit.id).hpMax
+		local maxHP = smns_scenario:getUnit(unit.id).hpMax
 		if unit.hp / maxHP < 0.5 then
 			BonusDMG = BonusDMG + 25
 		end
@@ -660,7 +660,7 @@ end
 
 	--древняя тьма
 	if _GroupInfo_UnitHasModifierValue(unit, ElderVampire) then
-		local maxHP = getScenario():getUnit(unit.id).hpMax
+		local maxHP = smns_scenario:getUnit(unit.id).hpMax
 		if unit.hp / maxHP < 0.5 then
 			result = result + 10
 		end
@@ -1727,7 +1727,7 @@ end
 -- changes critical damage
 function _smns_CritDamage(unit)
 	local mods = _GroupInfo_UnitModifiers(unit)
-	local BonusCritDamage = 0
+	local BonusCritDamage = 0 - (0.01 * _ForestSeal_Deboost_Effect(unit)) * (0.01 * unit.impl.attack1.critDamage) * unit.impl.attack1.damage
 
 	if smns_scenario.day >= 15 then
 		BonusCritDamage = BonusCritDamage - (0.01 * _Guard_CritDrain_Deboost_Effect(unit)) * (0.01 * unit.impl.attack1.critDamage) * unit.impl.attack1.damage
@@ -1755,7 +1755,7 @@ end
 -- changes critical drain
 function _smns_multiplicativeAttackDrain(unit, damage, prev)
 	local mods = _GroupInfo_UnitModifiers(unit)
-	local BonusMultiplyDrain = 0
+	local BonusMultiplyDrain = 0 - _ForestSeal_Deboost_Effect(unit)
 
 	if smns_scenario.day >= 20 then
 		BonusMultiplyDrain = BonusMultiplyDrain - _Guard_CritDrain_Deboost_Effect(unit)
