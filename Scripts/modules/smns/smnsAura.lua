@@ -840,6 +840,16 @@ function _smns_ImmuneToAttack(unit, attack, prev, currentValue)
 	end
 	--дыхание распада END
 
+	--жидкое пламя
+	if attack == Attack.Blister and _Flamethrower_Deboost_Effect(unit) == 1 then
+		if currentValue == Immune.Always then
+			result = Immune.Once
+		elseif currentValue == Immune.Once then
+			result = Immune.NotImmune
+		end
+	end
+	--жидкое пламя END
+
 	--страж столицы снимает резист к разрушению
 	if smns_scenario.day >= 10 then	
 		if attack == Attack.Shatter and _Guard_Resistance_Deboost_Effect(unit) == 1 then
@@ -1699,6 +1709,17 @@ end
 function _smns_flatDamageHealBonus(unit, prev, attackN, unitMods)
 	local mods = _GroupInfo_UnitModifiers(unit)
 	local BonusFlatDamage = 0
+
+	--alchemist +flame damage
+	if _GroupInfo_UnitHasModifierValue(unit, OvenMasterOrFlamethrower) and _GroupInfo_stackHasModifierAmount(AlchemistFlame) > 0 and _GroupInfo_stackHasModifierAmount(EiraFlame) == 0 then
+		BonusFlatDamage = BonusFlatDamage + 15
+	end
+	--END alchemist +flame damage
+	--eira +flame damage
+	if _GroupInfo_UnitHasModifierValue(unit, OvenMasterOrFlamethrower) and _GroupInfo_stackHasModifierAmount(EiraFlame) > 0 then
+		BonusFlatDamage = BonusFlatDamage + 30
+	end
+	--END eira +flame damage
 
 	return BonusFlatDamage
 end
