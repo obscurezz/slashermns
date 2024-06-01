@@ -54,7 +54,7 @@ G040UM0303 = Id.new('g040um0303').value
 
 --attack units with Blister
 G040UM0283 = Id.new('g040um0283').value
-
+g070um0312 = Id.new('g070um0312').value
 --attack units with Frostbite
 G040UM0284 = Id.new('g040um0284').value
 
@@ -66,6 +66,7 @@ G000UU0033 = Id.new('g000uu0033')
 G000UU0034 = Id.new('g000uu0034')
 G000UU7558 = Id.new('g000uu7558')
 G000UU7559 = Id.new('g000uu7559')
+
 
 
 function _targets_filter_AttackType(methodName, attacker, selected, allies, targets, targetsAreAllies, item, battle)
@@ -639,6 +640,22 @@ function _targets_filter_AttackWithStatus(methodName, attacker, selected, allies
 				uid = u.id
   				if battle:getUnitStatus(uid, BattleStatus.Blister)
 				or battle:getUnitStatus(uid, BattleStatus.BlisterLong) then
+					table.insert(result, targets[i])
+				end
+			end
+		end
+	end
+	
+	-- Blister for melee and scout leaders
+	if _GroupInfo_UnitModifierAmount(attackerMods, g070um0312) > 0 then
+		for i = 1, #targets do
+			u = targets[i].unit
+			if _common_IsInBattle(u, battle) and _common_IsAddedFilter(result, targets[i]) then
+				uid = u.id
+  				if battle:getUnitStatus(uid, BattleStatus.Blister)
+				or battle:getUnitStatus(uid, BattleStatus.BlisterLong) 
+			--	and attacker.impl.attack1.reach == 103 or attacker.impl.attack1.reach == 27 or attacker.impl.attack1.reach == 102 
+			then
 					table.insert(result, targets[i])
 				end
 			end

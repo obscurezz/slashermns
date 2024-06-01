@@ -152,3 +152,6 @@ AlchemistFlame = Id.new('g070um0304').value
 EiraFlame = Id.new('g070um0305').value
 FlamethrowerDeboost = Id.new('g070um0306').value
 ForestSeal = Id.new('g070um0307').value
+PhoenixShield = Id.new('g070um0313').value
+PhoenixSword = Id.new('g070um0312').value
+PhoenixArmor = Id.new('g070um0314').value

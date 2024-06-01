@@ -695,6 +695,18 @@ function _smns_percentInitiativeBonus(unit, prev)
 		BonusIni = BonusIni + 7
 	end
 --Аура ловкости END
+
+--Сет феникса
+if _GroupInfo_stackHasModifierAmount(PhoenixShield) and  _GroupInfo_stackHasModifierAmount(PhoenixSword) and  _GroupInfo_stackHasModifierAmount(PhoenixArmor) then
+	local maxHP = smns_scenario:getUnit(unit.id).hpMax
+		if  unit.hp / maxHP < 0.3 then
+		BonusIni = BonusIni + 15
+		end
+	end	
+--сет феникса END
+
+
+
 	return BonusIni
 end
 
@@ -861,9 +873,20 @@ function _smns_ImmuneToAttack(unit, attack, prev, currentValue)
 		end
 	end
 	--страж столицы снимает резист к разрушению END
-
+--Сет феникса
+	if _GroupInfo_stackHasModifierAmount(PhoenixShield) and  _GroupInfo_stackHasModifierAmount(PhoenixSword) and  _GroupInfo_stackHasModifierAmount(PhoenixArmor) and attack == Attack.Damage then
+	local maxHP = smns_scenario:getUnit(unit.id).hpMax
+		if  unit.hp / maxHP < 0.3 then
+		result = Immune.Once
+		end
+	end	
+	
+--Сет феникса END
 	return result
 end
+
+
+
 
 -- change immunity to attack source
 -- attack - attack source
@@ -903,6 +926,13 @@ function _smns_ImmuneToSource(unit, source, prev, currentValue)
 	end
 
 --Знамена END
+	
+--Щит рыцаря Феникса
+	if _GroupInfo_stackHasModifierAmount(PhoenixShield) > 0 and source == Source.Fire and currentValue ~= Immune.Always then
+		result = Immune.Once
+	end
+--Щит рыцаря Феникса END
+
 --Игнар даёт защиту от огня в той же колонне
     if _GroupInfo_stackHasModifierAmount(IgnarInParty) > 0 and source == Source.Fire and currentValue ~= Immune.Always then
         local same_col = _GroupInfo_getSameColumnUnit(unit, true)
