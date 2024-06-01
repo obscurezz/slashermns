@@ -53,7 +53,7 @@ end
 
 function ForestSealDeboost(group, groupModifiers, groupModifiersDead)
 	if _GroupInfo_UnitModifierAmount(groupModifiers, ForestSeal) > 0 then
-		return 15
+		return 25
 	end
 
 	return 0
