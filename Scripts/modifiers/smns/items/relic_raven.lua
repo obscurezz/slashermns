@@ -1,6 +1,7 @@
 package.path = ".\\Scripts\\?.lua;.\\Scripts\\exp\\?.lua;.\\Scripts\\modifiers\\?.lua;.\\Scripts\\modifiers\\drawing\\?.lua;.\\Scripts\\modifiers\\items\\?.lua;.\\Scripts\\modifiers\\leaderMods\\?.lua;.\\Scripts\\modifiers\\perks\\?.lua;.\\Scripts\\modifiers\\smns\\?.lua;.\\Scripts\\modifiers\\smns\\items\\?.lua;.\\Scripts\\modifiers\\smns\\perks\\?.lua;.\\Scripts\\modifiers\\smns\\spells\\?.lua;.\\Scripts\\modifiers\\smns\\units\\?.lua;.\\Scripts\\modifiers\\spells\\?.lua;.\\Scripts\\modifiers\\units\\?.lua;.\\Scripts\\modifiers\\units\\bloodsorcerer\\?.lua;.\\Scripts\\modifiers\\units\\multiplicative_stats\\?.lua;.\\Scripts\\modifiers\\units\\torhoth\\?.lua;.\\Scripts\\modules\\?.lua;.\\Scripts\\modules\\smns\\?.lua;.\\Scripts\\workshop\\?.lua;.\\Scripts\\workshop\\classes\\?.lua"
-require('setValue')
 require('GroupInfo')
+require('setValue')
+require('named_mods')
 
 function getModifierDisplay(unit, prev)
 	return prev
@@ -10,14 +11,29 @@ function getModifierDescTxt(unit, prev)
 	return prev
 end
 
-function getMovement(unit, prev)
-	return svFlatEffectMovement(unit, prev, 4)
+function getHitPoint(unit, prev)
+	return svFlatEffectHitPoint(unit, prev, 40)
 end
 
-function getFastRetreat(unit, prev)
-	return _GroupInfo_canUseFastRetreat(unit, false)
+
+function getScout(unit, prev)
+	return svFlatEffectScout(unit, prev, 2)
+end
+
+function getImmuneToSource(unit, source, prev)
+		if source == 8 then
+		return svSourceImmunityClass(unit, source, prev, Immune.Always)
+	end
+	return prev
+end
+
+function getAttackDrain(unit, damage, prev)
+	local maxHP = getScenario():getUnit(unit.id).hpMax
+	local loseHP = ((1 - unit.hp / maxHP)*100)
+	local stackPerk =  math.floor(loseHP / 3)
+	return svAddDrain1(unit, prev, damage, stackPerk / 100)
 end
 
 function getAttackInitiative(unit, prev)
-	return svMultimplyInitiative(unit, prev, 0.1)
+	return svMultimplyInitiative(unit, prev, 0.15)
 end

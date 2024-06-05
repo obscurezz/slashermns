@@ -48,6 +48,22 @@ function _smns_multiplicativeHitPointBonus(unit, prev)
 	end
 --Аура 8% ОЗ END
 
+--сет жатвы
+	if _GroupInfo_stackHasModifierAmount(harvestcup) and  _GroupInfo_stackHasModifierAmount(harvestdagger) and  _GroupInfo_stackHasModifierAmount(harvestarmor)then
+		local Leader = _GroupInfo_getCurrentGroupLeader()
+	if Leader ~= nil and Leader.hp > 0 then
+			local unitGroupSlots = unitGroup.slots
+           for i = 1, #unitGroupSlots do
+               u = unitGroupSlots[i].unit
+                if u ~= nil and u.hp > 0 then
+                  BonusHP = BonusHP + 2 * math.min(_getBattleWins(Leader), 30)
+                    break
+                end
+            end
+		end
+	end
+--сет жатвы END
+
 -- Некромантия +%ХП
     if _GroupInfo_stackHasModifierAmount(NecroLead) > 0  and _GroupInfo_UnitModifierAmount(mods, NecromanceryMod) > 0 then
         local Leader = _GroupInfo_getCurrentGroupLeader()

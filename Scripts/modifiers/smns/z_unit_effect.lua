@@ -30,6 +30,20 @@ function _Seawolf(unit)
     return false
 end
 
+function _PhoenixKnight(unit)
+    if _GroupInfo_UnitHasModifierValue(unit, Id.new('g070um0313').value) and _GroupInfo_UnitHasModifierValue(unit, Id.new('g070um0312').value) and _GroupInfo_UnitHasModifierValue(unit, Id.new('g070um0314').value) then
+        return true
+    end
+    return false
+end
+
+function _BloodRaven(unit)
+    if _GroupInfo_UnitHasModifierValue(unit, Id.new('g070um0316').value) and _GroupInfo_UnitHasModifierValue(unit, Id.new('g070um0318').value) and _GroupInfo_UnitHasModifierValue(unit, Id.new('g070um0315').value) and _GroupInfo_UnitHasModifierValue(unit, Id.new('g070um0317').value) then
+        return true
+    end
+    return false
+end
+
 function getModifierDisplay(unit, prev)
     if _Harvest(unit) then
         return true
@@ -43,11 +57,23 @@ function getModifierDisplay(unit, prev)
     if _Seawolf(unit) then
         return true
     end
+	if _PhoenixKnight(unit) then
+        return true
+    end
+	if _BloodRaven(unit) then
+        return true
+    end
 end
 
 function getModifierDescTxt(unit, prev)
     if _Harvest(unit) then
         return Id.new('x070tg1401')
+	end
+	if _PhoenixKnight(unit) then
+        return Id.new('x070tg1455')
+	end
+	if _BloodRaven(unit) then
+        return Id.new('x070tg1454')
 	end
     if _Executor(unit) then
         return Id.new('x070tg1402')
@@ -72,6 +98,12 @@ function getModifierIconName(unit, prev)
     end
     if _Seawolf(unit) then
         return "SEAWOLF"
+    end
+	if _PhoenixKnight(unit) then
+        return "PHOENIXKNIGHT"
+    end
+	if _BloodRaven(unit) then
+        return "BLOODRAVEN"
     end
 end
 

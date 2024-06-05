@@ -155,3 +155,6 @@ ForestSeal = Id.new('g070um0307').value
 PhoenixShield = Id.new('g070um0313').value
 PhoenixSword = Id.new('g070um0312').value
 PhoenixArmor = Id.new('g070um0314').value
+harvestcup = Id.new('g070um0284').value
+harvestdagger = Id.new('g040um0256').value
+harvestarmor = Id.new('g070um0283').value

@@ -97,6 +97,11 @@ function smnsConditions_getBonusIfGiant(unit, value)
 	return result
 end
 
+function _getBattleWins(unit)
+	local stack = _GroupInfo_getUnitStack(unit)
+	return stack.battlesWon
+end
+
 function smnsConditions_getCorpseBonus(unit, value)
 	_get_Group_and_Mods(unit)
 	local group = _GroupInfo_getCurrentGroup()
