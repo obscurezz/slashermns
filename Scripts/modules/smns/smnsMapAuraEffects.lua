@@ -5,6 +5,55 @@ require('smns_new_mods_id')
 -- groupModifiers - модификаторы на живых юнитах, которые работают, пока юниты живы
 -- groupModifiersDead - модификаторы на мертвых юнитах, которые работают, пока юниты мертвы
 
+function BloodRavenSetDeboost(group, groupModifiers, groupModifiersDead)
+	if _GroupInfo_UnitModifierAmount(groupModifiers, BloodRavenFlag) > 0 
+	and _GroupInfo_UnitModifierAmount(groupModifiers, BloodRavenCuirass) > 0
+	and _GroupInfo_UnitModifierAmount(groupModifiers, BloodRavenCama) > 0
+	and _GroupInfo_UnitModifierAmount(groupModifiers, BloodRavenScythe) > 0
+	then
+		return 1
+	end
+	return 0
+end
+
+function _BloodRaven_Set_Deboost_Effect(unit)
+	local effectFunction_1 = BloodRavenSetDeboost
+	local radius = 1
+	local for_what_diplomacy_apply = {diplomacyStatus_War}
+
+	return _unitAura_NearestGroupsAuraEffect(unit, effectFunction_1, radius, for_what_diplomacy_apply)
+end
+
+function BloodRavenIniDeboost(group, groupModifiers, groupModifiersDead)
+	if _GroupInfo_UnitModifierAmount(groupModifiers, BloodRavenFlag) > 0 then
+		return -5
+	end
+	return 0
+end
+
+function _BloodRaven_Deboost_Effect(unit)
+	local effectFunction_1 = BloodRavenIniDeboost
+	local radius = 1
+	local for_what_diplomacy_apply = {diplomacyStatus_War}
+
+	return _unitAura_NearestGroupsAuraEffect(unit, effectFunction_1, radius, for_what_diplomacy_apply)
+end
+
+function PhoienixFireDeboost(group, groupModifiers, groupModifiersDead)
+	if _GroupInfo_UnitModifierAmount(groupModifiers, PhoenixShield) > 0 then
+		return -25
+	end
+	return 0
+end
+
+function _Phoenix_Deboost_Effect(unit)
+	local effectFunction_1 = PhoienixFireDeboost
+	local radius = 1
+	local for_what_diplomacy_apply = {diplomacyStatus_War}
+
+	return _unitAura_NearestGroupsAuraEffect(unit, effectFunction_1, radius, for_what_diplomacy_apply)
+end
+
 function HeritageBannerDeboost(group, groupModifiers, groupModifiersDead)
 	if _GroupInfo_UnitModifierAmount(groupModifiers, Id.new('g014um1068').value) > 0 then
 		return -2

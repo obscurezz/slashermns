@@ -158,3 +158,7 @@ PhoenixArmor = Id.new('g070um0314').value
 harvestcup = Id.new('g070um0284').value
 harvestdagger = Id.new('g040um0256').value
 harvestarmor = Id.new('g070um0283').value
+BloodRavenFlag = Id.new('g070um0317').value
+BloodRavenCuirass = Id.new('g070um0318').value
+BloodRavenCama = Id.new('g070um0316').value
+BloodRavenScythe = Id.new('g070um0315').value

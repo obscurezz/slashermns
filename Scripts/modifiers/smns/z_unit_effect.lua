@@ -137,11 +137,18 @@ function _RacesInGroup(unit)
 end
 
 function getXpNext(unit, prev)
-    if _Harvest(unit) then
-	    return svMultimplyXpNext(unit, prev, -0.01 * _getBattleWins(unit))
-    end
+    -- if _Harvest(unit) then
+	--     return svMultimplyXpNext(unit, prev, -0.01 * _getBattleWins(unit))
+    -- end
     if _Seawolf(unit) then
         return svMultimplyXpNext(unit, prev, -0.1)
+    end
+    return prev
+end
+
+function getHitPoint(unit, prev)
+    if _Harvest(unit) then
+        return svMultimplyHitPoint(unit, prev, 0.02 * math.min(_getBattleWins(unit), 15))
     end
     return prev
 end

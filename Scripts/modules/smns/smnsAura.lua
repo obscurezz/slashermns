@@ -48,22 +48,6 @@ function _smns_multiplicativeHitPointBonus(unit, prev)
 	end
 --Аура 8% ОЗ END
 
---сет жатвы
-	if _GroupInfo_stackHasModifierAmount(harvestcup) and  _GroupInfo_stackHasModifierAmount(harvestdagger) and  _GroupInfo_stackHasModifierAmount(harvestarmor)then
-		local Leader = _GroupInfo_getCurrentGroupLeader()
-	if Leader ~= nil and Leader.hp > 0 then
-			local unitGroupSlots = unitGroup.slots
-           for i = 1, #unitGroupSlots do
-               u = unitGroupSlots[i].unit
-                if u ~= nil and u.hp > 0 then
-                  BonusHP = BonusHP + 2 * math.min(_getBattleWins(Leader), 30)
-                    break
-                end
-            end
-		end
-	end
---сет жатвы END
-
 -- Некромантия +%ХП
     if _GroupInfo_stackHasModifierAmount(NecroLead) > 0  and _GroupInfo_UnitModifierAmount(mods, NecromanceryMod) > 0 then
         local Leader = _GroupInfo_getCurrentGroupLeader()
@@ -168,9 +152,6 @@ function _smns_flatRegenBonus(unit, prev)
 	-- 	RegenerationBonus = RegenerationBonus + 10
 	-- end  
 --Покровительство END
-
-
-
 
 	return RegenerationBonus
 end
@@ -305,6 +286,14 @@ end
 function _smns_multiplicativeDamageHealBonus(unit, prev, attackN, unitMods)
 	local mods = _GroupInfo_UnitModifiers(unit)
 	local BonusDMG = 0 + _Spawn_Tiamat_Deboost_Effect(unit)
+
+	if unit.impl.attack1.source == Source.Fire then
+		BonusDMG = BonusDMG + _Phoenix_Deboost_Effect(unit)
+	end
+
+	if _BloodRaven_Set_Deboost_Effect(unit) == 1 then
+		BonusDMG = BonusDMG - 10
+	end
 
 --Аура 7% DMG
 	if _GroupInfo_stackHasModifierAmount(AuraDMGperk) > 0 then
@@ -586,7 +575,7 @@ end
 -- changes initiative
 -- prev - numeric value of initiative
 function _smns_flatInitiativeBonus(unit, prev)
-	local result = 0
+	local result = 0 + _BloodRaven_Deboost_Effect(unit)
 
 	--Авангард
 	local HorsemanAmount = _GroupInfo_stackHasModifierAmount(Horseman)
@@ -713,10 +702,10 @@ function _smns_percentInitiativeBonus(unit, prev)
 --Аура ловкости END
 
 --Сет феникса
-if _GroupInfo_stackHasModifierAmount(PhoenixShield) and  _GroupInfo_stackHasModifierAmount(PhoenixSword) and  _GroupInfo_stackHasModifierAmount(PhoenixArmor) then
-	local maxHP = smns_scenario:getUnit(unit.id).hpMax
+	if _GroupInfo_stackHasModifierAmount(PhoenixShield) > 0 and _GroupInfo_stackHasModifierAmount(PhoenixSword) > 0 and _GroupInfo_stackHasModifierAmount(PhoenixArmor) > 0 then
+		local maxHP = smns_scenario:getUnit(unit.id).hpMax
 		if  unit.hp / maxHP < 0.3 then
-		BonusIni = BonusIni + 15
+			BonusIni = BonusIni + 15
 		end
 	end	
 --сет феникса END
@@ -889,8 +878,9 @@ function _smns_ImmuneToAttack(unit, attack, prev, currentValue)
 		end
 	end
 	--страж столицы снимает резист к разрушению END
---Сет феникса
-	if _GroupInfo_stackHasModifierAmount(PhoenixShield) and  _GroupInfo_stackHasModifierAmount(PhoenixSword) and  _GroupInfo_stackHasModifierAmount(PhoenixArmor) and attack == Attack.Damage then
+
+	--Сет феникса
+	if _GroupInfo_stackHasModifierAmount(PhoenixShield) > 0 and  _GroupInfo_stackHasModifierAmount(PhoenixSword) > 0 and  _GroupInfo_stackHasModifierAmount(PhoenixArmor) > 0 and attack == Attack.Damage then
 	local maxHP = smns_scenario:getUnit(unit.id).hpMax
 		if  unit.hp / maxHP < 0.3 then
 		result = Immune.Once
@@ -1802,6 +1792,10 @@ end
 function _smns_multiplicativeAttackDrain(unit, damage, prev)
 	local mods = _GroupInfo_UnitModifiers(unit)
 	local BonusMultiplyDrain = 0 - _ForestSeal_Deboost_Effect(unit)
+
+	if _BloodRaven_Set_Deboost_Effect(unit) == 1 then
+		BonusMultiplyDrain = BonusMultiplyDrain - 50
+	end
 
 	if smns_scenario.day >= 20 then
 		BonusMultiplyDrain = BonusMultiplyDrain - _Guard_CritDrain_Deboost_Effect(unit)

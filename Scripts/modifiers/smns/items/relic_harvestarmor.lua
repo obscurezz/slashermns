@@ -16,7 +16,8 @@ end
 
 function getHitPoint(unit, prev)
 	local base_effect = 15
-	return prev + base_effect + 5 * math.min(_getBattleWins(unit), 8)
+	-- return prev + base_effect + 5 * math.min(_getBattleWins(unit), 8)
+	return svFlatEffectHitPoint(unit, prev, (base_effect + 5 * math.min(_getBattleWins(unit), 8)))
 end
 
 function getArmor(unit, prev)
