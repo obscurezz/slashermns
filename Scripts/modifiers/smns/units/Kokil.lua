@@ -10,17 +10,17 @@ function getModifierDescTxt(unit, prev)
 end
 
 function getAttackDamage(unit, prev)
-	if (unit.hp / unit.hpMax) < 0.5 then
-		return svMultimplyDamage1(unit, prev, -0.35) 
+	if (unit.hp / unit.hpMax) < 0.4 then
+		return svMultimplyDamage1(unit, prev, 0.2) 
 	end
 	return prev
 end
 
-function getAtckTwice(unit, prev)
-	if (unit.hp / unit.hpMax) < 0.5 then
-		return true
+
+function getAttackInitiative(unit, prev)
+	if (unit.hp / unit.hpMax) < 0.4 then
+		return svMultimplyInitiative(unit, prev, 0.15) 
 	end
 	return prev
 end
-
 
