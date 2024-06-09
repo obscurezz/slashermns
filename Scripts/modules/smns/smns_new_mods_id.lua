@@ -162,3 +162,6 @@ BloodRavenFlag = Id.new('g070um0317').value
 BloodRavenCuirass = Id.new('g070um0318').value
 BloodRavenCama = Id.new('g070um0316').value
 BloodRavenScythe = Id.new('g070um0315').value
+KriomantDeboost = Id.new('g070um0065').value
+DodgeBanner = Id.new('g070um0322').value
+

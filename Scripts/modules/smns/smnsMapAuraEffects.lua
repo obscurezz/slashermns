@@ -210,3 +210,33 @@ function _Rod_Placer_Effect(unit)
 	
 	return _unitAura_NearestGroupsAuraEffect(unit, effectFunction_1, radius, for_what_diplomacy_apply)
 end
+
+function KriomantDeboostFunction(group, groupModifiers, groupModifiersDead)
+	if _GroupInfo_UnitModifierAmount(groupModifiers, KriomantDeboost) > 0 then
+		return 1
+	end
+	return 0
+end
+
+function _Kriomant_Deboost_Effect(unit)
+	local effectFunction_1 = KriomantDeboostFunction
+	local radius = 1
+	local for_what_diplomacy_apply = {diplomacyStatus_War}
+	
+	return _unitAura_NearestGroupsAuraEffect(unit, effectFunction_1, radius, for_what_diplomacy_apply)
+end
+
+function DodgeBannerFunction(group, groupModifiers, groupModifiersDead)
+	if _GroupInfo_UnitModifierAmount(groupModifiers, DodgeBanner) > 0 then
+		return 1
+	end
+	return 0
+end
+
+function _DodgeBanner_Deboost_Effect(unit)
+	local effectFunction_1 = DodgeBannerFunction
+	local radius = 1
+	local for_what_diplomacy_apply = {diplomacyStatus_War}
+	
+	return _unitAura_NearestGroupsAuraEffect(unit, effectFunction_1, radius, for_what_diplomacy_apply)
+end

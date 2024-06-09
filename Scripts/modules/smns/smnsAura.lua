@@ -866,6 +866,16 @@ function _smns_ImmuneToAttack(unit, attack, prev, currentValue)
 		end
 	end
 	--жидкое пламя END
+	
+	--Тайное знание криоманта
+	if attack == Attack.Frostbite and _Kriomant_Deboost_Effect(unit) == 1 then
+		if currentValue == Immune.Always then
+			result = Immune.Once
+		elseif currentValue == Immune.Once then
+			result = Immune.NotImmune
+		end
+	end
+	--Тайное знание криоманта END
 
 	--страж столицы снимает резист к разрушению
 	if smns_scenario.day >= 10 then	
@@ -1127,8 +1137,21 @@ function _smns_ImmuneToSource(unit, source, prev, currentValue)
 	end
 	
 --Щит стихий END
+
+--Тайное знание криоманта
+	if source == Source.Water and _Kriomant_Deboost_Effect(unit) == 1 then
+		if currentValue == Immune.Always then
+			result = Immune.Once
+		elseif currentValue == Immune.Once then
+			result = Immune.NotImmune
+		end
+	end
+--Тайное знание криоманта END
 	return result
 end
+
+
+
 
 -- change leader ability
 -- attack - attack class
@@ -1768,7 +1791,12 @@ function _smns_CritDamage(unit)
 	if smns_scenario.day >= 15 then
 		BonusCritDamage = BonusCritDamage - (0.01 * _Guard_CritDrain_Deboost_Effect(unit)) * (0.01 * unit.impl.attack1.critDamage) * unit.impl.attack1.damage
 	end
-
+	
+	--Дебуст знамя изворотливости
+	if  _Kriomant_Deboost_Effect(unit) == 1 then
+		BonusCritDamage = BonusCritDamage - 15
+	end
+	--Дебуст знамя изворотливости END
 	
 return BonusCritDamage
 end
@@ -1794,7 +1822,7 @@ function _smns_multiplicativeAttackDrain(unit, damage, prev)
 	local BonusMultiplyDrain = 0 - _ForestSeal_Deboost_Effect(unit)
 
 	if _BloodRaven_Set_Deboost_Effect(unit) == 1 then
-		BonusMultiplyDrain = BonusMultiplyDrain - 50
+		BonusMultiplyDrain = BonusMultiplyDrain - 33
 	end
 
 	if smns_scenario.day >= 20 then

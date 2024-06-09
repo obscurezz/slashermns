@@ -667,6 +667,11 @@ forbiddenItems = {
 		},
 	},
 
+	resourceMarkets = {
+        land = {
+            'G000SI0000RMKT00',
+        },
+    },
 	mercenaries = {
 		land = {
 			-- You can use upper case

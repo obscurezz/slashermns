@@ -9,8 +9,8 @@ function getModifierDescTxt(unit, prev)
 	return prev
 end
 
-function getRegen(unit, prev)
-	return prev + 25
+function getHitPoint(unit, prev)
+	return svFlatEffectHitPoint(unit, prev, 30)
 end
 
 function getImmuneToAttack(unit, attack, prev)

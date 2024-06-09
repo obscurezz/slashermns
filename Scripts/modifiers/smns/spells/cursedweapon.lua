@@ -11,5 +11,5 @@ end
 
 
 function getAttackCritDamage(unit, prev)
-	return svAddCrit1Damage(unit, prev, -20)
+	return svAddCrit1Damage(unit, prev, -15)
 end

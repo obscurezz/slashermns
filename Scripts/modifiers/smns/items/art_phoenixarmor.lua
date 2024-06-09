@@ -22,7 +22,7 @@ end
 
 function getImmuneToAttack(unit, attack, prev)
 	if attack == Attack.Petrify or attack == Attack.Paralyze or attack == Attack.TransformOther or attack == Attack.Fear then
-		return svAttackImmunityClass(unit, attack, prev, Immune.Always)
+		return svAttackImmunityClass(unit, attack, prev, Immune.Once)
 	end
 	return prev
 end
