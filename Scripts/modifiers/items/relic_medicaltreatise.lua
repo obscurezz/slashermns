@@ -10,7 +10,7 @@ function getModifierDescTxt(unit, prev)
 end
 
 function getHitPoint(unit, prev)
-   return svMultimplyHitPoint(unit, prev, 30)
+   return svMultimplyHitPoint(unit, prev, 0.3)
 end
 
 function getRegen(unit, prev)
