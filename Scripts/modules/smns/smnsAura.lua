@@ -960,24 +960,6 @@ function _smns_ImmuneToSource(unit, source, prev, currentValue)
     end
 --END
 
-	--дыхание распада
-	-- if source == Source.Death and smnsConditions_isStackNearToEnemyStackWithUnitModifier(unit, 1, smns_scenario, Wyrm) then
-	-- 	if currentValue == Immune.Always then
-	-- 		result = Immune.Once
-	-- 	elseif currentValue == Immune.Once then
-	-- 		result = Immune.NotImmune
-	-- 	end
-	-- end
-
-	if source == Source.Death and _Wyrm_Deboost_Effect(unit) == 1 then
-		if currentValue == Immune.Always then
-			result = Immune.Once
-		elseif currentValue == Immune.Once then
-			result = Immune.NotImmune
-		end
-	end
-	--дыхание распада END
-
 --Благословление вечных
 	if _GroupInfo_stackHasModifierAmount(BlessOfEternal) > 0 and source == Source.Death and currentValue ~= Immune.Always then
 		result = Immune.Once
@@ -1140,6 +1122,7 @@ function _smns_ImmuneToSource(unit, source, prev, currentValue)
 
 --Тайное знание криоманта
 	if source == Source.Water and _Kriomant_Deboost_Effect(unit) == 1 then
+		
 		if currentValue == Immune.Always then
 			result = Immune.Once
 		elseif currentValue == Immune.Once then
@@ -1147,6 +1130,25 @@ function _smns_ImmuneToSource(unit, source, prev, currentValue)
 		end
 	end
 --Тайное знание криоманта END
+
+		--дыхание распада
+	-- if source == Source.Death and smnsConditions_isStackNearToEnemyStackWithUnitModifier(unit, 1, smns_scenario, Wyrm) then
+	-- 	if currentValue == Immune.Always then
+	-- 		result = Immune.Once
+	-- 	elseif currentValue == Immune.Once then
+	-- 		result = Immune.NotImmune
+	-- 	end
+	-- end
+
+	if source == Source.Death and _Wyrm_Deboost_Effect(unit) == 1 then
+		if currentValue == Immune.Always then
+			result = Immune.Once
+		elseif currentValue == Immune.Once then
+			result = Immune.NotImmune
+		end
+	end
+	--дыхание распада END
+
 	return result
 end
 
@@ -1368,6 +1370,9 @@ function _smns_getAttack1Id(unit, currentValue)
 	-- if smnsConditions_DlanMortisResist(unit) then
 	-- 	return Id.new('g070aa0155')
 	-- end
+	if smnsConditions_ArchdruidStrengthen(unit) then
+		return Id.new('g070aa0199')
+	end
 
     return currentValue
 end
@@ -1378,6 +1383,10 @@ function _smns_getAttack1Type(unit, currentValue)
 	-- 	return Attack.BestowWards
 	-- end
 
+	if smnsConditions_ArchdruidStrengthen(unit) then
+		return Attack.BoostDamage
+	end
+
     return currentValue
 end
 
@@ -1386,6 +1395,10 @@ function _smns_getAttack1BaseDamage(unit, currentValue)
 	-- if smnsConditions_DlanMortisResist(unit) then
 	-- 	return 0
 	-- end
+
+	if smnsConditions_ArchdruidStrengthen(unit) then
+		return 0
+	end
 
     return currentValue
 end
@@ -1396,6 +1409,10 @@ function _smns_getAttack1BaseHeal(unit, currentValue)
 	-- 	return 0
 	-- end
 
+	if smnsConditions_ArchdruidStrengthen(unit) then
+		return 0
+	end
+
     return currentValue
 end
 
@@ -1404,6 +1421,10 @@ function _smns_getAttack1BasePower(unit, currentValue)
 	-- if smnsConditions_DlanMortisResist(unit) then
 	-- 	return 100
 	-- end
+
+	if smnsConditions_ArchdruidStrengthen(unit) then
+		return 100
+	end
 
     return currentValue
 end

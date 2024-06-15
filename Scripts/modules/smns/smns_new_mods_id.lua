@@ -164,4 +164,4 @@ BloodRavenCama = Id.new('g070um0316').value
 BloodRavenScythe = Id.new('g070um0315').value
 KriomantDeboost = Id.new('g070um0065').value
 DodgeBanner = Id.new('g070um0322').value
-
+Archdruid = Id.new('g070um0327').value

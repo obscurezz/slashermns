@@ -184,3 +184,17 @@ function getAttackPower(unit, prev)
     return prev
 end
 
+-- function getImmuneToSource(unit, source, prev)
+--     return prev
+-- end
+
+-- function getImmuneToAttack(unit, attack, prev)
+--     if attack == Attack.Poison and _Wyrm_Deboost_Effect(unit) == 1 then
+-- 		if prev == Immune.Always then
+-- 			return svAttackImmunityClass(unit, attack, prev, Immune.Once)
+-- 		elseif prev == Immune.Once then
+-- 			return svAttackImmunityClass(unit, attack, prev, Immune.NotImmune)
+-- 		end
+-- 	end
+--     return prev
+-- end

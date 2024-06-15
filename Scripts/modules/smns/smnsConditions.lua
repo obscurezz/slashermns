@@ -43,6 +43,13 @@ function smnsConditions_ArchLichShatter(unit)
     return false
 end
 
+function smnsConditions_ArchdruidStrengthen(unit)
+	if _GroupInfo_UnitHasModifierValue(unit, Archdruid) and unit.impl.level - unit.baseImpl.level >= 3 then
+		return true
+	end
+	return false
+end
+
 function smnsConditions_DlanMortisResist(unit)
 	if _GroupInfo_UnitHasModifierValue(unit, DlanMortis) and unit.impl.level - unit.baseImpl.level >= 3 then
 		return true

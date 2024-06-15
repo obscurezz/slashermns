@@ -236,6 +236,15 @@ function _unitAura_ImmuneToAttack(unit, attack, prev)
 		local workshopBonus_Always = Workshop_getBonus_ImmuneToAttack_Always(scenario, unit, attack, gotGroup)
 		result = Workshop_changeImmuneClass(result, workshopBonus_Once, workshopBonus_Always)
 	end
+
+	if (attack == Attack.Poison and _Wyrm_Deboost_Effect(unit) == 1)
+	or (attack == Attack.Blister and _Flamethrower_Deboost_Effect(unit) == 1)
+	or (attack == Attack.Frostbite and _Kriomant_Deboost_Effect(unit) == 1)
+	then
+		svSetAttackClassVulnerabilty(unit, attack, true)
+	else
+		svSetAttackClassVulnerabilty(unit, attack, false)
+	end
 	
 	if result == Immune.NotImmune then
 		if attack == Attack.Frostbite then
@@ -344,6 +353,10 @@ function _unitAura_ImmuneToSource(unit, source, prev)
 	if uaVulnerabilityModifiers[source] ~= nil 
 	and _GroupInfo_UnitModifierAmount(mods, uaVulnerabilityModifiers[source]) > 0 
 	and _unitAura_SpellDebuffResistance_total(unit, mods) < 100 then
+		svSetAttackSourceVulnerability(unit, source, true)
+	elseif (source == Source.Death and _Wyrm_Deboost_Effect(unit) == 1)
+	or (source == Source.Water and _Kriomant_Deboost_Effect(unit) == 1) 
+	then
 		svSetAttackSourceVulnerability(unit, source, true)
 	else
 		svSetAttackSourceVulnerability(unit, source, false)
