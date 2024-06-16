@@ -840,53 +840,45 @@ function _smns_ImmuneToAttack(unit, attack, prev, currentValue)
 	--аура стабильности END
 
 	--дыхание распада
-	-- if attack == Attack.Poison and smnsConditions_isStackNearToEnemyStackWithUnitModifier(unit, 1, smns_scenario, Wyrm) then
+	-- if attack == Attack.Poison and _Wyrm_Deboost_Effect(unit) == 1 then
 	-- 	if currentValue == Immune.Always then
 	-- 		result = Immune.Once
 	-- 	elseif currentValue == Immune.Once then
 	-- 		result = Immune.NotImmune
 	-- 	end
 	-- end
-
-	if attack == Attack.Poison and _Wyrm_Deboost_Effect(unit) == 1 then
-		if currentValue == Immune.Always then
-			result = Immune.Once
-		elseif currentValue == Immune.Once then
-			result = Immune.NotImmune
-		end
-	end
 	--дыхание распада END
 
 	--жидкое пламя
-	if attack == Attack.Blister and _Flamethrower_Deboost_Effect(unit) == 1 then
-		if currentValue == Immune.Always then
-			result = Immune.Once
-		elseif currentValue == Immune.Once then
-			result = Immune.NotImmune
-		end
-	end
+	-- if attack == Attack.Blister and _Flamethrower_Deboost_Effect(unit) == 1 then
+	-- 	if currentValue == Immune.Always then
+	-- 		result = Immune.Once
+	-- 	elseif currentValue == Immune.Once then
+	-- 		result = Immune.NotImmune
+	-- 	end
+	-- end
 	--жидкое пламя END
 	
 	--Тайное знание криоманта
-	if attack == Attack.Frostbite and _Kriomant_Deboost_Effect(unit) == 1 then
-		if currentValue == Immune.Always then
-			result = Immune.Once
-		elseif currentValue == Immune.Once then
-			result = Immune.NotImmune
-		end
-	end
+	-- if attack == Attack.Frostbite and _Kriomant_Deboost_Effect(unit) == 1 then
+	-- 	if currentValue == Immune.Always then
+	-- 		result = Immune.Once
+	-- 	elseif currentValue == Immune.Once then
+	-- 		result = Immune.NotImmune
+	-- 	end
+	-- end
 	--Тайное знание криоманта END
 
 	--страж столицы снимает резист к разрушению
-	if smns_scenario.day >= 10 then	
-		if attack == Attack.Shatter and _Guard_Resistance_Deboost_Effect(unit) == 1 then
-			if currentValue == Immune.Always then
-				result = Immune.Once
-			elseif currentValue == Immune.Once then
-				result = Immune.NotImmune
-			end
-		end
-	end
+	-- if smns_scenario.day >= 10 then	
+	-- 	if attack == Attack.Shatter and _Guard_Resistance_Deboost_Effect(unit) == 1 then
+	-- 		if currentValue == Immune.Always then
+	-- 			result = Immune.Once
+	-- 		elseif currentValue == Immune.Once then
+	-- 			result = Immune.NotImmune
+	-- 		end
+	-- 	end
+	-- end
 	--страж столицы снимает резист к разрушению END
 
 	--Сет феникса
@@ -1121,32 +1113,23 @@ function _smns_ImmuneToSource(unit, source, prev, currentValue)
 --Щит стихий END
 
 --Тайное знание криоманта
-	if source == Source.Water and _Kriomant_Deboost_Effect(unit) == 1 then
-		
-		if currentValue == Immune.Always then
-			result = Immune.Once
-		elseif currentValue == Immune.Once then
-			result = Immune.NotImmune
-		end
-	end
---Тайное знание криоманта END
-
-		--дыхание распада
-	-- if source == Source.Death and smnsConditions_isStackNearToEnemyStackWithUnitModifier(unit, 1, smns_scenario, Wyrm) then
+	-- if source == Source.Water and _Kriomant_Deboost_Effect(unit) == 1 then		
 	-- 	if currentValue == Immune.Always then
 	-- 		result = Immune.Once
 	-- 	elseif currentValue == Immune.Once then
 	-- 		result = Immune.NotImmune
 	-- 	end
 	-- end
+--Тайное знание криоманта END
 
-	if source == Source.Death and _Wyrm_Deboost_Effect(unit) == 1 then
-		if currentValue == Immune.Always then
-			result = Immune.Once
-		elseif currentValue == Immune.Once then
-			result = Immune.NotImmune
-		end
-	end
+		--дыхание распада
+	-- if source == Source.Death and _Wyrm_Deboost_Effect(unit) == 1 then
+	-- 	if currentValue == Immune.Always then
+	-- 		result = Immune.Once
+	-- 	elseif currentValue == Immune.Once then
+	-- 		result = Immune.NotImmune
+	-- 	end
+	-- end
 	--дыхание распада END
 
 	return result

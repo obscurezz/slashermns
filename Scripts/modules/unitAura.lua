@@ -240,6 +240,7 @@ function _unitAura_ImmuneToAttack(unit, attack, prev)
 	if (attack == Attack.Poison and _Wyrm_Deboost_Effect(unit) == 1)
 	or (attack == Attack.Blister and _Flamethrower_Deboost_Effect(unit) == 1)
 	or (attack == Attack.Frostbite and _Kriomant_Deboost_Effect(unit) == 1)
+	or (scenario.day >= 10 and attack == Attack.Shatter and _Guard_Resistance_Deboost_Effect(unit) == 1)
 	then
 		svSetAttackClassVulnerabilty(unit, attack, true)
 	else
