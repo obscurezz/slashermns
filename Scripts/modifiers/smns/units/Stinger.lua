@@ -9,15 +9,15 @@ function getModifierDescTxt(unit, prev)
 	return prev
 end
 
-function getAttackReach(unit, prev)
-	local Druid = Id.new('g070um0035').value
-	_get_Group_and_Mods(unit)
-	if _GroupInfo_stackHasModifierAmount(Id.new('g070um0035').value) > 0 then
-		return 11
-	end
-	return prev
+--function getAttackReach(unit, prev)
+--	local Druid = Id.new('g070um0035').value
+--	_get_Group_and_Mods(unit)
+--	if _GroupInfo_stackHasModifierAmount(Id.new('g070um0035').value) > 0 then
+--		return 11
+--	end
+--	return prev
 	
-end
+--end
 
 -- function getAttack2Id(unit, prev)
 -- 	_get_Group_and_Mods(unit)
@@ -30,7 +30,7 @@ end
 function getAttackDamage(unit, prev)
 	_get_Group_and_Mods(unit)
 	if _GroupInfo_stackHasModifierAmount(Id.new('g070um0035').value) > 0 then
-		return svMultimplyDamage1(unit, prev, 0.2)
+		return svMultimplyDamage1(unit, prev, 0.35)
 	end
 	return prev
 end
