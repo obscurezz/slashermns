@@ -119,10 +119,13 @@ return {
 				{ id = 'g000ig0021', min = 1, max = 1 }, --возд
 				
 				orr({ id = 'g001ig0125', min = 1, max = 1 }, { id = 'g001ig0036', min = 1, max = 1 }), --разума/смерти
-				orr({ id = 'g001ig0341', min = 1, max = 1 }, { id = 'g001ig0128', min = 1, max = 1 }), --Эликсир защиты от аффекта/вард оружия
+				{ id = rnd('g001ig0341','g001ig0128','g002ig0008'), min = 1, max = 1 }, --Эликсир защиты от аффекта/вард оружия/Эликсир скрытого потенциала
 				{ id = d15(), min = 1, max = 1 }, -- случ. дотвард
 				{ id = e2(), min = 1, max = 1},
 				{ id = e4(), min = 1, max = 1},
+
+				{ id = 'g002ig0007', min = 1, max = 2 }, --Зелье магической устойчивости 
+				rnd({ id = 'g002ig0005', min = 1, max = 1}, { id = 'g002ig0007', min = 1, max = 1}), -- Зелье наблюдательности / Зелье магической устойчивости
 				
 				orr({ id = 'g001ig0130', min = 1, max = 1 }, orr({ id = 'g001ig0561', min = 1, max = 1 }, { id = 'g000ig0010', min = 1, max = 1 })), -- Эликсир регенерации +20 реген | эликсир самопожертвования / Эликсир внимательности 10 точности 500
 				orr3({ id = 'g001ig0530', min = 1, max = 1 }, { id = 'g001ig0530', min = 1, max = 1 }, { id = 'g001ig0524', min = 1, max = 1 }), -- Зелье посмертного зова (талисманы) 66% / Зелье завоевателя (жезлы) 33% 
@@ -140,7 +143,7 @@ return {
 				--релик= 400-550
 				{ id = merch1(), min = 1, max = 1 },
 
-				--арт-сап-пос= арт500-650 / сап500-700 / посох 400
+				--арт-сап= арт500-650 / сап500-700
 				{ id = ruin1(), min = 1, max = 1 },
 				
 				--посох200
@@ -175,9 +178,13 @@ return {
 
 				orr({ id = 'g001ig0125', min = 1, max = 1 }, { id = 'g001ig0036', min = 1, max = 1 }), --разума/смерти
 				orr({ id = e4(), min = 1, max = 1 }, { id = 'g001ig0128', min = 1, max = 1 }), --элексир400/вард оружия
-				orr({ id = d15(), min = 1, max = 1 }, { id = 'g001ig0351', min = 1, max = 1 }), -- случ. дотвард/вард-поглащения
+				{ id = rnd(d15(),'g001ig0351','g002ig0008'), min = 1, max = 1 }, -- случ. дотвард/вард-поглащения/Эликсир скрытого потенциала 
+
 				{ id = e4(), min = 1, max = 1},
 				{ id = pw5(), min = 1, max = 1},
+
+				{ id = 'g002ig0007', min = 2, max = 3 }, --Зелье магической устойчивости 
+				orr({ id = 'g002ig0005', min = 1, max = 2 }, { id = 'g002ig0006', min = 1, max = 1 }), --Зелье наблюдательности / Зелье бдительности
 
 				orr({ id = 'g001ig0026', min = 1, max = 1 }, orr3({ id = 'g001ig0519', min = 1, max = 1 }, { id = 'g001ig0083', min = 1, max = 1 }, { id = 'g001ig0501', min = 1, max = 1 })), -- Аура регенерации +10 реген аое | Война престолов (-10 воры) / Зелье рвения 5 ини 5 точности 500 / Дары Галлеана (хожд по слесу)
 				orr({ id = 'g001ig0526', min = 1, max = 1 }, { id = 'g001ig0527', min = 1, max = 1 }), -- Зелье оруженосца (знамёна) / Зелье постижения (реликвии)	
@@ -198,8 +205,9 @@ return {
 				--знамя 500-700=
 				{ id = ruin22(), min = 1, max = 1 },
 				
-				--посох550 Посох Возни|Посох защиты|Посох скальда
-				orr3({id = 'g000ig6020', min = 1, max = 1}, {id = 'g000ig6014', min = 1, max = 1}, {id = 'g001ig0398', min = 1, max = 1}),
+				--посох400
+				{ id = wand2(), min = 1, max = 1 },
+			
 			}
 		},
 --класс		guard = guard2(),
@@ -228,9 +236,12 @@ return {
 
 				orr({ id = 'g001ig0125', min = 1, max = 1 }, { id = 'g001ig0036', min = 1, max = 1 }), --разума/смерти
 				orr({ id = 'g001ig0355', min = 1, max = 1 }, { id = 'g001ig0128', min = 1, max = 1 }), --вардурон/вард оружия
-				orr({ id = d15(), min = 1, max = 1 }, { id = 'g001ig0351', min = 1, max = 1 }), -- случ. дотвард/вард-поглащения
+				{ id = rnd(d15(),'g001ig0351','g002ig0008'), min = 1, max = 1 }, -- случ. дотвард/вард-поглащения/Эликсир скрытого потенциала 
 				{ id = pw5(), min = 1, max = 1},
 				{ id = pw6(), min = 1, max = 1},
+
+				{ id = 'g002ig0007', min = 2, max = 3 }, --Зелье магической устойчивости 
+				orr({ id = 'g002ig0005', min = 1, max = 2 }, { id = 'g002ig0006', min = 1, max = 1 }), --Зелье наблюдательности / Зелье бдительности
 
 				orr(orr({ id = 'g001ig0022', min = 1, max = 1 }, { id = 'g001ig0028', min = 1, max = 1 }), { id = 'g001ig0534', min = 1, max = 1 }), -- Аура меткости 10 аое точности 600 / Аура выносливости 5%оз аое 700 | Экстракт таинственной энергии (см. источн.) 700
 				orr({ id = 'g001ig0548', min = 1, max = 1 }, { id = 'g001ig0019', min = 1, max = 1 }), -- Зелье удачи (+10 крит) 700 / Малая аура вампиризма (+10 вамп) 900
@@ -250,6 +261,9 @@ return {
 
 				--арт=
 				{ id = ruin33(), min = 1, max = 1 },
+
+				--посох550 Посох Возни|Посох защиты|Посох скальда
+				orr3({id = 'g000ig6020', min = 1, max = 1}, {id = 'g000ig6014', min = 1, max = 1}, {id = 'g001ig0398', min = 1, max = 1}),
 				
 				--посох700 Посох дневного света / Посох морей5x5 / Посох сумерек / Посох духа / Посох озер3x3
 				orr5({ id = 'g000ig6017', min = 1, max = 1 }, { id = 'g001ig0098', min = 1, max = 1 }, { id = 'g000ig6018', min = 1, max = 1 }, { id = 'g000ig6013', min = 1, max = 1 }, { id = 'g001ig0097', min = 1, max = 1 }),
@@ -806,6 +820,12 @@ function orr5(what, what2, what3, what4, what5)
 	end
 end
 
+-- случайный
+function rnd(...)
+    return (select(math.random(select('#', ...)), ...))
+end
+
+
 -- Если вода, то
 function watorr(water, other)
 	if brz == 0 then
@@ -961,7 +981,7 @@ end
 
 -- случайный эликсир 200 + эффект варды (от-яд з1)
 function e2()
-	local radn = math.random(0,4)
+	local radn = math.random(0,6)
 	if radn == 0 then
 	return 'g001ig0560' -- Зелье провокатора 25принять
 	elseif radn == 1 then
@@ -972,12 +992,16 @@ function e2()
 	return 'g001ig0329' -- Эликсир защиты от дота
 	elseif radn == 4 then
 	return 'g001ig0351' --Эликсир защиты от поглощения
+	elseif radn == 5 then
+	return 'g002ig0007' -- Зелье магической устойчивости 250 (имун магия)
+	elseif radn == 6 then
+	return 'g002ig0005' -- Зелье наблюдательности 250 (15 ворам)
 	end
 end
 
 -- случайный эликсир 400-500 + афф.вард
 function e4()
-	local radn = math.random(0,5)
+	local radn = math.random(0,7)
 	if radn == 0 then
 	return 'g001ig0562' -- Зелье дуэлянта +20крит
 	elseif radn == 1 then
@@ -990,6 +1014,10 @@ function e4()
 	return 'g001ig0128' -- Эликсир защиты от Оружия
 	elseif radn == 5 then
 	return 'g001ig0341' -- Эликсир защиты от аффекта
+	elseif radn == 6 then
+	return 'g002ig0006' -- Зелье бдительности 500 (30 ворам)
+	elseif radn == 7 then
+	return 'g002ig0008' -- Эликсир скрытого потенциала 500 (20оз +7точ.вт.атаки)
 	end
 end
 
@@ -1140,7 +1168,7 @@ function startitm()
 	end
 end
 
--- посохи т1
+-- посохи т1 200
 function wand1()
 	local radn = math.random(0,6)
 	if radn == 0 then
@@ -1159,6 +1187,21 @@ function wand1()
 	return 'g000ig6012' -- Посох скорости
 	end
 end
+
+-- посохи т2 400
+function wand2()
+	local radn = math.random(0,3)
+	if radn == 0 then
+	return 'g001ig0403' -- Посох неизбежной кары
+	elseif radn == 1 then
+	return 'g001ig0404' -- Посох Ниграэля
+	elseif radn == 2 then
+	return watorr('g001ig0386', 'g001ig0401') -- Посох семи ветров (мореплавание) / Посох проклятой метки
+	elseif radn == 3 then
+	return 'g001ig0392' -- Посох знаний Фрегги
+	end
+end
+
 
 -- предмет зона 0
 function item0()
@@ -1182,9 +1225,9 @@ function item0()
 	end
 end
 
--- руины 1 (в лавку 1) пул наград арт500-650 / сап500-700 / посох 400
+-- руины 1 (в лавку 1) пул наград арт500-650 / сап500-700
 function ruin1()
-	local radn = math.random(0,13)
+	local radn = math.random(0,8)
 	if radn == 0 then
 	return 'g001ig0582' -- Камень врат (Артефакт)
 	elseif radn == 1 then
@@ -1203,16 +1246,6 @@ function ruin1()
 	return 'g001ig0111' -- Сапоги ассасина
 	elseif radn == 8 then
 	return 'g001ig0114' -- Тяжелые сапоги
-	elseif radn == 9 then
-	return watorr('g000ig1011', 'g000ig1010') -- Сапоги мореплавателя / Эльфийские сапоги
-	elseif radn == 10 then
-	return 'g001ig0403' -- Посох неизбежной кары
-	elseif radn == 11 then
-	return 'g001ig0404' -- Посох Ниграэля
-	elseif radn == 12 then
-	return watorr('g001ig0386', 'g001ig0401') -- Посох семи ветров (мореплавание) / Посох проклятой метки
-	elseif radn == 13 then
-	return 'g001ig0392' -- Посох знаний Фрегги
 	end
 end
 
@@ -1246,7 +1279,7 @@ end
 
 -- руины 2.2 (в лавку 2) пул наград знамя 500-700
 function ruin22()
-	local radn = math.random(0,8)
+	local radn = math.random(0,9)
 	if radn == 0 then
 	return 'g001ig0293' -- Баннер неудержимых
 	elseif radn == 1 then
@@ -1265,6 +1298,8 @@ function ruin22()
 	return 'g001ig0587' -- Знамя мастера
 	elseif radn == 8 then
 	return 'g001ig0369' -- Знамя снежной охоты
+	elseif radn == 9 then
+	return 'g001ig0373' -- Знамя магического иммунитета
 	end
 end
 
@@ -2041,7 +2076,7 @@ return {
 		loot = {
 			items = {
 				{ id = 'g000ig0001', min = 1, max = 1 }, --рес
-				orr5({ id = pw5(), min = 1, max = 1 }, { id = pw6(), min = 1, max = 1 }, { id = pw5(), min = 1, max = 1 }, { id = pw6(), min = 1, max = 1 }, { id = p05(), min = 1, max = 1 }), -- пермо.вард 500 / пермо.вард 600 / пермо.вард 500 / пермо.вард 600 / пермо5
+				{ id = rnd(pw5(), pw6(), p05(), wand2()), min = 1, max = 1 }, -- пермо.вард 500 / пермо.вард 600 / пермо5 / посох400
 				{ id = 'g000ig0006', min = 1, max = 1}, -- хил100
 				{ id = 'g000ig0005', min = 1, max = 1}, -- хил50
 			}
@@ -2058,7 +2093,7 @@ return {
 		loot = {
 			itemTypes = { Item.Armor, Item.Jewel, Item.Weapon, Item.Banner, Item.Talisman, Item.TravelItem },
 			value = { min = 600, max = 700 },
-			itemValue = { min = 600, max = 700 },
+			itemValue = { min = 600, max = 740 },
 			items = {
 				{ id = 'g000ig0001', min = 2, max = 2 }, --рес
 				{ id = 'g000ig0006', min = 2, max = 2 }, --хил100
@@ -2117,12 +2152,13 @@ function getPlayerZone0(zoneId, playerRace, zoneSize)
 						{ id = 'g000ig0021', min = 1, max = 1 }, --возд
 						{ id = 'g000ig0022', min = 1, max = 1 }, --воды
 						
+						{ id = 'g002ig0007', min = 1, max = 1 }, --Зелье магической устойчивости 
+						{ id = 'g002ig0005', min = 1, max = 1 },-- Зелье наблюдательности
+						rnd({ id = 'g002ig0005', min = 1, max = 1}, { id = 'g002ig0007', min = 1, max = 1}), -- Зелье наблюдательности / Зелье магической устойчивости
+						
 						orr(orr({ id = 'g001ig0458', min = 1, max = 1}, { id = 'g000ig9031', min = 1, max = 1}), orr({ id = 'g000ig9022', min = 1, max = 1}, { id = 'g001ig0302', min = 1, max = 1})), -- 25 Сфера Каменного проклятия / Сфера Ливня | Сфера Углей / Сфера Шторма
 						orr(orr({ id = 'g001ig0189', min = 1, max = 1}, { id = 'g001ig0178', min = 1, max = 1}), orr({ id = 'g001ig0472', min = 1, max = 1}, { id = 'g001ig0473', min = 1, max = 1})), -- 50 Сфера Камня / Сфера Костра | Сфера Ледяного осколка / Сфера Статического разряда
 												
---						orr(orr({ id = 'g000ig5021', min = 1, max = 1}, { id = 'g000ig5003', min = 1, max = 1}), orr({ id = 'g001ig0250', min = 1, max = 1}, { id = 'g000ig5023', min = 1, max = 1})), -- свиток л.щит, сила, с.кости, с.витара
---						orr(orr({ id = 'g001ig0248', min = 1, max = 1}, { id = 'g000ig5045', min = 1, max = 1}), orr({ id = 'g000ig5064', min = 1, max = 1}, { id = 'g000ig5101', min = 1, max = 1})), -- свиток устр. гимн, tormentio-броня, слабость, стая 
-						
 						orr3(orr({id = 'g000ig9105', min = 1, max = 1}, {id = 'g000ig9131', min = 1, max = 1}), {id = TalismanHome(playerRace), min = 1, max = 1}, {id = TalismanHome(playerRace), min = 1, max = 1}), -- Талисман Костра / Талисман Ливня | Родной талик / Родной талик
 
 						{ id = startitm(), min = 1, max = 1 }, --стартовый предмет
@@ -2158,10 +2194,10 @@ function getPlayerZone11(zoneId, playerRace, zoneSize)
 		mines = getMinesRespZ11(playerRace),
 		mercenaries = zoneMercenZone1(playerRace),
 		stacks = {
-			z1Stacks14(v11, orr('g000ig0011','g000ig0021')), --ини/воздух
-			z1Stacks14(v11, orr('g000ig0002','g000ig0024')), --защита/огонь
-			z1Stacks14(v11, orr('g000ig0014','g000ig0022')), --атака/вода
-			z1Stacks14(v11, orr('g000ig0008','g000ig0023')), --точность/земля
+			z1Stacks14(v11, rnd('g000ig0011','g000ig0021','g002ig0007')), --ини/воздух/Зелье магической устойчивости
+			z1Stacks14(v11, rnd('g000ig0002','g000ig0024')), --защита/огонь
+			z1Stacks14(v11, rnd('g000ig0014','g000ig0022','g002ig0007','g002ig0005')), --атака/вода/Зелье магической устойчивости/Зелье наблюдательности
+			z1Stacks14(v11, rnd('g000ig0008','g000ig0023')), --точность/земля
 			z1Stacks5(v12), z1Stacks6(v13), z1Stacks7(v14), z1Stacks8(v15), z1Stacks9(),
 		},
 	}
@@ -2181,10 +2217,10 @@ function getPlayerZone12(zoneId, playerRace, zoneSize)
 		mines = getMinesRespZ12(playerRace),
 		mercenaries = zoneMercenZone1(playerRace),
 		stacks = {
-			z1Stacks14(v11, orr('g000ig0011','g000ig0021')), --ини/воздух
-			z1Stacks14(v11, orr('g000ig0002','g000ig0024')), --защита/огонь
-			z1Stacks14(v11, orr('g000ig0014','g000ig0022')), --атака/вода
-			z1Stacks14(v11, orr('g000ig0008','g000ig0023')), --точность/земля
+			z1Stacks14(v11, rnd('g000ig0011','g000ig0021')), --ини/воздух
+			z1Stacks14(v11, rnd('g000ig0002','g000ig0024','g002ig0007')), --защита/огонь/Зелье магической устойчивости
+			z1Stacks14(v11, rnd('g000ig0014','g000ig0022')), --атака/вода
+			z1Stacks14(v11, rnd('g000ig0008','g000ig0023','g002ig0007','g002ig0005')), --точность/земля/Зелье магической устойчивости/Зелье наблюдательности
 			z1Stacks5(v12), z1Stacks6(v13), z1Stacks7(v14), z1Stacks8(v15), z1Stacks9(),
 		},
 	}
@@ -2206,9 +2242,9 @@ function getTreasureZone2(zoneId, playerRace, playerRace2, zoneSizeTre)
 		mines = getMinesZone2(playerRace, playerRace2),
 		mages = zoneMageResp2(),		
 		stacks = {
-			z2Stacks13(v21, 'g001ig0560'), --Зелье провокатора 25принять
-			z2Stacks13(v21, 'g001ig0547'), --Зелье пронзающего взгляда +10крит
-			z2Stacks13(v21, 'g001ig0490'), --Зелье выносливости +25оз
+			z2Stacks13(v21, rnd('g001ig0560','g002ig0007')), --Зелье провокатора 25принять/Зелье магической устойчивости
+			z2Stacks13(v21, rnd('g001ig0547','g002ig0005')), --Зелье пронзающего взгляда +10крит/Зелье наблюдательности
+			z2Stacks13(v21, rnd('g001ig0490','g002ig0007','g002ig0005')), --Зелье выносливости +25оз/Зелье магической устойчивости/Зелье наблюдательности
 			z2Stacks4(v22), z2Stacks5(v23), z2Stacks6(v24), z2Stacks7(v25), z2Stacks8(),
 		},
 
@@ -2231,8 +2267,8 @@ function getTreasureZone3(zoneId, playerRace, playerRace2, zoneSizeTre)
 		bags = bags3(),
 		mines = getMinesZone3(playerRace, playerRace2),
 		stacks = { 
-			z3Stacks14('g001ig0562'), -- Зелье дуэлянта +20крит
-			z3Stacks14('g001ig0491'), -- Зелье похищения жизни +25вамп
+			z3Stacks14(rnd('g001ig0562','g002ig0006')), -- Зелье дуэлянта +20крит/Зелье бдительности
+			z3Stacks14(rnd('g001ig0491','g002ig0008')), -- Зелье похищения жизни +25вамп/Эликсир скрытого потенциала
 			z3Stacks14('g001ig0355'), -- Зелье тритоньей чешуи +вардурон
 			z3Stacks14('g001ig0127'), -- Эликсир жизненной силы +50максоз
 			
@@ -2381,7 +2417,7 @@ end
 
 -- Название шаблона
 function nametempl()
-	local name0 = 'Ultimate 1.2'
+	local name0 = 'Ultimate 1.2b'
 	if brz == 0 then nameplus = ' [0-close/corner_random]'
 	elseif brz == 1 then nameplus = ' [1-close]'
 	elseif brz == 2 then nameplus = ' [2-open]'
@@ -2666,11 +2702,11 @@ forbiddenItems = {
 'g001ig0079', -- Свиток "Призыв V: Вестник поглощения"
 
 --т3+
-'g001ig0577', --Свиток "Dominatum ignis Лишает отряд сопротивлений к Огню и ожогу, а иммунитеты заменяет на сопротивления.
-'g001ig0580', --Свиток "Небесный молот Лишает отряд сопротивлений к Воздуху и РБ, а иммунитеты заменяет на сопротивления.
-'g001ig0576', --Свиток "Прах к праху Лишает отряд сопротивлений к Смерти, вампиризму и тауматургии, иммунитеты заменяет на сопротивления.
-'g001ig0578', --Свиток "Пробирающий холод Лишает отряд сопротивления Воды и мороза, а иммунитеты заменяет на сопротивления.
-'g001ig0579', --Свиток "Хворь Лишает отряд сопротивлений к магии Земли и яду, а иммунитеты заменяет на сопротивления.
+'g001ig0577', --Свиток "Dominatum ignis Лишает сопротивлений к Огню и ожогу, а иммунитеты заменяет на сопротивления.
+'g001ig0580', --Свиток "Небесный молот Лишает сопротивлений к Воздуху и РБ, а иммунитеты заменяет на сопротивления.
+'g001ig0576', --Свиток "Прах к праху Лишает сопротивлений к Смерти, вампиризму и тауматургии, иммунитеты заменяет на сопротивления.
+'g001ig0578', --Свиток "Пробирающий холод Лишает сопротивления Воды и мороза, а иммунитеты заменяет на сопротивления.
+'g001ig0579', --Свиток "Хворь Лишает сопротивлений к магии Земли и яду, а иммунитеты заменяет на сопротивления.
 'g000ig5096', --Свиток "Прикосновение вампира" +35вапририк
 
 --свитки на урон т3+

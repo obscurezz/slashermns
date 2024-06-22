@@ -43,7 +43,7 @@ function zoneMageResp1()
 						
 						yn('g000ss0050'), -- Chronos
 						yn('g000ss0185'), -- terebrare corde
-						yn('g000ss0122'), -- Целительные ожоги
+						yn('g000ss0122'), -- Maledictus telum -15крит
 
 						yn('g000ss0186'), -- Спешащее время
 						yn('g000ss0069'), -- Проклятие Ниграэля
@@ -133,10 +133,9 @@ function zoneTownsResp0(race)
 					{ id = 'g000ig0001', min = 1, max = 1 }, --рес
 					{ id = 'g000ig0006', min = 1, max = 1 }, --хил100
 					orr({ id = 'g001ig0180', min = 2, max = 2 }, { id = 'g000ig0005', min = 1, max = 1 }), --2хил25/хил50
---					{ id = 'g001ig0431', min = 1, max = 1 }, --гранат75
-					orr({ id = ExtraManaProject4(race), min = 1, max = 1 }, { id = 'g000ig7002', min = 1, max = 1 }), --доп.шар / кольцо100
+					orr({ id = ExtraManaProject4(race), min = 1, max = 1 }, { id = 'g001ig0432', min = 1, max = 1 }), --доп.шар / аметист125
 					orr3({ id = 'g001ig0530', min = 1, max = 1}, { id = 'g001ig0531', min = 1, max = 1}, { id = p05(), min = 1, max = 1}), -- Зелье посмертного зова (талики) / Зелье слова (свитки) / Случ. пермо 5%
-					{ id = b15(), min = 1, max = 1 },
+					yn(orr({ id = b15(), min = 1, max = 1 },{ id = 'g002ig0007', min = 1, max = 1 })), --банка15 / Зелье магической устойчивости 
 					{ id = e4(), min = 1, max = 1 },
 				}
 			}
@@ -159,15 +158,15 @@ function zoneTowns2(race)
 			loot = {
 				itemTypes = { Item.Scroll, Item.Orb },
 				value = { min = 450, max = 600 },
-				itemValue = { min = 450, max = 600 },
+				itemValue = { min = 450, max = 690 },
 				items = {
 					{ id = 'g000ig0001', min = 1, max = 1 }, --рес
 					{ id = 'g000ig0006', min = 1, max = 1 }, --хил100
 					orr({ id = 'g000ig0006', min = 1, max = 1 }, { id = 'g000ig0005', min = 2, max = 2 }), --хил100/2хил50		
 --					{ id = 'g001ig0432', min = 1, max = 1 }, --аметист125
 					orr3({ id = ExtraManaProject4(race), min = 1, max = 1 }, { id = ExtraHomeMana(race), min = 1, max = 1 }, { id = 'g000ig7003', min = 1, max = 1 }), -- доп.шар / родной шар / изумруд150
-					orr3({ id = 'g001ig0529', min = 1, max = 1}, { id = 'g001ig0528', min = 1, max = 1}, { id = p05(), min = 1, max = 1}), -- Каталог магических сфер (сферы) / Честный труд (сапоги) / Случ. пермо 5%
-					orr({ id = b15(), min = 1, max = 1 }, { id = w15(), min = 1, max = 1 }), -- случ. банка15 / случ. вард
+					orr({ id = 'g002ig0005', min = 1, max = 1}, { id = 'g002ig0007', min = 1, max = 1}), -- Зелье наблюдательности / Зелье магической устойчивости
+					orr3({ id = b15(), min = 1, max = 1 }, { id = w15(), min = 1, max = 1 }, { id = 'g002ig0007', min = 1, max = 1 }), -- случ. банка15 / случ. вард / Зелье магической устойчивости
 					{ id = pw5(), min = 1, max = 1 },
 				}
 			}
@@ -183,20 +182,18 @@ function zoneTownsZone3()
 		tier = 1,
 		stack = {
 			subraceTypes = { Subrace.NeutralDragon, Subrace.Human, Subrace.Heretic, Subrace.Dwarf, Subrace.Elf }, -- Subrace.Undead, убрал
-			value = { min = 950*kef, max = 950*kef*kr },
+			value = { min = 1100*kef, max = 1100*kef*kr },
 			loot = {
 				itemTypes = { Item.Scroll, Item.Orb },
 				value = { min = 700, max = 800 },
-				itemValue = { min = 700, max = 800 },
+				itemValue = { min = 700, max = 890 },
 				items = {
 					{ id = 'g000ig0001', min = 1, max = 1 }, --рес
 					{ id = 'g000ig0006', min = 2, max = 2 }, --хил100
 					orr({ id = 'g000ig0006', min = 1, max = 1 }, { id = 'g000ig0005', min = 2, max = 2 }), --хил100/2хил50
---					{ id = 'g001ig0433', min = 1, max = 1 }, --аквамарин175					
-					orr({ id = rmsb(), min = 1, max = 1 }, { id = 'g000ig7005', min = 1, max = 1 }), --случ. большой шар манны / рубин250
+					orr({ id = rmsb(), min = 1, max = 1 }, { id = 'g001ig0433', min = 1, max = 1 }), --случ. большой шар манны / аквамарин175
 					orr(orr({ id = 'g001ig0563', min = 1, max = 1}, { id = 'g001ig0035', min = 1, max = 1}), orr({ id = 'g001ig0019', min = 1, max = 1}, { id = 'g001ig0506', min = 1, max = 1})),	-- Аура внимательности +5 крит / Великая аура жизненной силы +30хп / Малая аура вампиризма +10вамп / Настойка оратора +1лидер	
-					{ id = b30(), min = 1, max = 1 }, -- случ. банка30
-					{ id = pw6(), min = 1, max = 1 },
+					yn(orr({ id = b30(), min = 1, max = 1 },{ id = 'g002ig0006', min = 1, max = 1 })), --случ. банка30 / Зелье бдительности -30воры
 				}
 			}
 		}
@@ -235,6 +232,9 @@ return {
 
 				{ id = d15(), min = 1, max = 1 }, -- случ. дотвард
 
+				{ id = 'g002ig0007', min = 1, max = 1 }, --Зелье магической устойчивости 
+				orr({ id = 'g002ig0005', min = 1, max = 1}, { id = 'g002ig0007', min = 1, max = 1}), -- Зелье наблюдательности / Зелье магической устойчивости
+
 				{ id = e2(), min = 1, max = 1},
 				{ id = e2(), min = 1, max = 1},
 				{ id = e4(), min = 1, max = 1},				
@@ -249,8 +249,6 @@ return {
 
 				orr(orr({ id = 'g000ig3001', min = 1, max = 1}, { id = 'g000ig2001', min = 1, max = 1}), orr({ id = 'g001ig0100', min = 1, max = 1}, { id = 'g001ig0101', min = 1, max = 1})), -- Гномьи наручи (Артефакт) / Рунный камень (Артефакт) | Цеп Хана (Артефакт) / Череп Хана (Реликвия)				
 				yn({ id = 'g001ig0611', min = 1, max = 1 }), -- Цепи жертвенности (Артефакт)
-				yn({ id = 'g001ig0421', min = 1, max = 1 }), -- Борода Имира (Реликвия)
-				yn({ id = 'g001ig0610', min = 1, max = 1 }), -- Оковы долга (Реликвия)
 				yn({ id = 'g002ig0001', min = 1, max = 1 }), -- Потайной кинжал (Артефакт)
 				yn({ id = 'g001ig0609', min = 1, max = 1 }), -- Загробный фонарь (Артефакт)
 				yn({ id = 'g001ig0418', min = 1, max = 1 }), -- Руна защиты Фрейра (Артефакт)
@@ -266,12 +264,20 @@ return {
 				yn({ id = 'g001ig0558', min = 1, max = 1 }), -- Рог возмездия (Артефакт) 700
 				yn({ id = 'g001ig0594', min = 1, max = 1 }), -- Щит телохранителя (Артефакт) 700
 				
+				yn({ id = 'g001ig0421', min = 1, max = 1 }), -- Борода Имира (Реликвия)
+				yn({ id = 'g001ig0610', min = 1, max = 1 }), -- Оковы долга (Реликвия)
 				yn({ id = 'g001ig0426', min = 1, max = 1 }), -- Куртка капитана (Реликвия)
+
 				yn({ id = 'g001ig0104', min = 1, max = 1 }), -- зуб людоеда
 				yn({ id = 'g000ig3022', min = 1, max = 1 }), -- р.лютня650
-				yn({ id = 'g000ig4003', min = 1, max = 1 }), -- книга земли
 				yn({ id = 'g001ig0605', min = 1, max = 1 }), -- Книга постижения600		
 				yn({ id = 'g000ig3020', min = 1, max = 1 }), -- череп танатоса500
+				yn({ id = 'g001ig0099', min = 1, max = 1 }), -- перчатки
+				yn({ id = 'g000ig4001', min = 1, max = 1 }), -- книга возд
+				yn({ id = 'g000ig4002', min = 1, max = 1 }), -- книга воды
+				yn({ id = 'g000ig4003', min = 1, max = 1 }), -- книга земли				
+				yn({ id = 'g000ig4004', min = 1, max = 1 }), -- книга огня				
+				yn({ id = 'g000ig4007', min = 1, max = 1 }), -- Медицинский трактат
 				
 				--сапоги
 				orr(orr({ id = 'g001ig0105', min = 1, max = 1 }, { id = 'g001ig0107', min = 1, max = 1 }), orr({ id = 'g001ig0108', min = 1, max = 1 }, { id = 'g001ig0106', min = 1, max = 1 })), -- Литейные сапоги / Сапоги ветров / Гномьи сапоги / Сапоги каменщика
@@ -351,6 +357,9 @@ return {
 				orr({ id = 'g001ig0125', min = 1, max = 1 }, { id = 'g001ig0036', min = 1, max = 1 }), --разума/смерти
 				
 				{ id = d15(), min = 1, max = 1 }, -- случ. дотвард
+
+				{ id = 'g002ig0007', min = 1, max = 2 }, --Зелье магической устойчивости 
+				orr({ id = 'g002ig0005', min = 1, max = 2 }, { id = 'g002ig0006', min = 1, max = 1 }), --Зелье наблюдательности / Зелье бдительности
 				
 				{ id = e4(), min = 1, max = 1},
 				{ id = e4(), min = 1, max = 1},
@@ -359,6 +368,7 @@ return {
 				orr({ id = 'g001ig0534', min = 1, max = 1 }, { id = 'g001ig0519', min = 1, max = 1 }), -- Экстракт таинственной энергии (смена атаки) / Война престолов (-10 воры)				
 				orr({ id = 'g000ig0004', min = 1, max = 1 }, { id = 'g001ig0028', min = 1, max = 1 }), -- эликсир твердости / аура выносл 5оз аое
 				orr({ id = 'g000ig0016', min = 1, max = 1 }, { id = 'g001ig0029', min = 1, max = 1 }), -- эликсир мощи +10атака / Аура силы +5атака аое
+
 				
 				orr({ id = 'g000ig4006', min = 1, max = 1 }, { id = 'g001ig0529', min = 1, max = 1 }), -- книга т.з. (сферы) / Каталог магических сфер
 				orr({ id = 'g001ig0494', min = 1, max = 1 }, { id = 'g001ig0528', min = 1, max = 1 }), -- Книга странника (сапоги) / Честный труд (сапоги)
@@ -420,7 +430,9 @@ return {
 				yn({ id = 'g001ig0293', min = 1, max = 1 }), -- знамя бан.неуд700
 				yn({ id = 'g001ig0292', min = 1, max = 1 }), -- знамя стяг.конц700
 				yn({ id = 'g001ig0361', min = 1, max = 1 }), -- Знамя горна700
-				yn({ id = 'g001ig0357', min = 1, max = 1 }), -- Знамя неистовства700			
+				yn({ id = 'g001ig0357', min = 1, max = 1 }), -- Знамя неистовства700	
+				yn({ id = 'g001ig0373', min = 1, max = 1 }), -- Знамя магического иммунитета600
+				yn({ id = orr(orr('g001ig0142','g001ig0140'),orr('g001ig0141','g001ig0139')), min = 1, max = 1 }), -- Знамя магии Воды / Воздуха / Земли / Огня700
 
 				--талик
 				orr5({ id = 'g000ig9128', min = 1, max = 1}, { id = 'g001ig0259', min = 1, max = 1}, { id = 'g001ig0063', min = 1, max = 1}, { id = 'g000ig9116', min = 1, max = 1}, { id = 'g000ig9140', min = 1, max = 1}), -- Талисман Молнии 800 / Талисман призыва нейтралов III 600 / Талисман Прилива 800 / Талисман Святой земли 800 / Талисман лесной колдуньи 800
@@ -469,6 +481,9 @@ return {
 				yn({ id = 'g001ig0125', min = 1, max = 1 }), -- вард разума
 				yn({ id = 'g001ig0036', min = 1, max = 1 }), -- вард смерти
 
+				{ id = 'g002ig0007', min = 1, max = 2 }, --Зелье магической устойчивости 
+				orr({ id = 'g002ig0005', min = 1, max = 2 }, { id = 'g002ig0006', min = 1, max = 1 }), --Зелье наблюдательности / Зелье бдительности
+
 				{ id = pw5(), min = 1, max = 1},
 				{ id = pw5(), min = 1, max = 1},
 				{ id = pw6(), min = 1, max = 1},
@@ -484,12 +499,13 @@ return {
 				yn({ id = 'g001ig0488', min = 1, max = 1 }), -- Кольцо Несгибаемого стража (Артефакт) 1000
 				yn({ id = 'g001ig0590', min = 1, max = 1 }), -- Щит Мизраэля (Артефакт) 1200
 				yn({ id = 'g001ig0603', min = 1, max = 1 }), -- Чаша жатвы (Артефакт) 1000
-
 				yn({ id = 'g001ig0585', min = 1, max = 1 }), -- Кольцо создателя (Артефакт)1400
 				yn({ id = 'g001ig0060', min = 1, max = 1 }), -- Тысяча чешуек (Артефакт) 1200				
 				yn({ id = 'g001ig0410', min = 1, max = 1 }), -- Дьявольская булава (Артефакт)1500
 				yn({ id = 'g000ig2005', min = 1, max = 1 }), -- Гравированная диадема (Артефакт)1800			
-				
+				yn({ id = 'g002ig0011', min = 1, max = 1 }), -- Щит рыцаря Феникса (Артефакт) 2400
+				yn({ id = 'g002ig0013', min = 1, max = 1 }), -- Серп Кровавого Ворона (Артефакт) 1450
+
 				yn({ id = 'g001ig0597', min = 1, max = 1 }), -- Кираса резонанса (Реликвия)1000
 				yn({ id = 'g001ig0419', min = 1, max = 1 }), -- Шлем воителя (Реликвия)1000
 				yn({ id = 'g001ig0430', min = 1, max = 1 }), -- Роба убийцы (Реликвия)850
@@ -498,6 +514,7 @@ return {
 				yn({ id = 'g000ig3005', min = 1, max = 1 }), -- р.кор.мьолн1200				
 				yn({ id = 'g000ig7010', min = 1, max = 1 }), -- р.кор.имп1800
 				yn({ id = 'g001ig0038', min = 1, max = 1 }), -- р.тяж.латы1550
+				yn({ id = 'g002ig0015', min = 1, max = 1 }), -- Кираса Кровавого Ворона (Реликвия) 1500
 
 				orr({ id = 'g001ig0501', min = 1, max = 1 }, { id = 'g000ig1010', min = 1, max = 1 }), -- Дары Галлеана (лес) 900 / эльфийские сапоги 700
 				orr({ id = 'g000ig8003', min = 1, max = 1 }, { id = 'g001ig0606', min = 1, max = 1 }), -- Сапоги скорости 700 | Сапоги родных земель 1000
@@ -535,6 +552,8 @@ return {
 				yn({ id = 'g001ig0290', min = 1, max = 1 }), -- Стяг непреклонности1500
 				yn({ id = 'g001ig0052', min = 1, max = 1 }), -- Знамя стойких1500
 				yn({ id = 'g000ig1017', min = 1, max = 1 }), -- Знамя Здоровья1500
+				yn({ id = 'g002ig0018', min = 1, max = 1 }), -- Стяг изворотливости1000 -15крит
+				yn({ id = 'g002ig0016', min = 1, max = 1 }), -- Стяг Кровавого Ворона1800
 
 				--талик
 				orr5({id = 'g000ig9130', min = 1, max = 1}, {id = 'g000ig9136', min = 1, max = 1}, {id = 'g001ig0185', min = 1, max = 1}, {id = 'g000ig9123', min = 1, max = 1}, {id = 'g001ig0202', min = 1, max = 1}), -- Талисман Бури 1000 / Талисман Горы 1600 / Талисман Землетрясения 1800 / Талисман Пожара 1000 / Талисман призыва нейтралов IV 1000
@@ -579,6 +598,9 @@ return {
 				yn({ id = 'g001ig0125', min = 1, max = 1 }), -- вард разума
 				yn({ id = 'g001ig0036', min = 1, max = 1 }), -- вард смерти
 
+				{ id = 'g002ig0007', min = 1, max = 2 }, --Зелье магической устойчивости 
+				orr({ id = 'g002ig0005', min = 1, max = 2 }, { id = 'g002ig0006', min = 1, max = 1 }), --Зелье наблюдательности / Зелье бдительности
+
 				{ id = pw5(), min = 1, max = 1},
 				{ id = pw5(), min = 1, max = 1},
 				{ id = pw6(), min = 1, max = 1},
@@ -593,11 +615,13 @@ return {
 				yn({ id = 'g001ig0415', min = 1, max = 1 }), -- Руна кары Тьяцци (Артефакт) 1150
 				yn({ id = 'g001ig0612', min = 1, max = 1 }), -- Кольцо небесной воли (Артефакт) 1000
 				yn({ id = 'g001ig0413', min = 1, max = 1 }), -- Корни триббога (Артефакт) 1200
-
 				yn({ id = 'g001ig0411', min = 1, max = 1 }), -- Грань реальности (Артефакт)1400
 				yn({ id = 'g001ig0604', min = 1, max = 1 }), -- Кинжал жатвы (Артефакт)1300
 				yn({ id = 'g001ig0046', min = 1, max = 1 }), -- Кровь Владыки (Артефакт)1400
 				yn({ id = 'g001ig0102', min = 1, max = 1 }), -- Коготь Пожирателя (Артефакт)1800
+				yn({ id = 'g002ig0010', min = 1, max = 1 }), -- Меч рыцаря Феникса (Артефакт) 2250
+				yn({ id = 'g002ig0014', min = 1, max = 1 }), -- Кама Кровавого Ворона (Артефакт) 1750
+				yn({ id = 'g002ig0017', min = 1, max = 1 }), -- Копье Ангела (Артефакт) 1750
 				
 				yn({ id = 'g001ig0597', min = 1, max = 1 }), -- Кираса резонанса (Реликвия)1000
 				yn({ id = 'g001ig0419', min = 1, max = 1 }), -- Шлем воителя (Реликвия)1000
@@ -607,6 +631,7 @@ return {
 				yn({ id = 'g000ig3005', min = 1, max = 1 }), -- р.кор.мьолн1200				
 				yn({ id = 'g000ig7010', min = 1, max = 1 }), -- р.кор.имп1800
 				yn({ id = 'g001ig0038', min = 1, max = 1 }), -- р.тяж.латы1550
+				yn({ id = 'g002ig0012', min = 1, max = 1 }), -- Доспех рыцаря Феникса (Реликвия) 2600
 
 				orr({ id = 'g001ig0501', min = 1, max = 1 }, { id = 'g000ig1010', min = 1, max = 1 }), -- Дары Галлеана (лес) 900 / эльфийские сапоги 700
 				orr({ id = 'g000ig8003', min = 1, max = 1 }, { id = 'g001ig0606', min = 1, max = 1 }), -- Сапоги скорости 700 | Сапоги родных земель 1000
@@ -643,6 +668,8 @@ return {
 				yn({ id = 'g001ig0290', min = 1, max = 1 }), -- Стяг непреклонности1500
 				yn({ id = 'g001ig0052', min = 1, max = 1 }), -- Знамя стойких1500
 				yn({ id = 'g000ig1017', min = 1, max = 1 }), -- Знамя Здоровья1500
+				yn({ id = 'g002ig0018', min = 1, max = 1 }), -- Стяг изворотливости1000 -15крит
+				yn({ id = 'g002ig0016', min = 1, max = 1 }), -- Стяг Кровавого Ворона1800
 
 				--талик
 				orr5({id = 'g000ig9130', min = 1, max = 1}, {id = 'g000ig9136', min = 1, max = 1}, {id = 'g001ig0185', min = 1, max = 1}, {id = 'g000ig9123', min = 1, max = 1}, {id = 'g001ig0202', min = 1, max = 1}), -- Талисман Бури 1000 / Талисман Горы 1600 / Талисман Землетрясения 1800 / Талисман Пожара 1000 / Талисман призыва нейтралов IV 1000
@@ -722,7 +749,7 @@ end
 
 -- Руины зона 2
 local valueRuinZone = { min = 400*kef, max = 400*kef*kr }
-local goldRuinZone = { min = 400, max = 450 }
+local goldRuinZone = { min = 350, max = 400 }
 
 function zoneRuinZone2()
 return {
@@ -743,7 +770,7 @@ end
 
 -- Руины зона 3
 local valueRuinZone3 = { min = 900*kef, max = 900*kef*kr }
-local goldRuinZone3 = { min = 500, max = 550 }
+local goldRuinZone3 = { min = 400, max = 450 }
 
 function zoneRuinZone3()
 return {
@@ -752,7 +779,7 @@ return {
 		loot = {
 				itemTypes = { Item.Armor }, -- 12 итемов
 				value = { min = 900, max = 1200 },
-				itemValue = { min = 900, max = 1200 }
+				itemValue = { min = 900, max = 1290 }
 		},
 		guard = {
 			subraceTypes = NoUndead(),
@@ -764,7 +791,7 @@ return {
 		loot = {
 				itemTypes = { Item.Weapon }, -- 9 итемов
 				value = { min = 900, max = 1200 },
-				itemValue = { min = 900, max = 1200 }
+				itemValue = { min = 900, max = 1290 }
 		},
 		guard = {
 			subraceTypes = NoUndead(),
@@ -776,7 +803,7 @@ return {
 		loot = {
 				itemTypes = { Item.Jewel, Item.Talisman }, -- 7 + 4 итемов
 				value = { min = 900, max = 1200 },
-				itemValue = { min = 900, max = 1200 }
+				itemValue = { min = 900, max = 1290 }
 		},
 		guard = {
 			subraceTypes = NoUndead(),
@@ -788,7 +815,7 @@ return {
 		loot = {
 				itemTypes = { Item.Banner }, -- 8 итемов
 				value = { min = 800, max = 1000 },
-				itemValue = { min = 800, max = 1000 }
+				itemValue = { min = 800, max = 1090 }
 		},
 		guard = {
 			subraceTypes = NoUndead(),
@@ -903,7 +930,6 @@ if race == Race.Human then
 unitsm[i] = { id = 'g003uu5001', level = 1, unique = false } i = i + 1 -- Боец ополчения
 unitsm[i] = { id = 'g000uu0001', level = 1, unique = false } i = i + 1 -- Сквайр
 unitsm[i] = orr3({ id = 'g000uu0003', level = 3, unique = true }, { id = 'g000uu0005', level = 3, unique = true }, { id = 'g000uu0154', level = 3, unique = true }) i = i + 1 -- Имперский рыцарь / Инквизитор / Ассасин
-if math.random(0,2) ~= 1 then unitsm[i] = { id = 'g000uu7595', level = 2, unique = true } i = i + 1 end -- Рефаим 1300
 if math.random(0,2) ~= 1 then unitsm[i] = { id = 'g003uu5002', level = 2, unique = true } i = i + 1 end -- Алебардист
 if math.random(0,2) ~= 1 then unitsm[i] = { id = 'g000uu0009', level = 2, unique = true } i = i + 1 end -- Волшебник
 if math.random(0,2) ~= 1 then unitsm[i] = { id = 'g000uu7561', level = 2, unique = true } i = i + 1 end -- Егерь
@@ -921,21 +947,15 @@ unitsm[i] = { id = 'g000uu0036', level = 1, unique = false } i = i + 1 -- Гном
 unitsm[i] = { id = 'g004uu5039', level = 1, unique = false } i = i + 1 -- Снежный волк
 unitsm[i] = orr3({ id = 'g000uu0038', level = 3, unique = true }, { id = 'g000uu0038', level = 3, unique = true }, { id = 'g000uu0162', level = 3, unique = true }) i = i + 1 -- Ветеран / Ветеран / Защитник горна
 if math.random(0,2) ~= 1 then unitsm[i] = { id = 'g000uu0030', level = 2, unique = true } i = i + 1 end -- Горный великан
-if math.random(0,2) ~= 1 then unitsm[i] = { id = 'g000uu7583', level = 2, unique = true } i = i + 1 end -- Йамму 1500
-if math.random(0,2) ~= 1 then unitsm[i] = { id = 'g000uu0027', level = 2, unique = true } i = i + 1 end -- Арбалетчик
-if math.random(0,2) ~= 1 then unitsm[i] = { id = 'g001uu7571', level = 2, unique = true } i = i + 1 end -- Белый волк
-if math.random(0,2) ~= 1 then unitsm[i] = { id = 'g000uu0037', level = 2, unique = true } i = i + 1 end -- Воин
-if math.random(0,2) ~= 1 then unitsm[i] = { id = 'g004uu8005', level = 2, unique = true } i = i + 1 end -- Гарм
-if math.random(0,2) ~= 1 then unitsm[i] = { id = 'g000uu0034', level = 2, unique = true } i = i + 1 end -- Посвященная
+if math.random(0,3) ~= 1 then unitsm[i] = { id = 'g000uu0027', level = 2, unique = true } i = i + 1 end -- Арбалетчик
+if math.random(0,3) ~= 1 then unitsm[i] = { id = 'g000uu0037', level = 2, unique = true } i = i + 1 end -- Воин
+if math.random(0,3) ~= 1 then unitsm[i] = { id = 'g000uu0034', level = 2, unique = true } i = i + 1 end -- Посвященная
 
 elseif race == Race.Undead then
 unitsm[i] = { id = 'g000uu0086', level = 1, unique = false } i = i + 1 -- Воин
 unitsm[i] = { id = 'g001uu7539', level = 1, unique = false } i = i + 1 -- Колотун
 unitsm[i] = orr3({ id = 'g000uu0091', level = 3, unique = true }, { id = 'g000uu0088', level = 3, unique = true }, { id = 'g000uu0085', level = 3, unique = true }) i = i + 1 -- Лорд Тьмы / Скелет-воин / Злой дух
 if math.random(0,2) ~= 1 then unitsm[i] = { id = 'g000uu0094', level = 2, unique = true } i = i + 1 end -- Дракон Рока
-if math.random(0,2) ~= 1 then unitsm[i] = { id = 'g001uu7564', level = 2, unique = true } i = i + 1 end -- Хорт 900
-if math.random(0,2) ~= 1 then unitsm[i] = { id = 'g001uu7563', level = 2, unique = true } i = i + 1 end -- Волколак
-if math.random(0,2) ~= 1 then unitsm[i] = { id = 'g001uu7565', level = 2, unique = true } i = i + 1 end -- Чумной оборотень
 if math.random(0,2) ~= 1 then unitsm[i] = { id = 'g000uu7542', level = 2, unique = true } i = i + 1 end -- Чумотворец
 if math.random(0,2) ~= 1 then unitsm[i] = { id = 'g000uu0087', level = 2, unique = true } i = i + 1 end -- Зомби
 if math.random(0,2) ~= 1 then unitsm[i] = { id = 'g000uu0081', level = 2, unique = true } i = i + 1 end -- Колдун
@@ -946,20 +966,17 @@ if math.random(0,2) ~= 1 then unitsm[i] = { id = 'g003uu5013', level = 2, unique
 elseif race == Race.Heretic then
 unitsm[i] = { id = 'g000uu0052', level = 1, unique = false } i = i + 1 -- Одержимый
 unitsm[i] = orr3({ id = 'g000uu0054', level = 3, unique = true }, { id = 'g000uu0054', level = 3, unique = true }, { id = 'g000uu2003', level = 3, unique = true }) i = i + 1 -- Черный паладин / Черный паладин / Мучитель
-if math.random(0,2) ~= 1 then unitsm[i] = { id = 'g000uu7577', level = 2, unique = true } i = i + 1 end -- Сатир 1500
 if math.random(0,2) ~= 1 then unitsm[i] = { id = 'g000uu0058', level = 2, unique = true } i = i + 1 end -- Демон
 if math.random(0,2) ~= 1 then unitsm[i] = { id = 'g000uu7572', level = 2, unique = true } i = i + 1 end -- Апатитовая горгулья
 if math.random(0,2) ~= 1 then unitsm[i] = { id = 'g000uu0056', level = 2, unique = true } i = i + 1 end -- Мраморная горгулья
 if math.random(0,2) ~= 1 then unitsm[i] = { id = 'g000uu0053', level = 2, unique = true } i = i + 1 end -- Берсеркер
 if math.random(0,2) ~= 1 then unitsm[i] = { id = 'g000uu0067', level = 2, unique = true } i = i + 1 end -- Ведьма
-if math.random(0,2) ~= 1 then unitsm[i] = { id = 'g004uu6101', level = 2, unique = true } i = i + 1 end -- Дьяволенок
 if math.random(0,2) ~= 1 then unitsm[i] = { id = 'g000uu0063', level = 2, unique = true } i = i + 1 end -- Темный колдун
 
 elseif race == Race.Elf then
 unitsm[i] = { id = 'g000uu8014', level = 1, unique = false } i = i + 1 -- Кентавр-копейщик
 unitsm[i] = { id = 'g000uu8036', level = 1, unique = false } i = i + 1 -- Энт Малый
 unitsm[i] = orr3({ id = 'g001uu7579', level = 3, unique = true }, { id = 'g000uu8017', level = 3, unique = true }, { id = 'g000uu8021', level = 3, unique = true }) i = i + 1 -- Кентавр-гвардеец / Кентавр-дикарь / Бандит
-if math.random(0,2) ~= 1 then unitsm[i] = { id = 'g000uu8030', level = 2, unique = true } i = i + 1 end -- Владыка Небес 1300
 if math.random(0,2) ~= 1 then unitsm[i] = { id = 'g003uu8038', level = 2, unique = true } i = i + 1 end -- Энт-целитель
 if math.random(0,2) ~= 1 then unitsm[i] = { id = 'g000uu8015', level = 2, unique = true } i = i + 1 end -- Кентавр-латник
 if math.random(0,2) ~= 1 then unitsm[i] = { id = 'g000uu8016', level = 2, unique = true } i = i + 1 end -- Кентавр-странник
@@ -993,32 +1010,32 @@ local i = 1
 
 unitsm[i] = orr({ id = 'g000uu7629', level = 1, unique = false }, { id = 'g000uu7628', level = 1, unique = false }) i = i + 1 -- Благ-дный эльф / Имперский гвардеец
 
+if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu0005', level = 3, unique = true } i = i + 1 end -- Инквизитор
+if math.random(0,1) == 1 then unitsm[i] = { id = 'g001uu7543', level = 3, unique = true } i = i + 1 end -- Ревнитель
 if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu2030', level = 3, unique = true } i = i + 1 end -- Детектив
 if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu2009', level = 3, unique = true } i = i + 1 end -- Клинок в тени
-if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu0157', level = 4, unique = true } i = i + 1 end -- Великий инквизитор
-if math.random(0,1) == 1 then unitsm[i] = { id = 'g001uu7543', level = 4, unique = true } i = i + 1 end -- Сенешаль
-if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu0152', level = 4, unique = true } i = i + 1 end -- Белый маг
+if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu0010', level = 3, unique = true } i = i + 1 end -- Маг
 
+if math.random(0,1) ~= 1 then unitsm[i] = { id = 'g000uu7583', level = 2, unique = true } i = i + 1 end -- Йамму 1500
+if math.random(0,1) ~= 1 then unitsm[i] = { id = 'g001uu7571', level = 2, unique = true } i = i + 1 end -- Белый волк
 if math.random(0,1) == 1 then unitsm[i] = { id = 'g006uu1128', level = 3, unique = true } i = i + 1 end -- Мастер печи
-if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu7568', level = 3, unique = true } i = i + 1 end -- Сотрясатель
-if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu0190', level = 1, unique = true } i = i + 1 end -- Дух Фенрира
-if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu0040', level = 4, unique = true } i = i + 1 end -- Старый ветеран
+if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu0038', level = 3, unique = true } i = i + 1 end -- Ветеран
 
 if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu2012', level = 3, unique = true } i = i + 1 end -- Кентавр Стрелок
-if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu8023', level = 3, unique = true } i = i + 1 end -- Стражник
+if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu8151', level = 1, unique = true } i = i + 1 end -- Фурия
 if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu8028', level = 3, unique = true } i = i + 1 end -- Тиург
-if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu2013', level = 4, unique = true } i = i + 1 end -- Налетчик
-if math.random(0,1) == 1 then unitsm[i] = { id = 'g001uu8240', level = 4, unique = true } i = i + 1 end -- Штормовой кентавр
+if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu8021', level = 3, unique = true } i = i + 1 end -- Бандит
 
-if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu2003', level = 3, unique = true } i = i + 1 end -- Мучитель
-if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu0171', level = 3, unique = true } i = i + 1 end -- подражатель
-if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu0166', level = 4, unique = true } i = i + 1 end -- Возвышенный
-if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu0059', level = 3, unique = true } i = i + 1 end -- Молох
+if math.random(0,1) ~= 1 then unitsm[i] = { id = 'g000uu7577', level = 2, unique = true } i = i + 1 end -- Сатир 1500
+if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu0054', level = 3, unique = true } i = i + 1 end -- Черный паладин
+if math.random(0,2) ~= 1 then unitsm[i] = { id = 'g004uu6101', level = 2, unique = true } i = i + 1 end -- Дьяволенок
+if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu8170', level = 1, unique = true } i = i + 1 end -- Сущность пламени
 
+if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu6121', level = 1, unique = true } i = i + 1 end -- Дхампир
 if math.random(0,1) == 1 then unitsm[i] = { id = 'g003uu5012', level = 3, unique = true } i = i + 1 end -- Орк-палач
-if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu0082', level = 3, unique = true } i = i + 1 end -- Некромант
-if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu0177', level = 4, unique = true } i = i + 1 end -- Смерть
-if math.random(0,1) == 1 then unitsm[i] = { id = 'g003uu5014', level = 4, unique = true } i = i + 1 end -- Хан Каменной Пасти
+if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu0085', level = 3, unique = true } i = i + 1 end -- Злой дух
+if math.random(0,1) ~= 1 then unitsm[i] = { id = 'g001uu7564', level = 2, unique = true } i = i + 1 end -- Хорт 900
+if math.random(0,1) ~= 1 then unitsm[i] = { id = 'g001uu7565', level = 2, unique = true } i = i + 1 end -- Чумной оборотень
 
 return unitsm
 end
@@ -1031,32 +1048,32 @@ local i = 1
 
 unitsm[i] = orr({ id = 'g000uu7629', level = 1, unique = false }, { id = 'g000uu7628', level = 1, unique = false }) i = i + 1 -- Благ-дный эльф / Имперский гвардеец
 
+if math.random(0,1) ~= 1 then unitsm[i] = { id = 'g000uu7595', level = 2, unique = true } i = i + 1 end -- Рефаим 1300
 if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu2015', level = 3, unique = true } i = i + 1 end -- Страж Святости
 if math.random(0,1) == 1 then unitsm[i] = { id = 'g001uu7560', level = 1, unique = true } i = i + 1 end -- Каратель
-if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu0014', level = 4, unique = true } i = i + 1 end -- Ангел
-if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu2031', level = 4, unique = true } i = i + 1 end -- Эмиссар
-if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu2010', level = 4, unique = true } i = i + 1 end -- Кара Императора
+if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu0003', level = 3, unique = true } i = i + 1 end -- Имперский рыцарь
 
-if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu0164', level = 4, unique = true } i = i + 1 end -- Повелитель волков
-if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu8201', level = 1, unique = true } i = i + 1 end -- Скальд
+if math.random(0,1) ~= 1 then unitsm[i] = { id = 'g004uu8005', level = 2, unique = true } i = i + 1 end -- Гарм
 if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu0041', level = 3, unique = true } i = i + 1 end -- Горец
-if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu2011', level = 4, unique = true } i = i + 1 end -- Хранитель рун
+if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu7568', level = 3, unique = true } i = i + 1 end -- Сотрясатель
+if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu0190', level = 1, unique = true } i = i + 1 end -- Дух Фенрира
 
+if math.random(0,1) ~= 1 then unitsm[i] = { id = 'g000uu8030', level = 2, unique = true } i = i + 1 end -- Владыка Небес 1300
+if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu8023', level = 3, unique = true } i = i + 1 end -- Стражник
 if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu8020', level = 3, unique = true } i = i + 1 end -- Стингер
 if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu8024', level = 3, unique = true } i = i + 1 end -- Часовой
-if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu8151', level = 1, unique = true } i = i + 1 end -- фурия
-if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu7578', level = 4, unique = true } i = i + 1 end -- Кераст
+if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu8017', level = 3, unique = true } i = i + 1 end -- Кентавр-дикарь
 
-if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu7605', level = 1, unique = true } i = i + 1 end -- Скульптор лжи
+if math.random(0,1) == 1 then unitsm[i] = { id = 'g001uu7596', level = 1, unique = true } i = i + 1 end -- Сюзерен бездны
+if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu2003', level = 3, unique = true } i = i + 1 end -- Мучитель
 if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu0064', level = 3, unique = true } i = i + 1 end -- Демонолог
-if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu2004', level = 4, unique = true } i = i + 1 end -- Истязатель душ
-if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu8254', level = 4, unique = true } i = i + 1 end -- Искоренитель
-if math.random(0,1) == 1 then unitsm[i] = { id = 'g001uu7574', level = 3, unique = true } i = i + 1 end -- Цитриновая горгулья
+if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu0171', level = 3, unique = true } i = i + 1 end -- Подражатель
 
 if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu2007', level = 3, unique = true } i = i + 1 end -- Мумификатор
-if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu0178', level = 4, unique = true } i = i + 1 end -- Сущий
-if math.random(0,1) == 1 then unitsm[i] = { id = 'g001uu8314', level = 4, unique = true } i = i + 1 end -- Клеврет Смерти
-if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu0089', level = 4, unique = true } i = i + 1 end -- Скелет-рыцарь
+if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu0091', level = 3, unique = true } i = i + 1 end -- Лорд Тьмы
+if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu0088', level = 3, unique = true } i = i + 1 end -- Скелет-воин
+if math.random(0,1) ~= 1 then unitsm[i] = { id = 'g001uu7563', level = 2, unique = true } i = i + 1 end -- Волколак
+if math.random(0,1) == 1 then unitsm[i] = { id = 'g000uu0082', level = 3, unique = true } i = i + 1 end -- Некромант
 
 return unitsm
 end
@@ -1137,8 +1154,8 @@ return {
 	count = 3,
 	loot = {
 		itemTypes = { Item.Valuable },
-		value = { min = 3000, max = 3000 },
-		itemValue = { min = 500, max = 1000 },
+		value = { min = 1500, max = 1500 },
+		itemValue = { min = 500, max = 500 },
 			items = {
 				{ id = 'g000ig0001', min = 2, max = 2 }, --рес
 				{ id = 'g000ig0006', min = 2, max = 2 }, --хил100
@@ -1346,7 +1363,7 @@ end
 
 -- случайная банка на 30
 function b30()
-	local radn = math.random(0,3)
+	local radn = math.random(0,4)
 	if radn == 0 then
 	return 'g000ig0003' --зашита
 	elseif radn == 1 then
@@ -1355,6 +1372,8 @@ function b30()
 	return 'g000ig0012' --ини
 	elseif radn == 3 then
 	return 'g000ig0009' --точность
+	elseif radn == 4 then
+	return 'g002ig0008' --Эликсир скрытого потенциала (точность2 +20)
 	end
 end
 
@@ -1401,7 +1420,7 @@ end
 
 -- случайный эликсир 200-375 + эффект варды (от-яд з1)
 function e2()
-	local radn = math.random(0,5)
+	local radn = math.random(0,7)
 	if radn == 0 then
 	return 'g001ig0560' -- Зелье провокатора 25принять
 	elseif radn == 1 then
@@ -1411,15 +1430,19 @@ function e2()
 	elseif radn == 3 then
 	return 'g001ig0329' -- Эликсир защиты от дота
 	elseif radn == 4 then
-	return 'g001ig0351' --Эликсир защиты от поглощения
+	return 'g001ig0351' -- Эликсир защиты от поглощения
 	elseif radn == 5 then
-	return 'g001ig0343' --Эликсир защиты от проклятий
+	return 'g001ig0343' -- Эликсир защиты от проклятий
+	elseif radn == 6 then
+	return 'g002ig0007' -- Зелье магической устойчивости 250 (имун магия)
+	elseif radn == 7 then
+	return 'g002ig0005' -- Зелье наблюдательности 250 (15 ворам)
 	end
 end
 
 -- случайный эликсир 400-500 + афф.вард
 function e4()
-	local radn = math.random(0,5)
+	local radn = math.random(0,7)
 	if radn == 0 then
 	return 'g001ig0562' -- Зелье дуэлянта +20крит
 	elseif radn == 1 then
@@ -1432,6 +1455,10 @@ function e4()
 	return 'g001ig0128' -- Эликсир защиты от Оружия
 	elseif radn == 5 then
 	return 'g001ig0341' -- Эликсир защиты от аффекта
+	elseif radn == 6 then
+	return 'g002ig0006' -- Зелье бдительности 500 (30 ворам)
+	elseif radn == 7 then
+	return 'g002ig0008' -- Эликсир скрытого потенциала 500 (20оз +7точ.вт.атаки)
 	end
 end
 
@@ -1686,7 +1713,8 @@ return {  -- 150*2
 		loot = {
 			items = {
 				{ id = 'g000ig0005', min = 1, max = 1 }, --хил50
-				{ id = 'g001ig0431', min = 1, max = 1 }, --гранат75
+--было				{ id = 'g001ig0431', min = 1, max = 1 }, --гранат75
+{ id = 'g002ig0007', min = 1, max = 1 }, --Зелье магической устойчивости 250
 				orr({ id = 'g000ig0011', min = 1, max = 1 }, { id = 'g000ig0008', min = 1, max = 1 }), --ини15/точность15
 				orr({ id = 'g000ig0023', min = 1, max = 1 }, { id = 'g000ig0022', min = 1, max = 1 }), --земли/воды		
 			}
@@ -1764,7 +1792,9 @@ return { --220xp*2
 					orr({ id = 'g000ig0001', min = 1, max = 1 }, { id = 'g000ig0006', min = 1, max = 1 }), --рес/хил100
 					orr({ id = 'g000ig0014', min = 1, max = 1 }, { id = 'g000ig0002', min = 1, max = 1 }), --атака15/защита15
 					orr({ id = 'g000ig0021', min = 1, max = 1 }, { id = 'g000ig0024', min = 1, max = 1 }), --возд/огня
-					{ id = 'g000ig7002', min = 1, max = 1 }, --кольцо100
+--было					{ id = 'g000ig7002', min = 1, max = 1 }, --кольцо100
+orr3({ id = 'g002ig0005', min = 1, max = 1}, { id = 'g002ig0007', min = 1, max = 1}, { id = 'g002ig0007', min = 1, max = 1}), -- Зелье наблюдательности / Зелье магической устойчивости x 2
+
 				}
 			}
 
@@ -1817,7 +1847,8 @@ return { --320xp*1
 				itemValue = { min = 200, max = 200 },
 				items = {
 					{ id = 'g000ig0006', min = 1, max = 1 }, --хил100
-					{ id = 'g001ig0432', min = 1, max = 1 }, --аметист125
+--было					{ id = 'g001ig0432', min = 1, max = 1 }, --аметист125
+{ id = 'g000ig7002', min = 1, max = 1 }, --кольцо100
 					{ id = d15(), min = 1, max = 1 }, --спец.вард					
 				}
 			}
@@ -1837,7 +1868,8 @@ return { -- 300xp*2
 			items = {
 				{ id = 'g000ig0006', min = 1, max = 1 }, --хил100
 				{ id = 'g001ig0378', min = 1, max = 1 }, --хил75
-				{ id = 'g001ig0432', min = 1, max = 1 }, --аметист125
+--было				{ id = 'g001ig0432', min = 1, max = 1 }, --аметист125
+{ id = 'g000ig7002', min = 1, max = 1 }, --кольцо100
 				{ id = rms(), min = 1, max = 1 }, --случ. шар манны				
 				{ id = b15(), min = 1, max = 1 }, --случ. банка15				
 				orr({ id = 'g001ig0128', min = 1, max = 1 }, { id = d15(), min = 1, max = 1 }), --оружия/дот.вард
@@ -1859,7 +1891,8 @@ return { -- 400хп*2
 				orr({ id = 'g000ig0001', min = 1, max = 1 }, { id = 'g000ig0006', min = 1, max = 1 }), --рес/хил100
 				{ id = 'g000ig0006', min = 1, max = 1 }, --хил100
 				orr({ id = 'g001ig0125', min = 1, max = 1 }, { id = 'g001ig0036', min = 1, max = 1 }), --разума/смерти
-				{ id = 'g000ig7003', min = 1, max = 1 }, --изумруд150
+--было				{ id = 'g000ig7003', min = 1, max = 1 }, --изумруд150
+orr3({ id = e2(), min = 1, max = 1}, { id = 'g002ig0006', min = 1, max = 1}, { id = 'g002ig0008', min = 1, max = 1}), -- e2 / Зелье бдительности 500 / Эликсир скрытого потенциала 500 
 			}
 		}
 }
@@ -1911,7 +1944,8 @@ return { -- 600хп*1
 			itemValue = { min = 500, max = 600 },
 			items = {
 				{ id = 'g000ig0006', min = 1, max = 1 }, --хил100
-				{ id = 'g001ig0433', min = 1, max = 1 }, --аквамарин175
+--было				{ id = 'g001ig0433', min = 1, max = 1 }, --аквамарин175
+{ id = 'g001ig0432', min = 1, max = 1 }, --аметист125
 				{ id = b15(), min = 1, max = 1 }, --случ. банка15
 			}
 		},
@@ -1931,7 +1965,7 @@ return { -- 600xp
 			items = {
 				orr(orr({ id = 'g000ig0001', min = 1, max = 1 }, { id = 'g000ig0006', min = 1, max = 1 }), orr({ id = 'g000ig0006', min = 1, max = 1 }, { id = 'g000ig0006', min = 1, max = 1 })), --рес25%/хил100-75%
 				orr({ id = 'g001ig0180', min = 2, max = 2 }, { id = 'g000ig0005', min = 1, max = 1 }), --2хил25/хил50
-				orr({ id = zshm, min = 1, max = 1 }, { id = 'g001ig0433', min = 1, max = 1 }), --шар манны / аквамарин175
+				orr({ id = zshm, min = 1, max = 1 }, { id = 'g001ig0432', min = 1, max = 1 }), --шар манны / аметист125
 				orr({ id = b15(), min = 1, max = 1 }, { id = w15(), min = 1, max = 1 }), --случ.банка15/случ.вард
 			}
 		},
@@ -1947,7 +1981,8 @@ return { -- 700хп
 			items = {
 				orr(orr({ id = 'g000ig0001', min = 1, max = 1 }, { id = 'g000ig0006', min = 1, max = 1 }), orr({ id = 'g000ig0006', min = 1, max = 1 }, { id = 'g000ig0006', min = 1, max = 1 })), --рес25%/хил100-75%
 				orr({ id = 'g001ig0180', min = 2, max = 2 }, { id = 'g000ig0005', min = 1, max = 1 }), --2хил25/хил50				
-				{ id = zb30, min = 1, max = 1 }, --банка30
+				orr3({ id = b30(), min = 1, max = 1 },{ id = 'g002ig0006', min = 1, max = 1 },{ id = 'g002ig0008', min = 1, max = 1 }), --случ. банка30 / Зелье бдительности -30воры / Эликсир скрытого потенциала 500
+--				{ id = zb30, min = 1, max = 1 }, --банка30
 				orr(orr({ id = 'g001ig0125', min = 1, max = 1 }, { id = 'g001ig0036', min = 1, max = 1 }), orr({ id = d15(), min = 1, max = 1 }, orr({ id = b15(), min = 1, max = 1 }, { id = w15(), min = 1, max = 1 }))), -- разума/смерти | d15/b15|w15
 			}
 		}
@@ -2018,7 +2053,7 @@ return { -- 1100хп
 				orr({ id = 'g001ig0378', min = 2, max = 2 }, { id = 'g000ig0006', min = 1, max = 1 }), --хил75/хил100				
 				orr({ id = 'g001ig0152', min = 1, max = 1 }, { id = 'g000ig0018', min = 1, max = 1 }), -- Эликсир избавления/мазь
 				{ id = p15(), min = 1, max = 1 }, --пермо 1200
-				orr({ id = 'g001ig0151', min = 1, max = 1 }, { id = 'g000ig7008', min = 1, max = 1 }), -- Шар колдовства/Древняя реликвия-400
+				orr({ id = 'g001ig0151', min = 1, max = 1 }, { id = 'g000ig7003', min = 1, max = 1 }), -- Шар колдовства/Изумруд (Драгоценность) 150
 			}
 		}
 }
@@ -2132,7 +2167,7 @@ return {
 		items = {
 			{ id = 'g000ig0001', min = 2, max = 2 },
 			{ id = 'g000ig0006', min = 2, max = 2 },
-			orr({ id = 'g001ig0151', min = 1, max = 1 }, { id = 'g000ig7006', min = 1, max = 1 }), -- Шар колдовства/Сапфир-300
+			orr({ id = 'g001ig0151', min = 1, max = 1 }, { id = 'g000ig7004', min = 1, max = 1 }), -- Шар колдовства/Золотое кольцо (Драгоценность)200
 			{ id = p05(), min = 1, max = 1},
 			orr3({id = b15(), min = 1, max = 1}, {id = w15(), min = 1, max = 1}, {id = d15(), min = 1, max = 1}),
 		}
@@ -2409,7 +2444,7 @@ end
 
 -- ШАБЛОН
 template = {
-	name = 'Bladerunner 1.3c',
+	name = 'Bladerunner 1.4',
 	description = 'Черная зона в центре, ее должны касаться: синяя, желтая, белая, серая. Спасибо за поддержку! Карта Тинькофф: 2200700846776804',
 	minSize = 72,
 	maxSize = 72,
