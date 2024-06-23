@@ -646,21 +646,21 @@ function _targets_filter_AttackWithStatus(methodName, attacker, selected, allies
 		end
 	end
 	
-	-- Blister for melee and scout leaders
-	if _GroupInfo_UnitModifierAmount(attackerMods, g070um0312) > 0 and (attacker.unit.impl.attack1.reach == 103 or attacker.unit.impl.attack1.reach == 27 or attacker.unit.impl.attack1.reach == 102) then
-		for i = 1, #targets do
-			u = targets[i].unit
-			if _common_IsInBattle(u, battle) and _common_IsAddedFilter(result, targets[i]) then
-				uid = u.id
-  				if battle:getUnitStatus(uid, BattleStatus.Blister)
-				or battle:getUnitStatus(uid, BattleStatus.BlisterLong) 
-			--	and attacker.impl.attack1.reach == 103 or attacker.impl.attack1.reach == 27 or attacker.impl.attack1.reach == 102 
-			then
-					table.insert(result, targets[i])
-				end
-			end
-		end
-	end
+	-- -- Blister for melee and scout leaders
+	-- if _GroupInfo_UnitModifierAmount(attackerMods, g070um0312) > 0 and (attacker.unit.impl.attack1.reach == 103 or attacker.unit.impl.attack1.reach == 27 or attacker.unit.impl.attack1.reach == 102) then
+	-- 	for i = 1, #targets do
+	-- 		u = targets[i].unit
+	-- 		if _common_IsInBattle(u, battle) and _common_IsAddedFilter(result, targets[i]) then
+	-- 			uid = u.id
+  	-- 			if battle:getUnitStatus(uid, BattleStatus.Blister)
+	-- 			or battle:getUnitStatus(uid, BattleStatus.BlisterLong) 
+	-- 		--	and attacker.impl.attack1.reach == 103 or attacker.impl.attack1.reach == 27 or attacker.impl.attack1.reach == 102 
+	-- 		then
+	-- 				table.insert(result, targets[i])
+	-- 			end
+	-- 		end
+	-- 	end
+	-- end
 
 	-- Frostbite
 	if _GroupInfo_UnitModifierAmount(attackerMods, G040UM0284) > 0 then

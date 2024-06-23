@@ -281,3 +281,45 @@ function _target_AnyNecroUnit(attacker, selected, allies, targets, targetsAreAll
 	end
 	return result
 end
+
+function _target_PhoenixSwordAdjacent(attacker, selected, allies, targets, targetsAreAllies, item, battle)
+	local result = _target_Adjacent(attacker, selected, allies, targets, targetsAreAllies, item, battle)
+
+	local g070um0312 = Id.new('g070um0312').value
+	local attackerMods = _GroupInfo_UnitModifiers(attacker.unit)
+	
+	if _GroupInfo_UnitModifierAmount(attackerMods, g070um0312) > 0 then
+		for i = 1, #targets do
+			local u = targets[i].unit
+			if _common_IsInBattle(u, battle) then
+				uid = u.id
+				if battle:getUnitStatus(uid, BattleStatus.Blister) or battle:getUnitStatus(uid, BattleStatus.BlisterLong) then
+					table.insert(result, targets[i])
+				end
+			end
+		end
+	end
+
+	return result
+end
+
+function _target_PhoenixSwordAdjacentAndUncovered(attacker, selected, allies, targets, targetsAreAllies, item, battle)
+	local result = _target_SemgaAdjacentAndUncovered(attacker, selected, allies, targets, targetsAreAllies, item, battle)
+
+	local g070um0312 = Id.new('g070um0312').value
+	local attackerMods = _GroupInfo_UnitModifiers(attacker.unit)
+	
+	if _GroupInfo_UnitModifierAmount(attackerMods, g070um0312) > 0 then
+		for i = 1, #targets do
+			local u = targets[i].unit
+			if _common_IsInBattle(u, battle) then
+				uid = u.id
+				if battle:getUnitStatus(uid, BattleStatus.Blister) or battle:getUnitStatus(uid, BattleStatus.BlisterLong) then
+					table.insert(result, targets[i])
+				end
+			end
+		end
+	end
+
+	return result
+end

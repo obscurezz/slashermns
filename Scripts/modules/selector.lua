@@ -113,6 +113,10 @@ function _selector_getChoices(methodName, attacker, selected, allies, targets, t
 		result = _target_AnyWolf(attacker, selected, allies, targets, targetsAreAllies, item, battle)
 	elseif methodName == "_target_AnyNecroUnit" then
 		result = _target_AnyNecroUnit(attacker, selected, allies, targets, targetsAreAllies, item, battle)
+	elseif methodName == "_target_PhoenixSwordAdjacent" then
+		result = _target_PhoenixSwordAdjacent(attacker, selected, allies, targets, targetsAreAllies, item, battle)
+	elseif methodName == "_target_PhoenixSwordAdjacentAndUncovered" then
+		result = _target_PhoenixSwordAdjacentAndUncovered(attacker, selected, allies, targets, targetsAreAllies, item, battle)
 	end
 	return result
 end
