@@ -5,8 +5,8 @@
 -- 7 8 3
 -- 6 5 4
 
-local TemplateName = 'Water Freedom'
-local Verison = '1.3.3'
+local TemplateName = 'Freedom'
+local Verison = '1.4.1'
 local Timer = 'First turn: 900, second turn: 450, sixth and further turns: 600.'
 
 function getName(name, version)
@@ -138,20 +138,20 @@ function rewardGenerator(objectType, objectDefinition)
 	local t2Jewels = {'g001ig0610', 'g000ig4007', 'g000ig3020', 'g001ig0420', 'g001ig0104', 'g001ig0427', 'g001ig0422', 'g001ig0423', 'g001ig0605', 'g001ig0099', 'g000ig3022', 'g002ig0002'}
 	local t2Orbs = {'g001ig0304', 'g001ig0443', 'g001ig0467', 'g001ig0191', 'g001ig0176', 'g000ig9024', 'g001ig0295', 'g001ig0461', 'g001ig0300', 'g001ig0496', 'g000ig9042', 'g001ig0475', 'g001ig0468', 'g001ig0478', 'g001ig0187', 'g001ig0469', 'g001ig0454', 'g001ig0456', 'g000ig9018', 'g001ig0192', 'g001ig0479', 'g001ig0453', 'g001ig0474', 'g001ig0134', 'g000ig9020'}
 	local t2Talismans = {'g000ig9130', 'g000ig9128', 'g000ig9123', 'g000ig9109', 'g001ig0259', 'g001ig0063', 'g000ig9116', 'g000ig9120', 'g000ig9140'}
-	local t2Travel = {'g001ig0111', 'g000ig8003', 'g001ig0114', 'g000ig1010', 'g000ig1011'}
+	local t2Travel = {'g001ig0111', 'g000ig8003', 'g001ig0114', 'g000ig1010'}
 	
-	local t3Artifacts = {'g001ig0044', 'g001ig0046', 'g000ig3006', 'g001ig0174', 'g001ig0158', 'g000ig3004', 'g000ig9035', 'g001ig0415', 'g001ig0604', 'g001ig0411', 'g000ig2004', 'g001ig0585', 'g001ig0410', 'g001ig0060', 'g001ig0590', 'g001ig0413'}
+	local t3Artifacts = {'g001ig0046', 'g000ig3006', 'g001ig0174', 'g001ig0158', 'g000ig3004', 'g000ig9035', 'g001ig0415', 'g001ig0604', 'g001ig0411', 'g000ig2004', 'g001ig0585', 'g001ig0410', 'g001ig0060', 'g001ig0590', 'g001ig0413'}
 	local t3Banners = {'g000ig1016', 'g001ig0052', 'g001ig0367', 'g001ig0375', 'g000ig1017', 'g001ig0359', 'g001ig0500', 'g001ig0363', 'g001ig0373', 'g000ig1015', 'g001ig0362', 'g001ig0290', 'g001ig0291', 'g002ig0003'}
 	local t3Jewels = {'g001ig0419', 'g001ig0597', 'g000ig2006', 'g001ig0116', 'g001ig0430', 'g001ig0037', 'g001ig0156', 'g001ig0424', 'g001ig0425', 'g001ig0539', 'g001ig0429', 'g001ig0602'}
 	local t3Orbs = {'g000ig9025', 'g001ig0136', 'g000ig9021', 'g000ig9016', 'g001ig0480', 'g000ig9028', 'g001ig0303', 'g001ig0459', 'g000ig9023', 'g001ig0457', 'g000ig9014', 'g001ig0203', 'g001ig0466', 'g001ig0462', 'g001ig0183', 'g001ig0455', 'g001ig0477', 'g001ig0489', 'g000ig9027', 'g001ig0131', 'g000ig9032'}
 	local t3Talismans = {'g000ig9136', 'g001ig0185', 'g001ig0202', 'g000ig9103'}
-	local t3Travel = {'g001ig0115', 'g001ig0112', 'g000ig8004', 'g001ig0606', 'g001ig0050'}
+	local t3Travel = {'g001ig0115', 'g001ig0112', 'g000ig8004', 'g001ig0606'}
 	
-	local t4Artifacts = {'g000ig2005', 'g001ig0179', 'g001ig0039', 'g001ig0102', 'g001ig0412'}
-	local t4Banners = {'g001ig0144', 'g001ig0366', 'g001ig0153', 'g001ig0360'}
-	local t4Jewels = {'g000ig3005', 'g000ig7010', 'g001ig0038'}
+	local t4Artifacts = {'g000ig2005', 'g001ig0179', 'g001ig0039', 'g001ig0102', 'g001ig0412', 'g002ig0013', 'g002ig0010', 'g002ig0017', 'g002ig0014'}
+	local t4Banners = {'g001ig0144', 'g001ig0366', 'g001ig0153', 'g001ig0360', 'g002ig0016'}
+	local t4Jewels = {'g000ig3005', 'g000ig7010', 'g001ig0038', 'g002ig0015', 'g002ig0012'}
 	
-	local t5Artifacts = {'g001ig0414', 'g001ig0043', 'g000ig3018', 'g000ig3021', 'g000ig3015', 'g000ig3016'}
+	local t5Artifacts = {'g001ig0414', 'g001ig0043', 'g000ig3018', 'g000ig3021', 'g000ig3015', 'g000ig3016', 'g002ig0011'}
 	
 	local wands = { 'g000ig6020', 'g000ig6014', 'g000ig6021', 'g000ig6002', 'g000ig6011', 'g000ig6003', 'g000ig6012', 'g000ig6006', 'g001ig0398', 'g001ig0394', 'g001ig0399', 'g001ig0396', 'g001ig0401', 'g001ig0383', 'g001ig0402', 'g001ig0391', 'g001ig0405', 'g001ig0404', 'g001ig0382', 'g001ig0403', 'g001ig0395', 'g001ig0397' }
 	
@@ -163,10 +163,10 @@ function rewardGenerator(objectType, objectDefinition)
 	local bigMana = {'g001ig0282', 'g001ig0277', 'g001ig0278', 'g001ig0279', 'g001ig0280', 'g001ig0281'}
 	
 	local potionLow = { 'g000ig0011', 'g000ig0008', 'g000ig0014', 'g000ig0002', 'g000ig0022', 'g000ig0021', 'g000ig0023', 'g000ig0024', 'g001ig0125', 'g001ig0127', 'g001ig0547', 'g001ig0490' }
-	local potionProtect = { 'g001ig0341', 'g001ig0329', 'g001ig0351', 'g001ig0343', 'g001ig0560' }
-	local potionHigh = { 'g000ig0003', 'g000ig0015', 'g000ig0012', 'g000ig0009', 'g001ig0562', 'g001ig0491', 'g001ig0128', 'g001ig0355', 'g001ig0126' }
+	local potionProtect = { 'g001ig0341', 'g001ig0329', 'g001ig0351', 'g001ig0343', 'g001ig0560', 'g002ig0006', 'g002ig0007', 'g002ig0005' }
+	local potionHigh = { 'g000ig0003', 'g000ig0015', 'g000ig0012', 'g000ig0009', 'g001ig0562', 'g001ig0491', 'g001ig0128', 'g001ig0355', 'g001ig0126', 'g002ig0008' }
 	
-	local scrolls = { 'g000ig5027', 'g001ig0164', 'g000ig5089', 'g001ig0577', 'g000ig5013', 'g000ig5012', 'g001ig0578', 'g000ig5073', 'g001ig0576', 'g000ig5111', 'g001ig0572', 'g001ig0580', 'g000ig5110', 'g001ig0165', 'g000ig5026', 'g001ig0570', 'g000ig5067', 'g001ig0251', 'g001ig0255', 'g000ig5069', 'g001ig0253', 'g000ig5020', 'g000ig5103', 'g000ig5066', 'g000ig5008', 'g001ig0569', 'g000ig5088', 'g000ig5104', 'g001ig0256', 'g000ig5028', 'g000ig5070', 'g000ig5016', 'g000ig5010', 'g000ig5001', 'g000ig5005', 'g001ig0568', 'g000ig5034', 'g001ig0571', 'g001ig0254', 'g000ig5046', 'g000ig5048', 'g000ig5049', 'g000ig5050', 'g001ig0249', 'g001ig0248', 'g000ig5102', 'g000ig5101', 'g001ig0250', 'g001ig0252', 'g000ig5106', 'g000ig5064', 'g000ig5003', 'g000ig5023', 'g000ig5065', 'g001ig0492', 'g000ig5098', 'g000ig5061', 'g000ig5025', 'g000ig5099', 'g001ig0247', 'g000ig5062', 'g000ig5004', 'g000ig5021', 'g000ig5097', 'g000ig5007', 'g000ig5119', 'g000ig5002', 'g000ig5024', 'g000ig5045', 'g000ig5044', 'g000ig5041', 'g000ig5043' }
+	local scrolls = { 'g001ig0164', 'g000ig5089', 'g001ig0577', 'g000ig5013', 'g000ig5012', 'g001ig0578', 'g000ig5073', 'g001ig0576', 'g000ig5111', 'g001ig0572', 'g001ig0580', 'g000ig5110', 'g001ig0165', 'g000ig5026', 'g001ig0570', 'g000ig5067', 'g001ig0251', 'g001ig0255', 'g000ig5069', 'g001ig0253', 'g000ig5020', 'g000ig5103', 'g000ig5066', 'g000ig5008', 'g001ig0569', 'g000ig5088', 'g000ig5104', 'g001ig0256', 'g000ig5028', 'g000ig5070', 'g000ig5016', 'g000ig5010', 'g000ig5001', 'g000ig5005', 'g001ig0568', 'g000ig5034', 'g001ig0571', 'g001ig0254', 'g000ig5046', 'g000ig5048', 'g000ig5049', 'g000ig5050', 'g001ig0249', 'g001ig0248', 'g000ig5102', 'g000ig5101', 'g001ig0250', 'g001ig0252', 'g000ig5106', 'g000ig5064', 'g000ig5003', 'g000ig5023', 'g000ig5065', 'g001ig0492', 'g000ig5098', 'g000ig5061', 'g000ig5025', 'g000ig5099', 'g001ig0247', 'g000ig5062', 'g000ig5004', 'g000ig5021', 'g000ig5097', 'g000ig5007', 'g000ig5119', 'g000ig5002', 'g000ig5024', 'g000ig5045', 'g000ig5044', 'g000ig5041', 'g000ig5043' }
 	
 	local permanent = {'g001ig0027', 'g001ig0028', 'g001ig0022', 'g001ig0029', 'g001ig0030', 'g001ig0018', 'g001ig0523', 'g001ig0320', 'g001ig0317', 'g001ig0083', 'g001ig0323', 'g001ig0322', 'g001ig0548', 'g001ig0321', 'g000ig0010', 'g001ig0352', 'g000ig0016', 'g001ig0348', 'g001ig0338', 'g001ig0340', 'g000ig0013', 'g001ig0376', 'g001ig0336', 'g001ig0561', 'g000ig0004'}
     local perma_big = {'g001ig0563', 'g001ig0025', 'g001ig0024', 'g001ig0013', 'g001ig0015', 'g001ig0014', 'g001ig0009', 'g001ig0011', 'g001ig0012', 'g001ig0030', 'g001ig0021', 'g001ig0031', 'g001ig0035', 'g001ig0324', 'g001ig0308', 'g001ig0325', 'g001ig0326', 'g001ig0318', 'g001ig0019', 'g001ig0316', 'g001ig0314', 'g001ig0310', 'g001ig0312'}
@@ -1122,7 +1122,7 @@ end
 function getMageTower(tier, merchGuard)
     local t1SpellSet = { 'g000ss0043', 'g000ss0041', 'g000ss0044', 'g000ss0045', 'g000ss0024', 'g000ss0002', 'g000ss0009', 'g000ss0007', 'g000ss0097', 'g000ss0021', 'g000ss0004', 'g000ss0062', 'g000ss0178', 'g000ss0099', 'g000ss0134', 'g000ss0025', 'g000ss0061', 'g000ss0098', 'g000ss0065', 'g000ss0003', 'g000ss0023', 'g000ss0064', 'g000ss0106', 'g000ss0126', 'g000ss0181', 'g000ss0101', 'g000ss0102', 'g000ss0179', 'g000ss0022', 'g000ss0189', 'g000ss0048', 'g000ss0107', 'g000ss0028', 'g000ss0104', 'g000ss0067' }
     local t2SpellSet = { 'g000ss0050', 'g000ss0049', 'g000ss0046', 'g000ss0185', 'g000ss0030', 'g000ss0034', 'g000ss0197', 'g000ss0187', 'g000ss0198', 'g000ss0008', 'g000ss0066', 'g000ss0103', 'g000ss0184', 'g000ss0069', 'g000ss0029', 'g000ss0183', 'g000ss0186', 'g000ss0068', 'g000ss0054', 'g000ss0109', 'g000ss0033', 'g000ss0014', 'g000ss0072' }
-    local t3SpellSet = { 'g000ss0052', 'g000ss0127', 'g000ss0089', 'g000ss0051', 'g000ss0199', 'g000ss0026', 'g000ss0166', 'g000ss0125', 'g000ss0209', 'g000ss0201', 'g000ss0111', 'g000ss0205', 'g000ss0073', 'g000ss0012', 'g000ss0013', 'g000ss0074', 'g000ss0006', 'g000ss0208', 'g000ss0100', 'g000ss0206', 'g000ss0090', 'g000ss0056', 'g000ss0086', 'g000ss0112', 'g000ss0037', 'g000ss0077', 'g000ss0093', 'g000ss0105', 'g000ss0081', 'g000ss0207' }
+    local t3SpellSet = { 'g000ss0052', 'g000ss0127', 'g000ss0089', 'g000ss0051', 'g000ss0199', 'g000ss0026', 'g000ss0166', 'g000ss0125', 'g000ss0209', 'g000ss0201', 'g000ss0111', 'g000ss0205', 'g000ss0073', 'g000ss0012', 'g000ss0013', 'g000ss0074', 'g000ss0006', 'g000ss0208', 'g000ss0100', 'g000ss0206', 'g000ss0207' }
 
     local spellsSet = { }
 
@@ -1393,7 +1393,7 @@ function getStartingZone(zoneId, playerRace, zoneSize)
     local startingItems = {
         {id = 'g001ig0180', min = 3, max = 3},
         {id = 'g000ig0005', min = 3, max = 3},
-        {id = 'g000ig0006', min = 2, max = 2},
+        {id = 'g000ig0006', min = 4, max = 4},
         {id = 'g000ig0001', min = 3, max = 3},
         {id = 'g001ig0072', min = 1, max = 1},
         {id = 'g001ig0454', min = 1, max = 1},
@@ -1485,7 +1485,6 @@ function getStartingZone(zoneId, playerRace, zoneSize)
 		type = Zone.PlayerStart,
 		race = playerRace,
 		size = zoneSize,
-        border = Border.Water,
 
         capital = {            
             garrison = {
@@ -1535,14 +1534,44 @@ function getBufferZone(zoneId, playerRace, zoneSize)
         zoneMines = getBufferZoneMinesRight(playerRace)
     end
 
+    -- local zoneMerchants = {}
+    -- if zoneId == 1 or zoneId == 5 then
+    --     zoneMerchants = {
+    --         {
+    --             goods = {
+    --                 items = rewardGenerator('merchant', 'buffer'),
+    --             },
+    --             guard = getGuard(2, rewardGenerator('guard', 'merchGuardT2'), subraceRandomizer(1))
+    --         },
+    --     }
+    -- end
+
+    -- local zoneMarkets = {}
+    -- if zoneId == 3 or zoneId == 7 then
+    --     zoneMarkets = {
+    --     {
+    --         stock = {
+    --             {resource = Resource.Gold, value = { min = 3000, max = 3000 }},
+    --             {resource = Resource.LifeMana, value = { min = 1000, max = 1000 }},
+    --             {resource = Resource.DeathMana, value = { min = 1000, max = 1000 }},
+    --             {resource = Resource.InfernalMana, value = { min = 1000, max = 1000 }},
+    --             {resource = Resource.RunicMana, value = { min = 1000, max = 1000 }},
+    --             {resource = Resource.GroveMana, value = { min = 1000, max = 1000 }}
+    --         },
+    --         guard = getGuard(2, rewardGenerator('guard', 'merchGuardT2'), subraceRandomizer(1))
+    --     }
+    -- }
+    -- end
+
+
     local zoneStacks = {
-            getStack(2, 2, { Item.PotionBoost }, { min = 150, max = 200 }),
-            getStack(4, 1, { Item.PotionPermanent }, { min = 250, max = 600 }),
-            getStack(3, 2, { Item.PotionHeal, Item.PotionBoost }, { min = 50, max = 350 }),
-            getStack(3, 2, { Item.Valuable, Item.Orb }, { min = 250, max = 750 }),
-            getStack(2, 2, { Item.Scroll }, { min = 150, max = 400 }),
-            {count=1, value={min=600,max=640}, subraceTypes=subraceRandomizer(3), loot={items={{id='g001ig0516',min=1,max=1},{id='g000ig0001',min=1,max=1}}}},
-        }
+        getStack(2, 2, { Item.PotionBoost }, { min = 150, max = 200 }),
+        getStack(4, 1, { Item.PotionPermanent }, { min = 250, max = 600 }),
+        getStack(3, 2, { Item.PotionHeal, Item.PotionBoost }, { min = 50, max = 350 }),
+        getStack(3, 2, { Item.Valuable, Item.Orb }, { min = 250, max = 750 }),
+        getStack(2, 2, { Item.Scroll }, { min = 150, max = 400 }),
+        {count=1, value={min=600,max=640}, subraceTypes=subraceRandomizer(3), loot={items={{id='g001ig0516',min=1,max=1},{id='g000ig0001',min=1,max=1}}}},
+    }
 
     local zoneRuins = {
             getRuins(3, { min = 500, max = 570 }, getGuard(3, { }, subraceRandomizer(1)), rewardGenerator('ruins', 'bufferArtifactJewel')),
@@ -1570,7 +1599,6 @@ function getBufferZone(zoneId, playerRace, zoneSize)
 		id = zoneId,
 		type = Zone.Treasure,
 		size = zoneSize,
-        border = Border.Water,
 
         mines = zoneMines,
         
@@ -1606,7 +1634,7 @@ function getTreasureZone(zoneId, zoneSize)
             getStack(4, 2, { Item.Wand, Item.Talisman }, { min = 400, max = 700}),
             getStack(5, 1, { Item.PotionBoost, Item.Scroll }, { min = 450, max = 700 }),
             getStack(5, 1, { Item.PotionPermanent }, { min = 600, max = 1000 }),
-    }
+        }
 
     local zoneRuins = {
             getRuins(4, { min = 350, max = 380 }, getGuard(4, { }, subraceRandomizer(2)), rewardGenerator('ruins', 'centerArtifactT4')),
@@ -1661,8 +1689,6 @@ function getTreasureZone(zoneId, zoneSize)
 		id = zoneId,
 		type = Zone.Treasure,
 		size = zoneSize,
-        border = Border.SemiOpen,
-        gapChance = 10,
 
         towns = zoneTowns,
 
@@ -1701,7 +1727,7 @@ function getBigZone(zoneId, zoneSize)
             getStack(4, 2, { Item.Wand, Item.Scroll }, { min = 550, max = 700 }),
             getStack(5, 2, { Item.PotionBoost, Item.Scroll }, { min = 550, max = 700 }),
             getStack(5, 1, { Item.PotionPermanent }, { min = 600, max = 1000 }),
-    }
+        }
 
     local zoneRuins = {
             getRuins(4, { min = 350, max = 380 }, getGuard(4, { }, subraceRandomizer(2)), rewardGenerator('ruins', 'bigMana')),
@@ -1759,7 +1785,6 @@ function getBigZone(zoneId, zoneSize)
         id = zoneId,
 		type = Zone.Treasure,
 		size = zoneSize,
-        border = Border.Water,
 
         mines = {
             gold = 2,
@@ -1784,6 +1809,20 @@ function getBigZone(zoneId, zoneSize)
 
         trainers = zoneOthers[2],
 
+        resourceMarkets = {
+            {
+                stock = {
+                    {resource = Resource.Gold, value = { min = 3000, max = 3000 }},
+                    {resource = Resource.LifeMana, value = { min = 1000, max = 1000 }},
+                    {resource = Resource.DeathMana, value = { min = 1000, max = 1000 }},
+                    {resource = Resource.InfernalMana, value = { min = 1000, max = 1000 }},
+                    {resource = Resource.RunicMana, value = { min = 1000, max = 1000 }},
+                    {resource = Resource.GroveMana, value = { min = 1000, max = 1000 }}
+                },
+                guard = getGuard(2, rewardGenerator('guard', 'merchGuardT2'), subraceRandomizer(1))
+            }
+        },
+
         mages = {
             getMageTower(2, getGuard(3, rewardGenerator('guard', 'merchGuardT3'), subraceRandomizer(2)))
         },
@@ -1794,25 +1833,17 @@ function getConnections()
 
     local connections = {
             { from = startZone2Id, to = bufferZone1Id, guard = getGuard(3, rewardGenerator('guard', 'guardStartBuffer'), {Subrace.Elf, Subrace.NeutralElf, Subrace.NeutralMarsh}) },
-            { from = startZone2Id, to = bufferZone1Id, guard = getGuard(3, rewardGenerator('guard', 'guardStartBuffer'), {Subrace.Elf, Subrace.NeutralElf, Subrace.NeutralMarsh}) },
-            { from = startZone2Id, to = bufferZone3Id, guard = getGuard(3, rewardGenerator('guard', 'guardStartBuffer'), {Subrace.NeutralBarbarian, Subrace.Dwarf}) },
             { from = startZone2Id, to = bufferZone3Id, guard = getGuard(3, rewardGenerator('guard', 'guardStartBuffer'), {Subrace.NeutralBarbarian, Subrace.Dwarf}) },
             { from = startZone2Id, to = treasureZone8Id, guard = getGuard(6, rewardGenerator('guard', 'guardStartTreasure'), subraceRandomizer(GO)) },
             
             { from = startZone6Id, to = bufferZone5Id, guard = getGuard(3, rewardGenerator('guard', 'guardStartBuffer'), {Subrace.NeutralBarbarian, Subrace.Dwarf}) },
-            { from = startZone6Id, to = bufferZone5Id, guard = getGuard(3, rewardGenerator('guard', 'guardStartBuffer'), {Subrace.NeutralBarbarian, Subrace.Dwarf}) },
-            { from = startZone6Id, to = bufferZone7Id, guard = getGuard(3, rewardGenerator('guard', 'guardStartBuffer'), {Subrace.Elf, Subrace.NeutralElf, Subrace.NeutralMarsh}) },
             { from = startZone6Id, to = bufferZone7Id, guard = getGuard(3, rewardGenerator('guard', 'guardStartBuffer'), {Subrace.Elf, Subrace.NeutralElf, Subrace.NeutralMarsh}) },
             { from = startZone6Id, to = treasureZone8Id, guard = getGuard(6, rewardGenerator('guard', 'guardStartTreasure'), subraceRandomizer(GO)) },
     
             { from = bufferZone1Id, to = bigZone0Id, guard = getGuard(4, rewardGenerator('guard', 'guardBufferBig'), subraceRandomizer(2)) },
-            { from = bufferZone1Id, to = bigZone0Id, guard = getGuard(4, rewardGenerator('guard', 'guardBufferBig'), subraceRandomizer(2)) },
-            { from = bufferZone7Id, to = bigZone0Id, guard = getGuard(4, rewardGenerator('guard', 'guardBufferBig'), subraceRandomizer(2)) },
             { from = bufferZone7Id, to = bigZone0Id, guard = getGuard(4, rewardGenerator('guard', 'guardBufferBig'), subraceRandomizer(2)) },
     
             { from = bufferZone3Id, to = bigZone4Id, guard = getGuard(4, rewardGenerator('guard', 'guardBufferBig'), subraceRandomizer(2)) },
-            { from = bufferZone3Id, to = bigZone4Id, guard = getGuard(4, rewardGenerator('guard', 'guardBufferBig'), subraceRandomizer(2)) },
-            { from = bufferZone5Id, to = bigZone4Id, guard = getGuard(4, rewardGenerator('guard', 'guardBufferBig'), subraceRandomizer(2)) },
             { from = bufferZone5Id, to = bigZone4Id, guard = getGuard(4, rewardGenerator('guard', 'guardBufferBig'), subraceRandomizer(2)) },
     
             { from = bigZone0Id, to = treasureZone8Id, guard = getGuard(5, rewardGenerator('guard', 'guardBigTreasure'), subraceRandomizer(GO)) },
@@ -2029,7 +2060,7 @@ template = {
         'g001uu8009', --Вассал леса
         'g001uu8011', --Страж леса
         'g001uu8012', --Мудрец
-        'g001uu8013', --Вор
+        'g001uu8013', --Вор    
 
         -- Фракционные призыватели-солдаты с большим кол-вом опыта
         'g000uu8185', -- Магистр стихий

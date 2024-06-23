@@ -11,17 +11,17 @@ end
 
 
 function getAttackPower(unit, prev)
-   return svMultimplicativeEffectPower1(unit, prev, 1.20)
+   return svMultimplyPower1(unit, prev, 0.20)
 end
 
 function getAttackDamage(unit, prev)
-   return svMultimplicativeEffectDamage1(unit, prev, 1.75)
+   return svMultimplyDamage1(unit, prev, 0.75)
 end
 
 
 function getAttack2Damage(unit, prev)
    if statsCheck_isDirectDmgType(unit.impl.attack2.type) then 
-      return svMultimplicativeEffectDamage2(unit, prev, 1.75)
+      return svMultimplyDamage2(unit, prev, 0.75)
    end
    return prev
 end

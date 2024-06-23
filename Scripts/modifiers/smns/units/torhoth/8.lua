@@ -14,18 +14,18 @@ function getArmor(unit, prev)
 end
 
 function getAttackPower(unit, prev)
-   return svMultimplicativeEffectPower1(unit, prev, 1.36)
+   return svMultimplyPower1(unit, prev, 0.36)
 end
 
 function getAttackDamage(unit, prev)
-   return svMultimplicativeEffectDamage1(unit, prev, 1.36)
+   return svMultimplyDamage1(unit, prev, 0.36)
 end
 
 function getAttack2Power(unit, prev)
    local res = prev
    if unit.impl.attack2 ~= nil then
        smnsInfo_SetApplyAccuracyBuffToAttack2(true)
-      res = svMultimplicativeEffectPower2(unit, prev, 1.36)
+      res = svMultimplyPower2(unit, prev, 0.36)
        smnsInfo_SetApplyAccuracyBuffToAttack2(false)
       return res
    end
@@ -34,7 +34,7 @@ end
 
 function getAttack2Damage(unit, prev)
    if statsCheck_isDirectDmgType(unit.impl.attack2.type) then 
-      return svMultimplicativeEffectDamage2(unit, prev, 1.36)
+      return svMultimplyDamage2(unit, prev, 0.36)
    end
    return prev
 end
