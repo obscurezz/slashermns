@@ -10,7 +10,7 @@ function getModifierDescTxt(unit, prev)
 end
 
 function getHitPoint(unit, prev)
-	return svFlatEffectHitPoint(unit, prev, 50)
+	return svFlatEffectHitPoint(unit, prev, 75)
 end
 
 function getArmor(unit, prev)
@@ -18,7 +18,7 @@ function getArmor(unit, prev)
 end
 
 function getRegen(unit, prev)
-	return prev + 25
+	return prev + 100
 end
 
 function getImmuneToSource(unit, source, prev)

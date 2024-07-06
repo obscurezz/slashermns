@@ -20,7 +20,7 @@ end
 function getAttackCritDamage(unit, prev)
 	_get_Group_and_Mods(unit)
 	if _GroupInfo_stackHasModifierAmount(Id.new('g070um0070').value) > 0 then
-		return svAddCrit1Damage(unit, prev, 30)
+		return svAddCrit1Damage(unit, prev, 25)
 	end
 end
 
@@ -44,7 +44,7 @@ end
 function getAttack2CritDamage(unit, prev)
 	_get_Group_and_Mods(unit)
 	if _GroupInfo_stackHasModifierAmount(Id.new('g070um0070').value) > 0 then
-		return svAddCrit1Damage(unit, prev, 30)
+		return svAddCrit1Damage(unit, prev, 25)
 	end
 end
 

@@ -78,7 +78,6 @@ function zoneMageResp2()
 						
 						yn('g000ss0050'), -- Chronos
 						yn('g000ss0185'), -- terebrare corde
-						yn3('g000ss0122'), -- Целительные ожоги
 
 						yn('g000ss0186'), -- Спешащее время
 						yn('g000ss0069'), -- Проклятие Ниграэля
