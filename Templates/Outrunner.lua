@@ -183,8 +183,8 @@ function zoneTownsResp(playerRace)
 
 					-- Борода Имира (Реликвия) / Книга воды / Книга воздуха / Книга земли / Книга Огня / Книга тайного знания / 
 					-- Медицинский трактат / Оковы долга (Реликвия) / Перчатки дуэлянта (Реликвия) / Череп Танатоса (Реликвия) / 
-					-- Сапоги ассасина / Тяжелые сапоги / Счастливая кость (Артефакт) / Амулет Кракена (Артефакт) / Святая чаша (Артефакт) / Талисман щита стихий / Книга постижения  
-					{id = rnd('g001ig0421','g000ig4002','g000ig4001','g000ig4003','g000ig4004','g000ig4006','g000ig4007','g001ig0610','g001ig0099','g000ig3020','g001ig0111','g001ig0114','g001ig0182','g001ig0048','g000ig2002','g000ig9120','g001ig0605'), min = 1, max = 1},
+					-- Сапоги ассасина / Тяжелые сапоги / Счастливая кость (Артефакт) / Амулет Кракена (Артефакт) / Святая чаша (Артефакт) / Книга постижения
+					{id = rnd('g001ig0421','g000ig4002','g000ig4001','g000ig4003','g000ig4004','g000ig4006','g000ig4007','g001ig0610','g001ig0099','g000ig3020','g001ig0111','g001ig0114','g001ig0182','g001ig0048','g000ig2002','g001ig0605'), min = 1, max = 1},
 				}
 			}
 		}
@@ -206,7 +206,7 @@ function zoneTownsZone34(playerRace)
 			subraceTypes = NoUndead(),
 			value = { min = gmm(780,850)*kef, max = gmm(820,890)*kef },
 			loot = {
-				itemTypes = { Item.Talisman, Item.Jewel, Item.Weapon, Item.Armor, Item.TravelItem }, --3+5+5+6+1
+				itemTypes = { Item.Jewel, Item.Weapon, Item.Armor, Item.TravelItem }, --5+5+6+1
 				value = { min = 800, max = 800 },
 				itemValue = { min = 800, max = 800 },
 				items = {
@@ -329,7 +329,8 @@ return {
 				yn({ id = 'g000ig9033', min = 1, max = 1}), -- Сфера Чумы 100				
 				
 				--талик
-				orr({ id = 'g001ig0265', min = 1, max = 1}, { id = 'g000ig9131', min = 1, max = 1}), -- Талисман кузнеца 200 / Талисман Ливня 200				
+				orr({ id = 'g000ig9105', min = 1, max = 1}, { id = 'g000ig9131', min = 1, max = 1}), --  Талисман Костра / Талисман Ливня 200				
+				{ id = rnd('g001ig0265','g001ig0267','g001ig0266','g001ig0264','g000ig9101'), min = 1, max = 1}, -- Талисман кузнеца, Талисман еретика, Талисман лесного воина, Талисман мертвеца, Талисман Сквайра
 
 				--свитки
 				orr({ id = 'g000ig5007', min = 1, max = 1 }, { id = 'g000ig5029', min = 1, max = 1 }), -- св. исцеление / рит. исцеления
@@ -420,7 +421,8 @@ return {
 				yn({ id = 'g000ig1003', min = 1, max = 1 }), -- знамя сражения	
 
 				--талик
-				orr(orr({ id = 'g001ig0267', min = 1, max = 1}, { id = 'g001ig0266', min = 1, max = 1}), orr({ id = 'g001ig0264', min = 1, max = 1}, { id = 'g000ig9101', min = 1, max = 1})), -- Талисман еретика, Талисман лесного воина, Талисман мертвеца, Талисман Сквайра
+				{ id = rnd('g001ig0265','g001ig0267','g001ig0266','g001ig0264','g000ig9101'), min = 1, max = 1}, -- Талисман кузнеца, Талисман еретика, Талисман лесного воина, Талисман мертвеца, Талисман Сквайра
+				orr3({ id = 'g001ig0184', min = 1, max = 1 }, { id = 'g000ig9109', min = 1, max = 1 }, { id = 'g000ig9120', min = 1, max = 1 }), -- Талисман Восстановления 400 / Талисман призыва нейтралов II 450 / Талисман щита стихий 500
 
 				--свитки
 				orr({ id = 'g000ig5007', min = 1, max = 1 }, { id = 'g000ig5029', min = 1, max = 1 }), -- св. исцеление / рит. исцеления
@@ -510,14 +512,15 @@ return {
 
 				--знамя
 				yn({ id = 'g001ig0289', min = 1, max = 1 }), -- знамя гор.стр700
-				yn({ id = 'g000ig1006', min = 1, max = 1 }), -- знамя скорости700
 				yn({ id = 'g001ig0145', min = 1, max = 1 }), -- знамя разум700
 				yn({ id = 'g000ig1008', min = 1, max = 1 }), -- знамя энерг700
 				yn({ id = 'g001ig0370', min = 1, max = 1 }), -- Знамя искоренителя ереси600
 				yn({ id = 'g002ig0003', min = 1, max = 1 }), -- Стяг главаря наемников800
+				yn({ id = 'g001ig0587', min = 1, max = 1 }), -- Знамя мастера
 
 				--талик
-				orr3({ id = 'g001ig0184', min = 1, max = 1 }, { id = 'g000ig9109', min = 1, max = 1 }, { id = 'g000ig9120', min = 1, max = 1 }), -- Талисман Восстановления 400 / Талисман призыва нейтралов II 450 / Талисман щита стихий 500
+				orr({ id = 'g001ig0184', min = 1, max = 1 }, { id = 'g000ig9109', min = 1, max = 1 }), -- Талисман Восстановления 400 / Талисман призыва нейтралов II 450
+				orr(orr({ id = 'g000ig9128', min = 1, max = 1}, { id = 'g001ig0259', min = 1, max = 1}), orr({ id = 'g001ig0063', min = 1, max = 1}, { id = 'g000ig9116', min = 1, max = 1})), -- Талисман Молнии 800 / Талисман призыва нейтралов III 600 / Талисман Прилива 800 / Талисман Святой земли 800
 
 				--свитки
 				orr({ id = 'g000ig5007', min = 1, max = 1 }, { id = 'g000ig5029', min = 1, max = 1 }), -- св. исцеление / рит. исцеления
@@ -612,7 +615,8 @@ return {
 				yn({ id = rnd('g001ig0142','g001ig0140','g001ig0141','g001ig0139'), min = 1, max = 1 }), -- Знамя магии Воды / Воздуха / Земли / Огня700
 
 				--талик
-				orr3({ id = 'g001ig0184', min = 1, max = 1 }, { id = 'g000ig9109', min = 1, max = 1 }, { id = 'g000ig9120', min = 1, max = 1 }), -- Талисман Восстановления 400 / Талисман призыва нейтралов II 450 / Талисман щита стихий 500
+				orr({ id = 'g000ig9109', min = 1, max = 1 }, { id = 'g000ig9120', min = 1, max = 1 }), -- Талисман призыва нейтралов II 450 / Талисман щита стихий 500
+				orr(orr({ id = 'g000ig9128', min = 1, max = 1}, { id = 'g001ig0259', min = 1, max = 1}), orr({ id = 'g001ig0063', min = 1, max = 1}, { id = 'g000ig9116', min = 1, max = 1})), -- Талисман Молнии 800 / Талисман призыва нейтралов III 600 / Талисман Прилива 800 / Талисман Святой земли 800
 
 				--свитки
 				orr({ id = 'g000ig5007', min = 1, max = 1 }, { id = 'g000ig5029', min = 1, max = 1 }), -- св. исцеление / рит. исцеления
@@ -725,18 +729,18 @@ return {
 
 				--знамя
 				yn({ id = 'g000ig1002', min = 1, max = 1 }), -- знамя неуязв700
+				yn({ id = 'g000ig1006', min = 1, max = 1 }), -- знамя скорости700
 				yn({ id = 'g001ig0362', min = 1, max = 1 }), -- Знамя болот
 				yn({ id = 'g001ig0364', min = 1, max = 1 }), -- Знамя ветра перемен
-				yn({ id = 'g001ig0587', min = 1, max = 1 }), -- Знамя мастера
 				yn({ id = 'g001ig0363', min = 1, max = 1 }), -- Знамя отваги
 				yn({ id = 'g001ig0374', min = 1, max = 1 }), -- Знамя стального листопада
 				yn({ id = 'g001ig0365', min = 1, max = 1 }), -- Ловец Кошмаров
 				yn({ id = 'g001ig0375', min = 1, max = 1 }), -- Знамя наследия
-				yn({ id = 'g001ig0373', min = 1, max = 1 }), -- Знамя магического иммунитета
-				yn({ id = 'g001ig0373', min = 1, max = 1 }), -- Знамя магического иммунитета
+				yn({ id = 'g001ig0588', min = 1, max = 1 }), -- Знамя тысячи битв +15опыт 750
 
 				--талик
 				orr(orr({ id = 'g000ig9128', min = 1, max = 1}, { id = 'g001ig0259', min = 1, max = 1}), orr({ id = 'g001ig0063', min = 1, max = 1}, { id = 'g000ig9116', min = 1, max = 1})), -- Талисман Молнии 800 / Талисман призыва нейтралов III 600 / Талисман Прилива 800 / Талисман Святой земли 800
+				{ id = rnd('g000ig9130','g000ig9123','g001ig0202'), min = 1, max = 1}, -- Талисман Бури / Талисман Пожара / Талисман призыва нейтралов IV
 
 				--свитки
 				orr({ id = 'g000ig5007', min = 1, max = 1 }, { id = 'g000ig5029', min = 1, max = 1 }), -- св. исцеление / рит. исцеления
@@ -825,7 +829,8 @@ return {
 				yn({ id = 'g001ig0462', min = 1, max = 1 }), -- Сфера направленного ослабления II 50 700
 				
 				--талик
-				orr5({id = 'g000ig9130', min = 1, max = 1}, {id = 'g000ig9136', min = 1, max = 1}, {id = 'g001ig0185', min = 1, max = 1}, {id = 'g000ig9123', min = 1, max = 1}, {id = 'g001ig0202', min = 1, max = 1}), -- Талисман Бури 1000 / Талисман Горы 1600 / Талисман Землетрясения 1800 / Талисман Пожара 1000 / Талисман призыва нейтралов IV 1000
+				{ id = rnd('g000ig9130','g000ig9123','g001ig0202'), min = 1, max = 1}, -- Талисман Бури / Талисман Пожара / Талисман призыва нейтралов IV
+				{ id = rnd('g000ig9136','g001ig0185','g000ig9103'), min = 1, max = 1}, -- Талисман Горы / Талисман Землетрясения / Талисман призыва нейтралов V
 				
 				--свитки
 				orr(orr({ id = 'g000ig5091', min = 1, max = 1 }, { id = 'g000ig5055', min = 1, max = 1 }), orr({ id = 'g000ig5076', min = 1, max = 1 }, { id = 'g000ig5114', min = 1, max = 1 })), -- Tempus status (-33 ини) / Tortio menta (-33 точность) | Гниение (-33 дамаг) / Плесень (-30 броня)
@@ -964,8 +969,8 @@ return {
 --			value = { min = 550, max = 700 },
 --			itemValue = { min = 550, max = 700 },
 			items = {
-				-- Камень врат (Артефакт) / Рог возмездия (Артефакт) / Рог непреклонности (Артефакт) / Руна благоволения Тиу (Артефакт) / Щит телохранителя (Артефакт) / Сапоги скорости / Эльфийские сапоги
-				{id = rnd('g001ig0582','g001ig0558','g001ig0557','g001ig0559','g001ig0594','g000ig8003','g000ig1010'), min = 1, max = 1},
+				-- Камень врат (Артефакт) / Рог возмездия (Артефакт) / Рог непреклонности (Артефакт) / Руна благоволения Тиу (Артефакт) / Щит телохранителя (Артефакт) / Сапоги скорости / Эльфийские сапоги / Талисман призыва нейтралов III / Талисман Святой земли
+				{id = rnd('g001ig0582','g001ig0558','g001ig0557','g001ig0559','g001ig0594','g000ig8003','g000ig1010','g001ig0259','g000ig9116'), min = 1, max = 1},
 			},
 		},
 		guard = {
@@ -991,8 +996,8 @@ return {
 			items = {
 				-- Длани ангела (Реликвия) / Кафтан первооткрывателя (Реликвия) / Роба убийцы (Реликвия) / Тисовый лук (Реликвия) / Шкатулка предсказаний (Реликвия) / Шлем воителя (Реликвия) /
 				-- Кольцо Несгибаемого стража (Артефакт) / Проклятый пепел (Артефакт) / Топор палача (Артефакт) / Клинок Возвышенного (Артефакт) / Клыки Бездны (Артефакт) / Кольцо небесной воли (Артефакт) / Перстень песков (Артефакт) / 
-				-- Чаша жатвы (Артефакт) / Череп шамана (Артефакт) / Щит отражения (Артефакт) / Эльфийская брошь (Артефакт) 
-				{id = rnd('g001ig0424','g001ig0425','g001ig0430','g001ig0539','g001ig0156','g001ig0419','g001ig0488','g001ig0197','g001ig0657','g001ig0124','g001ig0042','g001ig0612','g001ig0040','g001ig0603','g001ig0041','g001ig0591','g001ig0071'), min = 1, max = 1},
+				-- Чаша жатвы (Артефакт) / Череп шамана (Артефакт) / Щит отражения (Артефакт) / Эльфийская брошь (Артефакт) / Талисман призыва нейтралов IV
+				{id = rnd('g001ig0424','g001ig0425','g001ig0430','g001ig0539','g001ig0156','g001ig0419','g001ig0488','g001ig0197','g001ig0657','g001ig0124','g001ig0042','g001ig0612','g001ig0040','g001ig0603','g001ig0041','g001ig0591','g001ig0071','g001ig0202'), min = 1, max = 1},
 			},
 		
 		},
@@ -1008,8 +1013,11 @@ return {
 --				value = { min = 600, max = 750 },
 --				itemValue = { min = 600, max = 750 }
 			items = {
-				-- Баннер неудержимых /  /  /  /  /  / 
-				{id = rnd('g001ig0293','g000ig1004','g001ig0361','g001ig0289','g001ig0370','g001ig0142','g001ig0140','g001ig0141','g001ig0139','g001ig0145','g001ig0143','g001ig0373','g001ig0357','g000ig1002','g001ig0363','g000ig1006','g001ig0369','g000ig1008','g001ig0365','g001ig0292','g001ig0367'), min = 1, max = 1},
+				-- Знамя 600-750: Баннер неудержимых / Знамя битвы / Знамя горна / Знамя городских стражей / Знамя искоренителя ереси / 
+				-- Знамя магии Воды / Знамя магии Воздуха / Знамя магии Земли / Знамя магии Огня / Знамя магии Разума / Знамя магии Смерти 
+				-- / Знамя неистовства / Знамя неуязвимости / Знамя отваги / Знамя скорости / Знамя снежной охоты / Знамя энергии / Ловец Кошмаров 
+				-- / Стяг концентрации / Стяг чумных воинств / Знамя тысячи битв
+				{id = rnd('g001ig0293','g000ig1004','g001ig0361','g001ig0289','g001ig0370','g001ig0142','g001ig0140','g001ig0141','g001ig0139','g001ig0145','g001ig0143','g001ig0357','g000ig1002','g001ig0363','g000ig1006','g001ig0369','g000ig1008','g001ig0365','g001ig0292','g001ig0367','g001ig0588'), min = 1, max = 1},
 			},
 
 		},
@@ -1095,6 +1103,183 @@ return {
 	},
 }
 end
+
+-----------------------
+-- Обменник т2
+function rMarketsZone2()
+return {
+{
+	exchangeRates = [[
+		function getExchangeRates(visitor)
+				local k1 = 3
+				local k2 = 1
+			return {
+				{
+					Resource.Gold,
+					{
+					{ Resource.LifeMana, k1, k2 },
+					{ Resource.DeathMana, k1, k2 },
+					{ Resource.RunicMana, k1, k2 },
+					{ Resource.InfernalMana, k1, k2 },
+					{ Resource.GroveMana, k1, k2 }
+					}
+				},
+				{
+					Resource.LifeMana,
+					{
+					{ Resource.Gold, k1, k2 },
+					{ Resource.DeathMana, k1, k2 },
+					{ Resource.RunicMana, k1, k2 },
+					{ Resource.InfernalMana, k1, k2 },
+					{ Resource.GroveMana, k1, k2 }
+					}
+				},
+				{
+					Resource.DeathMana,
+					{
+					{ Resource.LifeMana, k1, k2 },
+					{ Resource.Gold, k1, k2 },
+					{ Resource.RunicMana, k1, k2 },
+					{ Resource.InfernalMana, k1, k2 },
+					{ Resource.GroveMana, k1, k2 }
+					}
+				},
+				{
+					Resource.RunicMana,
+					{
+					{ Resource.LifeMana, k1, k2 },
+					{ Resource.DeathMana, k1, k2 },
+					{ Resource.Gold, k1, k2 },
+					{ Resource.InfernalMana, k1, k2 },
+					{ Resource.GroveMana, k1, k2 }
+					}
+				},
+				{
+					Resource.InfernalMana,
+					{
+					{ Resource.LifeMana, k1, k2 },
+					{ Resource.DeathMana, k1, k2 },
+					{ Resource.RunicMana, k1, k2 },
+					{ Resource.Gold, k1, k2 },
+					{ Resource.GroveMana, k1, k2 }
+					}
+				},
+				{
+					Resource.GroveMana,
+					{
+					{ Resource.LifeMana, k1, k2 },
+					{ Resource.DeathMana, k1, k2 },
+					{ Resource.RunicMana, k1, k2 },
+					{ Resource.InfernalMana, k1, k2 },
+					{ Resource.Gold, k1, k2 }
+					}
+				},
+			}
+		end
+]],
+
+			
+    stock = {
+		{resource = Resource.Gold, value = { min = 1000, max = 1000 }},
+		{resource = Resource.LifeMana, value = { min = 300, max = 300 }},
+		{resource = Resource.DeathMana, value = { min = 300, max = 300 }},
+		{resource = Resource.InfernalMana, value = { min = 300, max = 300 }},
+        {resource = Resource.RunicMana, value = { min = 300, max = 300 }},
+        {resource = Resource.GroveMana, value = { min = 300, max = 300 }}
+    },
+		guard = gmm({}, guard2r()),
+}
+}
+end
+
+-- Обменник центр
+function rMarketsZone5()
+return {
+{
+	exchangeRates = [[
+		function getExchangeRates(visitor)
+				local k1 = 3
+				local k2 = 1
+			return {
+				{
+					Resource.Gold,
+					{
+					{ Resource.LifeMana, k1, k2 },
+					{ Resource.DeathMana, k1, k2 },
+					{ Resource.RunicMana, k1, k2 },
+					{ Resource.InfernalMana, k1, k2 },
+					{ Resource.GroveMana, k1, k2 }
+					}
+				},
+				{
+					Resource.LifeMana,
+					{
+					{ Resource.Gold, k1, k2 },
+					{ Resource.DeathMana, k1, k2 },
+					{ Resource.RunicMana, k1, k2 },
+					{ Resource.InfernalMana, k1, k2 },
+					{ Resource.GroveMana, k1, k2 }
+					}
+				},
+				{
+					Resource.DeathMana,
+					{
+					{ Resource.LifeMana, k1, k2 },
+					{ Resource.Gold, k1, k2 },
+					{ Resource.RunicMana, k1, k2 },
+					{ Resource.InfernalMana, k1, k2 },
+					{ Resource.GroveMana, k1, k2 }
+					}
+				},
+				{
+					Resource.RunicMana,
+					{
+					{ Resource.LifeMana, k1, k2 },
+					{ Resource.DeathMana, k1, k2 },
+					{ Resource.Gold, k1, k2 },
+					{ Resource.InfernalMana, k1, k2 },
+					{ Resource.GroveMana, k1, k2 }
+					}
+				},
+				{
+					Resource.InfernalMana,
+					{
+					{ Resource.LifeMana, k1, k2 },
+					{ Resource.DeathMana, k1, k2 },
+					{ Resource.RunicMana, k1, k2 },
+					{ Resource.Gold, k1, k2 },
+					{ Resource.GroveMana, k1, k2 }
+					}
+				},
+				{
+					Resource.GroveMana,
+					{
+					{ Resource.LifeMana, k1, k2 },
+					{ Resource.DeathMana, k1, k2 },
+					{ Resource.RunicMana, k1, k2 },
+					{ Resource.InfernalMana, k1, k2 },
+					{ Resource.Gold, k1, k2 }
+					}
+				},
+			}
+		end
+]],
+
+			
+    stock = {
+		{resource = Resource.Gold, value = { min = 2500, max = 2500 }},
+		{resource = Resource.LifeMana, value = { min = 800, max = 800 }},
+		{resource = Resource.DeathMana, value = { min = 800, max = 800 }},
+		{resource = Resource.InfernalMana, value = { min = 800, max = 800 }},
+        {resource = Resource.RunicMana, value = { min = 800, max = 800 }},
+        {resource = Resource.GroveMana, value = { min = 800, max = 800 }}
+    },
+		guard = gmm({}, guard2r()),
+}
+}
+end
+
+
 
 ---------------------
 
@@ -1288,108 +1473,141 @@ function getMinesX(race, race2)
 end
 
 ----------------
---НАЁМНИКИ
+--	наёмники начало
 
 -- нейтралы Мили2
 function MercM2()
-	local radn = math.random(0,5)
+	local radn = math.random(0,11)
 	if radn == 0 then
-	return 'g003uu5030' -- Агент
+	return 'g003uu5030' -- Агент 220
 	elseif radn == 1 then
-	return 'g000uu5031' -- Головорез
+	return 'g000uu5031' -- Головорез 300
 	elseif radn == 2 then
 	return 'g001uu7545' -- Сегаш
 	elseif radn == 3 then
 	return 'g000uu5028' -- Тритон
 	elseif radn == 4 then
-	return 'g000uu5033' -- Упырь
+	return 'g000uu5033' -- Упырь 220
 	elseif radn == 5 then
-	return 'g000uu7611' -- Страж домн
+	return 'g000uu7611' -- Страж домн 235
+	elseif radn == 6 then
+	return 'g000uu5003' -- Копейщик 220
+	elseif radn == 7 then
+	return 'g000uu5011' -- Кентавр-фалангист 490
+	elseif radn == 8 then
+	return 'g000uu5005' -- Лесной эльф 220
+	elseif radn == 9 then
+	return 'g000uu5040' -- Варвар 590
+	elseif radn == 10 then
+	return 'g000uu5039' -- Волк 220
+	elseif radn == 11 then
+	return 'g001uu8279' -- Чумной волк 235
+
 	end
 end
 
 -- нейтралы Лучники2
 function MercA2()
-	local radn = math.random(0,1)
+	local radn = math.random(0,3)
 	if radn == 0 then
-	return 'g000uu5007' -- Кентавр
+	return 'g000uu5007' -- Кентавр 240
 	elseif radn == 1 then
 	return 'g000uu6103' -- Элементаль Воздуха
+	elseif radn == 2 then
+	return 'g000uu8171' -- Сущность бури 525
+	elseif radn == 3 then
+	return 'g000uu8170' -- Сущность пламени
 	end
 end
 
 -- нейтралы Маги2
 function MercMg2()
-	local radn = math.random(0,2)
+	local radn = math.random(0,6)
 	if radn == 0 then
-	return 'g001uu7553' -- Ведунья
+	return 'g001uu7553' -- Ведунья 260
 	elseif radn == 1 then
-	return 'g000uu8201' -- Скальд
+	return 'g000uu8201' -- Скальд 175
 	elseif radn == 2 then
-	return 'g000uu8190' -- Сущность искажения
+	return 'g000uu8190' -- Сущность искажения 260
+	elseif radn == 3 then
+	return 'g000uu8169' -- Каменная сущность 525
+	elseif radn == 4 then
+	return 'g000uu8168' -- Ледяная сущность 525
+	elseif radn == 5 then
+	return 'g000uu8246' -- Чародей 400
+	elseif radn == 6 then
+	return 'g000uu8157' -- Гоблин-громыхун 400
 	end
 end
 
 -- нейтралы Поддержка2
 function MercH2()
-	local radn = math.random(0,1)
+	local radn = math.random(0,2)
 	if radn == 0 then
 	return 'g000uu2006' -- Наяда
 	elseif radn == 1 then
-	return 'g000uu6113' -- Оккультист
+	return 'g000uu6113' -- Оккультист 260
+	elseif radn == 2 then
+	return 'g001uu7614' -- Искатель рун
 	end
 end
 
 ---
 -- нейтралы Мили3
 function MercM3()
-	local radn = math.random(0,8)
+	local radn = math.random(0,9)
 	if radn == 0 then
-	return 'g000uu6121' -- Дхампир
+	return 'g000uu6121' -- Дхампир 1070
 	elseif radn == 1 then
-	return 'g000uu7608' -- Каменщик
+	return 'g000uu7608' -- Каменщик 
 	elseif radn == 2 then
-	return 'g000uu8306' -- Экзекутор
+	return 'g000uu8306' -- Экзекутор 525
 	elseif radn == 3 then
-	return 'g000uu7588' -- Отлученный
+	return 'g000uu7588' -- Отлученный 725
 	elseif radn == 4 then
-	return 'g000uu8247' -- Разоритель
+	return 'g000uu8247' -- Разоритель 725
 	elseif radn == 5 then
 	return 'g000uu8041' -- Темный Эльф Мясник
 	elseif radn == 6 then
 	return 'g000uu8151' -- Фурия
 	elseif radn == 7 then
-	return 'g003uu5031' -- Гонитель Ереси
+	return 'g003uu5031' -- Гонитель Ереси 755
 	elseif radn == 8 then
-	return 'g000uu8276' -- Последователь
+	return 'g000uu8276' -- Последователь 725
+	elseif radn == 9 then
+	return 'g000uu7607' -- Черный ядозуб 825
 	end
 end
 
 -- нейтралы Лучники3
 function MercA3()
-	local radn = math.random(0,5)
+	local radn = math.random(0,6)
 	if radn == 0 then
-	return 'g001uu7612' -- Королевский арбалетчик
+	return 'g001uu7612' -- Королевский арбалетчик 490
 	elseif radn == 1 then
-	return 'g000uu8274' -- Медуза-охотница
+	return 'g000uu8274' -- Медуза-охотница 700
 	elseif radn == 2 then
-	return 'g000uu8042' -- Темный Эльф Потрошитель
+	return 'g000uu8042' -- Темный Эльф Потрошитель 625
 	elseif radn == 3 then
-	return 'g001uu7617' -- Тень культа
+	return 'g001uu7617' -- Тень культа 1070
 	elseif radn == 4 then
-	return 'g000uu8045' -- Траппер
+	return 'g000uu8045' -- Траппер 1070
 	elseif radn == 5 then
 	return 'g001uu8282' -- Тенистый паук
+	elseif radn == 6 then
+	return 'g000uu7590' -- Ящер-охотник 590
 	end
 end
 
 -- нейтралы Маги3
 function MercMg3()
-	local radn = math.random(0,1)
+	local radn = math.random(0,2)
 	if radn == 0 then
-	return 'g000uu8046' -- Шаманка
+	return 'g000uu8046' -- Шаманка 990
 	elseif radn == 1 then
-	return 'g000uu8048' -- Старейшина Гоблинов
+	return 'g000uu8048' -- Старейшина Гоблинов 570
+	elseif radn == 2 then
+	return 'g000uu8043' -- Жрица Безмясой 900
 	end
 end
 
@@ -1406,17 +1624,19 @@ end
 ---
 -- нейтралы Мили4
 function MercM4()
-	local radn = math.random(0,4)
+	local radn = math.random(0,5)
 	if radn == 0 then
-	return 'g001uu7560' -- Каратель
+	return 'g001uu7560' -- Каратель 1230
 	elseif radn == 1 then
-	return 'g000uu6106' -- Принцесса гномов
+	return 'g000uu6106' -- Принцесса гномов 1200
 	elseif radn == 2 then
-	return 'g000uu5032' -- Вождь варваров
+	return 'g000uu5032' -- Вождь варваров 1400
 	elseif radn == 3 then
-	return 'g001uu7613' -- Огнеборец
+	return 'g001uu7613' -- Огнеборец 1700
 	elseif radn == 4 then
 	return 'g003uu0023' -- Предатель
+	elseif radn == 5 then
+	return 'g000uu6108' -- Барон 1940
 	end
 end
 
@@ -1426,9 +1646,9 @@ function MercA4()
 	if radn == 0 then
 	return 'g000uu8174' -- Вестник распада
 	elseif radn == 1 then
-	return 'g001uu7594' -- Инеит
+	return 'g001uu7594' -- Инеит 1320
 	elseif radn == 2 then
-	return 'g000uu7566' -- Первородная сущность
+	return 'g000uu7566' -- Первородная сущность 1800
 	elseif radn == 3 then
 	return 'g000uu7567' -- Первородная сущность
 	elseif radn == 4 then
@@ -1440,11 +1660,11 @@ end
 function MercMg4()
 	local radn = math.random(0,2)
 	if radn == 0 then
-	return 'g000uu8005' -- Дух волка
+	return 'g000uu8005' -- Дух волка 990
 	elseif radn == 1 then
 	return 'g000uu8275' -- Медуза
 	elseif radn == 2 then
-	return 'g001uu7624' -- Неприкаянная
+	return 'g001uu7624' -- Неприкаянная 1900
 	end
 end
 
@@ -1452,12 +1672,34 @@ end
 function MercH4()
 	local radn = math.random(0,2)
 	if radn == 0 then
-	return 'g000uu5006' -- Великий Оракул
+	return 'g000uu5006' -- Великий Оракул 1050
 	elseif radn == 1 then
-	return 'g000uu8218' -- Волхв
+	return 'g000uu8218' -- Волхв 1750
 	elseif radn == 2 then
 	return 'g000uu7544' -- Настоятельница
 	end
+end
+
+-- нейтралы Рандомные5
+function MercR5()
+	return rnd(
+	-- мили
+	'g001uu7600', -- Длань инквизиции 3400
+	'g000uu8153', -- Жнец 4100
+	'g000uu6117', -- Костяной лорд 3250
+	'g000uu8244', -- Отступник 3250
+	'g000uu5014', -- Хан орков 3000
+	'g000uu8231', -- Катафрактарий 4700
+	'g000uu8278', -- Божественная Длань 3400
+	-- ренж
+	'g001uu8257', -- Громовержец 3950
+	'g001uu7625', -- Темный оракул 3700
+	'g001uu8255', -- Эльф-тень 3200
+	'g006uu1026', -- Жрец Смерти 3250
+	'g001uu8260', -- Искуситель 3450
+	'g000uu8304', -- Ангел разорения 4200
+	'g000uu8305' -- Предвестница Смерти 5050
+	)
 end
 
 -- нейтралы Велики1
@@ -1781,6 +2023,9 @@ if math.random(0,2) ~= 1 then unitsm[i] = { id = rnd('g000uu8029','g003uu8037'),
 
 end
 
+-- рандомный нейтрал т4
+unitsm[i] = { id = rnd(MercM4(), MercA4(), MercMg4()), level = 1, unique = true } i = i + 1 -- мили / лучник / маг -- БЕЗ потдержки
+
 return unitsm
 end
 
@@ -1867,6 +2112,7 @@ if math.random(0,2) ~= 1 then unitsm[i] = { id = rnd('g000uu0083','g000uu0084'),
 if math.random(0,3) ~= 1 then unitsm[i] = { id = 'g000uu2008', level = 4, unique = true } else unitsm[i] = { id = MercH4(), level = 1, unique = true } end i = i + 1
 -- Дракон Рока // Велики2
 if math.random(0,2) ~= 1 then unitsm[i] = { id = 'g000uu0094', level = 2, unique = true } else unitsm[i] = { id = MercB2(), level = 1, unique = true } end i = i + 1
+
 --- 
 
 elseif race == Race.Heretic then
@@ -1914,6 +2160,9 @@ if math.random(0,3) ~= 1 then unitsm[i] = { id = rnd('g000uu8214','g000uu8034','
 -- Владыка Небес / Энт-целитель // Велики2
 if math.random(0,2) ~= 1 then unitsm[i] = { id = rnd('g000uu8030','g003uu8038'), level = 2, unique = true } else unitsm[i] = { id = MercB2(), level = 1, unique = true } end i = i + 1
 end
+
+-- рандомный нейтрал т5 (300-450xp) 3-4k цена
+unitsm[i] = { id = MercR5(), level = 1, unique = true } i = i + 1 -- нейтрал т5
 
 return unitsm
 end
@@ -2211,8 +2460,11 @@ if math.random(0,2) ~= 1 then unitsm[i] = { id = rnd('g000uu8030','g003uu8038'),
 -- Азуритовая горгулья / Молох / Ониксовая горгулья / Цитриновая горгулья / Чароитовая горгулья + Древо жизни / Прародитель // Велики3
 if math.random(0,2) ~= 1 then unitsm[i] = { id = rnd('g001uu8272','g000uu0059','g000uu0167','g001uu7574','g001uu7573'), level = 3, unique = true } else unitsm[i] = { id = MercB3(), level = 1, unique = true } end i = i + 1
 if math.random(0,2) ~= 1 then unitsm[i] = { id = rnd('g003uu8039','g000uu8212'), level = 3, unique = true } else unitsm[i] = { id = MercB3(), level = 1, unique = true } end i = i + 1
+end
 
-end	
+-- рандомный нейтрал т3
+unitsm[i] = { id = rnd(MercM3(), MercM3(), MercA3(), MercMg3(), MercH3()), level = 1, unique = true } i = i + 1 -- мили / мили / лучник / маг / потдержка
+	
 return unitsm
 end
 
@@ -3507,6 +3759,19 @@ return {
 }
 end
 
+function guard2r() -- зона2 обменник
+return {
+	value = { min = 450*kef, max = 475*kef },
+	loot = {
+		items = {
+			{ id = 'g001ig0378', min = 1, max = 1}, -- хил75
+			orr({ id = 'g001ig0431', min = 1, max = 1 }, { id = rmss(), min = 1, max = 1 }), --гранат75/случ. мал.шар манны			
+			{ id = e2(), min = 1, max = 1 },
+		},
+	}
+}
+end
+
 function guard2m() -- зона2 башня
 return {
 	value = { min = 400*kef, max = 420*kef },
@@ -3678,13 +3943,14 @@ function getPlayerZone00(zoneId, playerRace, zoneSize)
 						{ id = rnd(d15(),'g001ig0490','g001ig0128','g002ig0008'), min = 1, max = 1}, -- случ. дотвард / Зелье выносливости +15%оз / вард оружия / Эликсир скрытого потенциала 500 (20оз +7точ.вт.атаки)
 						
 						-- сфера
-						{ id = rnd('g001ig0458','g000ig9031','g000ig9022','g001ig0302','g001ig0189','g001ig0178','g001ig0472','g001ig0473','g001ig0192'), min = 1, max = 1}, -- 25 Сфера Каменного проклятия / Сфера Ливня | Сфера Углей / Сфера Шторма / -- 50 Сфера Камня / Сфера Костра | Сфера Ледяного осколка / Сфера Статического разряда / Сфера Пыток
-
-						{ id = ExtraMana(playerRace), min = 1, max = 1 }, --доп.шар
+						{ id = rnd('g001ig0458','g000ig9031','g000ig9022','g001ig0302'), min = 1, max = 1}, -- 25 Сфера Каменного проклятия / Сфера Ливня / Сфера Углей / Сфера Шторма
+						{ id = rnd('g001ig0189','g001ig0178','g001ig0472','g001ig0473'), min = 1, max = 1}, -- 50 Сфера Камня / Сфера Костра / Сфера Ледяного осколка / Сфера Статического разряда
 						
 						-- свиток
-						{ id = rnd('g000ig5021','g000ig5003','g001ig0250','g000ig5023','g001ig0248','g000ig5045','g000ig5064','g000ig5101','g000ig5007','g000ig5102'), min = 1, max = 1}, -- свиток л.щит, сила, с.кости, с.витара / -- свиток устр. гимн, tormentio-броня, слабость, стая / Свиток "Исцеление" / Свиток "Стойкость рощи" +15оз
+						{ id = rnd('g000ig5021','g000ig5003','g000ig5002','g001ig0072','g000ig5007','g000ig5102'), min = 1, max = 1}, -- свиток л.щит / сила / быстрота / Свиток "Соколиная зоркость"+2вижн / Свиток "Исцеление" / Свиток "Стойкость рощи" +15оз
+						{ id = rnd('g001ig0248','g000ig5106','g000ig5064','g000ig5101','g000ig5044','g001ig0247'), min = 1, max = 1}, -- свиток устр.гимн-ини / смятение-ини / слабость-5урон.ини / стая-10урон / Menta minoris-5урон.точн / неудача-10точн
 
+						{ id = ExtraMana(playerRace), min = 1, max = 1 }, --доп.шар
 					}
 				},
 			},
@@ -3725,6 +3991,7 @@ function getPlayerZone(zoneId, playerRace, zoneSize)
 		mercenaries = zoneMercenZone12(playerRace),
 		mines = getMinesResp(playerRace),
 		mages = zoneMageResp(),
+--		resourceMarkets = rMarketsZone2(),
 		stacks = {zoneStacksResp(), zoneStacksResp1(), Pred1Resp01(), Pred1Resp1(), Pred1Resp2(), Pred1Resp3(), Pred1Resp4(), Pred1Resp5(), Pred1RespD(), PredSkin(390, 400, 200, 250), PredBarb(480,484,200,400)},
 		bags = bagsResp(),
 	}
@@ -3763,6 +4030,7 @@ function getTreasureZone5(zoneId, playerRace, playerRace2, zoneSizeTre)
 		mercenaries = zoneMercenZone4(playerRace, playerRace2),
 		ruins = zoneRuinZone5(),
 		mines = getMinesZone5(playerRace, playerRace2),
+		resourceMarkets = rMarketsZone5(),
 		stacks = {zoneStacksZone5(), zoneStacksZone501(), zoneStacksZone502(), zoneStacksZone503(), Pred1Zone51(), Pred1Zone52(), Pred1Zone53(), Pred1Zone54(), Pred1Zone5D(), PredBarb(1550,1600,500,600) },
 		bags = bagsZone5(),
 		--mages = zoneMageZone5(),
@@ -3795,18 +4063,25 @@ end
 function getZones(races)
 	local zones = {}
 
-	zones[1] = getPlayerZone00(0, races[1], 5) -- красный 5
-	zones[2] = getPlayerZone0(1, races[1], 7) -- зелёный 7
-	zones[3] = getPlayerZone(2, races[1], 10) -- синий 10
-	zones[4] = getTreasureZone34(3, races[1], 9) -- белый 9
-	zones[5] = getTreasureZone5(4, races[1], races[2], 13) -- чёрный 13
-	zones[6] = getTreasureZone34(5, races[2], 9) -- серый
-	zones[7] = getPlayerZone(6, races[2], 10) -- жёлтый
-	zones[8] = getPlayerZone0(7, races[2], 7) -- голубой
-	zones[9] = getPlayerZone00(8, races[2], 5) -- пурпурный
+	local z910 = 50 -- тренер
+	local z08 = 50 -- т0 стольня
+	local z17 = 60 -- т1
+	local z26 = 96 -- т2
+	local z35 = 84 -- т3
+	local z4 = 120 -- центр
+	
+	zones[1] = getPlayerZone00(0, races[1], z08) -- красный 5
+	zones[2] = getPlayerZone0(1, races[1], z17) -- зелёный 6(7)
+	zones[3] = getPlayerZone(2, races[1], z26) -- синий 9(10)
+	zones[4] = getTreasureZone34(3, races[1], z35) -- белый 8(9)
+	zones[5] = getTreasureZone5(4, races[1], races[2], z4) -- чёрный 12(13)
+	zones[6] = getTreasureZone34(5, races[2], z35) -- серый
+	zones[7] = getPlayerZone(6, races[2], z26) -- жёлтый
+	zones[8] = getPlayerZone0(7, races[2], z17) -- голубой
+	zones[9] = getPlayerZone00(8, races[2], z08) -- пурпурный
 	-- зоны тренера
-	zones[10] = getTreasureZoneTrainers(9, races[1], races[2], 5) -- 5
-	zones[11] = getTreasureZoneTrainers(10, races[2], races[1], 5) -- 	
+	zones[10] = getTreasureZoneTrainers(9, races[1], races[2], z910) -- 5
+	zones[11] = getTreasureZoneTrainers(10, races[2], races[1], z910) --
 	
 	return zones
 end
@@ -3841,12 +4116,13 @@ function getZoneConnections()
 {from = 0, to = 10},{from = 0, to = 10},{from = 0, to = 10},
 {from = 9, to = 8},{from = 9, to = 8},{from = 9, to = 8},	
 
--- респы в центр
---{from = 0, to = 4},
---{from = 8, to = 4},
 -- тренер в центр
 {from = 9, to = 4},
 {from = 10, to = 4},
+
+-- респы в центр
+--{from = 0, to = 4},
+--{from = 8, to = 4},
 
 }
 end
@@ -3863,7 +4139,7 @@ end
 
 -- ШАБЛОН
 template = {
-	name = gmm('Outrunner 2.9', 'Outcross 2.9'),
+	name = gmm('Outrunner 2.9e', 'Outcross 2.9e'),
 	description = gmm('Шаблон для игры 1 лидер, 1 жезловик, 1 вор.\nЧерная зона в центре, ее должны касаться: синяя, желтая, белая, серая, т.зеленая, оранжевая.\nСпасибо за поддержку! Карта Тинькофф: 2200700846776804','Шаблон для классической игры несколькими лидерами.\nЧерная зона в центре, ее должны касаться: синяя, желтая, белая, серая, т.зеленая, оранжевая.\nСпасибо за поддержку! Карта Тинькофф: 2200700846776804'),
 	minSize = 72,
 	maxSize = 72,
@@ -4085,8 +4361,9 @@ forbiddenItems = {
 'g001ig0044', --Сердце океана (Артефакт)
 
 --'g001ig0153', --Знамя вампиризма 25%
-'g001ig0154', --знамя поглощения--50%
-'g001ig0366', --Стяг багровых рек вампиризма 25% + вард тауматургии
+--'g001ig0366', --Стяг багровых рек вампиризма 25% + вард тауматургии
+'g001ig0154', -- знамя поглощения--50%
+'g001ig0373', -- Знамя магического иммунитета
 
 'g000ig5027', --свиток мореплавания
 'g000ig5006', --Свиток "Ускорение"--

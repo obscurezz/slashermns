@@ -12,10 +12,3 @@ end
 function getAttackDamage(unit, prev)
 	return svFlatEffectDamage1(unit, prev, 7)
 end
-function getAttackCritHit(unit, prev)
-	return true
-end
-
-function getAttackCritDamage(unit, prev)
-	return svAddCrit1Damage(unit, prev, 10)
-end

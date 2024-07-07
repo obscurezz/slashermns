@@ -17,7 +17,7 @@ function getHitPoint(unit, prev)
 end
 
 function getArmor(unit, prev)
-	return svFlatEffectArmor(unit, prev, 20)
+	return svFlatEffectArmor(unit, prev, 15)
 end
 
 function getImmuneToAttack(unit, attack, prev)

@@ -12,7 +12,7 @@ function getModifierDescTxt(unit, prev)
 end
 
 function getHitPoint(unit, prev)
-	return svFlatEffectHitPoint(unit, prev, 40)
+	return svFlatEffectHitPoint(unit, prev, 30)
 end
 
 
@@ -35,5 +35,5 @@ function getAttackDrain(unit, damage, prev)
 end
 
 function getAttackInitiative(unit, prev)
-	return svMultimplyInitiative(unit, prev, 0.15)
+	return svMultimplyInitiative(unit, prev, 0.10)
 end
