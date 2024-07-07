@@ -451,14 +451,18 @@ end
 -- Закаленная сталь I +10% урона		
 	local Attack1Source = unit.impl.attack1.source
 	if _GroupInfo_stackHasModifierAmount(HardenedSteelBuffer) > 0 and Attack1Source == Source.Weapon and _GroupInfo_stackHasModifierAmount(HardenedSteelBufferII) == 0 then
-		BonusDMG = BonusDMG + 10
+		if unit.impl.race == Race.Dwarf then
+			BonusDMG = BonusDMG + 10
+		end
 	end	
 -- Закаленная сталь I +10% урона END
 
 -- Закаленная сталь II +15% урона		
 	local Attack1Source = unit.impl.attack1.source
 	if _GroupInfo_stackHasModifierAmount(HardenedSteelBufferII) > 0 and Attack1Source == Source.Weapon then
-		BonusDMG = BonusDMG + 15
+		if unit.impl.race == Race.Dwarf then
+			BonusDMG = BonusDMG + 15
+		end
 	end	
 -- Закаленная сталь II +15% урона END
 
