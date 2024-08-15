@@ -1,5 +1,5 @@
 local TemplateName = 'Diligence'
-local Verison = '1.0.0'
+local Verison = '1.1.3'
 local Timer = 'First turn: 720, next turns: 420'
 
 function getName(name, version)
@@ -75,11 +75,24 @@ function getSingleZone(zoneId, zoneSize, playerRace, isPlayer)
                     { id = 'g000ig0005', min = 5, max = 5 },
                     { id = 'g001ig0378', min = 5, max = 5 },
                 },
-                itemTypes = { Item.Scroll, Item.PotionBoost, Item.PotionPermanent },
+                itemTypes = { Item.PotionBoost, Item.PotionPermanent },
                 itemValue = { min = 150, max = 400 },
-                value = { min = 8000, max = 8000 },
+                value = { min = 6000, max = 6000 },
             }
-        }
+        },
+        {
+            goods = {
+                items = {
+                    { id = 'g000ig0001', min = 5, max = 5 },
+                    { id = 'g000ig0006', min = 5, max = 5 },
+                    { id = 'g000ig0005', min = 5, max = 5 },
+                    { id = 'g001ig0378', min = 5, max = 5 },
+                },
+                itemTypes = { Item.Scroll, Item.Orb, Item.Talisman, Item.Wand },
+                itemValue = { min = 150, max = 400 },
+                value = { min = 6000, max = 6000 },
+            }
+        },
     }
 
     if isPlayer then
@@ -99,14 +112,14 @@ function getSingleZone(zoneId, zoneSize, playerRace, isPlayer)
                         {id = 'g000ig0011', min = 1, max = 1},
                         {id = 'g000ig0014', min = 2, max = 2},
                     },
-                    itemTypes = {Item.Orb},
+                    itemTypes = {Item.Orb, Item.Wand},
                     itemValue = { min = 100, max = 200 },
-                    value = { min = 500, max = 500 },
+                    value = { min = 600, max = 600 },
                 }
             }
         }
         zoneContent['towns'] = {
-            {tier=1, garrison={loot={itemTypes={Item.Orb, Item.Scroll}, itemValue={min=200, max=550}, value={min=1200, max=1200}}}, stack={subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=270*zoneCoef, max=320*zoneCoef}, loot={itemTypes={Item.Armor, Item.Weapon},itemValue={min=600, max=800},value={min=1600, max=1600},items={{id='g000ig0001', min=1, max=1},{id='g000ig0018', min=1, max=1}}}}},
+            {tier=1, garrison={loot={itemTypes={Item.Valuable}, itemValue={min=150, max=750}, value={min=1500, max=1500}}}, stack={subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=270*zoneCoef, max=320*zoneCoef}, loot={itemTypes={Item.Armor, Item.Weapon},itemValue={min=600, max=800},value={min=1600, max=1600},items={{id='g000ig0001', min=1, max=1},{id='g000ig0018', min=1, max=1}}}}},
             {tier=2, garrison={loot={itemTypes={Item.PotionPermanent, Item.Talisman}, itemValue={min=400, max=800}, value={min=1200, max=1200}}}, stack={subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=330*zoneCoef, max=380*zoneCoef}, loot={itemTypes={Item.Banner, Item.Jewel},itemValue={min=500, max=800},value={min=1300, max=1500},items={{id='g000ig0001', min=1, max=1},{id='g000ig0018', min=1, max=1}}}}},
         }
         zoneContent['trainers'] = {{}}
@@ -143,7 +156,7 @@ function getSingleZone(zoneId, zoneSize, playerRace, isPlayer)
 
     zoneContent['ruins'] = {
         {
-            gold = { min = 200, max = 300 },
+            gold = { min = 320, max = 400 },
             loot = {
                 itemTypes = {firstRewardType[math.random(1, 3)]},
                 itemValue = { min = 300*zoneCoef, max = 500*zoneCoef},
@@ -155,7 +168,7 @@ function getSingleZone(zoneId, zoneSize, playerRace, isPlayer)
             }
         },
         {
-            gold = { min = 170, max = 220 },
+            gold = { min = 320, max = 400 },
             loot = {
                 itemTypes = {secondRewardType[math.random(1, 2)]},
                 itemValue = { min = 300*zoneCoef, max = 400*zoneCoef},
@@ -167,7 +180,7 @@ function getSingleZone(zoneId, zoneSize, playerRace, isPlayer)
             }
         },
         {
-            gold = { min = 150, max = 200 },
+            gold = { min = 300, max = 350 },
             loot = {
                 items = { 
                     {id = 'g001ig0151', min = 1, max = 1}
@@ -186,10 +199,11 @@ function getSingleZone(zoneId, zoneSize, playerRace, isPlayer)
                 {id = 'g000ig0001', min = 3, max = 3},
                 {id = 'g001ig0180', min = 5, max = 5},
                 {id = 'g000ig0005', min = 3, max = 3},
+                {id = 'g000ig5084', min = 2, max = 2}
             },
             itemTypes = {Item.Scroll, Item.PotionBoost, Item.Orb},
             itemValue = {min = 150, max = 400},
-            value = {min = 3500, max = 4000},
+            value = {min = 3000, max = 3500},
         }
     }
     zoneContent['stacks'] = {
@@ -199,11 +213,11 @@ function getSingleZone(zoneId, zoneSize, playerRace, isPlayer)
         {count=1, subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=160*zoneCoef, max=200*zoneCoef}, loot={itemTypes={Item.Scroll},itemValue={min=150, max=200*zoneCoef},value={min=200*zoneCoef, max=300*zoneCoef}}},
         {count=1, subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=160*zoneCoef, max=200*zoneCoef}, loot={itemTypes={Item.Scroll},itemValue={min=150, max=200*zoneCoef},value={min=200*zoneCoef, max=300*zoneCoef}}},
         {count=1, subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=160*zoneCoef, max=200*zoneCoef}, loot={itemTypes={Item.Scroll},itemValue={min=150, max=200*zoneCoef},value={min=200*zoneCoef, max=300*zoneCoef}}},
-        {count=1, subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=160*zoneCoef, max=200*zoneCoef}, loot={itemTypes={Item.PotionHeal},itemValue={min=50, max=200*zoneCoef},value={min=200*zoneCoef, max=200*zoneCoef}}},
-        {count=1, subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=160*zoneCoef, max=200*zoneCoef}, loot={itemTypes={Item.PotionHeal},itemValue={min=50, max=200*zoneCoef},value={min=200*zoneCoef, max=200*zoneCoef}}},
-        {count=1, subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=160*zoneCoef, max=200*zoneCoef}, loot={itemTypes={Item.PotionHeal},itemValue={min=50, max=200*zoneCoef},value={min=200*zoneCoef, max=200*zoneCoef}}},
-        {count=1, subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=220*zoneCoef, max=260*zoneCoef}, loot={itemTypes={Item.PotionRevive, Item.Scroll},itemValue={min=250, max=400},value={min=500, max=1000}}},
-        {count=1, subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=220*zoneCoef, max=260*zoneCoef}, loot={itemTypes={Item.PotionRevive, Item.Scroll},itemValue={min=250, max=400},value={min=500, max=1000}}},
+        {count=1, subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=160*zoneCoef, max=200*zoneCoef}, loot={itemTypes={Item.PotionHeal},itemValue={min=50, max=350},value={min=350*zoneCoef, max=350*zoneCoef}}},
+        {count=1, subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=160*zoneCoef, max=200*zoneCoef}, loot={itemTypes={Item.PotionHeal},itemValue={min=50, max=350},value={min=350*zoneCoef, max=350*zoneCoef}}},
+        {count=1, subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=160*zoneCoef, max=200*zoneCoef}, loot={itemTypes={Item.PotionHeal},itemValue={min=50, max=350},value={min=350*zoneCoef, max=350*zoneCoef}}},
+        {count=1, subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=220*zoneCoef, max=260*zoneCoef}, loot={itemTypes={Item.PotionRevive, Item.Valuable},itemValue={min=250, max=400},value={min=500, max=1000}}},
+        {count=1, subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=220*zoneCoef, max=260*zoneCoef}, loot={itemTypes={Item.PotionRevive, Item.Valuable},itemValue={min=250, max=400},value={min=500, max=1000}}},
         {count=1, subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=200*zoneCoef, max=240*zoneCoef}, loot={itemTypes={Item.PotionBoost},itemValue={min=150, max=200*zoneCoef},value={min=200*zoneCoef, max=300*zoneCoef}}},
         {count=1, subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=200*zoneCoef, max=240*zoneCoef}, loot={itemTypes={Item.PotionBoost},itemValue={min=150, max=200*zoneCoef},value={min=200*zoneCoef, max=300*zoneCoef}}},
         {count=1, subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=200*zoneCoef, max=240*zoneCoef}, loot={itemTypes={Item.PotionBoost},itemValue={min=150, max=200*zoneCoef},value={min=200*zoneCoef, max=300*zoneCoef}}},
@@ -463,6 +477,16 @@ template = {
         'g001ig0077',
         'g000ig5108',
         'g001ig0078',
+        --t2 summons
+        'g000ig5066',
+        'g000ig5103',
+        'g000ig5046',
+        'g000ig5008',
+        --t2 damage
+        'g000ig5048',
+        'g000ig5028',
+        'g000ig5104',
+        'g000ig5067',
         --high damage
         'g000ig5054',
         'g000ig5109',
@@ -473,5 +497,11 @@ template = {
         'g000ig2007',
         --lynareth
         'g001ig0596',
+        --speed
+        'g000ig5100',
+        'g000ig5006',
+        --water
+        'g001ig0386',
+        'g000ig5027',
     },
 }

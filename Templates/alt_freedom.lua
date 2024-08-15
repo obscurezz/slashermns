@@ -6,7 +6,7 @@
 -- 6 5 4
 
 local TemplateName = 'Water Freedom'
-local Verison = '1.4.1'
+local Verison = '1.4.4'
 local Timer = 'First turn: 900, second turn: 450, sixth and further turns: 600.'
 
 function getName(name, version)
@@ -121,9 +121,7 @@ function rewardGenerator(objectType, objectDefinition)
 
     local startRuinPermanent = {'g001ig0034', 'g001ig0026', 'g001ig0315', 'g001ig0332', 'g001ig0533', 'g001ig0309', 'g001ig0328', 'g001ig0330', 'g001ig0346', 'g001ig0344', 'g001ig0130', 'g001ig0313', 'g001ig0311', 'g001ig0531'}
 
-    local t1Movement = {'g000ig5022', 'g000ig5100'}
     local t1Vision = {'g000ig5006',  'g000ig5068', 'g001ig0072'}
-    local t2Movement = {'g001ig0389', 'g000ig5006', 'g001ig0390'}
     local t2Vision = {'g000ig6007', 'g000ig6006', 'g000ig5030'}
 
 	local t1Artifacts = {'g001ig0582', 'g001ig0611', 'g001ig0418', 'g000ig2001', 'g001ig0100', 'g001ig0182', 'g000ig3001', 'g001ig0048', 'g002ig0001', 'g001ig0609'}
@@ -133,25 +131,25 @@ function rewardGenerator(objectType, objectDefinition)
 	local t1Talismans = {'g001ig0184', 'g001ig0267', 'g001ig0265', 'g001ig0266', 'g001ig0264', 'g000ig9101', 'g000ig9105', 'g000ig9131'}
 	local t1Travel = {'g001ig0108', 'g001ig0110', 'g001ig0105', 'g001ig0107', 'g001ig0109', 'g001ig0106', 'g001ig0113'}
 	
-	local t2Artifacts = {'g001ig0559', 'g001ig0047', 'g000ig3003', 'g000ig3002', 'g001ig0042', 'g001ig0071', 'g000ig2002', 'g001ig0557', 'g001ig0417', 'g001ig0040', 'g000ig9137', 'g000ig2003', 'g001ig0558', 'g000ig3019', 'g000ig3017', 'g001ig0197', 'g001ig0173', 'g001ig0196', 'g001ig0124', 'g001ig0594', 'g001ig0591', 'g001ig0612', 'g001ig0041', 'g001ig0488', 'g001ig0592', 'g001ig0487', 'g001ig0416', 'g001ig0589', 'g001ig0045', 'g001ig0657', 'g001ig0603'}
-	local t2Banners = {'g001ig0588', 'g000ig1002', 'g000ig1008', 'g001ig0289', 'g001ig0142', 'g001ig0293', 'g001ig0145', 'g001ig0361', 'g001ig0140', 'g001ig0364', 'g000ig1006', 'g001ig0370', 'g001ig0292', 'g001ig0357', 'g000ig1004', 'g001ig0141', 'g001ig0143', 'g001ig0139', 'g001ig0374', 'g001ig0365', 'g001ig0358'}
+	local t2Artifacts = {'g001ig0559', 'g001ig0047', 'g000ig3003', 'g000ig3002', 'g001ig0042', 'g001ig0071', 'g000ig2002', 'g001ig0557', 'g001ig0417', 'g001ig0040', 'g000ig9137', 'g000ig2003', 'g001ig0558', 'g000ig3019', 'g000ig3017', 'g001ig0197', 'g001ig0173', 'g001ig0196', 'g001ig0124', 'g001ig0594', 'g001ig0591', 'g001ig0612', 'g001ig0041', 'g001ig0488', 'g001ig0592', 'g001ig0487', 'g001ig0416', 'g001ig0589', 'g001ig0045', 'g001ig0657'}
+	local t2Banners = {'g001ig0588', 'g001ig0367', 'g000ig1002', 'g000ig1008', 'g001ig0289', 'g001ig0142', 'g001ig0293', 'g001ig0145', 'g001ig0361', 'g001ig0140', 'g001ig0364', 'g000ig1006', 'g001ig0370', 'g001ig0292', 'g001ig0357', 'g000ig1004', 'g001ig0141', 'g001ig0143', 'g001ig0139', 'g001ig0374', 'g001ig0365', 'g001ig0358'}
 	local t2Jewels = {'g001ig0610', 'g000ig4007', 'g000ig3020', 'g001ig0420', 'g001ig0104', 'g001ig0427', 'g001ig0422', 'g001ig0423', 'g001ig0605', 'g001ig0099', 'g000ig3022', 'g002ig0002'}
 	local t2Orbs = {'g001ig0304', 'g001ig0443', 'g001ig0467', 'g001ig0191', 'g001ig0176', 'g000ig9024', 'g001ig0295', 'g001ig0461', 'g001ig0300', 'g001ig0496', 'g000ig9042', 'g001ig0475', 'g001ig0468', 'g001ig0478', 'g001ig0187', 'g001ig0469', 'g001ig0454', 'g001ig0456', 'g000ig9018', 'g001ig0192', 'g001ig0479', 'g001ig0453', 'g001ig0474', 'g001ig0134', 'g000ig9020'}
 	local t2Talismans = {'g000ig9130', 'g000ig9128', 'g000ig9123', 'g000ig9109', 'g001ig0259', 'g001ig0063', 'g000ig9116', 'g000ig9120', 'g000ig9140'}
 	local t2Travel = {'g001ig0111', 'g000ig8003', 'g001ig0114', 'g000ig1010', 'g000ig1011'}
 	
-	local t3Artifacts = {'g001ig0044', 'g001ig0046', 'g000ig3006', 'g001ig0174', 'g001ig0158', 'g000ig3004', 'g000ig9035', 'g001ig0415', 'g001ig0604', 'g001ig0411', 'g000ig2004', 'g001ig0585', 'g001ig0410', 'g001ig0060', 'g001ig0590', 'g001ig0413'}
-	local t3Banners = {'g000ig1016', 'g001ig0052', 'g001ig0367', 'g001ig0375', 'g000ig1017', 'g001ig0359', 'g001ig0500', 'g001ig0363', 'g001ig0373', 'g000ig1015', 'g001ig0362', 'g001ig0290', 'g001ig0291', 'g002ig0003'}
+	local t3Artifacts = {'g001ig0044', 'g001ig0046', 'g000ig3006', 'g001ig0174', 'g001ig0158', 'g000ig3004', 'g001ig0415', 'g001ig0411', 'g000ig2004', 'g001ig0585', 'g001ig0410', 'g001ig0060', 'g001ig0590', 'g001ig0413', 'g001ig0603', 'g002ig0014'}
+	local t3Banners = {'g000ig1016', 'g001ig0052', 'g001ig0375', 'g000ig1017', 'g001ig0359', 'g001ig0500', 'g001ig0363', 'g001ig0373', 'g000ig1015', 'g001ig0362', 'g001ig0290', 'g001ig0291', 'g002ig0003'}
 	local t3Jewels = {'g001ig0419', 'g001ig0597', 'g000ig2006', 'g001ig0116', 'g001ig0430', 'g001ig0037', 'g001ig0156', 'g001ig0424', 'g001ig0425', 'g001ig0539', 'g001ig0429', 'g001ig0602'}
 	local t3Orbs = {'g000ig9025', 'g001ig0136', 'g000ig9021', 'g000ig9016', 'g001ig0480', 'g000ig9028', 'g001ig0303', 'g001ig0459', 'g000ig9023', 'g001ig0457', 'g000ig9014', 'g001ig0203', 'g001ig0466', 'g001ig0462', 'g001ig0183', 'g001ig0455', 'g001ig0477', 'g001ig0489', 'g000ig9027', 'g001ig0131', 'g000ig9032'}
 	local t3Talismans = {'g000ig9136', 'g001ig0185', 'g001ig0202', 'g000ig9103'}
 	local t3Travel = {'g001ig0115', 'g001ig0112', 'g000ig8004', 'g001ig0606', 'g001ig0050'}
 	
-	local t4Artifacts = {'g000ig2005', 'g001ig0179', 'g001ig0039', 'g001ig0102', 'g001ig0412', 'g002ig0013', 'g002ig0010', 'g002ig0017', 'g002ig0014'}
+	local t4Artifacts = {'g000ig2005', 'g001ig0179', 'g001ig0039', 'g001ig0102', 'g001ig0412', 'g002ig0013', 'g002ig0010', 'g002ig0017', 'g001ig0604', 'g002ig0011', 'g000ig9035'}
 	local t4Banners = {'g001ig0144', 'g001ig0366', 'g001ig0153', 'g001ig0360', 'g002ig0016'}
 	local t4Jewels = {'g000ig3005', 'g000ig7010', 'g001ig0038', 'g002ig0015', 'g002ig0012'}
 	
-	local t5Artifacts = {'g001ig0414', 'g001ig0043', 'g000ig3018', 'g000ig3021', 'g000ig3015', 'g000ig3016', 'g002ig0011'}
+	local t5Artifacts = {'g001ig0414', 'g001ig0043', 'g000ig3018', 'g000ig3021', 'g000ig3015', 'g000ig3016'}
 	
 	local wands = { 'g000ig6020', 'g000ig6014', 'g000ig6021', 'g000ig6002', 'g000ig6011', 'g000ig6003', 'g000ig6012', 'g000ig6006', 'g001ig0398', 'g001ig0394', 'g001ig0399', 'g001ig0396', 'g001ig0401', 'g001ig0383', 'g001ig0402', 'g001ig0391', 'g001ig0405', 'g001ig0404', 'g001ig0382', 'g001ig0403', 'g001ig0395', 'g001ig0397' }
 	
@@ -169,7 +167,7 @@ function rewardGenerator(objectType, objectDefinition)
 	local scrolls = { 'g000ig5027', 'g001ig0164', 'g000ig5089', 'g001ig0577', 'g000ig5013', 'g000ig5012', 'g001ig0578', 'g000ig5073', 'g001ig0576', 'g000ig5111', 'g001ig0572', 'g001ig0580', 'g000ig5110', 'g001ig0165', 'g000ig5026', 'g001ig0570', 'g000ig5067', 'g001ig0251', 'g001ig0255', 'g000ig5069', 'g001ig0253', 'g000ig5020', 'g000ig5103', 'g000ig5066', 'g000ig5008', 'g001ig0569', 'g000ig5088', 'g000ig5104', 'g001ig0256', 'g000ig5028', 'g000ig5070', 'g000ig5016', 'g000ig5010', 'g000ig5001', 'g000ig5005', 'g001ig0568', 'g000ig5034', 'g001ig0571', 'g001ig0254', 'g000ig5046', 'g000ig5048', 'g000ig5049', 'g000ig5050', 'g001ig0249', 'g001ig0248', 'g000ig5102', 'g000ig5101', 'g001ig0250', 'g001ig0252', 'g000ig5106', 'g000ig5064', 'g000ig5003', 'g000ig5023', 'g000ig5065', 'g001ig0492', 'g000ig5098', 'g000ig5061', 'g000ig5025', 'g000ig5099', 'g001ig0247', 'g000ig5062', 'g000ig5004', 'g000ig5021', 'g000ig5097', 'g000ig5007', 'g000ig5119', 'g000ig5002', 'g000ig5024', 'g000ig5045', 'g000ig5044', 'g000ig5041', 'g000ig5043' }
 	
 	local permanent = {'g001ig0027', 'g001ig0028', 'g001ig0022', 'g001ig0029', 'g001ig0030', 'g001ig0018', 'g001ig0523', 'g001ig0320', 'g001ig0317', 'g001ig0083', 'g001ig0323', 'g001ig0322', 'g001ig0548', 'g001ig0321', 'g000ig0010', 'g001ig0352', 'g000ig0016', 'g001ig0348', 'g001ig0338', 'g001ig0340', 'g000ig0013', 'g001ig0376', 'g001ig0336', 'g001ig0561', 'g000ig0004'}
-    local perma_big = {'g001ig0563', 'g001ig0025', 'g001ig0024', 'g001ig0013', 'g001ig0015', 'g001ig0014', 'g001ig0009', 'g001ig0011', 'g001ig0012', 'g001ig0030', 'g001ig0021', 'g001ig0031', 'g001ig0035', 'g001ig0324', 'g001ig0308', 'g001ig0325', 'g001ig0326', 'g001ig0318', 'g001ig0019', 'g001ig0316', 'g001ig0314', 'g001ig0310', 'g001ig0312'}
+    local perma_big = {'g001ig0563', 'g001ig0025', 'g001ig0024', 'g001ig0030', 'g001ig0021', 'g001ig0031', 'g001ig0035', 'g001ig0324', 'g001ig0308', 'g001ig0325', 'g001ig0326', 'g001ig0019', 'g001ig0316', 'g001ig0314', 'g001ig0310', 'g001ig0312'}
 
     local protection = {'g001ig0454', 'g001ig0056', 'g001ig0054', 'g001ig0055', 'g001ig0053', 'g001ig0058', 'g001ig0057'}
     
@@ -249,6 +247,7 @@ function rewardGenerator(objectType, objectDefinition)
         end
 
 		table.insert(rewardTable, { id = potionLow[math.random(#potionLow)], min = 1, max = 1})
+        table.insert(rewardTable, { id = perma_big[math.random(#perma_big)], min = 1, max = 1})
 	elseif objectType == 'town' and objectDefinition == 'bigT4' then
 		table.insert(rewardTable, { id = 'g000ig0006', min = 1, max = 1 })
 		table.insert(rewardTable, { id = 'g000ig0001', min = 1, max = 1 })
@@ -442,7 +441,7 @@ function rewardGenerator(objectType, objectDefinition)
 		table.insert(rewardTable, { id = potionLow[math.random(#potionLow)], min = 1, max = 1})
 		table.insert(rewardTable, { id = smallValuable[math.random(#smallValuable)], min = 1, max = 1})		
 		table.insert(rewardTable, { id = smallMana[math.random(#smallMana)], min = 1, max = 1})
-        table.insert(rewardTable, { id = t1Movement[math.random(#t1Movement)], min = 1, max = 1})
+        table.insert(rewardTable, { id = 'g000ig5100', min = 1, max = 1})
         table.insert(rewardTable, { id = scrolls[math.random(#scrolls)], min = 1, max = 1})
 	elseif objectType == 'guard' and objectDefinition == 'townT3' then
 		table.insert(rewardTable, { id = 'g000ig0001', min = 1, max = 1 })
@@ -473,7 +472,6 @@ function rewardGenerator(objectType, objectDefinition)
 		table.insert(rewardTable, { id = bigMana[math.random(#bigMana)], min = 1, max = 1})
 		table.insert(rewardTable, { id = t2Orbs[math.random(#t2Orbs)], min = 1, max = 1})
 		table.insert(rewardTable, { id = potionHigh[math.random(#potionHigh)], min = 1, max = 1})
-        table.insert(rewardTable, { id = perma_big[math.random(#perma_big)], min = 1, max = 1})
 	elseif objectType == 'guard' and objectDefinition == 'townT5' then
 
 		for i = 1,2 do
@@ -494,7 +492,7 @@ function rewardGenerator(objectType, objectDefinition)
 		table.insert(rewardTable, { id = mediumMana[math.random(#mediumMana)], min = 1, max = 1})
 		table.insert(rewardTable, { id = 'g000ig0001', min = 1, max = 1 })
 		table.insert(rewardTable, { id = 'g000ig0006', min = 2, max = 2 })
-        table.insert(rewardTable, { id = t1Movement[math.random(#t1Movement)], min = 1, max = 1})
+        table.insert(rewardTable, { id = 'g000ig5100', min = 1, max = 1})
 
 		for i = 1,3 do
             x = math.random(1, #potionLow)
@@ -516,7 +514,6 @@ function rewardGenerator(objectType, objectDefinition)
 		table.insert(rewardTable, { id = t3Orbs[math.random(#t3Orbs)], min = 1, max = 1})
 		table.insert(rewardTable, { id = bigValuable[math.random(#bigValuable)], min = 1, max = 1})
 		table.insert(rewardTable, { id = t3Artifacts[math.random(#t3Artifacts)], min = 1, max = 1})
-        table.insert(rewardTable, { id = t2Movement[math.random(#t2Movement)], min = 1, max = 1})
 	elseif objectType == 'guard' and objectDefinition == 'guardBufferBig' then
 		table.insert(rewardTable, { id = scrolls[math.random(#scrolls)], min = 1, max = 1})
 		table.insert(rewardTable, { id = t2Orbs[math.random(#t2Orbs)], min = 1, max = 1})
@@ -524,7 +521,7 @@ function rewardGenerator(objectType, objectDefinition)
 		table.insert(rewardTable, { id = 'g000ig0006', min = 2, max = 2 })
 		table.insert(rewardTable, { id = mediumValuable[math.random(#mediumValuable)], min = 1, max = 1})
 		table.insert(rewardTable, { id = mediumMana[math.random(#mediumMana)], min = 1, max = 1})
-        table.insert(rewardTable, { id = t2Movement[math.random(#t2Movement)], min = 1, max = 1})
+        table.insert(rewardTable, { id = 'g000ig5100', min = 1, max = 1})
 	elseif objectType == 'guard' and objectDefinition == 'guardBigTreasure' then
 		table.insert(rewardTable, { id = scrolls[math.random(#scrolls)], min = 1, max = 1})
 		table.insert(rewardTable, { id = t2Orbs[math.random(#t2Orbs)], min = 1, max = 1})
@@ -548,7 +545,7 @@ function rewardGenerator(objectType, objectDefinition)
 		table.insert(rewardTable, { id = mediumValuable[math.random(#mediumValuable)], min = 1, max = 1})
 		table.insert(rewardTable, { id = t3Jewels[math.random(#t3Jewels)], min = 1, max = 1})
 
-    elseif objectType == 'merchant' and objectDefinition == 'T1' then
+    elseif objectType == 'merchant' and objectDefinition == 'T1-1' then
         table.insert(rewardTable, { id = 'g000ig0006', min = 5, max = 5 })
         table.insert(rewardTable, { id = 'g000ig0001', min = 3, max = 3 })
         table.insert(rewardTable, { id = 'g000ig0005', min = 5, max = 5 })
@@ -581,6 +578,33 @@ function rewardGenerator(objectType, objectDefinition)
         end
 
         table.insert(rewardTable, { id = t2Orbs[math.random(#t2Orbs)], min = 1, max = 1})
+
+        for i = 1,4 do
+            x = math.random(1, #t1Talismans)
+            table.insert(rewardTable, { id = t1Talismans[x], min = 1, max = 1})
+            table.remove(t1Talismans, x)
+        end
+
+    elseif objectType == 'merchant' and objectDefinition == 'T1-2' then
+        table.insert(rewardTable, { id = 'g000ig0006', min = 5, max = 5 })
+        table.insert(rewardTable, { id = 'g000ig0001', min = 3, max = 3 })
+        table.insert(rewardTable, { id = 'g000ig0005', min = 5, max = 5 })
+        table.insert(rewardTable, { id = 'g001ig0378', min = 5, max = 5 })
+        table.insert(rewardTable, { id = 'g000ig0002', min = 3, max = 3 })
+        table.insert(rewardTable, { id = 'g000ig0011', min = 3, max = 3 })
+        table.insert(rewardTable, { id = 'g000ig0008', min = 3, max = 3 })
+        table.insert(rewardTable, { id = 'g000ig0014', min = 3, max = 3 })
+        table.insert(rewardTable, { id = 'g000ig0003', min = 3, max = 3 })
+        table.insert(rewardTable, { id = 'g000ig0015', min = 3, max = 3 })
+        table.insert(rewardTable, { id = 'g000ig0009', min = 3, max = 3 })
+        table.insert(rewardTable, { id = 'g000ig0012', min = 3, max = 3 })
+        table.insert(rewardTable, { id = 'g000ig0021', min = 1, max = 1 })
+        table.insert(rewardTable, { id = 'g000ig0022', min = 1, max = 1 })
+        table.insert(rewardTable, { id = 'g000ig0023', min = 1, max = 1 })
+        table.insert(rewardTable, { id = 'g000ig0024', min = 1, max = 1 })
+        table.insert(rewardTable, { id = 'g001ig0125', min = 1, max = 1 })
+        table.insert(rewardTable, { id = 'g001ig0036', min = 1, max = 1 })
+
         table.insert(rewardTable, { id = 'g001ig0107', min = 1, max = 1 })
         table.insert(rewardTable, { id = 'g001ig0109', min = 1, max = 1 })
         table.insert(rewardTable, { id = 'g001ig0106', min = 1, max = 1 })
@@ -602,12 +626,6 @@ function rewardGenerator(objectType, objectDefinition)
         end
 
         table.insert(rewardTable, { id = t1Jewels[math.random(#t1Jewels)], min = 1, max = 1})
-
-        for i = 1,4 do
-            x = math.random(1, #t1Talismans)
-            table.insert(rewardTable, { id = t1Talismans[x], min = 1, max = 1})
-            table.remove(t1Talismans, x)
-        end
 
         for i = 1,2 do
             x = math.random(1, #protection)
@@ -956,7 +974,8 @@ function getStack(tier, stackCount, itemTypesTable, itemValuesTable)
     elseif tier >= 3 then
         stackSubraces = subraceRandomizer(2)
     end
-        
+    
+    local t0Items = { { id = 'g000ig0001', min = 1, max = 1 }, { id = 'g001ig0378', min = 2, max = 2 }, { id = 'g000ig0006', min = 2, max = 2 } }
 
     local t1Items = { { id = 'g001ig0180', min = 1, max = 2 }, { id = 'g000ig0005', min = 1, max = 1 }, { id = 'g001ig0378', min = 1, max = 1 }, { id = 'g000ig0001', min = 1, max = 1 } }
     local t2Items = { { id = 'g001ig0180', min = 1, max = 2 }, { id = 'g000ig0005', min = 1, max = 1 }, { id = 'g000ig0006', min = 1, max = 1 } } 
@@ -966,7 +985,9 @@ function getStack(tier, stackCount, itemTypesTable, itemValuesTable)
     
     local stackItems = { }
 
-    if (tier == 1) then
+    if (tier == 0) then
+        stackItems = t0Items
+    elseif (tier == 1) then
         stackItems = t1Items
     elseif (tier == 2) then
         stackItems = t2Items
@@ -989,14 +1010,14 @@ function getStack(tier, stackCount, itemTypesTable, itemValuesTable)
         experienceValue.min = 120 * stackCount
         experienceValue.max = 160 * stackCount
     elseif (tier == 1) then
-        experienceValue.min = 200 * stackCount * 1.12
-        experienceValue.max = 240 * stackCount * 1.12
+        experienceValue.min = 200 * stackCount * 1.1
+        experienceValue.max = 240 * stackCount * 1.1
     elseif (tier == 2) then
-        experienceValue.min = 200 * stackCount * tier * 0.92
-        experienceValue.max = 240 * stackCount * tier * 0.92
+        experienceValue.min = 200 * stackCount * tier * 0.9
+        experienceValue.max = 240 * stackCount * tier * 0.9
     elseif (tier > 2) then
-        experienceValue.min = 230 * stackCount * tier * 1.14
-        experienceValue.max = 260 * stackCount * tier * 1.14
+        experienceValue.min = 230 * stackCount * tier * 1.1
+        experienceValue.max = 260 * stackCount * tier * 1.1
     end
 
     return {
@@ -1022,11 +1043,11 @@ function getGuard(tier, itemsTable, subR)
     local experienceValue = { }
     
     if (tier == 1) then
-        experienceValue.min = 200 * 1.1
-        experienceValue.max = 240 * 1.1
+        experienceValue.min = 200
+        experienceValue.max = 240
     elseif (tier == 2) then
-        experienceValue.min = 210 * tier * 0.92
-        experienceValue.max = 240 * tier * 0.92
+        experienceValue.min = 210 * tier * 0.9
+        experienceValue.max = 240 * tier * 0.9
     elseif (tier == 3) then
         experienceValue.min = 230 * tier
         experienceValue.max = 260 * tier
@@ -1121,8 +1142,8 @@ end
 
 function getMageTower(tier, merchGuard)
     local t1SpellSet = { 'g000ss0043', 'g000ss0041', 'g000ss0044', 'g000ss0045', 'g000ss0024', 'g000ss0002', 'g000ss0009', 'g000ss0007', 'g000ss0097', 'g000ss0021', 'g000ss0004', 'g000ss0062', 'g000ss0178', 'g000ss0099', 'g000ss0134', 'g000ss0025', 'g000ss0061', 'g000ss0098', 'g000ss0065', 'g000ss0003', 'g000ss0023', 'g000ss0064', 'g000ss0106', 'g000ss0126', 'g000ss0181', 'g000ss0101', 'g000ss0102', 'g000ss0179', 'g000ss0022', 'g000ss0189', 'g000ss0048', 'g000ss0107', 'g000ss0028', 'g000ss0104', 'g000ss0067' }
-    local t2SpellSet = { 'g000ss0050', 'g000ss0049', 'g000ss0046', 'g000ss0185', 'g000ss0030', 'g000ss0034', 'g000ss0197', 'g000ss0187', 'g000ss0198', 'g000ss0008', 'g000ss0066', 'g000ss0103', 'g000ss0184', 'g000ss0069', 'g000ss0029', 'g000ss0183', 'g000ss0186', 'g000ss0068', 'g000ss0054', 'g000ss0109', 'g000ss0033', 'g000ss0014', 'g000ss0072' }
-    local t3SpellSet = { 'g000ss0052', 'g000ss0127', 'g000ss0089', 'g000ss0051', 'g000ss0199', 'g000ss0026', 'g000ss0166', 'g000ss0125', 'g000ss0209', 'g000ss0201', 'g000ss0111', 'g000ss0205', 'g000ss0073', 'g000ss0012', 'g000ss0013', 'g000ss0074', 'g000ss0006', 'g000ss0208', 'g000ss0100', 'g000ss0206', 'g000ss0207' }
+    local t2SpellSet = { 'g000ss0050', 'g000ss0049', 'g000ss0046', 'g000ss0185', 'g000ss0030', 'g000ss0034', 'g000ss0197', 'g000ss0187', 'g000ss0198', 'g000ss0008', 'g000ss0066', 'g000ss0103', 'g000ss0184', 'g000ss0069', 'g000ss0029', 'g000ss0183', 'g000ss0186', 'g000ss0068' }
+    local t3SpellSet = { 'g000ss0052', 'g000ss0127', 'g000ss0089', 'g000ss0051', 'g000ss0199', 'g000ss0026', 'g000ss0166', 'g000ss0125', 'g000ss0209', 'g000ss0201', 'g000ss0111', 'g000ss0205', 'g000ss0073', 'g000ss0012', 'g000ss0013', 'g000ss0074', 'g000ss0208', 'g000ss0206', 'g000ss0207' }
 
     local spellsSet = { }
 
@@ -1509,7 +1530,13 @@ function getStartingZone(zoneId, playerRace, zoneSize)
         merchants = {
             {
                 goods = {
-                    items = rewardGenerator('merchant', 'T1'),
+                    items = rewardGenerator('merchant', 'T1-1'),
+                },
+                guard = getGuard(2, rewardGenerator('guard', 'merchGuardT2'), subraceRandomizer(1))   
+            },
+            {
+                goods = {
+                    items = rewardGenerator('merchant', 'T1-2'),
                 },
                 guard = getGuard(2, rewardGenerator('guard', 'merchGuardT2'), subraceRandomizer(1))   
             },
@@ -1534,35 +1561,6 @@ function getBufferZone(zoneId, playerRace, zoneSize)
     elseif zoneId == 5 or zoneId == 7 then
         zoneMines = getBufferZoneMinesRight(playerRace)
     end
-
-    -- local zoneMerchants = {}
-    -- if zoneId == 1 or zoneId == 5 then
-    --     zoneMerchants = {
-    --         {
-    --             goods = {
-    --                 items = rewardGenerator('merchant', 'buffer'),
-    --             },
-    --             guard = getGuard(2, rewardGenerator('guard', 'merchGuardT2'), subraceRandomizer(1))
-    --         },
-    --     }
-    -- end
-
-    -- local zoneMarkets = {}
-    -- if zoneId == 3 or zoneId == 7 then
-    --     zoneMarkets = {
-    --     {
-    --         stock = {
-    --             {resource = Resource.Gold, value = { min = 3000, max = 3000 }},
-    --             {resource = Resource.LifeMana, value = { min = 1000, max = 1000 }},
-    --             {resource = Resource.DeathMana, value = { min = 1000, max = 1000 }},
-    --             {resource = Resource.InfernalMana, value = { min = 1000, max = 1000 }},
-    --             {resource = Resource.RunicMana, value = { min = 1000, max = 1000 }},
-    --             {resource = Resource.GroveMana, value = { min = 1000, max = 1000 }}
-    --         },
-    --         guard = getGuard(2, rewardGenerator('guard', 'merchGuardT2'), subraceRandomizer(1))
-    --     }
-    -- }
-    -- end
 
     local zoneStacks = {
             getStack(2, 2, { Item.PotionBoost }, { min = 150, max = 200 }),
@@ -1666,9 +1664,8 @@ function getTreasureZone(zoneId, zoneSize)
         }
 
     local zoneTowns = {
-            getNeutralTown(5, rewardGenerator('town', 'centerT5'), getGuard(5, rewardGenerator('guard', 'townT5'), subraceRandomizer(GO))),
+            getNeutralTown(5, rewardGenerator('town', 'centerT5'), getGuard(6, rewardGenerator('guard', 'townT5'), subraceRandomizer(GO))),
             getNeutralTown(3, rewardGenerator('town', 'centerT3'), getGuard(3, rewardGenerator('guard', 'townT3Center'), subraceRandomizer(2))),
-            --getNeutralTown(3, rewardGenerator('town', 'centerT3'), getGuard(3, rewardGenerator('guard', 'townT3Center'), subraceRandomizer(2))),
         }
 
     local zoneMerchants = {
@@ -1690,8 +1687,6 @@ function getTreasureZone(zoneId, zoneSize)
 		id = zoneId,
 		type = Zone.Treasure,
 		size = zoneSize,
-        border = Border.SemiOpen,
-        gapChance = 10,
 
         towns = zoneTowns,
 
@@ -1775,10 +1770,22 @@ function getBigZone(zoneId, zoneSize)
         }
 
     local zoneOthers = { }
+    local zoneMarket = { }
 
     if zoneId == bigZone0Id then
         zoneOthers[1] = { getMercenary(getGuard(3, rewardGenerator('guard', 'otherGuard')), subraceRandomizer(2)) }
         zoneOthers[2] = { }
+        zoneMarket[1] = {
+            stock = {
+                {resource = Resource.Gold, value = { min = 3000, max = 3000 }},
+                {resource = Resource.LifeMana, value = { min = 1000, max = 1000 }},
+                {resource = Resource.DeathMana, value = { min = 1000, max = 1000 }},
+                {resource = Resource.InfernalMana, value = { min = 1000, max = 1000 }},
+                {resource = Resource.RunicMana, value = { min = 1000, max = 1000 }},
+                {resource = Resource.GroveMana, value = { min = 1000, max = 1000 }}
+            },
+            guard = getGuard(2, rewardGenerator('guard', 'merchGuardT2'), subraceRandomizer(1))
+        }
     elseif zoneId == bigZone4Id then
         zoneOthers[1] = { }
         zoneOthers[2] = { { guard = getGuard(3, rewardGenerator('guard', 'otherGuard'), subraceRandomizer(2)) } }
@@ -1813,19 +1820,7 @@ function getBigZone(zoneId, zoneSize)
 
         trainers = zoneOthers[2],
 
-        resourceMarkets = {
-            {
-                stock = {
-                    {resource = Resource.Gold, value = { min = 3000, max = 3000 }},
-                    {resource = Resource.LifeMana, value = { min = 1000, max = 1000 }},
-                    {resource = Resource.DeathMana, value = { min = 1000, max = 1000 }},
-                    {resource = Resource.InfernalMana, value = { min = 1000, max = 1000 }},
-                    {resource = Resource.RunicMana, value = { min = 1000, max = 1000 }},
-                    {resource = Resource.GroveMana, value = { min = 1000, max = 1000 }}
-                },
-                guard = getGuard(2, rewardGenerator('guard', 'merchGuardT2'), subraceRandomizer(1))
-            }
-        },
+        resourceMarkets = zoneMarket,
 
         mages = {
             getMageTower(2, getGuard(3, rewardGenerator('guard', 'merchGuardT3'), subraceRandomizer(2)))
@@ -1895,6 +1890,11 @@ template = {
         'g000ss0083', --свет дня
         'g000ss0092', --terra illudere
         'g000ss0087', --ветер путешествий
+        'g000ss0006',
+        'g000ss0100',
+        'g000ss0113',
+        'g000ss0032',
+        'g000ss0195',
     },
     forbiddenItems = {
         'g000ig6008', --Посох невидимости
