@@ -178,6 +178,6 @@ settings = {
 	},
 
 	-- Create mss32 proxy dll log files with debug info
-	debugHooks = true,
+	--debugHooks = true,
 }
 
