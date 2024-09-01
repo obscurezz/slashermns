@@ -25,11 +25,11 @@ function getAttack2Power(unit, prev)
 end
 
 function getAttackDamage(unit, prev)
-	return svMultimplyDamage1(unit, prev, 0.15)
+	return svMultimplyDamage1(unit, prev, 0.20)
 end
 
 function getAttack2Damage(unit, prev)
-	return svMultimplyDamage2(unit, prev, 0.15)
+	return svMultimplyDamage2(unit, prev, 0.20)
 end
 
 function getImmuneToAttack(unit, attack, prev)

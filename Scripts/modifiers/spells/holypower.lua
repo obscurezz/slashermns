@@ -18,25 +18,14 @@ function canApplyAsBoostSpell()
 end
 
 function getAttackPower(unit, prev)
-	return svMultimplyPower1(unit, prev, 0.1)
+	return svMultimplyPower1(unit, prev, 0.15)
 end
 
-function getAttack2Power(unit, prev)
-	return svMultimplyPower2(unit, prev, 0.1)
+
+function getAttackDamage(unit, prev)
+	return svMultimplyDamage1(unit, prev, 0.15)
 end
 
-function getAttackCritHit(unit, prev)
-    return true
-end
-
-function getAttackCritDamage(unit, prev)
-    return svAddCrit1Damage(unit, prev, 10)
-end
-
-function getAttack2CritHit(unit, prev)
-    return true
-end
-
-function getAttack2CritDamage(unit, prev)
-    return svAddCrit2Damage(unit, prev, 10)
+function getAttack2Damage(unit, prev)
+	return svMultimplyDamage2(unit, prev, 0.15)
 end

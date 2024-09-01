@@ -16,7 +16,7 @@ function getAttackDamage(unit, prev)
 	local player = _GroupInfo_getUnitPlayer(unit)
 	if player ~= nil and player.race ~= Race.Neutral then
 		local InfernalMana = player.bank.infernalMana
-		bonus_damage = math.min(unit.impl.attack1.damage/2, math.floor(InfernalMana/40))
+		bonus_damage = math.min(unit.impl.attack1.damage/2, math.floor(InfernalMana/55))
 		return svFlatEffectDamage1(unit, prev, bonus_damage)
 	end
 	return prev

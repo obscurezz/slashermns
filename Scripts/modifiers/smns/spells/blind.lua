@@ -10,9 +10,9 @@ function getModifierDescTxt(unit, prev)
 end
 
 function getAttackPower(unit, prev)
-   return svMultimplyPower1(unit, prev, -0.15)
+   return svMultimplyPower1(unit, prev, -0.10)
 end
 
 function getAttack2Power(unit, prev)
-   return svMultimplyPower2(unit, prev, -0.15)
+   return svMultimplyPower2(unit, prev, -0.10)
 end

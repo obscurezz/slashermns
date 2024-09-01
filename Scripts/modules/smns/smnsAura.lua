@@ -601,7 +601,7 @@ function _smns_flatInitiativeBonus(unit, prev)
 
 	--Тиамат +15 регена за труп
 	if _GroupInfo_UnitHasModifierValue(unit, Timamat15regenPerCorpse) then
-		result = smnsConditions_getCorpseBonus(unit, 7)
+		result = smnsConditions_getCorpseBonus(unit, 6)
 	end
 --END
 
@@ -1812,7 +1812,14 @@ end
 function _smns_CritPower(unit)
 	local mods = _GroupInfo_UnitModifiers(unit)
 	local BonusCritPower = 0
-
+--Мастер клинка +3% урона за каждый уровень лидера отряда
+	if _GroupInfo_UnitHasModifierValue(unit, SwordMaster3DamagePerHeroLVL) then
+		local Leader = _GroupInfo_getCurrentGroupLeader()
+		if Leader ~= nil and Leader.hp > 0 then
+			BonusCritPower = 3 * Leader.impl.level
+		end
+	end
+--END
 	return BonusCritPower
 end
 
