@@ -323,3 +323,39 @@ function _target_PhoenixSwordAdjacentAndUncovered(attacker, selected, allies, ta
 
 	return result
 end
+
+function _target_SphereControl(attacker, selected, allies, targets, targetsAreAllies, item, battle)
+	if targetsAreAllies then
+		return targets
+	end
+
+	local result = {}
+	if attacker.unit.impl.attack1.type == Attack.Paralyze then
+		for i = 1, #targets do
+			local u = targets[i].unit
+			if u.impl:getImmuneToAttackClass(Attack.Paralyze) == Immune.NotImmune and u.impl:getImmuneToAttackSource(Source.Mind) then
+				table.insert(result, targets[i])
+			end
+		end
+	end
+
+	if attacker.unit.impl.attack1.type == Attack.Fear then
+		for i = 1, #targets do
+			local u = targets[i].unit
+			if u.impl:getImmuneToAttackClass(Attack.Fear) == Immune.NotImmune and u.impl:getImmuneToAttackSource(Source.Mind) then
+				table.insert(result, targets[i])
+			end
+		end
+	end
+
+	if attacker.unit.impl.attack1.type == Attack.TransformOther then
+		for i = 1, #targets do
+			local u = targets[i].unit
+			if u.impl:getImmuneToAttackClass(Attack.TransformOther) == Immune.NotImmune and u.impl:getImmuneToAttackSource(Source.Mind) then
+				table.insert(result, targets[i])
+			end
+		end
+	end
+
+	return result
+end

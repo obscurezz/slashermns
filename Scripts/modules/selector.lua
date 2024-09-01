@@ -117,6 +117,8 @@ function _selector_getChoices(methodName, attacker, selected, allies, targets, t
 		result = _target_PhoenixSwordAdjacent(attacker, selected, allies, targets, targetsAreAllies, item, battle)
 	elseif methodName == "_target_PhoenixSwordAdjacentAndUncovered" then
 		result = _target_PhoenixSwordAdjacentAndUncovered(attacker, selected, allies, targets, targetsAreAllies, item, battle)
+	elseif methodName == "_target_SphereControl" then
+		result = _target_SphereControl(attacker, selected, allies, targets, targetsAreAllies, item, battle)
 	end
 	return result
 end
