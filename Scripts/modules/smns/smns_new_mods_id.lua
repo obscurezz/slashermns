@@ -165,3 +165,9 @@ BloodRavenScythe = Id.new('g070um0315').value
 KriomantDeboost = Id.new('g070um0065').value
 DodgeBanner = Id.new('g070um0322').value
 Archdruid = Id.new('g070um0327').value
+
+--2.2f
+NecromanceryWarrior = Id.new('').value
+NecromanceryMage = Id.new('').value
+NecromanceryArcher = Id.new('').value
+NecromanceryDrake = Id.new('').value

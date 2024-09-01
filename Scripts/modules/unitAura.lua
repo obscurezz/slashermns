@@ -236,25 +236,23 @@ function _unitAura_ImmuneToAttack(unit, attack, prev)
 		local workshopBonus_Always = Workshop_getBonus_ImmuneToAttack_Always(scenario, unit, attack, gotGroup)
 		result = Workshop_changeImmuneClass(result, workshopBonus_Once, workshopBonus_Always)
 	end
-
-	-- if (attack == Attack.Poison and _Wyrm_Deboost_Effect(unit) == 1)
-	-- or (attack == Attack.Blister and _Flamethrower_Deboost_Effect(unit) == 1)
-	-- or (attack == Attack.Frostbite and _Kriomant_Deboost_Effect(unit) == 1)
-	-- or (scenario.day >= 10 and attack == Attack.Shatter and _Guard_Resistance_Deboost_Effect(unit) == 1)
-	-- then
-	-- 	svSetAttackClassVulnerabilty(unit, attack, true)
-	-- else
-	-- 	svSetAttackClassVulnerabilty(unit, attack, false)
-	-- end
-	if _Wyrm_Deboost_Effect(unit) == 1 then
-		svSetAttackClassVulnerabilty(unit, Attack.Poison, true)
+	
+	if _Wyrm_Deboost_Effect(unit) == 1 then 
+		if not _GroupInfo_UnitHasModifierValue(unit, Id.new('g014um1022').value) then
+			svSetAttackClassVulnerabilty(unit, Attack.Poison, true)
+		end
 	end
 	if _Flamethrower_Deboost_Effect(unit) == 1 then
-		svSetAttackClassVulnerabilty(unit, Attack.Blister, true)
+		if not _GroupInfo_UnitHasModifierValue(unit, Id.new('g014um1022').value) then
+			svSetAttackClassVulnerabilty(unit, Attack.Blister, true)
+		end
 	end
 	if _Kriomant_Deboost_Effect(unit) == 1 then
-		svSetAttackClassVulnerabilty(unit, Attack.Frostbite, true)
+		if not _GroupInfo_UnitHasModifierValue(unit, Id.new('g014um1022').value) then
+			svSetAttackClassVulnerabilty(unit, Attack.Frostbite, true)
+		end
 	end
+
 	if scenario.day >= 10 and _Guard_Resistance_Deboost_Effect(unit) == 1 then
 		svSetAttackClassVulnerabilty(unit, Attack.Shatter, true)
 	end
@@ -367,18 +365,14 @@ function _unitAura_ImmuneToSource(unit, source, prev)
 	and _GroupInfo_UnitModifierAmount(mods, uaVulnerabilityModifiers[source]) > 0 
 	and _unitAura_SpellDebuffResistance_total(unit, mods) < 100 then
 		svSetAttackSourceVulnerability(unit, source, true)
-	-- elseif (source == Source.Death and _Wyrm_Deboost_Effect(unit) == 1)
-	-- or (source == Source.Water and _Kriomant_Deboost_Effect(unit) == 1) 
-	-- then
-	-- 	svSetAttackSourceVulnerability(unit, source, true)
 	else
 		svSetAttackSourceVulnerability(unit, source, false)
 	end
 
-	if _Wyrm_Deboost_Effect(unit) == 1 then
+	if _Wyrm_Deboost_Effect(unit) == 1 and not _GroupInfo_UnitHasModifierValue(unit, Id.new('g090um0001').value) then
 		svSetAttackSourceVulnerability(unit, Source.Death, true)
 	end
-	if _Kriomant_Deboost_Effect(unit) == 1 then
+	if _Kriomant_Deboost_Effect(unit) == 1 and not _GroupInfo_UnitHasModifierValue(unit, Id.new('g000um2022').value) then
 		svSetAttackSourceVulnerability(unit, Source.Water, true)
 	end
 

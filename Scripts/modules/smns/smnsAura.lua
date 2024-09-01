@@ -49,24 +49,40 @@ function _smns_multiplicativeHitPointBonus(unit, prev)
 --Аура 8% ОЗ END
 
 -- Некромантия +%ХП
-    if _GroupInfo_stackHasModifierAmount(NecroLead) > 0  and _GroupInfo_UnitModifierAmount(mods, NecromanceryMod) > 0 then
-        local Leader = _GroupInfo_getCurrentGroupLeader()
-        if Leader ~= nil and Leader.hp > 0 then
-            local LeaderLVL = Leader.impl.level
-            local u
-            local boostValue = 0
-            local unitGroupSlots = unitGroup.slots
-            for i = 1, #unitGroupSlots do
-                u = unitGroupSlots[i].unit
-                if u ~= nil and u.hp > 0 and _GroupInfo_UnitHasModifierValue(u, NecroBoost) then
-                    boostValue = boostValue + 1 + 0.35 * (u.impl.level - u.baseImpl.level)
-                    break
-                end
-            end
+    -- if _GroupInfo_stackHasModifierAmount(NecroLead) > 0  and _GroupInfo_UnitModifierAmount(mods, NecromanceryMod) > 0 then
+    --     local Leader = _GroupInfo_getCurrentGroupLeader()
+    --     if Leader ~= nil and Leader.hp > 0 then
+    --         local LeaderLVL = Leader.impl.level
+    --         local u
+    --         local boostValue = 0
+    --         local unitGroupSlots = unitGroup.slots
+    --         for i = 1, #unitGroupSlots do
+    --             u = unitGroupSlots[i].unit
+    --             if u ~= nil and u.hp > 0 and _GroupInfo_UnitHasModifierValue(u, NecroBoost) then
+    --                 boostValue = boostValue + 1 + 0.35 * (u.impl.level - u.baseImpl.level)
+    --                 break
+    --             end
+    --         end
 
-            BonusHP = BonusHP + (3 + boostValue)*LeaderLVL
-        end
-    end
+    --         BonusHP = BonusHP + (3 + boostValue)*LeaderLVL
+    --     end
+    -- end
+	if _GroupInfo_UnitHasModifierValue(unit, NecromanceryWarrior) then
+		local Leader = _GroupInfo_getCurrentGroupLeader()
+		if Leader ~= nil and Leader.hp > 0 and _GroupInfo_UnitHasModifierValue(Leader, NecroLead) then
+			local LeaderLVL = Leader.impl.level
+			local u
+			local unitGroupSlots = unitGroup.slots
+			local boostValue = 0
+			for i = 1, #unitGroupSlots do
+				if u ~= nil and u.hp > 0 and _GroupInfo_UnitHasModifierValue(u, NecroBoost) then
+					boostValue = boostValue + 1 + 0.35 * (u.impl.level - u.baseImpl.level)
+					break
+				end
+			end
+			BonusHP = BonusHP + (3 + boostValue)*LeaderLVL
+		end
+	end
 -- Некромантия +%ХП end
 
 --В тени Иггдрасиля I (Алхимик 10% ХП если гигант в отряде)
@@ -175,6 +191,25 @@ function _smns_flatArmorBonus(unit, prev)
 
 
 	--Броня предков END
+
+	--necromanery
+	if _GroupInfo_UnitHasModifierValue(unit, NecromanceryArcher) then
+		local Leader = _GroupInfo_getCurrentGroupLeader()
+		if Leader ~= nil and Leader.hp > 0 and _GroupInfo_UnitHasModifierValue(Leader, NecroLead) then
+			local LeaderLVL = Leader.impl.level
+			local u
+			local unitGroupSlots = unitGroup.slots
+			local boostValue = 0
+			for i = 1, #unitGroupSlots do
+				if u ~= nil and u.hp > 0 and _GroupInfo_UnitHasModifierValue(u, NecroBoost) then
+					boostValue = boostValue + 1 + 0.35 * (u.impl.level - u.baseImpl.level)
+					break
+				end
+			end
+			BonusArmor = BonusArmor + (3 + boostValue)*LeaderLVL
+		end
+	end
+	--necromancery END
 	
 	--Покров Мортис
 	if _GroupInfo_stackHasModifierAmount(DlanMortis) > 0 and (_GroupInfo_UnitHasModifierValue(unit, NecroLead) or _GroupInfo_UnitHasModifierValue(unit, NecromanceryMod)) then
@@ -317,24 +352,41 @@ function _smns_multiplicativeDamageHealBonus(unit, prev, attackN, unitMods)
 --end бонус Лорда-мага
 	
 -- Некромантия +%Урон 
-    if _GroupInfo_stackHasModifierAmount(NecroLead) > 0  and _GroupInfo_UnitModifierAmount(mods, NecromanceryMod) > 0 then
-        local Leader = _GroupInfo_getCurrentGroupLeader()
-        if Leader ~= nil and Leader.hp > 0 then
-            local LeaderLVL = Leader.impl.level
-            local u
-            local boostValue = 0
-            local unitGroupSlots = unitGroup.slots
-            for i = 1, #unitGroupSlots do
-                u = unitGroupSlots[i].unit
-                if u ~= nil and u.hp > 0 and _GroupInfo_UnitHasModifierValue(u, NecroBoost) then
-                    boostValue = boostValue + 1 + 0.35 * (u.impl.level - u.baseImpl.level)
-                    break
-                end
-            end
+    -- if _GroupInfo_stackHasModifierAmount(NecroLead) > 0  and _GroupInfo_UnitModifierAmount(mods, NecromanceryMod) > 0 then
+    --     local Leader = _GroupInfo_getCurrentGroupLeader()
+    --     if Leader ~= nil and Leader.hp > 0 then
+    --         local LeaderLVL = Leader.impl.level
+    --         local u
+    --         local boostValue = 0
+    --         local unitGroupSlots = unitGroup.slots
+    --         for i = 1, #unitGroupSlots do
+    --             u = unitGroupSlots[i].unit
+    --             if u ~= nil and u.hp > 0 and _GroupInfo_UnitHasModifierValue(u, NecroBoost) then
+    --                 boostValue = boostValue + 1 + 0.35 * (u.impl.level - u.baseImpl.level)
+    --                 break
+    --             end
+    --         end
 
-            BonusDMG = BonusDMG + (3 + boostValue)*LeaderLVL
-        end
-    end
+    --         BonusDMG = BonusDMG + (3 + boostValue)*LeaderLVL
+    --     end
+    -- end
+
+	if _GroupInfo_UnitHasModifierValue(unit, NecromanceryMage) then
+		local Leader = _GroupInfo_getCurrentGroupLeader()
+		if Leader ~= nil and Leader.hp > 0 and _GroupInfo_UnitHasModifierValue(Leader, NecroLead) then
+			local LeaderLVL = Leader.impl.level
+			local u
+			local unitGroupSlots = unitGroup.slots
+			local boostValue = 0
+			for i = 1, #unitGroupSlots do
+				if u ~= nil and u.hp > 0 and _GroupInfo_UnitHasModifierValue(u, NecroBoost) then
+					boostValue = boostValue + 1 + 0.35 * (u.impl.level - u.baseImpl.level)
+					break
+				end
+			end
+			BonusDMG = BonusDMG + (3 + boostValue)*LeaderLVL
+		end
+	end
 -- Некромантия +%Урон END
 
 	--древняя тьма
@@ -1712,10 +1764,29 @@ function _smns_multiplicativePower(unit, prev, attackN, unitMods)
 	local BonusPower = 0 + _Spawn_Tiamat_Deboost_Effect(unit) + _Storm_Deboost_Effect(unit)
 
 	--Аура сфокусированности
-		if _GroupInfo_stackHasModifierAmount(AuraAccuracity) > 0 then
-			BonusPower = BonusPower + 8
+	if _GroupInfo_stackHasModifierAmount(AuraAccuracity) > 0 then
+		BonusPower = BonusPower + 8
 	end
 	--Аура сфокусированности END
+
+	--necromanery
+	if _GroupInfo_UnitHasModifierValue(unit, NecromanceryDrake) then
+		local Leader = _GroupInfo_getCurrentGroupLeader()
+		if Leader ~= nil and Leader.hp > 0 and _GroupInfo_UnitHasModifierValue(Leader, NecroLead) then
+			local LeaderLVL = Leader.impl.level
+			local u
+			local unitGroupSlots = unitGroup.slots
+			local boostValue = 0
+			for i = 1, #unitGroupSlots do
+				if u ~= nil and u.hp > 0 and _GroupInfo_UnitHasModifierValue(u, NecroBoost) then
+					boostValue = boostValue + 1 + 0.35 * (u.impl.level - u.baseImpl.level)
+					break
+				end
+			end
+			BonusPower = BonusPower + (3 + boostValue)*LeaderLVL
+		end
+	end
+	--necromancery END
 	
 	--Страх Бездны I
 	-- if smnsConditions_isStackNearToEnemyStackWithUnitModifier(unit, 1, smns_scenario, AbyssalFearI) then
