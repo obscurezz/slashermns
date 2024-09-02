@@ -1,5 +1,5 @@
 local TemplateName = 'Diligence'
-local Verison = '1.1.5'
+local Verison = '1.1.7'
 local Timer = 'First turn: 720, next turns: 420'
 
 function getName(name, version)
@@ -67,18 +67,23 @@ function getSingleZone(zoneId, zoneSize, playerRace, isPlayer)
     if playerRace == Race.Human then
         startingWand = { id = 'g000ig6012', min = 1, max = 1 }
         startingScroll = { id = 'g000ig5098', min = 1, max = 1 }
+        startingTalisman = { id = 'g000ig9101', min = 1, max = 1}
     elseif playerRace == Race.Dwarf then
         startingWand = { id = 'g001ig0394', min = 1, max = 1 }
         startingScroll = { id = 'g000ig5007', min = 1, max = 1 }
+        startingTalisman = { id = 'g001ig0265', min = 1, max = 1}
     elseif playerRace == Race.Elf then
         startingWand = { id = 'g001ig0399', min = 1, max = 1 }
         startingScroll = { id = 'g001ig0250', min = 1, max = 1 }
+        startingTalisman = { id = 'g001ig0266', min = 1, max = 1}
     elseif playerRace == Race.Undead then
         startingWand = { id = 'g001ig0405', min = 1, max = 1 }
         startingScroll = { id = 'g000ig5007', min = 1, max = 1 }
+        startingTalisman = { id = 'g001ig0264', min = 1, max = 1}
     elseif playerRace == Race.Heretic then
         startingWand = { id = 'g001ig0396', min = 1, max = 1 }
         startingScroll = { id = 'g000ig5003', min = 1, max = 1 }
+        startingTalisman = { id = 'g000ig9101', min = 1, max = 1}
     end
 
     zoneContent['id'] = zoneId
@@ -94,6 +99,8 @@ function getSingleZone(zoneId, zoneSize, playerRace, isPlayer)
                     { id = 'g000ig0006', min = 5, max = 5 },
                     { id = 'g000ig0005', min = 5, max = 5 },
                     { id = 'g001ig0378', min = 5, max = 5 },
+                    { id = 'g001ig0184', min = 1, max = 1 },
+                    { id = 'g000ig9120', min = 1, max = 1 },
                 },
                 itemTypes = { Item.PotionBoost, Item.PotionPermanent },
                 itemValue = { min = 150, max = 400 },
@@ -107,6 +114,8 @@ function getSingleZone(zoneId, zoneSize, playerRace, isPlayer)
                     { id = 'g000ig0006', min = 5, max = 5 },
                     { id = 'g000ig0005', min = 5, max = 5 },
                     { id = 'g001ig0378', min = 5, max = 5 },
+                    { id = 'g001ig0184', min = 1, max = 1 },
+                    { id = 'g000ig9120', min = 1, max = 1 },
                 },
                 itemTypes = { Item.Scroll, Item.Orb, Item.Talisman, Item.Wand },
                 itemValue = { min = 150, max = 400 },
@@ -125,8 +134,8 @@ function getSingleZone(zoneId, zoneSize, playerRace, isPlayer)
                     items = {
                         {id = 'g001ig0180', min = 5, max = 5},
                         {id = 'g000ig0005', min = 3, max = 3},
-                        {id = 'g000ig0006', min = 2, max = 2},
-                        {id = 'g000ig0001', min = 2, max = 2},
+                        {id = 'g000ig0006', min = 4, max = 4},
+                        {id = 'g000ig0001', min = 3, max = 3},
                         {id = 'g000ig0002', min = 2, max = 2},
                         {id = 'g000ig0008', min = 1, max = 1},
                         {id = 'g000ig0011', min = 1, max = 1},
@@ -139,6 +148,7 @@ function getSingleZone(zoneId, zoneSize, playerRace, isPlayer)
                         {id = 'g001ig0125', min = 1, max = 1},
                         startingWand,
                         startingScroll,
+                        startingTalisman,
                     },
                     itemTypes = {Item.Orb},
                     itemValue = { min = 100, max = 200 },
@@ -157,7 +167,7 @@ function getSingleZone(zoneId, zoneSize, playerRace, isPlayer)
         zoneCoef = 2
         zoneContent['type'] = Zone.Treasure
         zoneContent['towns'] = {
-            {tier=4, garrison={loot={itemTypes={Item.PotionPermanent, Item.TravelItem}, itemValue={min=400, max=700}, value={min=1100, max=1100},items={{id='g000ig0005',min=2,max=2},{id='g000ig0006',min=2,max=2},{id='g002ig0006',min=1,max=1},{id='g002ig0007',min=2,max=2}}}}, stack={subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=300*zoneCoef, max=350*zoneCoef}, loot={itemTypes={Item.Jewel, Item.Armor, Item.Weapon},itemValue={min=1000, max=1500},value={min=1500, max=1500},items={{id='g000ig0001', min=1, max=1},{id='g001ig0152', min=1, max=1},{id='g000ig0018', min=1, max=1}}}}},
+            {tier=4, garrison={loot={itemTypes={Item.PotionPermanent, Item.TravelItem}, itemValue={min=400, max=700}, value={min=1100, max=1100},items={{id='g000ig0005',min=2,max=2},{id='g000ig0006',min=2,max=2},{id='g002ig0006',min=1,max=1},{id='g002ig0007',min=2,max=2},{id='g000ig9105',min=1,max=1}}}}, stack={subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=300*zoneCoef, max=350*zoneCoef}, loot={itemTypes={Item.Jewel, Item.Armor, Item.Weapon},itemValue={min=1000, max=1500},value={min=1500, max=1500},items={{id='g000ig0001', min=1, max=1},{id='g001ig0152', min=1, max=1},{id='g000ig0018', min=1, max=1}}}}},
             {tier=2, garrison={loot={itemTypes={Item.PotionPermanent, Item.Orb}, itemValue={min=400, max=700}, value={min=1100, max=1100},items={{id='g000ig0005',min=2,max=2},{id='g000ig0006',min=2,max=2},{id='g002ig0006',min=1,max=1},{id='g002ig0007',min=2,max=2}}}}, stack={subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=220*zoneCoef, max=250*zoneCoef}, loot={itemTypes={Item.Jewel, Item.Armor, Item.Weapon},itemValue={min=750, max=1000},value={min=1500, max=1500},items={{id='g000ig0001', min=1, max=1},{id='g001ig0152', min=1, max=1}}}}},
         }
         zoneContent['resourceMarkets'] = {
@@ -238,9 +248,9 @@ function getSingleZone(zoneId, zoneSize, playerRace, isPlayer)
         }
     }
     zoneContent['stacks'] = {
-        {count=1, subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=140*zoneCoef, max=180*zoneCoef}},
-        {count=1, subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=140*zoneCoef, max=180*zoneCoef}},
-        {count=1, subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=140*zoneCoef, max=180*zoneCoef}},
+        {count=1, subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=140*zoneCoef, max=180*zoneCoef}, loot={itemTypes={Item.PotionHeal},itemValue={min=50, max=200},value={min=200*zoneCoef, max=200*zoneCoef}}},
+        {count=1, subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=140*zoneCoef, max=180*zoneCoef}, loot={itemTypes={Item.PotionHeal},itemValue={min=50, max=200},value={min=200*zoneCoef, max=200*zoneCoef}}},
+        {count=1, subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=140*zoneCoef, max=180*zoneCoef}, loot={itemTypes={Item.PotionHeal},itemValue={min=50, max=200},value={min=200*zoneCoef, max=200*zoneCoef}}},
         {count=1, subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=160*zoneCoef, max=200*zoneCoef}, loot={itemTypes={Item.Scroll},itemValue={min=150, max=200*zoneCoef},value={min=200*zoneCoef, max=300*zoneCoef}}},
         {count=1, subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=160*zoneCoef, max=200*zoneCoef}, loot={itemTypes={Item.Scroll},itemValue={min=150, max=200*zoneCoef},value={min=200*zoneCoef, max=300*zoneCoef}}},
         {count=1, subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=160*zoneCoef, max=200*zoneCoef}, loot={itemTypes={Item.Scroll},itemValue={min=150, max=200*zoneCoef},value={min=200*zoneCoef, max=300*zoneCoef}}},
@@ -531,6 +541,7 @@ template = {
         --speed
         'g000ig5100',
         'g000ig5006',
+        'g001ig0389',
         --water
         'g001ig0386',
         'g000ig5027',
