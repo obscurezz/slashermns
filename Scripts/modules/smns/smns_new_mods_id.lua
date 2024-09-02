@@ -167,7 +167,7 @@ DodgeBanner = Id.new('g070um0322').value
 Archdruid = Id.new('g070um0327').value
 
 --2.2f
-NecromanceryWarrior = Id.new('').value
-NecromanceryMage = Id.new('').value
-NecromanceryArcher = Id.new('').value
-NecromanceryDrake = Id.new('').value
+NecromanceryWarrior = Id.new('g070um0333').value
+NecromanceryMage = Id.new('g070um0332').value
+NecromanceryArcher = Id.new('g070um0334').value
+NecromanceryDrake = Id.new('g070um0335').value

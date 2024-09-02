@@ -330,7 +330,7 @@ function _target_SphereControl(attacker, selected, allies, targets, targetsAreAl
 	end
 
 	local result = {}
-	if attacker.unit.impl.attack1.type == Attack.Paralyze then
+	if item.base.attack.type == Attack.Paralyze then
 		for i = 1, #targets do
 			local u = targets[i].unit
 			if u.impl:getImmuneToAttackClass(Attack.Paralyze) == Immune.NotImmune and u.impl:getImmuneToAttackSource(Source.Mind) then
@@ -339,7 +339,7 @@ function _target_SphereControl(attacker, selected, allies, targets, targetsAreAl
 		end
 	end
 
-	if attacker.unit.impl.attack1.type == Attack.Fear then
+	if item.base.attack.type == Attack.Fear then
 		for i = 1, #targets do
 			local u = targets[i].unit
 			if u.impl:getImmuneToAttackClass(Attack.Fear) == Immune.NotImmune and u.impl:getImmuneToAttackSource(Source.Mind) then
@@ -348,7 +348,7 @@ function _target_SphereControl(attacker, selected, allies, targets, targetsAreAl
 		end
 	end
 
-	if attacker.unit.impl.attack1.type == Attack.TransformOther then
+	if item.base.attack.type == Attack.TransformOther then
 		for i = 1, #targets do
 			local u = targets[i].unit
 			if u.impl:getImmuneToAttackClass(Attack.TransformOther) == Immune.NotImmune and u.impl:getImmuneToAttackSource(Source.Mind) then

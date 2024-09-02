@@ -45,7 +45,7 @@ textids = {
 
 		-- Defines text id to mark Critical Hit attacks in unit encyclopedia.
 		-- Fallback text id is the standard "X160TA0017".
-		critHitAttack = "X015TA0004",
+		critHitAttack = "",
 
 		-- Defines text id to format Critical Hit text in unit encyclopedia.
 		-- Despite its name, it is used to format both crit hit damage and power (chance to hit).
@@ -155,7 +155,7 @@ textids = {
 
 		-- Defines text id to mark Infinite attacks in unit encyclopedia.
 		-- Fallback text is "Lasting".
-		infiniteAttack = "",
+		infiniteAttack = "X015TA0004",
 
 		-- Defines text id to format Infinite text in unit encyclopedia.
 		-- The text must contain keywords "%ATTACK%" and "%INFINITE%".
