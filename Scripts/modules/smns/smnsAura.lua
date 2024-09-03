@@ -1872,12 +1872,12 @@ function _smns_CritDamage(unit)
 	end
 	
 	--Дебуст знамя изворотливости
-	if  _Kriomant_Deboost_Effect(unit) == 1 then
+	if  _DodgeBanner_Deboost_Effect(unit) == 1 then
 		BonusCritDamage = BonusCritDamage - 15
 	end
 	--Дебуст знамя изворотливости END
 	
-return BonusCritDamage
+	return BonusCritDamage
 end
 -- changes critical damage chance
 function _smns_CritPower(unit)

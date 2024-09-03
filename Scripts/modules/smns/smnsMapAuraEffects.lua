@@ -212,7 +212,7 @@ function _Rod_Placer_Effect(unit)
 end
 
 function KriomantDeboostFunction(group, groupModifiers, groupModifiersDead)
-	if _GroupInfo_UnitModifierAmount(groupModifiers, KriomantDeboost) > 0 and _GroupInfo_UnitModifierAmount(groupModifiers, Id.new('g070um0151').value) > 0 then
+	if _GroupInfo_UnitModifierAmount(groupModifiers, KriomantDeboost) > 0 then
 		return 1
 	end
 	return 0
