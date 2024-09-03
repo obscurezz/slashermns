@@ -1,10 +1,10 @@
-local DebuffImmunityModifier = Id.new('').value
-local BuffWeakerImmunityModifier = Id.new('').value
+local DebuffImmunityModifier = Id.new('g070um0338').value
+local BuffWeakerImmunityModifier = Id.new('g070um0339').value
 local DebuffStrongerImmunityModifier = Id.new('').value
 
-local unitDebuffWeaker15 = Id.new('').value
-local unitDebuffWeaker30 = Id.new('').value
-local unitDebuffWeaker50 = Id.new('').value
+local unitDebuffWeaker15 = Id.new('g070um0343').value
+local unitDebuffWeaker30 = Id.new('g070um0344').value
+local unitDebuffWeaker50 = Id.new('g070um0345').value
 
 local unitDebuffStronger15 = Id.new('').value
 local unitDebuffStronger30 = Id.new('').value
@@ -14,13 +14,13 @@ local unitBuffWeaker15 = Id.new('').value
 local unitBuffWeaker30 = Id.new('').value
 local unitBuffWeaker50 = Id.new('').value
 
-local unitBuffStronger15 = Id.new('').value
-local unitBuffStronger30 = Id.new('').value
-local unitBuffStronger50 = Id.new('').value
+local unitBuffStronger15 = Id.new('g070um0340').value
+local unitBuffStronger30 = Id.new('g070um0341').value
+local unitBuffStronger50 = Id.new('g070um0342').value
 
-local groupDebuffWeaker15 = Id.new('').value
-local groupDebuffWeaker30 = Id.new('').value
-local groupDebuffWeaker50 = Id.new('').value
+local groupDebuffWeaker15 = Id.new('g070um0349').value
+local groupDebuffWeaker30 = Id.new('g070um0350').value
+local groupDebuffWeaker50 = Id.new('g070um0351').value
 
 local groupDebuffStronger15 = Id.new('').value
 local groupDebuffStronger30 = Id.new('').value
@@ -30,9 +30,9 @@ local groupBuffWeaker15 = Id.new('').value
 local groupBuffWeaker30 = Id.new('').value
 local groupBuffWeaker50 = Id.new('').value
 
-local groupBuffStronger15 = Id.new('').value
-local groupBuffStronger30 = Id.new('').value
-local groupBuffStronger50 = Id.new('').value
+local groupBuffStronger15 = Id.new('g070um0346').value
+local groupBuffStronger30 = Id.new('g070um0347').value
+local groupBuffStronger50 = Id.new('g070um0348').value
 
 function _ChangeGlobalBuffEffect(unit, value)
     local unit_change_stats = 0
