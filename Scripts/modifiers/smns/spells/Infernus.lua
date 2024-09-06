@@ -25,11 +25,11 @@ function getAttack2CritDamage(unit, prev)
 end
 
 function getAttackDrain(unit, damage, prev)
-	return svAddDrain1(unit, prev, damage, -0.17)
+	return svAddDrain1(unit, prev, damage, -0.27)
 end
 
 function getAttack2Drain(unit, damage, prev)
-	return svAddDrain2(unit, prev, damage, -0.17)
+	return svAddDrain2(unit, prev, damage, -0.27)
 end
 
 function getAttack2Damage(unit, prev)
