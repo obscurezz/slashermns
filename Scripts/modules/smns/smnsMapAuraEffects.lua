@@ -228,7 +228,7 @@ end
 
 function DodgeBannerFunction(group, groupModifiers, groupModifiersDead)
 	if _GroupInfo_UnitModifierAmount(groupModifiers, DodgeBanner) > 0 then
-		return 1
+		return 15
 	end
 	return 0
 end

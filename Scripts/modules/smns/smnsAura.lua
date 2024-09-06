@@ -1865,17 +1865,12 @@ end
 -- changes critical damage
 function _smns_CritDamage(unit)
 	local mods = _GroupInfo_UnitModifiers(unit)
-	local BonusCritDamage = 0 - (0.01 * _ForestSeal_Deboost_Effect(unit)) * (0.01 * unit.impl.attack1.critDamage) * unit.impl.attack1.damage
+	local BonusCritDamage = 0 - (_ForestSeal_Deboost_Effect(unit) * (0.01 * unit.impl.attack1.critDamage))
+							  - (_DodgeBanner_Deboost_Effect(unit) * (0.01 * unit.impl.attack1.critDamage))
 
 	if smns_scenario.day >= 15 then
-		BonusCritDamage = BonusCritDamage - (0.01 * _Guard_CritDrain_Deboost_Effect(unit)) * (0.01 * unit.impl.attack1.critDamage) * unit.impl.attack1.damage
+		BonusCritDamage = BonusCritDamage - (_Guard_CritDrain_Deboost_Effect(unit) * (0.01 * unit.impl.attack1.critDamage))
 	end
-	
-	--Дебуст знамя изворотливости
-	if  _DodgeBanner_Deboost_Effect(unit) == 1 then
-		BonusCritDamage = BonusCritDamage - 15
-	end
-	--Дебуст знамя изворотливости END
 	
 	return BonusCritDamage
 end
@@ -1905,14 +1900,14 @@ end
 -- changes critical drain
 function _smns_multiplicativeAttackDrain(unit, damage, prev)
 	local mods = _GroupInfo_UnitModifiers(unit)
-	local BonusMultiplyDrain = 0 - _ForestSeal_Deboost_Effect(unit)
+	local BonusMultiplyDrain = 0 - _ForestSeal_Deboost_Effect(unit) * 0.5
 
 	if _BloodRaven_Set_Deboost_Effect(unit) == 1 then
-		BonusMultiplyDrain = BonusMultiplyDrain - 33
+		BonusMultiplyDrain = BonusMultiplyDrain - 33 * 0.5
 	end
 
 	if smns_scenario.day >= 20 then
-		BonusMultiplyDrain = BonusMultiplyDrain - _Guard_CritDrain_Deboost_Effect(unit)
+		BonusMultiplyDrain = BonusMultiplyDrain - _Guard_CritDrain_Deboost_Effect(unit) * 0.5
 	end
 
 	return BonusMultiplyDrain

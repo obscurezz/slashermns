@@ -1,5 +1,5 @@
 local TemplateName = 'Diligence'
-local Verison = '1.1.7'
+local Verison = '1.2.1'
 local Timer = 'First turn: 720, next turns: 420'
 
 function getName(name, version)
@@ -86,10 +86,12 @@ function getSingleZone(zoneId, zoneSize, playerRace, isPlayer)
         startingTalisman = { id = 'g000ig9101', min = 1, max = 1}
     end
 
+    local TalismanT4 = { 'g000ig9130', 'g000ig9123' }
+
     zoneContent['id'] = zoneId
     zoneContent['size'] = zoneSize
     zoneContent['border'] = Border.SemiOpen
-    zoneContent['gapChance'] = 35
+    zoneContent['gapChance'] = 65
     zoneContent['mines'] = getZoneMana(playerRace)
     zoneContent['merchants'] = {
         {
@@ -101,6 +103,7 @@ function getSingleZone(zoneId, zoneSize, playerRace, isPlayer)
                     { id = 'g001ig0378', min = 5, max = 5 },
                     { id = 'g001ig0184', min = 1, max = 1 },
                     { id = 'g000ig9120', min = 1, max = 1 },
+                    { id = 'g000ig5039', min = 1, max = 1 },
                 },
                 itemTypes = { Item.PotionBoost, Item.PotionPermanent },
                 itemValue = { min = 150, max = 400 },
@@ -167,8 +170,8 @@ function getSingleZone(zoneId, zoneSize, playerRace, isPlayer)
         zoneCoef = 2
         zoneContent['type'] = Zone.Treasure
         zoneContent['towns'] = {
-            {tier=4, garrison={loot={itemTypes={Item.PotionPermanent, Item.TravelItem}, itemValue={min=400, max=700}, value={min=1100, max=1100},items={{id='g000ig0005',min=2,max=2},{id='g000ig0006',min=2,max=2},{id='g002ig0006',min=1,max=1},{id='g002ig0007',min=2,max=2},{id='g000ig9105',min=1,max=1}}}}, stack={subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=300*zoneCoef, max=350*zoneCoef}, loot={itemTypes={Item.Jewel, Item.Armor, Item.Weapon},itemValue={min=1000, max=1500},value={min=1500, max=1500},items={{id='g000ig0001', min=1, max=1},{id='g001ig0152', min=1, max=1},{id='g000ig0018', min=1, max=1}}}}},
-            {tier=2, garrison={loot={itemTypes={Item.PotionPermanent, Item.Orb}, itemValue={min=400, max=700}, value={min=1100, max=1100},items={{id='g000ig0005',min=2,max=2},{id='g000ig0006',min=2,max=2},{id='g002ig0006',min=1,max=1},{id='g002ig0007',min=2,max=2}}}}, stack={subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=220*zoneCoef, max=250*zoneCoef}, loot={itemTypes={Item.Jewel, Item.Armor, Item.Weapon},itemValue={min=750, max=1000},value={min=1500, max=1500},items={{id='g000ig0001', min=1, max=1},{id='g001ig0152', min=1, max=1}}}}},
+            {tier=4, garrison={loot={itemTypes={Item.PotionPermanent, Item.TravelItem}, itemValue={min=400, max=700}, value={min=1100, max=1100},items={{id='g000ig0005',min=2,max=2},{id='g000ig0006',min=2,max=2},{id='g002ig0006',min=1,max=1},{id='g002ig0007',min=2,max=2},{id='g000ig5039',min=1,max=1}}}}, stack={subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=300*zoneCoef, max=350*zoneCoef}, loot={itemTypes={Item.Jewel, Item.Armor, Item.Weapon},itemValue={min=1000, max=1500},value={min=1500, max=1500},items={{id='g000ig0001', min=1, max=1},{id='g001ig0152', min=1, max=1},{id='g000ig0018', min=1, max=1}}}}},
+            {tier=2, garrison={loot={itemTypes={Item.PotionPermanent, Item.Orb}, itemValue={min=400, max=700}, value={min=1100, max=1100},items={{id='g000ig0005',min=2,max=2},{id='g000ig0006',min=2,max=2},{id='g002ig0006',min=1,max=1},{id='g002ig0007',min=2,max=2},{id=TalismanT4[math.random(#TalismanT4)],min=1,max=1}}}}, stack={subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=220*zoneCoef, max=250*zoneCoef}, loot={itemTypes={Item.Jewel, Item.Armor, Item.Weapon},itemValue={min=750, max=1000},value={min=1500, max=1500},items={{id='g000ig0001', min=1, max=1},{id='g001ig0152', min=1, max=1}}}}},
         }
         zoneContent['resourceMarkets'] = {
             {
@@ -190,6 +193,13 @@ function getSingleZone(zoneId, zoneSize, playerRace, isPlayer)
             }
         }
         
+    end
+
+    local ruinLoot
+    if isPlayer then
+        ruinLoot = {id = 'g000ig5039', min = 1, max = 1}
+    else
+        ruinLoot = {id = 'g001ig0151', min = 1, max = 1}
     end
 
     zoneContent['ruins'] = {
@@ -221,7 +231,7 @@ function getSingleZone(zoneId, zoneSize, playerRace, isPlayer)
             gold = { min = 300, max = 350 },
             loot = {
                 items = { 
-                    {id = 'g001ig0151', min = 1, max = 1}
+                    ruinLoot,
                 }
             },
             guard = {
@@ -248,9 +258,9 @@ function getSingleZone(zoneId, zoneSize, playerRace, isPlayer)
         }
     }
     zoneContent['stacks'] = {
-        {count=1, subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=140*zoneCoef, max=180*zoneCoef}, loot={itemTypes={Item.PotionHeal},itemValue={min=50, max=200},value={min=200*zoneCoef, max=200*zoneCoef}}},
-        {count=1, subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=140*zoneCoef, max=180*zoneCoef}, loot={itemTypes={Item.PotionHeal},itemValue={min=50, max=200},value={min=200*zoneCoef, max=200*zoneCoef}}},
-        {count=1, subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=140*zoneCoef, max=180*zoneCoef}, loot={itemTypes={Item.PotionHeal},itemValue={min=50, max=200},value={min=200*zoneCoef, max=200*zoneCoef}}},
+        {count=1, subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=140*zoneCoef, max=180*zoneCoef}, loot={itemTypes={Item.PotionHeal},itemValue={min=50, max=200},value={min=200, max=200}}},
+        {count=1, subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=140*zoneCoef, max=180*zoneCoef}, loot={itemTypes={Item.PotionHeal},itemValue={min=50, max=200},value={min=200, max=200}}},
+        {count=1, subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=140*zoneCoef, max=180*zoneCoef}, loot={itemTypes={Item.PotionHeal},itemValue={min=50, max=200},value={min=200, max=200}}},
         {count=1, subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=160*zoneCoef, max=200*zoneCoef}, loot={itemTypes={Item.Scroll},itemValue={min=150, max=200*zoneCoef},value={min=200*zoneCoef, max=300*zoneCoef}}},
         {count=1, subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=160*zoneCoef, max=200*zoneCoef}, loot={itemTypes={Item.Scroll},itemValue={min=150, max=200*zoneCoef},value={min=200*zoneCoef, max=300*zoneCoef}}},
         {count=1, subraceTypes={stackSubraces[math.random(#stackSubraces)], stackSubraces[math.random(#stackSubraces)]}, value={min=160*zoneCoef, max=200*zoneCoef}, loot={itemTypes={Item.Scroll},itemValue={min=150, max=200*zoneCoef},value={min=200*zoneCoef, max=300*zoneCoef}}},
@@ -547,5 +557,7 @@ template = {
         'g000ig5027',
         --wisdom scroll
         'g001ig0193',
+        --100% nobility
+        'g000ig2006',
     },
 }
