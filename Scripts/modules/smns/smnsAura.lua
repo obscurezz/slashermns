@@ -212,7 +212,7 @@ function _smns_flatArmorBonus(unit, prev)
 	--necromancery END
 	
 	--Покров Мортис
-	if _GroupInfo_stackHasModifierAmount(DlanMortis) > 0 and (_GroupInfo_UnitHasModifierValue(unit, NecroLead) or _GroupInfo_UnitHasModifierValue(unit, NecromanceryMod)) then
+	if _GroupInfo_stackHasModifierAmount(DlanMortis) > 0 and (_GroupInfo_UnitHasModifierValue(unit, NecroLead) or _GroupInfo_UnitHasModifierValue(unit, NecromanceryWarrior) or _GroupInfo_UnitHasModifierValue(unit, NecromanceryDrake) or _GroupInfo_UnitHasModifierValue(unit, NecromanceryArcher) or _GroupInfo_UnitHasModifierValue(unit, NecromanceryMage)) then
 		local u
 		local mAmount = {}
 		local group = _GroupInfo_getCurrentGroup()
