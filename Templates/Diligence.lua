@@ -83,7 +83,7 @@ function getSingleZone(zoneId, zoneSize, playerRace, isPlayer)
     elseif playerRace == Race.Heretic then
         startingWand = { id = 'g001ig0396', min = 1, max = 1 }
         startingScroll = { id = 'g000ig5003', min = 1, max = 1 }
-        startingTalisman = { id = 'g000ig9101', min = 1, max = 1}
+        startingTalisman = { id = 'g001ig0267', min = 1, max = 1}
     end
 
     local TalismanT4 = { 'g000ig9130', 'g000ig9123' }

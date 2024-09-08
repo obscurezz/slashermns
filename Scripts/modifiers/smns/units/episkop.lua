@@ -24,14 +24,14 @@ function getAttackHeal(unit, prev)
 	return result
 end
 
-function getAttack2Heal(unit, prev)
-	local result = prev
-    local p = _GroupInfo_getUnitPlayer(unit)
-	if p ~= nil and p.race ~= Race.Neutral then
-		local LM = math.min(1000, p.bank.lifeMana)
-		smnsInfo_SetApplyApplyDmgBuffToHeal(true)
-		result = svFlatEffectHeal2(unit, prev, math.floor(LM / 40))
-		smnsInfo_SetApplyApplyDmgBuffToHeal(false)
-	end
-	return result
-end
+-- function getAttack2Heal(unit, prev)
+-- 	local result = prev
+--     local p = _GroupInfo_getUnitPlayer(unit)
+-- 	if p ~= nil and p.race ~= Race.Neutral then
+-- 		local LM = math.min(1000, p.bank.lifeMana)
+-- 		smnsInfo_SetApplyApplyDmgBuffToHeal(true)
+-- 		result = svFlatEffectHeal2(unit, prev, math.floor(LM / 40))
+-- 		smnsInfo_SetApplyApplyDmgBuffToHeal(false)
+-- 	end
+-- 	return result
+-- end
