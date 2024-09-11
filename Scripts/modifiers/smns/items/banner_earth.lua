@@ -18,7 +18,7 @@ end
 
 function getAttackDamage(unit, prev)
 	if unit.impl.attack1.source == Source.Earth then 
-		return svMultimplyDamage1(unit, prev, 0.1)
+		return svMultimplyDamage1(unit, prev, 0.15)
 	end
 	return prev
 end

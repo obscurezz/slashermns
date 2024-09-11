@@ -47,26 +47,7 @@ function _smns_multiplicativeHitPointBonus(unit, prev)
 		BonusHP = BonusHP + 8
 	end
 --Аура 8% ОЗ END
-
 -- Некромантия +%ХП
-    -- if _GroupInfo_stackHasModifierAmount(NecroLead) > 0  and _GroupInfo_UnitModifierAmount(mods, NecromanceryMod) > 0 then
-    --     local Leader = _GroupInfo_getCurrentGroupLeader()
-    --     if Leader ~= nil and Leader.hp > 0 then
-    --         local LeaderLVL = Leader.impl.level
-    --         local u
-    --         local boostValue = 0
-    --         local unitGroupSlots = unitGroup.slots
-    --         for i = 1, #unitGroupSlots do
-    --             u = unitGroupSlots[i].unit
-    --             if u ~= nil and u.hp > 0 and _GroupInfo_UnitHasModifierValue(u, NecroBoost) then
-    --                 boostValue = boostValue + 1 + 0.35 * (u.impl.level - u.baseImpl.level)
-    --                 break
-    --             end
-    --         end
-
-    --         BonusHP = BonusHP + (3 + boostValue)*LeaderLVL
-    --     end
-    -- end
 	if _GroupInfo_UnitHasModifierValue(unit, NecromanceryWarrior) then
 		local Leader = _GroupInfo_getCurrentGroupLeader()
 		if Leader ~= nil and Leader.hp > 0 and _GroupInfo_UnitHasModifierValue(Leader, NecroLead) then
@@ -124,22 +105,25 @@ end
 function _smns_flatRegenBonus(unit, prev)
 	local RegenerationBonus = 0 + _Rod_Placer_Effect(unit)
 --Целебное варево
-  if unitGroup ~= nil then
-        if _GroupInfo_stackHasModifierAmount(SkaldRegeneration) > 0 then
-            local u
-            local mAmount
-            local unitGroupSlots = unitGroup.slots
-            for i = 1, #unitGroupSlots do
-                u = unitGroupSlots[i].unit
-                if u ~= nil and u.hp > 0 then
-                    mAmount = _GroupInfo_UnitModifierAmount(_GroupInfo_UnitModifiers(u), SkaldRegeneration)
-                    if mAmount > 0 then
-                        RegenerationBonus = 4 + 4*(u.impl.level - u.baseImpl.level)
-                    end
-                end
-            end
-        end
-    end
+	if _GroupInfo_stackHasModifierAmount(SkaldRegeneration) > 0 then
+		local u
+		local mAmount = {}
+		local group = _GroupInfo_getCurrentGroup()
+		local unitGroupSlots = group.slots
+		for i = 1, #unitGroupSlots do
+			u = unitGroupSlots[i].unit
+			if u ~= nil and u.hp > 0 and _GroupInfo_UnitHasModifierValue(u, SkaldRegeneration) then
+				table.insert(mAmount, u)
+			end
+		end
+		local highest = mAmount[1]
+		for i = 1, #mAmount do
+			if mAmount[i].impl.level > highest.impl.level then
+				highest = mAmount[i]
+			end
+		end
+		RegenerationBonus = RegenerationBonus + 4 + 4*(highest.impl.level - highest.baseImpl.level)
+	end
 --Целебное варево END
 
 
@@ -162,12 +146,6 @@ function _smns_flatRegenBonus(unit, prev)
         end
     end
 --END
-
---Покровительство
-	-- if smnsConditions_isStackNearToStackWithUnitModifier(unit, 2, smns_scenario, Heaven) then
-	-- 	RegenerationBonus = RegenerationBonus + 10
-	-- end  
---Покровительство END
 
 	return RegenerationBonus
 end
@@ -232,12 +210,6 @@ function _smns_flatArmorBonus(unit, prev)
 		BonusArmor = BonusArmor + math.min(30, 6 * (highest.impl.level - highest.baseImpl.level))
 	end
 	--Покров Мортис END
-
-	--абсолютный хлад
-	-- if smnsConditions_isStackNearToEnemyStackWithUnitModifier(unit, 1, smns_scenario, Grymturs) then
-	-- 	BonusArmor = BonusArmor - 10
-	-- end
-	--абсолютный хлад END
 	
 -- Элитная стража
 	if _GroupInfo_stackHasModifierAmount(Yarl) > 0 and unit.impl.race == Race.Dwarf and _GroupInfo_UnitModifierAmount(mods, Yarl) == 0 then
@@ -260,8 +232,7 @@ function _smns_flatArmorBonus(unit, prev)
     end
 --Повелитель волков END
 
---БлагослОвление леса дает +8 и +3 за оверлевел брони крестом вокруг себя
-		
+--БлагослОвление леса дает +8 и +3 за оверлевел брони крестом вокруг себя		
 	if _GroupInfo_stackHasModifierAmount(CurerCrossArmor) > 0 then
 		local u
 		local same_col = _GroupInfo_getSameColumnUnit(unit, true)
@@ -279,7 +250,7 @@ function _smns_flatArmorBonus(unit, prev)
             end
         end
 	end
---Благославление леса END
+--Благословление леса END
 
 	--Осколки адского камня
 	--incub
@@ -350,27 +321,7 @@ function _smns_multiplicativeDamageHealBonus(unit, prev, attackN, unitMods)
 		end
 	end
 --end бонус Лорда-мага
-	
--- Некромантия +%Урон 
-    -- if _GroupInfo_stackHasModifierAmount(NecroLead) > 0  and _GroupInfo_UnitModifierAmount(mods, NecromanceryMod) > 0 then
-    --     local Leader = _GroupInfo_getCurrentGroupLeader()
-    --     if Leader ~= nil and Leader.hp > 0 then
-    --         local LeaderLVL = Leader.impl.level
-    --         local u
-    --         local boostValue = 0
-    --         local unitGroupSlots = unitGroup.slots
-    --         for i = 1, #unitGroupSlots do
-    --             u = unitGroupSlots[i].unit
-    --             if u ~= nil and u.hp > 0 and _GroupInfo_UnitHasModifierValue(u, NecroBoost) then
-    --                 boostValue = boostValue + 1 + 0.35 * (u.impl.level - u.baseImpl.level)
-    --                 break
-    --             end
-    --         end
-
-    --         BonusDMG = BonusDMG + (3 + boostValue)*LeaderLVL
-    --     end
-    -- end
-
+-- Некромантия +%Урон	
 	if _GroupInfo_UnitHasModifierValue(unit, NecromanceryMage) then
 		local Leader = _GroupInfo_getCurrentGroupLeader()
 		if Leader ~= nil and Leader.hp > 0 and _GroupInfo_UnitHasModifierValue(Leader, NecroLead) then
@@ -397,18 +348,6 @@ function _smns_multiplicativeDamageHealBonus(unit, prev, attackN, unitMods)
 		end
 	end
 	--древняя тьма END
-
---Страх Бездны I
-	-- if smnsConditions_isStackNearToEnemyStackWithUnitModifier(unit, 1, smns_scenario, AbyssalFearI) then
-	-- 	BonusDMG = BonusDMG - 10
-	-- end
---Страх Бездны I END
-
---Страх Бездны II
-	-- if smnsConditions_isStackNearToEnemyStackWithUnitModifier(unit, 1, smns_scenario, AbyssalFearII) then
-	-- 	BonusDMG = BonusDMG - 15
-	-- end
---Страх Бездны II END
 
 --защитник горна
 if _GroupInfo_UnitHasModifierValue(unit, GornDefender) then
@@ -587,41 +526,25 @@ end
 	end	
 --Элитная стража END
 
--- --Фанатизм I
--- 	if _GroupInfo_UnitHasModifierValue(unit, Inquisitor10DamageSameRowDead) then
--- 		local coveredUnit = _GroupInfo_getCoveredUnitCorpse(unit, true)
--- 		if coveredUnit ~= nil then
--- 			BonusDMG = BonusDMG + 10
--- 		end
--- 	end
--- --Фанатизм I END
-
--- --Фанатизм II
--- 	if _GroupInfo_UnitHasModifierValue(unit, GrandInquisitor20DamageSameRowDead) then
--- 		local coveredUnit = _GroupInfo_getCoveredUnitCorpse(unit, true)
--- 		if coveredUnit ~= nil then
--- 			BonusDMG = BonusDMG + 20
--- 		end
--- 	end
--- --Фанатизм II END
-
 --Рефаим увеличивает на 5% + 5% за оверлевел урон воздухом в отряде, но не более 20%
 	if _GroupInfo_stackHasModifierAmount(RefaimInParty) > 0 and unit.impl.attack1.source == Source.Air then
-		local group = _GroupInfo_getCurrentGroup()
-		local units = group.units
 		local u
-		local RefaimOverlevel
-		local CountRefaim = _GroupInfo_stackHasModifierAmount(RefaimInParty)
-		for i = 1, #units do
-			u = units[i]
-			if _GroupInfo_UnitHasModifierValue(u, RefaimInParty) then
-				RefaimOverlevel = u.impl.level - u.baseImpl.level
+		local mAmount = {}
+		local group = _GroupInfo_getCurrentGroup()
+		local unitGroupSlots = group.slots
+		for i = 1, #unitGroupSlots do
+			u = unitGroupSlots[i].unit
+			if u ~= nil and u.hp > 0 and _GroupInfo_UnitHasModifierValue(u, RefaimInParty) then
+				table.insert(mAmount, u)
 			end
 		end
-		BonusDMG = BonusDMG + 4 + (4 * RefaimOverlevel) * CountRefaim
-		if BonusDMG >= 20 then
-			BonusDMG = 20
+		local highest = mAmount[1]
+		for i = 1, #mAmount do
+			if mAmount[i].impl.level > highest.impl.level then
+				highest = mAmount[i]
+			end
 		end
+		BonusDMG = BonusDMG + math.min(20, (4 + (4 * (highest.impl.level - highest.baseImpl.level))))
 	end
 --END
 
@@ -895,48 +818,6 @@ function _smns_ImmuneToAttack(unit, attack, prev, currentValue)
 	end
 	--аура стабильности END
 
-	--дыхание распада
-	-- if attack == Attack.Poison and _Wyrm_Deboost_Effect(unit) == 1 then
-	-- 	if currentValue == Immune.Always then
-	-- 		result = Immune.Once
-	-- 	elseif currentValue == Immune.Once then
-	-- 		result = Immune.NotImmune
-	-- 	end
-	-- end
-	--дыхание распада END
-
-	--жидкое пламя
-	-- if attack == Attack.Blister and _Flamethrower_Deboost_Effect(unit) == 1 then
-	-- 	if currentValue == Immune.Always then
-	-- 		result = Immune.Once
-	-- 	elseif currentValue == Immune.Once then
-	-- 		result = Immune.NotImmune
-	-- 	end
-	-- end
-	--жидкое пламя END
-	
-	--Тайное знание криоманта
-	-- if attack == Attack.Frostbite and _Kriomant_Deboost_Effect(unit) == 1 then
-	-- 	if currentValue == Immune.Always then
-	-- 		result = Immune.Once
-	-- 	elseif currentValue == Immune.Once then
-	-- 		result = Immune.NotImmune
-	-- 	end
-	-- end
-	--Тайное знание криоманта END
-
-	--страж столицы снимает резист к разрушению
-	-- if smns_scenario.day >= 10 then	
-	-- 	if attack == Attack.Shatter and _Guard_Resistance_Deboost_Effect(unit) == 1 then
-	-- 		if currentValue == Immune.Always then
-	-- 			result = Immune.Once
-	-- 		elseif currentValue == Immune.Once then
-	-- 			result = Immune.NotImmune
-	-- 		end
-	-- 	end
-	-- end
-	--страж столицы снимает резист к разрушению END
-
 	--Сет феникса
 	if _GroupInfo_stackHasModifierAmount(PhoenixShield) > 0 and  _GroupInfo_stackHasModifierAmount(PhoenixSword) > 0 and  _GroupInfo_stackHasModifierAmount(PhoenixArmor) > 0 and attack == Attack.Damage then
 	local maxHP = smns_scenario:getUnit(unit.id).hpMax
@@ -1104,17 +985,12 @@ function _smns_ImmuneToSource(unit, source, prev, currentValue)
 			--бонус Лорда-воина
 			local player = _GroupInfo_getUnitPlayer(unit)
 			if player ~= nil and player.lord == Lord.Warrior and player.race ~= Race.Neutral then
-				if smnsConditions_isStackOnItsTerrain(smns_scenario, _GroupInfo_getUnitStack(unit)) then
-					MagicProtectChance = MagicProtectChance + 10
+				if smnsConditions_isStackOnItsTerrain(smns_scenario, _GroupInfo_getUnitStack(unit)) and unit.impl.leadership > 0 then
+					result = Immune.Always
+					--MagicProtectChance = MagicProtectChance + 10
 				end
 			end
 			--end бонус Лорда-воина
-
-			--Покровительство
-			-- if smnsConditions_isStackNearToStackWithUnitModifier(unit, 2, smns_scenario, Heaven) then
-			-- 	MagicProtectChance = MagicProtectChance + 10
-			-- end  
-			--Покровительство END
 		end
 		
 		if _mRnd_simpleRndEvent(MagicProtectChance) then
@@ -1167,26 +1043,6 @@ function _smns_ImmuneToSource(unit, source, prev, currentValue)
 	end
 	
 --Щит стихий END
-
---Тайное знание криоманта
-	-- if source == Source.Water and _Kriomant_Deboost_Effect(unit) == 1 then		
-	-- 	if currentValue == Immune.Always then
-	-- 		result = Immune.Once
-	-- 	elseif currentValue == Immune.Once then
-	-- 		result = Immune.NotImmune
-	-- 	end
-	-- end
---Тайное знание криоманта END
-
-		--дыхание распада
-	-- if source == Source.Death and _Wyrm_Deboost_Effect(unit) == 1 then
-	-- 	if currentValue == Immune.Always then
-	-- 		result = Immune.Once
-	-- 	elseif currentValue == Immune.Once then
-	-- 		result = Immune.NotImmune
-	-- 	end
-	-- end
-	--дыхание распада END
 
 	return result
 end
