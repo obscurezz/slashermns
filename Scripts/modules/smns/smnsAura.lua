@@ -954,7 +954,7 @@ function _smns_ImmuneToSource(unit, source, prev, currentValue)
 			for i = 1, #unitGroupSlots do
 				u = unitGroupSlots[i].unit
 				if u ~= nil and u.hp > 0 and _GroupInfo_UnitHasModifierValue(u, HeroShield) then
-					MagicProtectChance = MagicProtectChance + 5 + 5 * (u.impl.level - u.baseImpl.level)
+					MagicProtectChance = MagicProtectChance + 6 + 6 * (u.impl.level - u.baseImpl.level)
 					break
 				end
 			end
@@ -964,7 +964,7 @@ function _smns_ImmuneToSource(unit, source, prev, currentValue)
 				for i = 1, #unitGroupSlots do
 				u = unitGroupSlots[i].unit
 				if u ~= nil and u.hp > 0 and _GroupInfo_UnitHasModifierValue(u, TearsOfSinners) then
-					MagicProtectChance = MagicProtectChance + 20
+					MagicProtectChance = MagicProtectChance + 30
 					break
 				end
 			end
