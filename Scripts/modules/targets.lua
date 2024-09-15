@@ -330,48 +330,10 @@ function _target_SphereControl(attacker, selected, allies, targets, targetsAreAl
 	end
 
 	local result = {}
-	if item.base.attack.type == Attack.Paralyze then
-		for i = 1, #targets do
-			local u = targets[i].unit
-			if u.impl:getImmuneToAttackClass(Attack.Paralyze) == Immune.NotImmune and u.impl:getImmuneToAttackSource(Source.Mind) == Immune.NotImmune then
-				table.insert(result, targets[i])
-			end
-		end
-	end
-
-	if item.base.attack.type == Attack.Fear then
-		for i = 1, #targets do
-			local u = targets[i].unit
-			if u.impl:getImmuneToAttackClass(Attack.Fear) == Immune.NotImmune and u.impl:getImmuneToAttackSource(Source.Mind) == Immune.NotImmune then
-				table.insert(result, targets[i])
-			end
-		end
-	end
-
-	if item.base.attack.type == Attack.TransformOther then
-		for i = 1, #targets do
-			local u = targets[i].unit
-			if u.impl:getImmuneToAttackClass(Attack.TransformOther) == Immune.NotImmune and u.impl:getImmuneToAttackSource(Source.Mind) == Immune.NotImmune then
-				table.insert(result, targets[i])
-			end
-		end
-	end
-	
-	if item.base.attack.type == Attack.DrainLevel then
-		for i = 1, #targets do
-			local u = targets[i].unit
-			if u.impl:getImmuneToAttackClass(Attack.DrainLevel) == Immune.NotImmune and u.impl:getImmuneToAttackSource(Source.Death) == Immune.NotImmune then
-				table.insert(result, targets[i])
-			end
-		end
-	end
-
-	if item.base.attack.type == Attack.Petrify then
-		for i = 1, #targets do
-			local u = targets[i].unit
-			if u.impl:getImmuneToAttackClass(Attack.Petrify) == Immune.NotImmune and u.impl:getImmuneToAttackSource(Source.Earth) == Immune.NotImmune then
-				table.insert(result, targets[i])
-			end
+	for i = 1, #targets do
+		local u = targets[i].unit
+		if u.impl:getImmuneToAttackClass(item.base.attack.type) == Immune.NotImmune and u.impl:getImmuneToAttackSource(item.base.attack.source) == Immune.NotImmune then
+			table.insert(result, targets[i])
 		end
 	end
 
