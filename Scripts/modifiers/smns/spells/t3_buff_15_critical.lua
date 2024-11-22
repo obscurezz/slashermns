@@ -10,11 +10,6 @@ function canApplyAsBoostSpell()
 	return true
 end
 
-function getAttackDamage(unit, prev)
-    local value = 0.2
-    local res = _ChangeGlobalBuffEffect(unit, value)
-	return svMultimplyDamage1(unit, prev, res)
-end
 
 function getAttackCritHit(unit, prev)
     return true

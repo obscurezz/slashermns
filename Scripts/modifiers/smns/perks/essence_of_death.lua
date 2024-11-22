@@ -61,3 +61,8 @@ function getAttackDrain(unit, damage, prev)
 	local mana_criteria = math.min(1000, _getPlayerBank(unit).deathMana)
 	return svAddDrain1(unit, prev, damage, 0.02 * 0.01 * mana_criteria)
 end
+
+function getAttack2Drain(unit, damage, prev)
+	local mana_criteria = math.min(1000, _getPlayerBank(unit).deathMana)
+	return svAddDrain2(unit, prev, damage, 0.02 * 0.01 * mana_criteria)
+end

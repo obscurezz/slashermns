@@ -171,4 +171,10 @@ NecromanceryWarrior = Id.new('g070um0333').value
 NecromanceryMage = Id.new('g070um0332').value
 NecromanceryArcher = Id.new('g070um0334').value
 NecromanceryDrake = Id.new('g070um0335').value
-NaturalHealing = Id.new('g000um4016').value		
+NaturalHealing = Id.new('g000um4016').value
+
+--2.3
+BannerEXP2 = Id.new('g070um0357').value
+BannerEXP1 = Id.new('g070um0356').value
+Instruktor = Id.new('g070um0358').value
+		

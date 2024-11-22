@@ -22,7 +22,7 @@ function getAttackDamage(unit, prev)
 		for i = 1, #units do
             u = units[i]
 			if _GroupInfo_UnitHasModifierValue(u, MageWizardWhiteMageInParty) then
-                result = result + u.impl.attack1.damage * 0.07
+                result = result + u.impl.attack1.damage * 0.04
             end
         end
         return prev + result

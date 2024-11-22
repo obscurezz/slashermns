@@ -16,3 +16,11 @@ end
 function getAttack2Drain(unit, damage, prev)
 	return svAddDrain2(unit, prev, damage, 0.25)
 end
+
+function getAttackPower(unit, prev)
+	return svMultimplyPower1(unit, prev, 0.1)
+end
+
+function getAttack2Power(unit, prev)
+	return svMultimplyPower2(unit, prev, 0.1)
+end

@@ -50,26 +50,33 @@ function zoneMageResp()
 	}
 end
 
+	-- Заклы баш_т3 
+	-- т3*7шт : Призыв II: Валькирия / Призыв III: Энт Большой, Terra oblivionem -25опыт, Туман Смерти, Божественная мудрость (+15 опыт), Затопление, Излечение (+60 хил), Искусный торговец -20% скидка
+	local tblmg3t3 = {'g000ss0031','g000ss0108','g000ss0199','g000ss0074','g000ss0175','g000ss0144','g000ss0110','g000ss0085'}
+	
+	-- т45*7шт : Неподкупность, Merum facies -окам полим, Слабость плоти -оружие, Слабость разума -разум, Песнь Вотана +100 хил, Призыв IV: Танатос, Сумерки -закрывает карту
+	local tblmg3t4 = {'g000ss0039','g000ss0127','g000ss0202','g000ss0203','g000ss0040','g000ss0078','g000ss0095'}
 
-	-- Заклы баш_т3 т3*10шт : Святая броня + 15 Брони, Святая сила +15 точн и урон, Призыв II: Валькирия, Гимн Кланов +15 ини, Preces -15 точн и урон,Terra oblivionem -25опыт, Прикосновение Мортис +20% ХП, Туман Смерти, Неотвратимая месть (криты), Призыв III: Энт Большой
-	local tblmg3t3 = {'g000ss0012','g000ss0013','g000ss0031','g000ss0026','g000ss0089','g000ss0199','g000ss0073','g000ss0074','g000ss0201','g000ss0108'} 
-
-	-- Заклы баш_т3 т4*6шт : Благословение Всевышнего +20%хп +5 брони, Неподкупность, Tortio menta -33 точность, Плесень -30 брони, Благословение Галеана +50хп, Божественная мудрость (+15 опыт)
-	local tblmg3t4 = {'g000ss0082','g000ss0039','g000ss0055','g000ss0114','g000ss0116','g000ss0175'} 
-
-	-- Заклы баш_т3 минус_вард+_доп*8шт : Dominatum ignis -вард огонь, Небесный молот -вард воздух, Пробирающий холод -вард вода, Хворь -вард земля, Забвение -свитки сферы талики, Затопление
-	local tblmg3tw = {'g000ss0206','g000ss0209','g000ss0207','g000ss0208','g000ss0166','g000ss0144'} 
+	-- минус_вард+_доп*5шт : Dominatum ignis -вард огонь, Небесный молот -вард воздух, Пробирающий холод -вард вода, Хворь -вард земля, Забвение -свитки сферы талики
+	local tblmg3tw = {'g000ss0206','g000ss0209','g000ss0207','g000ss0208','g000ss0166'} 
+	
+	-- ударка-40взоне*4шт : Potentia Ignis, Духи льда, Лавина, Смерч Смерти, Цепь молний
+	local tblmg3tu = {'g000ss0090','g000ss0086','g000ss0112','g000ss0093','g000ss0081'} 
+	
+	-- 
 
 --Башня магии в зоне 3
 function zoneMageZone34()
 	mix(tblmg3t3)
 	mix(tblmg3t4)
 	mix(tblmg3tw)
+	mix(tblmg3tu)
 	return {
 		{
-			spells = { 	tblmg3t3[1], tblmg3t3[2], tblmg3t3[3], tblmg3t3[4],
-						tblmg3t4[1], tblmg3t4[2],
+			spells = { 	tblmg3t3[1], tblmg3t3[2],
+						tblmg3t4[1],
 						tblmg3tw[1],
+						tblmg3tu[1],
 			},			
 			guard = guard3m()
 		}
@@ -272,8 +279,7 @@ return {
 
 				orr({ id = 'g001ig0530', min = 1, max = 1 }, { id = 'g001ig0006', min = 1, max = 1 }), -- Зелье посмертного зова (талисманы) / Эликсир маскировки
 				orr({ id = 'g001ig0526', min = 1, max = 1 }, { id = 'g001ig0527', min = 1, max = 1 }), -- Зелье оруженосца (знамёна) / Зелье постижения (реликвии)
-				orr({ id = 'g001ig0529', min = 1, max = 1 }, { id = 'g001ig0531', min = 1, max = 1 }), -- Каталог магических сфер / Зелье слова (свитки)
-				orr({ id = 'g001ig0528', min = 1, max = 1 }, { id = 'g001ig0525', min = 1, max = 1 }), -- Честный труд (сапоги) / Эликсир учености (артефакты)
+				{ id = rnd(rnd('g001ig0529','g001ig0531'),'g001ig0528','g001ig0525'), min = 1, max = 1 }, --   Каталог магических сфер | Зелье слова (свитки) / Честный труд (сапоги) / Эликсир учености (артефакты)
 
 				--сапоги
 				{ id = rnd(rnd('g001ig0105','g001ig0107','g001ig0108','g001ig0106'),'g001ig0113','g001ig0110'), min = 1, max = 1 }, -- Литейные сапоги (огонь) / Сапоги ветров (воздух) / Гномьи сапоги (вода) / Сапоги каменщика (земли) // сапоги укрепл / лёгкие
@@ -366,7 +372,7 @@ return {
 				orr({ id = 'g001ig0332', min = 1, max = 1 }, { id = 'g001ig0342', min = 1, max = 1 }), -- Зелье ихора Танатоса (яд) / Эликсир норн (страх)
 				
 				-- зелье лорда
-				orr(orr({ id = 'g001ig0529', min = 1, max = 1 }, { id = 'g001ig0531', min = 1, max = 1 }), orr({ id = 'g001ig0528', min = 1, max = 1 }, { id = 'g001ig0525', min = 1, max = 1 })), --   Каталог магических сфер / Зелье слова (свитки) | Честный труд (сапоги) / Эликсир учености (артефакты)
+				{ id = rnd(rnd('g001ig0529','g001ig0531'),'g001ig0528','g001ig0525'), min = 1, max = 1 }, --   Каталог магических сфер | Зелье слова (свитки) / Честный труд (сапоги) / Эликсир учености (артефакты)
 				orr({ id = 'g000ig0010', min = 1, max = 1 }, { id = '', min = 1, max = 1 }), -- Эликсир внимательности / Зелье посмертного зова (талисманы)
 
 				--арты
@@ -1386,7 +1392,7 @@ function getMinesX(race, race2)
 	elseif race == Race.Elf and race2 == Race.Human then return {groveMana = 1, lifeMana = tbl[1], deathMana = tbl[2], infernalMana = tbl[3], runicMana = tbl[4]}
 	elseif race == Race.Undead and race2 == Race.Dwarf then return {deathMana = 1, runicMana = tbl[1], lifeMana = tbl[2], infernalMana = tbl[3], groveMana = tbl[4]}
 	elseif race == Race.Heretic and race2 == Race.Dwarf then return {infernalMana = 1, runicMana = tbl[1], deathMana = tbl[2], lifeMana = tbl[3], groveMana = tbl[4]}
-	elseif race == Race.Elf and race2 == Race.Dwarf then return {groveMana = 1, runicMana = 1, deathMana = tbl[2], infernalMana = tbl[3], lifeMana = tbl[4]}
+	elseif race == Race.Elf and race2 == Race.Dwarf then return {groveMana = 1, runicMana = tbl[1], deathMana = tbl[2], infernalMana = tbl[3], lifeMana = tbl[4]}
 	elseif race == Race.Heretic and race2 == Race.Undead then return {infernalMana = 1, deathMana = tbl[1], lifeMana = tbl[2], runicMana = tbl[3], groveMana = tbl[4]}
 	elseif race == Race.Elf and race2 == Race.Undead then return {groveMana = 1, deathMana = tbl[1], lifeMana = tbl[2], infernalMana = tbl[3], runicMana = tbl[4]}
 	elseif race == Race.Elf and race2 == Race.Heretic then return {groveMana = 1, infernalMana = tbl[1], deathMana = tbl[2], lifeMana = tbl[3], runicMana = tbl[4]}
@@ -1564,16 +1570,14 @@ end
 
 -- нейтралы Лучники4
 function MercA4()
-	local radn = math.random(0,4)
+	local radn = math.random(0,3)
 	if radn == 0 then
 	return 'g000uu8174' -- Вестник распада
 	elseif radn == 1 then
-	return 'g001uu7594' -- Инеит 1320
-	elseif radn == 2 then
 	return 'g000uu7566' -- Первородная сущность 1800
-	elseif radn == 3 then
+	elseif radn == 2 then
 	return 'g000uu7567' -- Первородная сущность
-	elseif radn == 4 then
+	elseif radn == 3 then
 	return 'g000uu8237' -- Первородная сущность
 	end
 end
@@ -3906,9 +3910,9 @@ function getPlayerZone00(zoneId, playerRace, zoneSize)
 				subraceTypes = { getPlayerSubRace(playerRace) },
 				value = { min = 50, max = 50 },
 				loot = {
---					itemTypes = { Item.PotionBoost },
---					value = { min = 1500, max = 1500 },
---					itemValue = { min = 150, max = 250 },
+					itemTypes = { Item.Orb, Item.Scroll },
+					value = { min = 400, max = 400 },
+					itemValue = { min = 400, max = 400 },
 					items = {
 						{ id = 'g000ig0001', min = 4, max = 4}, --рес
 						{ id = 'g000ig0006', min = 4, max = 4}, --хил100
@@ -4192,13 +4196,13 @@ end
 
 -- ШАБЛОН
 template = {
-	name = gmm('Outrunner 2.9h', 'Outcross 2.9h'),
+	name = gmm('Outrunner 2.9i', 'Outcross 2.9i'),
 	description = gmm('Шаблон для игры 1 лидер, 1 жезловик, 1 вор.\nЧерная зона в центре, ее должны касаться: синяя, желтая, белая, серая, т.зеленая, оранжевая.\nСпасибо за поддержку! Карта Тинькофф: 2200700846776804','Шаблон для классической игры несколькими лидерами.\nЧерная зона в центре, ее должны касаться: синяя, желтая, белая, серая, т.зеленая, оранжевая.\nСпасибо за поддержку! Карта Тинькофф: 2200700846776804'),
 	minSize = 72,
 	maxSize = 72,
 	maxPlayers = 2,
 	startingGold = gmm(700,1100),
-	startingNativeMana = gmm(100,300),
+	startingNativeMana = gmm(200,400),
 	roads = gmm(45,40), --45,41
 	forest = gmm(30,30), --42,40
 

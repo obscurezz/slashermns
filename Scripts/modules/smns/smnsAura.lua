@@ -1303,10 +1303,30 @@ function _smns_getExpGainBonus(currentValue, group, player, groupLeader)
     end
 --Ментор END
 
-    return BonusEXP
-end
-  
+--Знамя тысячи битв
+	if _GroupInfo_stackHasModifierAmount(BannerEXP2) > 0 then
+		BonusEXP = BonusEXP + 11
+	end
+--Знамя тысячи битв END
 
+--Знамя мастера
+	if _GroupInfo_stackHasModifierAmount(BannerEXP2) > 0 then
+		BonusEXP = BonusEXP + 7
+	end
+--Знамя мастера END
+
+    
+ -- инструктор
+	if _GroupInfo_stackHasModifierAmount(Instruktor) > 0 then
+		local Leader = _GroupInfo_getCurrentGroupLeader()
+		if Leader ~= nil and Leader.hp > 0 then
+			local LeaderLVL = Leader.impl.level
+			BonusEXP = BonusEXP + 3 + 3 * LeaderLVL
+		end
+	end
+-- инструктор end
+	return BonusEXP
+end
 -- changes attack1 id
 function _smns_getAttack1Id(unit, currentValue)
 	-- if smnsConditions_DlanMortisResist(unit) then

@@ -275,7 +275,7 @@ function _target_AnyNecroUnit(attacker, selected, allies, targets, targetsAreAll
 	local result = {}
 	for i = 1, #targets do
 		local u = targets[i].unit
-		if _GroupInfo_UnitHasModifierValue(u, Id.new('g070um0013').value) then
+		if _GroupInfo_UnitHasModifierValue(u, Id.new('g070um0333').value) or _GroupInfo_UnitHasModifierValue(u, Id.new('g070um0332').value) or _GroupInfo_UnitHasModifierValue(u, Id.new('g070um0335').value) or _GroupInfo_UnitHasModifierValue(u, Id.new('g070um0334').value)then
 			table.insert(result, targets[i])
 		end
 	end

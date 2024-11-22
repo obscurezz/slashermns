@@ -10,17 +10,12 @@ function getModifierDescTxt(unit, prev)
 end
 
 function getImmuneToAttack(unit, attack, prev)
-   if attack == Attack.DrainOverflow then
+   if attack == Attack.DrainOverflow or attack == Attack.Drain then
        return svAttackImmunityClass(unit, attack, prev, Immune.Once)
    end
    return prev
 end
 
-function getImmuneToAttack(unit, attack, prev)
-   if attack == Attack.Drain then
-       return svAttackImmunityClass(unit, attack, prev, Immune.Once)
-   end
-   return prev
-end
+
 
 

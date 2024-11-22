@@ -38,4 +38,3 @@ function getAttack2Damage(unit, prev)
    end
    return prev
 end
-end
