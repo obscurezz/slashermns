@@ -22,6 +22,7 @@ function getAttackCritDamage(unit, prev)
 	if _GroupInfo_stackHasModifierAmount(Id.new('g070um0070').value) > 0 then
 		return svAddCrit1Damage(unit, prev, 25)
 	end
+	return prev
 end
 
 function getAttackCritPower(unit, prev)
@@ -29,6 +30,7 @@ function getAttackCritPower(unit, prev)
 	if _GroupInfo_stackHasModifierAmount(Id.new('g070um0070').value) > 0 then
 		return svAddCrit1Power(unit, prev, 10)
 	end
+	return prev
 end
 
 
@@ -38,7 +40,7 @@ function getAttack2CritHit(unit, prev)
     if _GroupInfo_stackHasModifierAmount(Id.new('g070um0070').value) > 0 then
 		return true
 	end
-	
+	return prev
 end	
 
 function getAttack2CritDamage(unit, prev)
@@ -46,6 +48,7 @@ function getAttack2CritDamage(unit, prev)
 	if _GroupInfo_stackHasModifierAmount(Id.new('g070um0070').value) > 0 then
 		return svAddCrit1Damage(unit, prev, 25)
 	end
+	return prev
 end
 
 function getAttack2CritPower(unit, prev)
@@ -53,6 +56,7 @@ function getAttack2CritPower(unit, prev)
 	if _GroupInfo_stackHasModifierAmount(Id.new('g070um0070').value) > 0 then
 		return svAddCrit1Power(unit, prev, 10)
 	end
+	return prev
 end
 
 
