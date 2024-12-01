@@ -1298,7 +1298,7 @@ function _smns_getExpGainBonus(currentValue, group, player, groupLeader)
                 highest = mAmount[i]
             end
         end
-        mentorValue = math.max( mentorValue, 6 + 3 * (highest.impl.level - highest.baseImpl.level) )
+        mentorValue = math.max( mentorValue, 4 + 2 * (highest.impl.level - highest.baseImpl.level) )
         BonusEXP = BonusEXP + mentorValue
     end
 --Ментор END
@@ -1321,7 +1321,7 @@ function _smns_getExpGainBonus(currentValue, group, player, groupLeader)
 		local Leader = _GroupInfo_getCurrentGroupLeader()
 		if Leader ~= nil and Leader.hp > 0 then
 			local LeaderLVL = Leader.impl.level
-			BonusEXP = BonusEXP + 3 + 3 * LeaderLVL
+			BonusEXP = BonusEXP + math.min(18, 3 + 3 * LeaderLVL)
 		end
 	end
 -- инструктор end

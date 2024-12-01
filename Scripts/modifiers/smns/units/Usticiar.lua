@@ -10,6 +10,6 @@ function getModifierDescTxt(unit, prev)
 	return prev
 end
 function getAtckTwice(unit, prev)
-	local chance = 25 * ( unit.impl.level - unit.baseImpl.level )
+	local chance = 20 + 10 * ( unit.impl.level - unit.baseImpl.level )
 	return _mRnd_simpleRndEvent(chance)
 end

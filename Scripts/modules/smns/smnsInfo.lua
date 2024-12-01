@@ -15,7 +15,7 @@ smnsInfo_HealCap_Percent = 10000
 
 smnsInfoExpTransferEffectiveness_Summon = 1
 smnsInfoExpTransferEffectiveness_Summon_Item = 1
-smnsInfoExpTransferEffectiveness_Doppelganger = 1
+smnsInfoExpTransferEffectiveness_Doppelganger = 0.8
 smnsInfoExpTransferEffectiveness_TransformSelf = 1
 
 function smnsInfo_SetApplyAccuracyBuffToAttack2(value)
