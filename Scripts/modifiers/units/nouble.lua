@@ -12,7 +12,7 @@ end
 function getMovement(unit, prev)
 	local p = _GroupInfo_getUnitPlayer(unit)
 	if p ~= nil and p.race ~= Race.Neutral and p.lord == Lord.Diplomat then
-		return svFlatEffectMovement(unit, prev, 5)
+		return svFlatEffectMovement(unit, prev, 3)
 	end
 	return prev
 end
