@@ -366,4 +366,20 @@ function _attack_SemgaTwoAnyInLine(attacker, selected, allies, targets, targetsA
 	return result
 end
 
+function _attack_smnsAdjacentPlusRandomPlusOnePerTwoLevels(attacker, selected, allies, targets, targetsAreAllies, item, battle)
+	local result = {selected}
+	--plus random
+	if not _common_useRandom then
+		return result
+	end
+	result = _common_PickOneRandom(result, selected, targets, 100, 100)
+	--plus random per 2 levels
+	if not _common_useRandom then
+		return result
+	end
+	local overlevels = attacker.unit.impl.level - attacker.unit.baseImpl.level
+	local chance = 100 * math.floor(overlevels / 2)
+	result = _common_PickNRandomsWithChance(result, selected, targets, 100, 100, chance)
 
+	return result
+end

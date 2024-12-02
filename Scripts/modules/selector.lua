@@ -73,6 +73,8 @@ function _selector_getTargets(methodName, attacker, selected, allies, targets, t
 		result = _attack_SemgaTwoAnyColumns(attacker, selected, allies, targets, targetsAreAllies, item, battle)
 	elseif  methodName == "_attack_SemgaTwoAnyInLine" then
 		result = _attack_SemgaTwoAnyInLine(attacker, selected, allies, targets, targetsAreAllies, item, battle)
+	elseif  methodName == "_attack_smnsAdjacentPlusRandomPlusOnePerTwoLevels" then
+		result = _attack_smnsAdjacentPlusRandomPlusOnePerTwoLevels(attacker, selected, allies, targets, targetsAreAllies, item, battle)
 	end
 	return result
 end
