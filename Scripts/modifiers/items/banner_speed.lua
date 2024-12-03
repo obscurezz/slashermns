@@ -10,5 +10,5 @@ function getModifierDescTxt(unit, prev)
 end
 
 function getAttackInitiative(unit, prev)
-	return svMultimplyInitiative(unit, prev, 0.15)
+	return svMultimplyInitiative(unit, prev, 0.12)
 end

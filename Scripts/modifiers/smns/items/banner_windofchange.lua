@@ -23,5 +23,5 @@ end
 
 function _banner_bonus(unit)
 	local group = _GroupInfo_getUnitGroup(unit)
-	return 0.06 * _GroupInfo_getFrontlineBonusMultiplier(group)
+	return 0.05 * _GroupInfo_getFrontlineBonusMultiplier(group)
 end

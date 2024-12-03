@@ -1337,6 +1337,10 @@ function _smns_getExpGainBonus(currentValue, group, player, groupLeader)
 		end
 	end
 -- инструктор end
+
+--зелье воеводы
+--зелье воеводы END
+
 	return BonusEXP
 end
 -- changes attack1 id
