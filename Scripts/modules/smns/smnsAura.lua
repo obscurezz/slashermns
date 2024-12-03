@@ -39,7 +39,7 @@ function _smns_getUnitAttackDrainLevelBaseValue(attacker, target)
 end
 
 function _smns_multiplicativeHitPointBonus(unit, prev)
-	local BonusHP = 0
+	local BonusHP = 0 + smnsConditions_permanentAura(unit, Id.new('g070um0242').value, 5) + smnsConditions_permanentAura(unit, Id.new('g070um0243').value, 10)
 	local mods = _GroupInfo_UnitModifiers(unit)
 
 --Аура 8% ОЗ
@@ -47,24 +47,6 @@ function _smns_multiplicativeHitPointBonus(unit, prev)
 		BonusHP = BonusHP + 8
 	end
 --Аура 8% ОЗ END
--- Некромантия +%ХП
-	-- if _GroupInfo_UnitHasModifierValue(unit, NecromanceryWarrior) then
-	-- 	local Leader = _GroupInfo_getCurrentGroupLeader()
-	-- 	if Leader ~= nil and Leader.hp > 0 and _GroupInfo_UnitHasModifierValue(Leader, NecroLead) then
-	-- 		local LeaderLVL = Leader.impl.level
-	-- 		local u
-	-- 		local unitGroupSlots = unitGroup.slots
-	-- 		local boostValue = 0
-	-- 		for i = 1, #unitGroupSlots do
-	-- 			if u ~= nil and u.hp > 0 and _GroupInfo_UnitHasModifierValue(u, NecroBoost) then
-	-- 				boostValue = boostValue + 1 + 0.35 * (u.impl.level - u.baseImpl.level)
-	-- 				break
-	-- 			end
-	-- 		end
-	-- 		BonusHP = BonusHP + (3 + boostValue)*LeaderLVL
-	-- 	end
-	-- end
--- Некромантия +%ХП end
 
 -- Некромантия +%ХП
 	if _GroupInfo_stackHasModifierAmount(NecroLead) > 0  and _GroupInfo_UnitModifierAmount(mods, NecromanceryWarrior) > 0 then
@@ -117,7 +99,7 @@ end
 -- changes hit points
 -- prev - numeric value of hit points
 function _smns_flatHitPointBonus(unit, prev)
-	BonusHP = 0
+	BonusHP = 0 + smnsConditions_permanentAura(unit, Id.new('g040um0142').value, 10) + smnsConditions_permanentAura(unit, Id.new('g070um0254').value, 30)
 	local mods = _GroupInfo_UnitModifiers(unit)
 	return BonusHP
 end
@@ -126,7 +108,7 @@ end
 -- prev - numeric value of regeneration
 function _smns_flatRegenBonus(unit, prev)
 	local mods = _GroupInfo_UnitModifiers(unit)
-	local RegenerationBonus = 0 + _Rod_Placer_Effect(unit)
+	local RegenerationBonus = 0 + _Rod_Placer_Effect(unit) + smnsConditions_permanentAura(unit, Id.new('g070um0247').value, 10) + smnsConditions_permanentAura(unit, Id.new('g070um0255').value, 20)
 --Целебное варево
 	if _GroupInfo_stackHasModifierAmount(SkaldRegeneration) > 0 then
 		local u
@@ -195,7 +177,7 @@ end
 -- changes armor
 -- prev - numeric value of armor
 function _smns_flatArmorBonus(unit, prev)
-	local BonusArmor = 0 + _Grymturs_Deboost_Effect(unit)
+	local BonusArmor = 0 + _Grymturs_Deboost_Effect(unit) + smnsConditions_permanentAura(unit, Id.new('g070um0239').value, 5) + smnsConditions_permanentAura(unit, Id.new('g070um0240').value, 10)
 	local mods = _GroupInfo_UnitModifiers(unit)
 
 	--Броня предков
@@ -335,7 +317,7 @@ end
 -- unitMods - list of modifiers
 function _smns_multiplicativeDamageHealBonus(unit, prev, attackN, unitMods)
 	local mods = _GroupInfo_UnitModifiers(unit)
-	local BonusDMG = 0 + _Spawn_Tiamat_Deboost_Effect(unit)
+	local BonusDMG = 0 + _Spawn_Tiamat_Deboost_Effect(unit) + smnsConditions_permanentAura(unit, Id.new('g070um0248').value, 5) + smnsConditions_permanentAura(unit, Id.new('g070um0250').value, 10)
 
 	if unit.impl.attack1.source == Source.Fire then
 		BonusDMG = BonusDMG + _Phoenix_Deboost_Effect(unit)
@@ -704,7 +686,7 @@ end
 -- prev - numeric value of initiative
 function _smns_percentInitiativeBonus(unit, prev)
 	local mods = _GroupInfo_UnitModifiers(unit)
-	local BonusIni = 0
+	local BonusIni = 0 + smnsConditions_permanentAura(unit, Id.new('g070um0249').value, 5) + smnsConditions_permanentAura(unit, Id.new('g070um0251').value, 10)
 	
 --В тени Иггдрасиля II (Эйра 20% ХП если гигант в отряде)
     if _GroupInfo_UnitHasModifierValue(unit, Eyra40HPIfGiant) then
@@ -887,6 +869,36 @@ function _smns_ImmuneToSource(unit, source, prev, currentValue)
 	local MagicProtectChance = 0 + _Rod_Placer_Effect(unit)
 	local result = currentValue
 	_get_Group_and_Mods(unit)
+
+	--перманентные ауры
+	if smnsConditions_permanentAura(unit, Id.new('g070um0364').value, 1) >= 1 and source == Source.Water and currentValue ~= Immune.Always then
+		result = Immune.Once
+	end
+
+	if smnsConditions_permanentAura(unit, Id.new('g070um0360').value, 1) >= 1 and source == Source.Air and currentValue ~= Immune.Always then
+		result = Immune.Once
+	end
+
+	if smnsConditions_permanentAura(unit, Id.new('g070um0361').value, 1) >= 1 and source == Source.Earth and currentValue ~= Immune.Always then
+		result = Immune.Once
+	end
+
+	if smnsConditions_permanentAura(unit, Id.new('g070um0362').value, 1) >= 1 and source == Source.Fire and currentValue ~= Immune.Always then
+		result = Immune.Once
+	end
+
+	if smnsConditions_permanentAura(unit, Id.new('g070um0363').value, 1) >= 1 and source == Source.Mind and currentValue ~= Immune.Always then
+		result = Immune.Once
+	end
+
+	if smnsConditions_permanentAura(unit, Id.new('g070um0365').value, 1) >= 1 and source == Source.Death and currentValue ~= Immune.Always then
+		result = Immune.Once
+	end
+
+	if smnsConditions_permanentAura(unit, Id.new('g070um0359').value, 1) >= 1 and source == Source.Weapon and currentValue ~= Immune.Always then
+		result = Immune.Once
+	end
+	--перманентные ауры END
 	
 --Знамена
 	if _GroupInfo_stackHasModifierAmount(FireBanner) > 0 and source == Source.Fire and currentValue ~= Immune.Always then
@@ -1684,7 +1696,7 @@ end
 -- unitMods - list of modifiers
 function _smns_multiplicativePower(unit, prev, attackN, unitMods)
 	local mods = _GroupInfo_UnitModifiers(unit)
-	local BonusPower = 0 + _Spawn_Tiamat_Deboost_Effect(unit) + _Storm_Deboost_Effect(unit)
+	local BonusPower = 0 + _Spawn_Tiamat_Deboost_Effect(unit) + _Storm_Deboost_Effect(unit) + smnsConditions_permanentAura(unit, Id.new('g070um0246').value, 10) + smnsConditions_permanentAura(unit, Id.new('g070um0252').value, 15)
 
 	--Аура сфокусированности
 	if _GroupInfo_stackHasModifierAmount(AuraAccuracity) > 0 then
@@ -1781,6 +1793,7 @@ function _smns_CritDamage(unit)
 	local mods = _GroupInfo_UnitModifiers(unit)
 	local BonusCritDamage = 0 - (_ForestSeal_Deboost_Effect(unit) * (0.01 * unit.impl.attack1.critDamage))
 							  - (_DodgeBanner_Deboost_Effect(unit) * (0.01 * unit.impl.attack1.critDamage))
+							  + smnsConditions_permanentAura(unit, Id.new('g070um0241').value, 5) + smnsConditions_permanentAura(unit, Id.new('g070um0245').value, 10)
 
 	if smns_scenario.day >= 15 then
 		BonusCritDamage = BonusCritDamage - (_Guard_CritDrain_Deboost_Effect(unit) * (0.01 * unit.impl.attack1.critDamage))
@@ -1814,7 +1827,7 @@ end
 -- changes critical drain
 function _smns_multiplicativeAttackDrain(unit, damage, prev)
 	local mods = _GroupInfo_UnitModifiers(unit)
-	local BonusMultiplyDrain = 0 - _ForestSeal_Deboost_Effect(unit) * 0.5
+	local BonusMultiplyDrain = 0 - _ForestSeal_Deboost_Effect(unit) * 0.5 + smnsConditions_permanentAura(unit, Id.new('g040um0139').value, 10) + smnsConditions_permanentAura(unit, Id.new('g040um0140').value, 20)
 
 	if _BloodRaven_Set_Deboost_Effect(unit) == 1 then
 		BonusMultiplyDrain = BonusMultiplyDrain - 33 * 0.5

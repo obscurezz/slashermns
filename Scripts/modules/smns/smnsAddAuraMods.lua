@@ -7,11 +7,11 @@
 
 -- increase stack hp by 5%
 function _smns_addMod_uaHitPoint_valPercent5(mods)
-	return _smns_addMod_Common(mods, {'g070um0242', 'g070um0243', 'g070um0243',})
+	return _smns_addMod_Common(mods, nil)
 end
 -- increase stack hp by 5
 function _smns_addMod_uaHitPoint_valFlat5(mods)
-	return _smns_addMod_Common(mods, {'g070um0254'})
+	return _smns_addMod_Common(mods, nil)
 end
 -- increase stack hp by 10
 function _smns_addMod_uaHitPoint_valFlat10(mods)
@@ -19,27 +19,27 @@ function _smns_addMod_uaHitPoint_valFlat10(mods)
 end
 -- increase stack hp by 25
 function _smns_addMod_uaHitPoint_valFlat25(mods)
-	return _smns_addMod_Common(mods, {'g070um0254'})
+	return _smns_addMod_Common(mods, nil)
 end
 -- increase stack regen by 5%
 function _smns_addMod_uaRegen_valFlat5(mods)
-	return _smns_addMod_Common(mods, {'g070um0048', 'g070um0086', 'g070um0086', 'g070um0087', 'g070um0087', 'g070um0087', 'g070um0247', 'g070um0247', 'g070um0255', 'g070um0255', 'g070um0255', 'g070um0255'})
+	return _smns_addMod_Common(mods, {'g070um0048', 'g070um0086', 'g070um0086', 'g070um0087', 'g070um0087', 'g070um0087'})
 end
 -- increase stack armor by 5
 function _smns_addMod_uaArmor_valFlat5(mods)
-	return _smns_addMod_Common(mods, {'g070um0239', 'g070um0240','g070um0240'})
+	return _smns_addMod_Common(mods, nil)
 end
 -- increase stack initiative by 5%
 function _smns_addMod_uaAttackInitiative_valPercent5(mods)
-	return _smns_addMod_Common(mods, {'g070um0249'})
+	return _smns_addMod_Common(mods, nil)
 end
 -- increase stack initiative by 10%
 function _smns_addMod_uaAttackInitiative_valPercent10(mods)
-	return _smns_addMod_Common(mods, {'g070um0251'})
+	return _smns_addMod_Common(mods, nil)
 end
 -- increase stack damage and heal by 5%
 function _smns_addMod_uaAttackDamageHeal_valPercent5(mods)
-	return _smns_addMod_Common(mods, {'g070um0248', 'g070um0250', 'g070um0250',})
+	return _smns_addMod_Common(mods, nil)
 end
 -- increase stack damage and heal by 20%
 function _smns_addMod_uaAttackDamageHeal_valPercent20(mods)
@@ -51,7 +51,7 @@ function _smns_addMod_uaAttackDamageHeal_valPercent25(mods)
 end
 -- increase stack accuracy by 5%
 function _smns_addMod_uaAttackPower_valPercent5(mods)
-	return _smns_addMod_Common(mods, {'g070um0246', 'g070um0246', 'g070um0252', 'g070um0252', 'g070um0252',})
+	return _smns_addMod_Common(mods, nil)
 end
 -- increase stack accuracy by 5% if modifier owner is not melee
 function _smns_addMod_uaAttackPower_valPercent5_ranged(mods)
@@ -71,11 +71,11 @@ function _smns_addMod_uaAttackDrain_valFlat35(mods)
 end
 -- increase stack crit damage by 5%
 function _smns_addMod_uaAttackCrit_valFlat5(mods)
-	return _smns_addMod_Common(mods, {'g070um0241'})
+	return _smns_addMod_Common(mods, nil)
 end
 -- increase stack crit damage by 10%
 function _smns_addMod_uaAttackCrit_valFlat10(mods)
-	return _smns_addMod_Common(mods, {'g070um0245'})
+	return _smns_addMod_Common(mods, nil)
 end
 -- increase chance to protect backward unit from hit by 5%
 function _smns_addMod_umAttackProtection5(mods)

@@ -264,3 +264,16 @@ function smnsConditions_getThiefActionBonus(unit, range, scen)
 
 	return false
 end
+
+function smnsConditions_permanentAura(unit, aura_mod, aura_value)
+	local group_aura_modifiers = _GroupInfo_stackHasModifierAmount(aura_mod)
+	if group_aura_modifiers == 0 then
+		return 0
+	elseif group_aura_modifiers > 0 then
+		if _GroupInfo_UnitHasModifierValue(unit, aura_mod) then
+			return aura_value * (group_aura_modifiers - 1)
+		else
+			return aura_value * group_aura_modifiers
+		end
+	end	
+end

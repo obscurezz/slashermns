@@ -2332,7 +2332,7 @@ end
 
 uaHitPoint_valPercent5               = {G040UM0144, G040UM0145, G040UM0146, G040UM0149, G201UM9175}
 uaHitPoint_valFlat5                  = {G040UM0141, G201UM9169}
-uaHitPoint_valFlat10                 = {G040UM0142}
+uaHitPoint_valFlat10                 = {}
 uaHitPoint_valFlat25                 = {G040UM0143}
 uaRegen_valFlat5                     = {G040UM0108, G040UM0109, G040UM0110, G201UM9171, G040UM0312}
 uaRegen_valFlat10                    = {G040UM0150, G040UM0313}
@@ -2344,8 +2344,8 @@ uaAttackDamageHeal_valPercent20      = {G040UM0239}
 uaAttackDamageHeal_valPercent25      = {G040UM0238}
 uaAttackPower_valPercent5            = {G040UM0114, G040UM0115, G040UM0116, G040UM0147, G201UM9176}
 uaAttackPower_valPercent5_ranged     = {G040UM0067}
-uaAttackDrain_valFlat10              = {G040UM0139, G040UM0240, G201UM9170}
-uaAttackDrain_valFlat20              = {G040UM0140}
+uaAttackDrain_valFlat10              = {G040UM0240, G201UM9170}
+uaAttackDrain_valFlat20              = {}
 uaAttackDrain_valFlat35              = {G040UM0237}
 uaAttackCrit_valFlat5                = {G040UM0188, G040UM0189, G040UM0190, G201UM9172, G040UM0251}
 uaAttackCrit_valFlat10               = {G040UM0191}
