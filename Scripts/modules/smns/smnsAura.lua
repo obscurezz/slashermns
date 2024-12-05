@@ -43,9 +43,10 @@ function _smns_multiplicativeHitPointBonus(unit, prev)
 	local mods = _GroupInfo_UnitModifiers(unit)
 
 --Аура 8% ОЗ
-	if _GroupInfo_stackHasModifierAmount(AuraHPperk) > 0 then
-		BonusHP = BonusHP + 8
-	end
+	-- if _GroupInfo_stackHasModifierAmount(AuraHPperk) > 0 then
+	-- 	BonusHP = BonusHP + 8
+	-- end
+	BonusHP = BonusHP + smnsConditions_permanentAura(unit, AuraHPperk, 8)
 --Аура 8% ОЗ END
 
 -- Некромантия +%ХП
@@ -179,6 +180,10 @@ end
 function _smns_flatArmorBonus(unit, prev)
 	local BonusArmor = 0 + _Grymturs_Deboost_Effect(unit) + smnsConditions_permanentAura(unit, Id.new('g070um0239').value, 5) + smnsConditions_permanentAura(unit, Id.new('g070um0240').value, 10)
 	local mods = _GroupInfo_UnitModifiers(unit)
+
+	--аура твердости
+	BonusArmor = BonusArmor + smnsConditions_permanentAura(unit, Id.new('g040um0151').value, 5)
+	--аура твердости END
 
 	--Броня предков
 		if _GroupInfo_stackHasModifierAmount(ArcaneArmor) > 0 then
@@ -328,9 +333,10 @@ function _smns_multiplicativeDamageHealBonus(unit, prev, attackN, unitMods)
 	end
 
 --Аура 7% DMG
-	if _GroupInfo_stackHasModifierAmount(AuraDMGperk) > 0 then
-		BonusDMG = BonusDMG + 7
-	end
+	-- if _GroupInfo_stackHasModifierAmount(AuraDMGperk) > 0 then
+	-- 	BonusDMG = BonusDMG + 7
+	-- end
+	BonusDMG = BonusDMG + smnsConditions_permanentAura(unit, AuraDMGperk, 7)
 --Аура 7% DMG END
 
 --бонус Лорда-мага
@@ -704,9 +710,10 @@ function _smns_percentInitiativeBonus(unit, prev)
 --Волчья стая END
 
 --Аура ловкости
-	if _GroupInfo_stackHasModifierAmount(AuraIni) > 0 then
-		BonusIni = BonusIni + 7
-	end
+	-- if _GroupInfo_stackHasModifierAmount(AuraIni) > 0 then
+	-- 	BonusIni = BonusIni + 7
+	-- end
+	BonusIni = BonusIni + smnsConditions_permanentAura(unit, AuraIni, 7)
 --Аура ловкости END
 
 --Сет феникса
@@ -1703,9 +1710,10 @@ function _smns_multiplicativePower(unit, prev, attackN, unitMods)
 	local BonusPower = 0 + _Spawn_Tiamat_Deboost_Effect(unit) + _Storm_Deboost_Effect(unit) + smnsConditions_permanentAura(unit, Id.new('g070um0246').value, 10) + smnsConditions_permanentAura(unit, Id.new('g070um0252').value, 15)
 
 	--Аура сфокусированности
-	if _GroupInfo_stackHasModifierAmount(AuraAccuracity) > 0 then
-		BonusPower = BonusPower + 8
-	end
+	-- if _GroupInfo_stackHasModifierAmount(AuraAccuracity) > 0 then
+	-- 	BonusPower = BonusPower + 8
+	-- end
+	BonusPower = BonusPower + smnsConditions_permanentAura(unit, AuraAccuracity, 8)
 	--Аура сфокусированности END
 
 	--necromanery
@@ -1798,6 +1806,10 @@ function _smns_CritDamage(unit)
 	local BonusCritDamage = 0 - (_ForestSeal_Deboost_Effect(unit) * (0.01 * unit.impl.attack1.critDamage))
 							  - (_DodgeBanner_Deboost_Effect(unit) * (0.01 * unit.impl.attack1.critDamage))
 							  + smnsConditions_permanentAura(unit, Id.new('g070um0241').value, 5) + smnsConditions_permanentAura(unit, Id.new('g070um0245').value, 10)
+
+	--аура мастерства
+	BonusCritDamage = BonusCritDamage + smnsConditions_permanentAura(unit, Id.new('g040um0191').value, 10)
+	--аура мастерства END
 
 	if smns_scenario.day >= 15 then
 		BonusCritDamage = BonusCritDamage - (_Guard_CritDrain_Deboost_Effect(unit) * (0.01 * unit.impl.attack1.critDamage))
