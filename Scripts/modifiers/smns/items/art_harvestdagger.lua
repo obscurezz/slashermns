@@ -27,8 +27,9 @@ function getAttackCritHit(unit, prev)
 end
 
 function getAttackCritDamage(unit, prev)
-	local base_effect = 10
-	return svAddCrit1Damage(unit, prev, (base_effect + math.floor(_getBattleWins(unit) / 3), 15)))
+	local base_effect = 7
+	local Stacks = math.floor(_getBattleWins(unit) / 3, 15)
+	return svAddCrit1Damage(unit, prev, (base_effect + Stacks))
 end
 
 function getAttackDamage(unit, prev)
