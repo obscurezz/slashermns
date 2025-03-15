@@ -28,9 +28,9 @@ end
 
 function getAttackCritDamage(unit, prev)
 	local base_effect = 10
-	return svAddCrit1Damage(unit, prev, (base_effect + math.min(_getBattleWins(unit), 15)))
+	return svAddCrit1Damage(unit, prev, (base_effect + math.floor(_getBattleWins(unit) / 3), 15)))
 end
 
 function getAttackDamage(unit, prev)
-	return svFlatEffectDamage1(unit, prev, 7)
+	return svFlatEffectDamage1(unit, prev, 6)
 end

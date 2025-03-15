@@ -179,5 +179,47 @@ settings = {
 
 	-- Create mss32 proxy dll log files with debug info
 	--debugHooks = true,
+	movementCost = {
+        -- Show stacks movement cost
+        show = true,
+        -- Color components are all in range [0 : 255]
+        textColor = {
+            red = 200, green = 200, blue = 200
+        },
+        outlineColor = {
+            red = 0, green = 0, blue = 0
+        },
+        -- Movement cost on water tiles
+        water = {
+            -- Default movement cost
+            default = 4,
+            -- Movement cost for non water-only stacks with dead leader
+            withDeadLeader = 8,
+            -- Movement cost for stacks with water movement bonus
+            withBonus = 2,
+            -- Movement cost for water-only stacks
+            waterOnly = 2,
+    },
+    
+        -- Movement cost on forest tiles
+        forest = {
+            -- Default movement cost
+            default = 3,
+            -- Movement cost for stacks with dead leader
+            withDeadLeader = 6,
+            -- Movement cost for stacks with forest movement bonus 
+            withBonus = 2,
+    },
+    
+        -- Movement cost on plain tiles
+        plain = {
+            -- Default movement cost
+            default = 2,
+            -- Movement cost for stacks with dead leader
+            withDeadLeader = 4,
+            -- Movement cost for stacks without plain movement bonus on road tiles
+            onRoad = 1,
+    },
+},
 }
 

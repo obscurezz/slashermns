@@ -46,7 +46,7 @@ function _smns_multiplicativeHitPointBonus(unit, prev)
 	-- if _GroupInfo_stackHasModifierAmount(AuraHPperk) > 0 then
 	-- 	BonusHP = BonusHP + 8
 	-- end
-	BonusHP = BonusHP + smnsConditions_permanentAura(unit, AuraHPperk, 8)
+	BonusHP = BonusHP + smnsConditions_permanentAura(unit, AuraHPperk, 10)
 --Аура 8% ОЗ END
 
 -- Некромантия +%ХП
@@ -131,6 +131,10 @@ function _smns_flatRegenBonus(unit, prev)
 		RegenerationBonus = RegenerationBonus + 4 + 4*(highest.impl.level - highest.baseImpl.level)
 	end
 --Целебное варево END
+
+--Аура регенерации
+RegenerationBonus = RegenerationBonus + smnsConditions_permanentAura(unit, RegenAura, 15)
+--Аура регенерации END
 
 	-- Некромантия +regen
 	if _GroupInfo_stackHasModifierAmount(NecroLead) > 0  and _GroupInfo_UnitModifierAmount(mods, NecromanceryDrake) > 0 then
@@ -1329,7 +1333,7 @@ function _smns_getExpGainBonus(currentValue, group, player, groupLeader)
 --Знамя тысячи битв END
 
 --Знамя мастера
-	if _GroupInfo_stackHasModifierAmount(BannerEXP2) > 0 then
+	if _GroupInfo_stackHasModifierAmount(BannerEXP1) > 0 then
 		BonusEXP = BonusEXP + 7
 	end
 --Знамя мастера END
@@ -1808,7 +1812,7 @@ function _smns_CritDamage(unit)
 							  + smnsConditions_permanentAura(unit, Id.new('g070um0241').value, 5) + smnsConditions_permanentAura(unit, Id.new('g070um0245').value, 10)
 
 	--аура мастерства
-	BonusCritDamage = BonusCritDamage + smnsConditions_permanentAura(unit, Id.new('g040um0191').value, 10)
+	BonusCritDamage = BonusCritDamage + smnsConditions_permanentAura(unit, Id.new('g040um0191').value, 5)
 	--аура мастерства END
 
 	if smns_scenario.day >= 15 then

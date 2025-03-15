@@ -34,6 +34,9 @@ local groupBuffStronger15 = Id.new('g070um0346').value
 local groupBuffStronger30 = Id.new('g070um0347').value
 local groupBuffStronger50 = Id.new('g070um0348').value
 
+
+local BurningBanner = Id.new('g014um1066').value
+
 function _ChangeGlobalBuffEffect(unit, value)
     local unit_change_stats = 0
 
@@ -118,7 +121,7 @@ function _ChangeGlobalDebuffEffect(unit, value)
         if _GroupInfo_stackHasModifierAmount(groupDebuffWeaker30) > 0 then
             unit_change_stats = unit_change_stats - 0.3
         end
-        if _GroupInfo_stackHasModifierAmount(groupDebuffWeaker50) > 0 then
+        if _GroupInfo_stackHasModifierAmount(groupDebuffWeaker50) > 0 or _GroupInfo_stackHasModifierAmount(Id.new('g014um1066').value) > 0 then 
             unit_change_stats = unit_change_stats - 0.5
         end
         if _GroupInfo_stackHasModifierAmount(groupDebuffStronger15) > 0 and not _GroupInfo_UnitHasModifierValue(unit, DebuffStrongerImmunityModifier) then

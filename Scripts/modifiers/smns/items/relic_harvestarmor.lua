@@ -22,5 +22,5 @@ end
 
 function getArmor(unit, prev)
 	local base_effect = 5
-	return svFlatEffectArmor(unit, prev, (base_effect + math.min(_getBattleWins(unit), 15)))
+	return svFlatEffectArmor(unit, prev, (base_effect + math.min(_getBattleWins(unit), 8)))
 end

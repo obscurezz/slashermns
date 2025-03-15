@@ -11,13 +11,13 @@ function canApplyAsBoostSpell()
 end
 
 function getAttackPower(unit, prev)
-    local value = 0.10
+    local value = 0.08
     local res = _ChangeGlobalBuffEffect(unit, value)
 	return svMultimplyPower1(unit, prev, res)
 end
 
 function getAttackDamage(unit, prev)
-    local value = 0.1
+    local value = 0.08
     local res = _ChangeGlobalBuffEffect(unit, value)
 	return svMultimplyDamage1(unit, prev, res)
 end

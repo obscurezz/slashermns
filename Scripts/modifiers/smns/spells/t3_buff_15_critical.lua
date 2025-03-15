@@ -16,7 +16,7 @@ function getAttackCritHit(unit, prev)
 end
 
 function getAttackCritDamage(unit, prev)
-    local value = 15
+    local value = 12
     local res = _ChangeGlobalBuffEffect(unit, value)
     return svAddCrit1Damage(unit, prev, res)
 end
@@ -26,7 +26,7 @@ function getAttack2CritHit(unit, prev)
 end
 
 function getAttack2CritDamage(unit, prev)
-    local value = 15
+    local value = 12
     local res = _ChangeGlobalBuffEffect(unit, value)
     if statsCheck_isDirectDmgType(unit.impl.attack2.type) then
 	    return svAddCrit2Damage(unit, prev, res)

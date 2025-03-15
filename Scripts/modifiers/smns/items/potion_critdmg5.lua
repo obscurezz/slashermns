@@ -1,23 +1,32 @@
 package.path = ".\\Scripts\\?.lua;.\\Scripts\\exp\\?.lua;.\\Scripts\\modifiers\\?.lua;.\\Scripts\\modifiers\\drawing\\?.lua;.\\Scripts\\modifiers\\items\\?.lua;.\\Scripts\\modifiers\\leaderMods\\?.lua;.\\Scripts\\modifiers\\perks\\?.lua;.\\Scripts\\modifiers\\smns\\?.lua;.\\Scripts\\modifiers\\smns\\items\\?.lua;.\\Scripts\\modifiers\\smns\\perks\\?.lua;.\\Scripts\\modifiers\\smns\\spells\\?.lua;.\\Scripts\\modifiers\\smns\\units\\?.lua;.\\Scripts\\modifiers\\spells\\?.lua;.\\Scripts\\modifiers\\units\\?.lua;.\\Scripts\\modifiers\\units\\bloodsorcerer\\?.lua;.\\Scripts\\modifiers\\units\\multiplicative_stats\\?.lua;.\\Scripts\\modifiers\\units\\torhoth\\?.lua;.\\Scripts\\modules\\?.lua;.\\Scripts\\modules\\smns\\?.lua;.\\Scripts\\workshop\\?.lua;.\\Scripts\\workshop\\classes\\?.lua"
 require('setValue')
-require('global_spell_effects')
 
-function canApplyAsLowerSpell()
-	return true
+function getModifierDisplay(unit, prev)
+	return prev
 end
 
-function canApplyAsBoostSpell()
-	return false
+function getModifierDescTxt(unit, prev)
+	return prev
 end
 
-function getAttackDamage(unit, prev)
-    local value = -0.1
-    local res = _ChangeGlobalDebuffEffect(unit, value)
-	return svMultimplyDamage1(unit, prev, res)
+function getAttackCritHit(unit, prev)
+    return true
 end
 
-function getAttackPower(unit, prev)
-    local value = -0.15
-    local res = _ChangeGlobalDebuffEffect(unit, value)
-	return svMultimplyPower1(unit, prev, res)
+function getAttackCritDamage(unit, prev)
+    return svAddCrit1Damage(unit, prev, 5)
+end
+
+function getAttack2CritHit(unit, prev)
+	if statsCheck_isDirectDmgType(unit.impl.attack2.type) then
+		return true
+	end
+	return prev
+end
+
+function getAttack2CritDamage(unit, prev)
+	if statsCheck_isDirectDmgType(unit.impl.attack2.type) then
+    return svAddCrit2Damage(unit, prev, 5)
+	end
+	return prev
 end

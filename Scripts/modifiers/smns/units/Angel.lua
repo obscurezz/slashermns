@@ -9,6 +9,6 @@ function getModifierDescTxt(unit, prev)
 end
 
 function getAttackDamRatio(unit, prev)
-		return math.min(100, prev + (15 * (unit.impl.level - unit.baseImpl.level)))
+		return math.min(100, prev + (30 * (unit.impl.level - unit.baseImpl.level)))
 	end
 	

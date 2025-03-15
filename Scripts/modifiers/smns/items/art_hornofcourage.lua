@@ -12,7 +12,7 @@ function getModifierDescTxt(unit, prev)
 end
 
 function getArmor(unit, prev)
-	return svFlatEffectArmor(unit, prev, 19)
+	return svFlatEffectArmor(unit, prev, 17)
 end
 
 function getRegen(unit, prev)
