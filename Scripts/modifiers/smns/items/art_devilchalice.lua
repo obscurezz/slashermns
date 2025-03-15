@@ -23,4 +23,8 @@ function getAttackDrain(unit, damage, prev)
 	return svAddDrain1(unit, prev, damage, 0.2)
 end
 
+function getAttack2Drain(unit, damage, prev)
+	return svAddDrain2(unit, prev, damage, 0.2)
+end
+
 
