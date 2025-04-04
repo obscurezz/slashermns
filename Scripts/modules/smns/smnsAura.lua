@@ -326,7 +326,7 @@ end
 -- unitMods - list of modifiers
 function _smns_multiplicativeDamageHealBonus(unit, prev, attackN, unitMods)
 	local mods = _GroupInfo_UnitModifiers(unit)
-	local BonusDMG = 0 + _Spawn_Tiamat_Deboost_Effect(unit) + smnsConditions_permanentAura(unit, Id.new('g070um0248').value, 5) + smnsConditions_permanentAura(unit, Id.new('g070um0250').value, 10)
+	local BonusDMG = 0 + _Draug_Deboost_Effect(unit) + _Spawn_Tiamat_Deboost_Effect(unit) + smnsConditions_permanentAura(unit, Id.new('g070um0248').value, 5) + smnsConditions_permanentAura(unit, Id.new('g070um0250').value, 10)
 
 	if unit.impl.attack1.source == Source.Fire then
 		BonusDMG = BonusDMG + _Phoenix_Deboost_Effect(unit)

@@ -178,4 +178,5 @@ BannerEXP2 = Id.new('g070um0357').value
 BannerEXP1 = Id.new('g070um0356').value
 Instruktor = Id.new('g070um0358').value
 RegenAura = Id.new('g000um4016').value
-		
+
+DraugDedamage = Id.new('g070um0368').value

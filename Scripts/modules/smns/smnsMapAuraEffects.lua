@@ -240,3 +240,18 @@ function _DodgeBanner_Deboost_Effect(unit)
 	
 	return _unitAura_NearestGroupsAuraEffect(unit, effectFunction_1, radius, for_what_diplomacy_apply)
 end
+
+function DraugDeboost(group, groupModifiers, groupModifiersDead)
+	if _GroupInfo_UnitModifierAmount(groupModifiers, DraugDedamage) > 0 then
+		return -10
+	end
+	return 0
+end
+
+function _Draug_Deboost_Effect(unit)
+	local effectFunction_1 = DraugDeboost
+	local radius = 1
+	local for_what_diplomacy_apply = {diplomacyStatus_War}
+	
+	return _unitAura_NearestGroupsAuraEffect(unit, effectFunction_1, radius, for_what_diplomacy_apply)
+end
