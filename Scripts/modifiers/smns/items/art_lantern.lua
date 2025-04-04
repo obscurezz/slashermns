@@ -33,6 +33,10 @@ function getHitPoint(unit, prev)
 	return svFlatEffectHitPoint(unit, prev, 20)
 end
 
+function getScout(unit, prev)
+	return svFlatEffectScout(unit, prev, smnsConditions_getCorpseBonus(unit, 1))
+end
+
 function getAttackInitiative(unit, prev)
 	return svFlatEffectInitiative(unit, prev, smnsConditions_getCorpseBonus(unit, 2))
 end
