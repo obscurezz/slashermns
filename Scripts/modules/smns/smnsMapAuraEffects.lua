@@ -243,7 +243,15 @@ end
 
 function DraugDeboost(group, groupModifiers, groupModifiersDead)
 	if _GroupInfo_UnitModifierAmount(groupModifiers, DraugDedamage) > 0 then
-		return -10
+		local DraugAmount = _GroupInfo_UnitModifierAmount(groupModifiers, DraugDedamage)
+		local DeboostEffect = 0
+		local base = 10
+		while DraugAmount > 0 do
+  			DeboostEffect = DeboostEffect - base
+  			base = base / 2
+  			DraugAmount = DraugAmount - 1
+		end
+		return DeboostEffect
 	end
 	return 0
 end
