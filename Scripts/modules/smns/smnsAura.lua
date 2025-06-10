@@ -587,7 +587,7 @@ end
 				highest = mAmount[i]
 			end
 		end
-		BonusDMG = BonusDMG + math.min(20, (4 + (4 * (highest.impl.level - highest.baseImpl.level))))
+		BonusDMG = BonusDMG + math.min(20, (5 + (5 * (highest.impl.level - highest.baseImpl.level))))
 	end
 --END
 
@@ -1202,9 +1202,9 @@ function _smns_flatMovementBonus(unit, prev, currentValue)
 -- Наездник END
 
 --Прародитель с героем кентавром дает +4 мува
-    if _GroupInfo_UnitHasModifierValue(unit, CentaurLeader) and _GroupInfo_stackHasModifierAmount(Praroditel) > 0 then
-        Bonus = Bonus + 4
-    end
+  --  if _GroupInfo_UnitHasModifierValue(unit, CentaurLeader) and _GroupInfo_stackHasModifierAmount(Praroditel) > 0 then
+  --      Bonus = Bonus + 4
+   -- end
 --Прародитель END
 
 --Благородный эльф +3 мува и +1 мув за 2 оверлевела
@@ -1804,7 +1804,16 @@ function _smns_flatDamageHealBonus(unit, prev, attackN, unitMods)
 		BonusFlatDamage = BonusFlatDamage + 30
 	end
 	--END eira +flame damage
+--Авангард
+--	local HorsemanAmount = _GroupInfo_stackHasModifierAmount(Horseman)
+--	if HorsemanAmount > 0 and _GroupInfo_UnitHasModifierValue(unit, Avangard) then
+--		result = result + 5 * HorsemanAmount
+--	end
 
+	if _GroupInfo_UnitHasModifierValue(unit, CentaurLeader) and _GroupInfo_stackHasModifierAmount(Praroditel) > 0 then
+		BonusFlatDamage = BonusFlatDamage + 10 
+	end
+	--Авангард END
 	return BonusFlatDamage
 end
 

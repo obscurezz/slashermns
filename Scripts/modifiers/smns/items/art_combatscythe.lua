@@ -20,3 +20,7 @@ end
 function getAttack2Damage(unit, prev)
 	return svMultimplyDamage2(unit, prev, 0.3)
 end
+
+function getArmor(unit, prev)
+	return svFlatEffectArmor(unit, prev, -25)
+end

@@ -20,3 +20,7 @@ end
 function getAttack2Damage(unit, prev)
 	return svMultimplyDamage2(unit, prev, 0.5)
 end
+
+function getHitPoint(unit, prev)
+	return svMultimplyHitPoint(unit, prev, -0.5)
+end

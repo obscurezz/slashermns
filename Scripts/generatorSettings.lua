@@ -1,6 +1,12 @@
 --[[ Settings for Disciples 2 random scenario generator ]]--
-
 settings = {
+	iterations = 10000,
+	maxTemplateCustomParameters = 5,
+	enableParameterForest = false,
+	enableParameterRoads = false,
+	enableParameterGold = false,
+	enableParameterMana = false,
+
 	-- These units will be ignored by generator, they will never appear.
 	forbiddenUnits = {
 
@@ -75,6 +81,15 @@ settings = {
 'g000uu8242', -- Хозяин масок л. призыватель
 'g000uu7598', -- Теневидец л.
 'g000uu6007', -- Темный эльф-жрец л. призыватель
+
+-- Водные лидеры
+'g000uu5127', -- Кракен
+'g000uu5129', -- Морской змей
+'g000uu7522', -- Наяда
+'g000uu8138', -- Никса
+'g000uu5126', -- Русалка
+'g000uu8230', -- Чудище
+'g000uu7536', -- Элементаль воды
 
 -------------------------------------------------------------------------
 -- РЕКОМЕНДАЦИИ ПО ИСКЛЮЧЕНИЮ ЮНИТОВ В ПВП-ШАБЛОНАХ (СКОПИРОВАТЬ В ФАЙЛ ШАБЛОНА)

@@ -6,7 +6,7 @@
 -- 6 5 4
 
 local TemplateName = 'Freedom'
-local Verison = '2.1.1'
+local Verison = '2.1.2'
 local Timer = 'First turn: 600, second turn: 360, sixth and further turns: 420.'
 
 function getName(name, version)
@@ -951,8 +951,8 @@ function getStartingZone(zoneId, playerRace, zoneSize)
     }
 
     zoneContent['merchants'] = {
-        getMerchant({Item.Orb, Item.Scroll, Item.Wand, Item.Talisman}, 200, 400, 15, getGuard(2, subraceRandomizer(1), {Item.Valuable}, 100, 500, 2, getExacts('t1MerchantExacts'))),
-        getMerchant({Item.Armor, Item.Weapon, Item.TravelItem, Item.Banner, Item.Jewel, Item.Talisman}, 200, 600, 15, getGuard(2, subraceRandomizer(1), {Item.Valuable}, 100, 500, 2, getExacts('t1MerchantExacts'))),
+        getMerchant({Item.Orb, Item.Scroll, Item.Wand, Item.Talisman}, 200, 400, 10, getGuard(2, subraceRandomizer(1), {Item.Valuable}, 100, 500, 2, getExacts('t1MerchantExacts'))),
+        getMerchant({Item.Armor, Item.Weapon, Item.TravelItem, Item.Banner, Item.Jewel, Item.Talisman}, 200, 600, 9, getGuard(2, subraceRandomizer(1), {Item.Valuable}, 100, 500, 2, getExacts('t1MerchantExacts'))),
     }
     zoneContent['towns'] = {
         getNeutralTown(1, {Item.Armor, Item.Weapon}, 300, 675, 1, getExacts('t1TownExacts'), getGuard(1, subraceRandomizer(1), {Item.Orb}, 400, 500, 1, getExacts('t1TownGuardExacts'))),
@@ -1010,7 +1010,7 @@ function getBufferZone(zoneId, playerRace, zoneSize)
         }
     }
     
-    local bufferMerchant = getMerchant({Item.PotionPermanent}, 400, 700, 7, getGuard(3, subraceRandomizer(2), {Item.Valuable}, 250, 750, 2, getExacts('t2MerchantExacts')))
+    local bufferMerchant = getMerchant({Item.PotionPermanent}, 400, 700, 5, getGuard(3, subraceRandomizer(2), {Item.Valuable}, 250, 750, 2, getExacts('t2MerchantExacts')))
     for key, value in pairs({'g001ig0525', 'g001ig0528', 'g001ig0529', 'g001ig0527', 'g001ig0530', 'g001ig0526', 'g001ig0534', 'g001ig0523'}) do
         table.insert(bufferMerchant['goods']['items'], {id = value, min = 1, max = 1})
     end
@@ -1158,7 +1158,7 @@ function getBigZone(zoneId, zoneSize)
         getSingleStack(5, {Item.Wand}, 550, 550, 1),
     }
 
-    local itemMerchant = getMerchant({Item.Armor, Item.Weapon, Item.Jewel, Item.Banner, Item.Talisman}, 700, 900, 10, getGuard(3, subraceRandomizer(2), {Item.Valuable}, 250, 750, 2, getExacts('t3MerchantExacts')))
+    local itemMerchant = getMerchant({Item.Armor, Item.Weapon, Item.Jewel, Item.Banner, Item.Talisman}, 700, 900, 8, getGuard(3, subraceRandomizer(2), {Item.Valuable}, 250, 750, 2, getExacts('t3MerchantExacts')))
     -- for key, value in pairs({'g001ig0027', 'g001ig0028', 'g001ig0022', 'g001ig0029', 'g001ig0030'}) do
     --     table.insert(itemMerchant['goods']['items'], {id = value, min = 1, max = 1})
     -- end
@@ -1260,7 +1260,7 @@ function getTreasureZone(zoneId, zoneSize)
         table.insert(mageMerchant['goods']['items'], {id = value, min = 1, max = 1})
     end
 
-    local itemMerchant = getMerchant({Item.Armor, Item.Weapon, Item.Jewel, Item.Banner, Item.TravelItem}, 500, 900, 10, getGuard(4, subraceRandomizer(2), {Item.Valuable}, 250, 750, 2, getExacts('t3MerchantExacts')))
+    local itemMerchant = getMerchant({Item.Armor, Item.Weapon, Item.Jewel, Item.Banner, Item.TravelItem}, 500, 900, 8, getGuard(4, subraceRandomizer(2), {Item.Valuable}, 250, 750, 2, getExacts('t3MerchantExacts')))
     for key, value in pairs({'g000ig9130', 'g000ig9123', 'g001ig0202', 'g000ig9040', 'g000ig9014'}) do
         table.insert(itemMerchant['goods']['items'], {id = value, min = 1, max = 1})
     end
@@ -1338,7 +1338,8 @@ end
 ----------
 
 template = {
-    name = getName(TemplateName, Verison),
+    --name = getName(TemplateName, Verison),
+    name = 'Freedom 2.1.2',
     description = getDescription(TemplateName, Verison, Timer),
     minSize = 72,
     maxSize = 72,
