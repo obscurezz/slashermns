@@ -13,7 +13,7 @@ function getAttackDrain(unit, damage, prev)
     local player = _GroupInfo_getUnitPlayer(unit)
 	if player ~= nil and player.race ~= Race.Neutral then
 		local DeathMana = player.bank.deathMana
-		local bonus_drain = math.min(0.5, 0.05 * math.floor(DeathMana / 200))
+		local bonus_drain = math.min(0.5, 0.05 * math.floor(DeathMana / 150))
 		return svAddDrain1(unit, prev, damage, bonus_drain)
 	end
 	return prev
