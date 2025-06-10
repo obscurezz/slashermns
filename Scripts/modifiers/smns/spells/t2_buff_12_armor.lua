@@ -11,7 +11,7 @@ function canApplyAsBoostSpell()
 end
 
 function getArmor(unit, prev)
-    local value = 12
+    local value = 13
     local res = _ChangeGlobalBuffEffect(unit, value)
 	return svFlatEffectArmor(unit, prev, res)
 end
