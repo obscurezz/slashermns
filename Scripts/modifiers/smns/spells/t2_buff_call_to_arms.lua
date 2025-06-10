@@ -26,5 +26,8 @@ end
 function getAttack2Power(unit, prev)
     local value = 0.1
     local res = _ChangeGlobalBuffEffect(unit, value)
-    return svMultimplyPower2(unit, prev, res)
+    smnsInfo_SetApplyAccuracyBuffToAttack2(true)
+    result = svMultimplyPower2(unit, prev, res)
+    smnsInfo_SetApplyAccuracyBuffToAttack2(false)
+    return result
  end
