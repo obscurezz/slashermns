@@ -180,3 +180,4 @@ Instruktor = Id.new('g070um0358').value
 RegenAura = Id.new('g000um4016').value
 
 DraugDedamage = Id.new('g070um0368').value
+KonsulDeboost = Id.new('g070um0369').value

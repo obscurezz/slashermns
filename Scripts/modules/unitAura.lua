@@ -375,9 +375,6 @@ function _unitAura_ImmuneToSource(unit, source, prev)
 		svSetAttackSourceVulnerability(unit, source, false)
 	end
 
-	-- if _Wyrm_Deboost_Effect(unit) == 1 and not _GroupInfo_UnitHasModifierValue(unit, Id.new('g090um0001').value) then
-	-- 	svSetAttackSourceVulnerability(unit, Source.Death, true)
-	-- end
 	if _Wyrm_Deboost_Effect(unit) == 1 then 
 		if _GroupInfo_UnitHasModifierValue(unit, Id.new('g090um0001').value) and unit.impl:getImmuneToAttackSource(Source.Death) ~= Immune.Always then
 			svSetAttackSourceVulnerability(unit, Source.Death, false)
@@ -385,9 +382,14 @@ function _unitAura_ImmuneToSource(unit, source, prev)
 			svSetAttackSourceVulnerability(unit, Source.Death, true)
 		end
 	end
-	-- if _Kriomant_Deboost_Effect(unit) == 1 and not _GroupInfo_UnitHasModifierValue(unit, Id.new('g000um2022').value) then
-	-- 	svSetAttackSourceVulnerability(unit, Source.Water, true)
-	-- end
+
+	if _Konsul_Deboost_Effect(unit) == 1 then 
+		if _GroupInfo_UnitHasModifierValue(unit, Id.new('g000um2023').value) and unit.impl:getImmuneToAttackSource(Source.Earth) ~= Immune.Always then
+			svSetAttackSourceVulnerability(unit, Source.Earth, false)
+		else
+			svSetAttackSourceVulnerability(unit, Source.Earth, true)
+		end
+	end
 
 	local alwaysWard = nil
 	local onceWard   = nil
