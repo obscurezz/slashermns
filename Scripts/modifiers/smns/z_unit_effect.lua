@@ -128,7 +128,7 @@ function _RacesInGroup(unit)
     local ur
     for i = 1, #units do
         u = units[i]
-        ur = u.impl.race
+        ur = u.impl.subrace
         if units[i - 1] ~= nil and units[i - 1].impl.race ~= ur then
             races = races + 1
         end
