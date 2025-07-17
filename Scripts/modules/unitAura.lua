@@ -237,7 +237,7 @@ function _unitAura_ImmuneToAttack(unit, attack, prev)
 		result = Workshop_changeImmuneClass(result, workshopBonus_Once, workshopBonus_Always)
 	end
 	
-	if _Wyrm_Deboost_Effect(unit) == 1 then 
+	if _Wyrm_Deboost_Effect(unit) == 1 or _Konsul_Deboost_Effect(unit) == 1 then 
 		if _GroupInfo_UnitHasModifierValue(unit, Id.new('g014um1022').value) and unit.impl:getImmuneToAttackClass(Attack.Poison) ~= Immune.Always then
 			svSetAttackClassVulnerabilty(unit, Attack.Poison, false)
 		else
@@ -383,13 +383,13 @@ function _unitAura_ImmuneToSource(unit, source, prev)
 		end
 	end
 
-	if _Konsul_Deboost_Effect(unit) == 1 then 
-		if _GroupInfo_UnitHasModifierValue(unit, Id.new('g000um2023').value) and unit.impl:getImmuneToAttackSource(Source.Earth) ~= Immune.Always then
-			svSetAttackSourceVulnerability(unit, Source.Earth, false)
-		else
-			svSetAttackSourceVulnerability(unit, Source.Earth, true)
-		end
-	end
+	-- if _Konsul_Deboost_Effect(unit) == 1 then 
+	-- 	if _GroupInfo_UnitHasModifierValue(unit, Id.new('g000um2023').value) and unit.impl:getImmuneToAttackSource(Source.Earth) ~= Immune.Always then
+	-- 		svSetAttackSourceVulnerability(unit, Source.Earth, false)
+	-- 	else
+	-- 		svSetAttackSourceVulnerability(unit, Source.Earth, true)
+	-- 	end
+	-- end
 
 	local alwaysWard = nil
 	local onceWard   = nil
