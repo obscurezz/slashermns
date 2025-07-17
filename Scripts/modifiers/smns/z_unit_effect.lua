@@ -63,6 +63,9 @@ function getModifierDisplay(unit, prev)
 	if _BloodRaven(unit) then
         return true
     end
+    if smnsConditions_isRodNearToStack(unit, 1, getScenario()) then
+        return true
+    end
 end
 
 function getModifierDescTxt(unit, prev)
@@ -84,6 +87,9 @@ function getModifierDescTxt(unit, prev)
     if _Seawolf(unit) then
         return Id.new('x070tg1414')
     end
+    if smnsConditions_isRodNearToStack(unit, 1, getScenario()) then
+        return Id.new('x070tg1483')
+    end
 end
 
 function getModifierIconName(unit, prev)
@@ -104,6 +110,9 @@ function getModifierIconName(unit, prev)
     end
 	if _BloodRaven(unit) then
         return "BLOODRAVEN"
+    end
+    if smnsConditions_isRodNearToStack(unit, 1, getScenario()) then
+        return "ABIL0004"
     end
 end
 
