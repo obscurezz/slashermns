@@ -972,6 +972,12 @@ function _smns_ImmuneToSource(unit, source, prev, currentValue)
 -- Резисты от магии
 	if source == 8 then
 		local mods = _GroupInfo_UnitModifiers(unit)
+
+		--deep power
+		if _GroupInfo_UnitHasModifierValue(unit, DeepPower) then
+			MagicProtectChance = MagicProtectChance + 25
+		end
+		--end deep power
 	
 		if unitGroup ~= nil then		
 			local u
@@ -1045,16 +1051,6 @@ function _smns_ImmuneToSource(unit, source, prev, currentValue)
 					end
 			end
 			--end arcane aura
-
-			--deep power
-			for i = 1, #unitGroupSlots do
-				u = unitGroupSlots[i].unit
-				if u ~= nil and u.hp > 0 and _GroupInfo_UnitHasModifierValue(u, DeepPower) then
-					MagicProtectChance = MagicProtectChance + 10
-					break
-				end
-			end
-			--end deep power
 
 			--бонус Лорда-воина
 			local player = _GroupInfo_getUnitPlayer(unit)
