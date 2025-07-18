@@ -49,7 +49,7 @@ function _ChangeGlobalBuffEffect(unit, value)
     if _GroupInfo_UnitHasModifierValue(unit, unitBuffWeaker50) and not _GroupInfo_UnitHasModifierValue(unit, BuffWeakerImmunityModifier) then
         unit_change_stats = unit_change_stats - 0.5
     end
-    if _GroupInfo_UnitHasModifierValue(unit, unitBuffStronger15) then
+    if _GroupInfo_UnitHasModifierValue(unit, unitBuffStronger15) or _GroupInfo_UnitHasModifierValue(unit, Id.new('g006um0070').value) then
         unit_change_stats = unit_change_stats + 0.15
     end
     if _GroupInfo_UnitHasModifierValue(unit, unitBuffStronger30) then
