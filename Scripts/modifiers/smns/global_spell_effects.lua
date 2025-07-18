@@ -38,6 +38,7 @@ local BurningBanner = Id.new('g014um1066').value
 local TomeOfSorcery = Id.new('g006um0070').value
 local Potion15 = Id.new('g006um0064').value
 local Potion30 = Id.new('g001um2007').value
+local KhansSkull = Id.new('g002um0033').value
 
 function _ChangeGlobalBuffEffect(unit, value)
     local unit_change_stats = 0
@@ -133,8 +134,11 @@ function _ChangeGlobalDebuffEffect(unit, value)
         if _GroupInfo_UnitHasModifierValue(unit, Potion15) then
             unit_change_stats = unit_change_stats - 0.15
         end
-        if _GroupInfo_UnitHasModifierValue(unit, Potion15) then
+        if _GroupInfo_UnitHasModifierValue(unit, Potion30) then
             unit_change_stats = unit_change_stats - 0.3
+        end
+        if _GroupInfo_UnitHasModifierValue(unit, KhansSkull) then
+            unit_change_stats = unit_change_stats - 0.15
         end
         --
 
