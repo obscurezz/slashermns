@@ -1676,7 +1676,7 @@ function _smns_flatLowerCostBonus(unit, prev, currentValue)
 --Торговец end
 --Книга странника
 	if _GroupInfo_stackHasModifierAmount(Id.new('g006um0068').value) > 0 then
-		Discount = Discount + 10
+		Discount = Discount + 15
 	end
 --Книга странника END
 --Лисья хитрость

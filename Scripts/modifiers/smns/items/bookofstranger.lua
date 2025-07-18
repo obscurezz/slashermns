@@ -22,9 +22,16 @@ function hasAbility(unit, ability, prev)
 	return prev
 end
 
+function _getBoots(unit)
+	local stack = _GroupInfo_getUnitStack(unit)
+	local boots = stack:getEquippedItem(Equipment.Boots)
+    return boots
+end
+
 function getHitPoint(unit, prev)
-    if unit.impl:hasAbility(Ability.TravelItemUse) then
-        return svFlatEffectHitPoint(unit, prev, 30)
-    end
-    return prev
+	local bonus = 0
+    if _getBoots(unit) then
+		bonus = bonus + 0.25
+	end
+	return svMultimplyHitPoint(unit, prev, bonus)
 end
