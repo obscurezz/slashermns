@@ -15,6 +15,19 @@ function getScout(unit, prev)
 	return svFlatEffectScout(unit, prev, 1)
 end
 
+function _getLeftArtifact(unit)
+	local stack = _GroupInfo_getUnitStack(unit)
+	local artifact_left = stack:getEquippedItem(Equipment.Artifact1)
+    return artifact_left
+end
+
+function _getRightArtifact(unit)
+	local stack = _GroupInfo_getUnitStack(unit)
+	local artifact_right = stack:getEquippedItem(Equipment.Artifact2)
+	return artifact_right
+end
+
+
 function hasAbility(unit, ability, prev)
 	if not unit.impl:hasAbility(Ability.WeaponArmorUse) and ability == Ability.WeaponArmorUse then
 		return true
@@ -23,8 +36,12 @@ function hasAbility(unit, ability, prev)
 end
 
 function getAttackDamage(unit, prev)
-    if unit.impl:hasAbility(Ability.WeaponArmorUse) then
-        return svMultimplyDamage1(unit, prev, 0.1)
-    end
-    return prev
+	local bonus = 0
+	if _getLeftArtifact(unit) then
+		bonus = bonus + 0.1
+	end
+	if _getRightArtifact(unit) then
+		bonus = bonus + 0.1
+	end
+    return svMultimplyDamage1(unit, prev, bonus)
 end
