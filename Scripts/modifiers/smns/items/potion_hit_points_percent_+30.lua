@@ -10,10 +10,10 @@ function getModifierDescTxt(unit, prev)
 	return prev
 end
 
-function getHitPoint(unit, prev)
-	value = 0.3
-	if smnsConditions_isBigUnit(unit) then
-    	return svMultimplyHitPoint(unit, prev, value * 0.75)
-	end
-	return svMultimplyHitPoint(unit, prev, value)
-end
+-- function getHitPoint(unit, prev)
+-- 	value = 0.3
+-- 	if smnsConditions_isBigUnit(unit) then
+--     	return svMultimplyHitPoint(unit, prev, value * 0.75)
+-- 	end
+-- 	return svMultimplyHitPoint(unit, prev, value)
+-- end

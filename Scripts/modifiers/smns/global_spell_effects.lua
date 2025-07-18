@@ -34,8 +34,10 @@ local groupBuffStronger15 = Id.new('g070um0346').value
 local groupBuffStronger30 = Id.new('g070um0347').value
 local groupBuffStronger50 = Id.new('g070um0348').value
 
-
 local BurningBanner = Id.new('g014um1066').value
+local TomeOfSorcery = Id.new('g006um0070').value
+local Potion15 = Id.new('g006um0064').value
+local Potion30 = Id.new('g001um2007').value
 
 function _ChangeGlobalBuffEffect(unit, value)
     local unit_change_stats = 0
@@ -49,7 +51,7 @@ function _ChangeGlobalBuffEffect(unit, value)
     if _GroupInfo_UnitHasModifierValue(unit, unitBuffWeaker50) and not _GroupInfo_UnitHasModifierValue(unit, BuffWeakerImmunityModifier) then
         unit_change_stats = unit_change_stats - 0.5
     end
-    if _GroupInfo_UnitHasModifierValue(unit, unitBuffStronger15) or _GroupInfo_UnitHasModifierValue(unit, Id.new('g006um0070').value) then
+    if _GroupInfo_UnitHasModifierValue(unit, unitBuffStronger15) then
         unit_change_stats = unit_change_stats + 0.15
     end
     if _GroupInfo_UnitHasModifierValue(unit, unitBuffStronger30) then
@@ -58,6 +60,18 @@ function _ChangeGlobalBuffEffect(unit, value)
     if _GroupInfo_UnitHasModifierValue(unit, unitBuffStronger50) then
         unit_change_stats = unit_change_stats + 0.5
     end
+
+    --adding section
+    if _GroupInfo_UnitHasModifierValue(unit, TomeOfSorcery) then
+        unit_change_stats = unit_change_stats + 0.15
+    end
+    if _GroupInfo_UnitHasModifierValue(unit, Potion15) then
+        unit_change_stats = unit_change_stats + 0.15
+    end
+    if _GroupInfo_UnitHasModifierValue(unit, Potion30) then
+        unit_change_stats = unit_change_stats + 0.3
+    end
+    --
 
     if _GroupInfo_stackHasModifierAmount(groupBuffWeaker15) > 0 and not _GroupInfo_UnitHasModifierValue(unit, BuffWeakerImmunityModifier) then
         unit_change_stats = unit_change_stats - 0.15
@@ -114,6 +128,15 @@ function _ChangeGlobalDebuffEffect(unit, value)
         if _GroupInfo_UnitHasModifierValue(unit, unitDebuffStronger50) and not _GroupInfo_UnitHasModifierValue(unit, DebuffStrongerImmunityModifier) then
             unit_change_stats = unit_change_stats + 0.5
         end
+
+        --adding section
+        if _GroupInfo_UnitHasModifierValue(unit, Potion15) then
+            unit_change_stats = unit_change_stats - 0.15
+        end
+        if _GroupInfo_UnitHasModifierValue(unit, Potion15) then
+            unit_change_stats = unit_change_stats - 0.3
+        end
+        --
 
         if _GroupInfo_stackHasModifierAmount(groupDebuffWeaker15) > 0 then
             unit_change_stats = unit_change_stats - 0.15
