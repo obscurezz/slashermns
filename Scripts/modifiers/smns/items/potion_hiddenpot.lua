@@ -11,12 +11,18 @@ function getModifierDescTxt(unit, prev)
 end
 
 function getAttack2Power(unit, prev)
+	value = 12
+	local res
 	smnsInfo_SetApplyAccuracyBuffToAttack2(true)
-	local res = svFlatEffectPower2(unit, prev, 7)
+	if smnsConditions_isBigUnit(unit) then
+		res = svFlatEffectPower2(unit, prev, value * 0.75)
+    else
+    	res = svFlatEffectPower2(unit, prev, value)
+	end
 	smnsInfo_SetApplyAccuracyBuffToAttack2(false)
 	return res
 end
 
-function getHitPoint(unit, prev)
-	return svFlatEffectHitPoint(unit, prev, 20)
-end
+-- function getHitPoint(unit, prev)
+-- 	return svFlatEffectHitPoint(unit, prev, 20)
+-- end
