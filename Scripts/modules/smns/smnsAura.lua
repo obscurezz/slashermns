@@ -681,7 +681,7 @@ end
 --Жидкий камень
 -- +5 ini to gargs
 if _GroupInfo_UnitHasModifierValue(unit, AnyGorgule) and (_GroupInfo_stackHasModifierAmount(incub) + _GroupInfo_stackHasModifierAmount(yakshini)) > 0 then
-    result = result + 5
+    result = result + 5 * (_GroupInfo_stackHasModifierAmount(incub) + _GroupInfo_stackHasModifierAmount(yakshini))
 end
 --Жидкий камень END
 	
