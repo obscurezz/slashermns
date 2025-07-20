@@ -247,9 +247,12 @@ function _smns_flatArmorBonus(unit, prev)
 	--Покров Мортис END
 	
 -- Элитная стража
-	if _GroupInfo_stackHasModifierAmount(Yarl) > 0 and unit.impl.race == Race.Dwarf and _GroupInfo_UnitModifierAmount(mods, Yarl) == 0 then
-		BonusArmor = BonusArmor + 5
-	end	
+	-- if _GroupInfo_stackHasModifierAmount(Yarl) > 0 and unit.impl.race == Race.Dwarf and _GroupInfo_UnitModifierAmount(mods, Yarl) == 0 then
+	-- 	BonusArmor = BonusArmor + 5
+	-- end
+	if unit.impl.race == Race.Dwarf then
+		BonusArmor = BonusArmor + smnsConditions_permanentAura(unit, Yarl, 5)
+	end
 -- Элитная стража END
 
 --Паладин дает 10 брони юниту позади
@@ -560,13 +563,16 @@ end
 -- Повелитель демонов END
 
 --Элитная стража
-	if _GroupInfo_stackHasModifierAmount(Yarl) > 0  
-	and
-	unit.impl.race == Race.Dwarf
-	and
-	_GroupInfo_UnitModifierAmount(mods, Yarl) == 0 then
-		BonusDMG = BonusDMG + 10
-	end	
+	-- if _GroupInfo_stackHasModifierAmount(Yarl) > 0  
+	-- and
+	-- unit.impl.race == Race.Dwarf
+	-- and
+	-- _GroupInfo_UnitModifierAmount(mods, Yarl) == 0 then
+	-- 	BonusDMG = BonusDMG + 10
+	-- end
+	if unit.impl.race == Race.Dwarf then
+		BonusDMG = BonusDMG + smnsConditions_permanentAura(unit, Yarl, 10)
+	end
 --Элитная стража END
 
 --Рефаим увеличивает на 5% + 5% за оверлевел урон воздухом в отряде, но не более 20%
