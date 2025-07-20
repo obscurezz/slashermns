@@ -9,17 +9,22 @@ function getModifierDescTxt(unit, prev)
 	return prev
 end
 
-function getAttackReach(unit, prev)
+-- function getAttackReach(unit, prev)
+-- 	local player = _GroupInfo_getUnitPlayer(unit)
+-- 	if player ~= nil and player.race ~= Race.Neutral then
+-- 		local ElfMana = player.bank.groveMana
+-- 		if _mRnd_simpleRndEvent(40 + math.floor(ElfMana / 40)) then
+-- 			return 701
+-- 		end
+-- 	end
+-- 	return prev
+-- end
+
+function getAttackDamRatio(unit, prev)
 	local player = _GroupInfo_getUnitPlayer(unit)
 	if player ~= nil and player.race ~= Race.Neutral then
 		local ElfMana = player.bank.groveMana
-		if _mRnd_simpleRndEvent(40 + math.floor(ElfMana / 40)) then
-			return 701
-		end
+		return prev + math.floor(ElfMana / 25)
 	end
 	return prev
-end
-
-function getAttackDamRatio(unit, prev)
-	return 35
 end

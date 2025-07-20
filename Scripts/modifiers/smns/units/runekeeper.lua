@@ -40,40 +40,28 @@ function getAttackReach(unit, prev)
 	return prev
 end
 
--- function getAttack2Id(unit, prev)
--- 	if _GroupInfo_stackHasModifierAmount(Id.new('g070um0031').value) > 0 then
--- 		return Id.new('g070aa0156')
--- 	end
-	
--- 	if _GroupInfo_stackHasModifierAmount(Id.new('g070um0054').value) > 0 then
--- 		return Id.new('g070aa0179')
--- 	end	
--- 	return prev
--- end	
-
-
-
 function getArmor(unit, prev)
 	local p = _GroupInfo_getUnitPlayer(unit)
 	if p ~= nil and p.race ~= Race.Neutral then
 		local RM = p.bank.runicMana
-		if RM > 350 then
-			return svFlatEffectArmor(unit, prev, 10)
-		end
+		-- if RM > 350 then
+		-- 	return svFlatEffectArmor(unit, prev, 10)
+		-- end
+		return svFlatEffectArmor(unit, prev, math.min(35, math.floor(RM/35)))
 	end
 	return prev
 end
 
-function getImmuneToAttack(unit, attack, prev)
-	local p = _GroupInfo_getUnitPlayer(unit)
-	if p ~= nil and p.race ~= Race.Neutral then
-		local RM = p.bank.runicMana
-		if prev ~= Immune.Always then
-			if attack == Attack.Shatter and RM > 350 then
-				return Immune.Once
-			end
-		end
-	end
-	return prev
-end
+-- function getImmuneToAttack(unit, attack, prev)
+-- 	local p = _GroupInfo_getUnitPlayer(unit)
+-- 	if p ~= nil and p.race ~= Race.Neutral then
+-- 		local RM = p.bank.runicMana
+-- 		if prev ~= Immune.Always then
+-- 			if attack == Attack.Shatter and RM > 350 then
+-- 				return Immune.Once
+-- 			end
+-- 		end
+-- 	end
+-- 	return prev
+-- end
 --
