@@ -1,6 +1,6 @@
 local DebuffImmunityModifier = Id.new('g070um0338').value
 local BuffWeakerImmunityModifier = Id.new('g070um0339').value
-local DebuffStrongerImmunityModifier = Id.new('').value
+local DebuffStrongerImmunityModifier = Id.new('g070um0370').value
 
 local unitDebuffWeaker15 = Id.new('g070um0343').value
 local unitDebuffWeaker30 = Id.new('g070um0344').value
