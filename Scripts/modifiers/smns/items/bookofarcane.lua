@@ -44,14 +44,14 @@ end
 
 function getAttackDamage(unit, prev)
     if _getLeftOrb(unit) then
-        return svFlatEffectDamage1(unit, prev, 5)
+        return svFlatEffectDamage1(unit, prev, 3)
     end
     return prev
 end
 
 function getAttackInitiative(unit, prev)
     if _getRightOrb(unit) then
-        return svFlatEffectInitiative(unit, prev, 5)
+        return svFlatEffectInitiative(unit, prev, 3)
     end
     return prev
 end
