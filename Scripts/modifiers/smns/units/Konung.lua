@@ -24,7 +24,7 @@ function getArmor(unit, prev)
 			mods = _GroupInfo_UnitModifiers(nearUnits[i])
 			--if _GroupInfo_UnitModifierAmount(mods, konung) > 0
 			if _GroupInfo_UnitModifierAmount(mods, guardian) > 0 then
-	            		result = result + 15
+	            		result = svFlatEffectArmor(unit, prev, 15)
         	    		break
             		end
         	end	
@@ -37,7 +37,7 @@ function getArmor(unit, prev)
 			mods = _GroupInfo_UnitModifiers(nearUnits[i])
 			--if _GroupInfo_UnitModifierAmount(mods, konung) > 0
 			if _GroupInfo_UnitModifierAmount(mods, konung) > 0 then
-	            		result = result + 15
+	            		result = svFlatEffectArmor(unit, prev, 15)
         	    		break
             		end
         	end	
