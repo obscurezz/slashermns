@@ -24,7 +24,7 @@ function getAttackDamRatio(unit, prev)
 	local player = _GroupInfo_getUnitPlayer(unit)
 	if player ~= nil and player.race ~= Race.Neutral then
 		local ElfMana = player.bank.groveMana
-		return prev + math.floor(ElfMana / 25)
+		return prev + math.min(75, math.floor(ElfMana / 25))
 	end
 	return prev
 end
