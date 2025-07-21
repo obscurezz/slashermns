@@ -50,7 +50,7 @@ function _smns_multiplicativeHitPointBonus(unit, prev)
 --Аура 8% ОЗ END
 
 -- Некромантия +%ХП
-	if _GroupInfo_stackHasModifierAmount(NecroLead) > 0  and _GroupInfo_UnitModifierAmount(mods, NecromanceryWarrior) > 0 then
+	if _GroupInfo_stackHasModifierAmount(NecroLead) > 0  and _GroupInfo_UnitModifierAmount(mods, NecromanceryDrake) > 0 then
 		local Leader = _GroupInfo_getCurrentGroupLeader()
 		if Leader ~= nil and Leader.hp > 0 then
 			local LeaderLVL = Leader.impl.level
@@ -204,7 +204,7 @@ function _smns_flatArmorBonus(unit, prev)
 	--Броня предков END
 
 	-- Некромантия +armor
-	if _GroupInfo_stackHasModifierAmount(NecroLead) > 0  and _GroupInfo_UnitModifierAmount(mods, NecromanceryArcher) > 0 then
+	if _GroupInfo_stackHasModifierAmount(NecroLead) > 0  and _GroupInfo_UnitModifierAmount(mods, NecromanceryWarrior) > 0 then
 		local Leader = _GroupInfo_getCurrentGroupLeader()
 		if Leader ~= nil and Leader.hp > 0 then
 			local LeaderLVL = Leader.impl.level
@@ -1741,41 +1741,23 @@ function _smns_multiplicativePower(unit, prev, attackN, unitMods)
 	--Аура сфокусированности END
 
 	--necromanery
-	if _GroupInfo_UnitHasModifierValue(unit, NecromanceryDrake) then
-		local Leader = _GroupInfo_getCurrentGroupLeader()
-		if Leader ~= nil and Leader.hp > 0 and _GroupInfo_UnitHasModifierValue(Leader, NecroLead) then
-			local LeaderLVL = Leader.impl.level
-			local u
-			local unitGroupSlots = unitGroup.slots
-			local boostValue = 0
-			for i = 1, #unitGroupSlots do
-				if u ~= nil and u.hp > 0 and _GroupInfo_UnitHasModifierValue(u, NecroBoost) then
-					boostValue = boostValue + 1 + 0.35 * (u.impl.level - u.baseImpl.level)
-					break
-				end
-			end
-			BonusPower = BonusPower + (3 + boostValue)*LeaderLVL
-		end
-	end
+	-- if _GroupInfo_UnitHasModifierValue(unit, NecromanceryArcher) then
+	-- 	local Leader = _GroupInfo_getCurrentGroupLeader()
+	-- 	if Leader ~= nil and Leader.hp > 0 and _GroupInfo_UnitHasModifierValue(Leader, NecroLead) then
+	-- 		local LeaderLVL = Leader.impl.level
+	-- 		local u
+	-- 		local unitGroupSlots = unitGroup.slots
+	-- 		local boostValue = 0
+	-- 		for i = 1, #unitGroupSlots do
+	-- 			if u ~= nil and u.hp > 0 and _GroupInfo_UnitHasModifierValue(u, NecroBoost) then
+	-- 				boostValue = boostValue + 1 + 0.35 * (u.impl.level - u.baseImpl.level)
+	-- 				break
+	-- 			end
+	-- 		end
+	-- 		BonusPower = BonusPower + (3 + boostValue)*LeaderLVL
+	-- 	end
+	-- end
 	--necromancery END
-	
-	--Страх Бездны I
-	-- if smnsConditions_isStackNearToEnemyStackWithUnitModifier(unit, 1, smns_scenario, AbyssalFearI) then
-	-- 	BonusPower = BonusPower - 10
-	-- end
-	--Страх Бездны I END
-
-	--Страх Бездны II
-	-- if smnsConditions_isStackNearToEnemyStackWithUnitModifier(unit, 1, smns_scenario, AbyssalFearII) then
-	-- 	BonusPower = BonusPower - 15
-	-- end
-	--Страх Бездны II END
-
-	--Вечная буря
-	-- if smnsConditions_isStackNearToEnemyStackWithUnitModifier(unit, 1, smns_scenario, EndlessStorm) then
-	-- 	BonusPower = BonusPower - 10
-	-- end
-	--Вечная буря END
 
 	--Ардет если не прикрыт наносит на 15% урона больше
     coveringUnit = _GroupInfo_getCoveringUnit(unit, nil)
@@ -1790,6 +1772,7 @@ function _smns_multiplicativePower(unit, prev, attackN, unitMods)
         BonusPower = BonusPower + 15
     end
 	--END
+	
     return BonusPower
 end
 
