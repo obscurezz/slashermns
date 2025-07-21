@@ -72,6 +72,9 @@ function _ChangeGlobalBuffEffect(unit, value)
     if _GroupInfo_UnitHasModifierValue(unit, Potion30) then
         unit_change_stats = unit_change_stats + 0.3
     end
+    if _GroupInfo_UnitHasModifierValue(unit, Id.new('g070um0156').value) and smnsConditions_heroCondition(unit, Pepega) then
+        unit_change_stats = unit_change_stats + 0.3
+    end
     --
 
     if _GroupInfo_stackHasModifierAmount(groupBuffWeaker15) > 0 and not _GroupInfo_UnitHasModifierValue(unit, BuffWeakerImmunityModifier) then
@@ -139,6 +142,9 @@ function _ChangeGlobalDebuffEffect(unit, value)
         end
         if _GroupInfo_UnitHasModifierValue(unit, KhansSkull) then
             unit_change_stats = unit_change_stats - 0.15
+        end
+        if _GroupInfo_UnitHasModifierValue(unit, Id.new('g070um0156').value) and smnsConditions_heroCondition(unit, Ranger) then
+            unit_change_stats = unit_change_stats - 0.5
         end
         --
 

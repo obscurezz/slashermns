@@ -1,4 +1,3 @@
-	
 Spawn10RegenPerCorpse = Id.new('g070um0136').value
 Timamat15regenPerCorpse = Id.new('g070um0137').value
 CurerCrossArmor = Id.new('g070um0116').value
@@ -10,24 +9,16 @@ AbbaProp30HealIfHPLess30 = Id.new('g070um0141').value
 AngelJusticiarInParty = Id.new('g070um0143').value
 AngelJusticiar10DmgPerEach = Id.new('g070um0142').value
 MageWizardWhiteMageInParty = Id.new('g070um0131').value
---Archmage10DmgPerAirMage = Id.new(<modifier_id>).value
 IgnarInParty = Id.new('g070um0162').value
---CryoIgnar15Damage = Id.new(<modifier_id>).value
 ArdetIfNotCovered = Id.new('g070um0133').value
 IgnarIfNotCovered = Id.new('g070um0134').value
 NosferatuInParty = Id.new('g070um0091').value
 Vampires5IniIfNosferatu = Id.new('g070um0092').value
 ShatterResist = Id.new('g070um0109').value
---GhostElfResist = Id.new(<modifier_id>).value
---GhostWarriorResist = Id.new(<modifier_id>).value
---RefaimInParty = Id.new(<modifier_id>).value
---BorealisResist = Id.new(<modifier_id>).value
 SorcSuccubCrossREsist = Id.new('g070um0115').value
 TormentorSameColResist = Id.new('g070um0101').value
 TorturerCrossResist = Id.new('g070um0102').value
 SpawnTiamatAttackToFear = Id.new('g070um0110').value
---CryoInParty = Id.new(<modifier_id>).value
---BorealisLower = Id.new(<modifier_id>).value
 JewelryUse = Id.new('g070um0106').value
 PaladinSameColArmor = Id.new('g070um0163').value
 Alchemist20HPIfGiant = Id.new('g070um0098').value
@@ -181,3 +172,7 @@ RegenAura = Id.new('g000um4016').value
 
 DraugDedamage = Id.new('g070um0368').value
 KonsulDeboost = Id.new('g070um0369').value
+
+Pepega = Id.new('g070um0150').value
+Archmage = Id.new('g070um0151').value
+Ranger = Id.new('g070um0152').value

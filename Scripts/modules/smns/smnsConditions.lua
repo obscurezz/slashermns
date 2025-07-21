@@ -85,7 +85,13 @@ function smnsConditions_EmyssarySparePotion(unit)
 	return false
 end
 
-
+function smnsConditions_heroCondition(unit, hero_modifier)
+    local Leader = _GroupInfo_getCurrentGroupLeader()
+	if Leader ~= nil and Leader.hp > 0 and _GroupInfo_UnitHasModifierValue(Leader, hero_modifier) then
+		return true
+	end
+	return false
+end
 
 function smnsConditions_getBonusIfGiant(unit, value)
 	local group = _GroupInfo_getCurrentGroup()
