@@ -551,7 +551,7 @@ function _smns_multiplicativeDamageHealBonus(unit, prev, attackN, unitMods)
 	-- 	BonusDMG = BonusDMG + 10 * CountWolf
 	-- end
 	if _GroupInfo_stackHasModifierAmount(Wolf) > 0 then
-		BonusDMG = BonusDMG + smnsConditions_permanentAura(unit, Wolf, 10)
+		BonusDMG = BonusDMG + smnsConditions_permanentAura(unit, Wolf, 8)
 	end
 --Волчья стая END
 
@@ -733,7 +733,7 @@ function _smns_percentInitiativeBonus(unit, prev)
 	-- 	BonusIni = BonusIni + 5 * CountWolf
 	-- end
 	if _GroupInfo_stackHasModifierAmount(Wolf) > 0 then
-		BonusIni = BonusIni + smnsConditions_permanentAura(unit, Wolf, 5)
+		BonusIni = BonusIni + smnsConditions_permanentAura(unit, Wolf, 4)
 	end
 --Волчья стая END
 
