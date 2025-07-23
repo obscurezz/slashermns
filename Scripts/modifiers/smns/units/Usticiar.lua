@@ -10,21 +10,18 @@ function getModifierDescTxt(unit, prev)
 	return prev
 end
 
--- function getAtckTwice(unit, prev)
--- 	local chance = 20 + 10 * ( unit.impl.level - unit.baseImpl.level )
--- 	return _mRnd_simpleRndEvent(chance)
--- end
-
-function getAttackCritHit(unit, prev)
+function getRNG(unit)
 	local chance = 20 + 10 * ( unit.impl.level - unit.baseImpl.level )
-	return _mRnd_simpleRndEvent(chance)
+	return _mRnd_simpleRndEvent(chance)	
 end
 
-function getAttackCritDamage(unit, prev)
-	return svAddCrit1Damage(unit, prev, 35)
+function getAttackReach(unit, prev)
+	if getRNG(unit) then
+		return 15
+	end
+	return prev
 end
 
-function getAttackCritPower(unit, prev)
-	-- Crit chance (0 : 100)
-	return 100
+function getAttackDamRatio(unit, prev)
+	return 50
 end
