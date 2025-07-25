@@ -146,6 +146,9 @@ function _ChangeGlobalDebuffEffect(unit, value)
         if _GroupInfo_UnitHasModifierValue(unit, Id.new('g070um0156').value) and smnsConditions_heroCondition(unit, Ranger) then
             unit_change_stats = unit_change_stats - 0.5
         end
+        if smnsConditions_isRodNearToStack(u, 1, getScenario()) then
+            unit_change_stats = unit_change_stats - 0.15
+        end
         --
 
         if _GroupInfo_stackHasModifierAmount(groupDebuffWeaker15) > 0 then
