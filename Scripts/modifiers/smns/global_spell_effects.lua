@@ -39,6 +39,7 @@ local TomeOfSorcery = Id.new('g006um0070').value
 local Potion15 = Id.new('g006um0064').value
 local Potion30 = Id.new('g001um2007').value
 local KhansSkull = Id.new('g002um0033').value
+local BannerOfDualFate = Id.new('g070um0374').value
 
 function _ChangeGlobalBuffEffect(unit, value)
     local unit_change_stats = 0
@@ -95,7 +96,11 @@ function _ChangeGlobalBuffEffect(unit, value)
     if _GroupInfo_stackHasModifierAmount(groupBuffStronger50) > 0 then
         unit_change_stats = unit_change_stats + 0.5
     end
-
+    --
+    if _GroupInfo_stackHasModifierAmount(BannerOfDualFate) > 0 then
+        unit_change_stats = unit_change_stats + 0.3
+    end
+    --
     if unit_change_stats < -1 then
         unit_change_stats = -1
     end
@@ -169,6 +174,12 @@ function _ChangeGlobalDebuffEffect(unit, value)
         if _GroupInfo_stackHasModifierAmount(groupDebuffStronger50) > 0 and not _GroupInfo_UnitHasModifierValue(unit, DebuffStrongerImmunityModifier) then
             unit_change_stats = unit_change_stats + 0.5
         end
+
+        --
+        if _GroupInfo_stackHasModifierAmount(BannerOfDualFate) > 0 and not _GroupInfo_UnitHasModifierValue(unit, DebuffStrongerImmunityModifier) then
+            unit_change_stats = unit_change_stats + 0.3
+        end
+        --
     end
 
     if unit_change_stats < -1 then

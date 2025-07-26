@@ -9,10 +9,13 @@ function getModifierDescTxt(unit, prev)
 	return prev
 end
 
-function getMovement(unit, prev)
-	return svFlatEffectMovement(unit, prev, 5)
+function hasMovementBonus(unit, ground, prev)
+	if ground == Ground.Water or ground == Ground.Forest or Ground ~= 0 then
+		return true
+	end
+	return prev
 end
 
-function getRegen(unit, prev)
-	return prev + 25
+function getFastRetreat(unit, prev)
+	return _GroupInfo_canUseFastRetreat(unit, false)
 end
