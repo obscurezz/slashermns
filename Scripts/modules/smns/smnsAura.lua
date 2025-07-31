@@ -1275,15 +1275,15 @@ function _smns_getNegotiate(unit, prev, currentValue)
 	local result = 0
 --Бдительность
 	if _GroupInfo_stackHasModifierAmount(VigilanceI) > 0 then
-		countBuffs = _GroupInfo_stackHasModifierAmount(VigilanceI)
-		result = result +(10 * countBuffs)
+		-- countBuffs = _GroupInfo_stackHasModifierAmount(VigilanceI)
+		result = result + 15
 	end
 --Бдительность END
 
 --Бдительность II
 	if _GroupInfo_stackHasModifierAmount(VigilanceII) > 0 then
-		countBuffs = _GroupInfo_stackHasModifierAmount(VigilanceII)
-		result = result +(15 * countBuffs)
+		-- countBuffs = _GroupInfo_stackHasModifierAmount(VigilanceII)
+		result = result + 25
 	end
 --Бдительность II END
 
