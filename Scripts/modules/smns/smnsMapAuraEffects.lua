@@ -278,3 +278,18 @@ function _Draug_Deboost_Effect(unit)
 	
 	return _unitAura_NearestGroupsAuraEffect(unit, effectFunction_1, radius, for_what_diplomacy_apply)
 end
+
+function AbyssalDeboostFunction(group, groupModifiers, groupModifiersDead)
+	if _GroupInfo_UnitModifierAmount(groupModifiers, Abyssal_Aura) > 0 then
+		return 1
+	end
+	return 0
+end
+
+function _Abyssal_Deboost_Effect(unit)
+	local effectFunction_1 = AbyssalDeboostFunction
+	local radius = 1
+	local for_what_diplomacy_apply = {diplomacyStatus_War}
+	
+	return _unitAura_NearestGroupsAuraEffect(unit, effectFunction_1, radius, for_what_diplomacy_apply)
+end

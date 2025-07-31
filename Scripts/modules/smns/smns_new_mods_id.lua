@@ -176,3 +176,5 @@ KonsulDeboost = Id.new('g070um0369').value
 Pepega = Id.new('g070um0150').value
 Archmage = Id.new('g070um0151').value
 Ranger = Id.new('g070um0152').value
+
+Abyssal_Aura = Id.new('g070um0379').value

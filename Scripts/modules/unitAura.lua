@@ -237,21 +237,21 @@ function _unitAura_ImmuneToAttack(unit, attack, prev)
 		result = Workshop_changeImmuneClass(result, workshopBonus_Once, workshopBonus_Always)
 	end
 	
-	if _Wyrm_Deboost_Effect(unit) == 1 or _Konsul_Deboost_Effect(unit) == 1 then 
+	if _Wyrm_Deboost_Effect(unit) >= 1 or _Konsul_Deboost_Effect(unit) >= 1 then 
 		if _GroupInfo_UnitHasModifierValue(unit, Id.new('g014um1022').value) and unit.impl:getImmuneToAttackClass(Attack.Poison) ~= Immune.Always then
 			svSetAttackClassVulnerabilty(unit, Attack.Poison, false)
 		else
 			svSetAttackClassVulnerabilty(unit, Attack.Poison, true)
 		end
 	end
-	if _Flamethrower_Deboost_Effect(unit) == 1 then
+	if _Flamethrower_Deboost_Effect(unit) >= 1 then
 		if _GroupInfo_UnitHasModifierValue(unit, Id.new('g014um1022').value) and unit.impl:getImmuneToAttackClass(Attack.Blister) ~= Immune.Always then
 			svSetAttackClassVulnerabilty(unit, Attack.Blister, false)
 		else
 			svSetAttackClassVulnerabilty(unit, Attack.Blister, true)
 		end
 	end
-	if _Kriomant_Deboost_Effect(unit) == 1 then
+	if _Kriomant_Deboost_Effect(unit) >= 1 then
 		if _GroupInfo_UnitHasModifierValue(unit, Id.new('g014um1022').value) and unit.impl:getImmuneToAttackClass(Attack.Frostbite) ~= Immune.Always then
 			svSetAttackClassVulnerabilty(unit, Attack.Frostbite, false)
 		else
@@ -259,7 +259,7 @@ function _unitAura_ImmuneToAttack(unit, attack, prev)
 		end
 	end
 
-	if scenario.day >= 10 and _Guard_Resistance_Deboost_Effect(unit) == 1 then
+	if scenario.day >= 10 and _Guard_Resistance_Deboost_Effect(unit) >= 1 then
 		svSetAttackClassVulnerabilty(unit, Attack.Shatter, true)
 	end
 	
@@ -375,7 +375,7 @@ function _unitAura_ImmuneToSource(unit, source, prev)
 		svSetAttackSourceVulnerability(unit, source, false)
 	end
 
-	if _Wyrm_Deboost_Effect(unit) == 1 then 
+	if _Wyrm_Deboost_Effect(unit) >= 1 then 
 		if _GroupInfo_UnitHasModifierValue(unit, Id.new('g090um0001').value) and unit.impl:getImmuneToAttackSource(Source.Death) ~= Immune.Always then
 			svSetAttackSourceVulnerability(unit, Source.Death, false)
 		else

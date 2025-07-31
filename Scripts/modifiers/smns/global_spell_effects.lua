@@ -179,6 +179,10 @@ function _ChangeGlobalDebuffEffect(unit, value)
         if _GroupInfo_stackHasModifierAmount(BannerOfDualFate) > 0 and not _GroupInfo_UnitHasModifierValue(unit, DebuffStrongerImmunityModifier) then
             unit_change_stats = unit_change_stats + 0.3
         end
+
+        if _Abyssal_Deboost_Effect(unit) >= 1 and not _GroupInfo_UnitHasModifierValue(unit, DebuffStrongerImmunityModifier) then
+            unit_change_stats = unit_change_stats + 0.3
+        end
         --
     end
 
