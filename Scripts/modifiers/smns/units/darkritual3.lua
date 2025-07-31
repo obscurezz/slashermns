@@ -10,17 +10,16 @@ function getModifierDescTxt(unit, prev)
 	return prev
 end
 
-
-function getAttackDamage(unit, prev)
-    if smnsConditions_stackHasCorpse(unit) then
-        return svMultimplyDamage1(unit, prev, 0.1)
-    end
-	return prev
-end
-
--- function getAttackDrain(unit, damage, prev)
+-- function getAttackDamage(unit, prev)
 --     if smnsConditions_stackHasCorpse(unit) then
---         return prev + damage * 0.1
+--         return svMultimplyDamage1(unit, prev, 0.20)
 --     end
---     return prev
+-- 	return prev
 -- end
+
+function getAttackDrain(unit, damage, prev)
+    if smnsConditions_stackHasCorpse(unit) then
+        return prev + damage * 0.2
+    end
+    return prev
+end

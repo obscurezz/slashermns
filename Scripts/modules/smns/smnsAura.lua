@@ -1819,9 +1819,7 @@ end
 -- changes critical damage
 function _smns_CritDamage(unit)
 	local mods = _GroupInfo_UnitModifiers(unit)
-	local BonusCritDamage = 0 - (_ForestSeal_Deboost_Effect(unit) * (0.01 * unit.impl.attack1.critDamage))
-							  - (_DodgeBanner_Deboost_Effect(unit) * (0.01 * unit.impl.attack1.critDamage))
-							  + smnsConditions_permanentAura(unit, Id.new('g070um0241').value, 5) + smnsConditions_permanentAura(unit, Id.new('g070um0245').value, 10)
+	local BonusCritDamage = 0 + smnsConditions_permanentAura(unit, Id.new('g070um0241').value, 5) + smnsConditions_permanentAura(unit, Id.new('g070um0245').value, 10)
 
 	--аура мастерства
 	BonusCritDamage = BonusCritDamage + smnsConditions_permanentAura(unit, Id.new('g040um0191').value, 5)
@@ -1829,6 +1827,7 @@ function _smns_CritDamage(unit)
 
 	if smns_scenario.day >= 15 then
 		BonusCritDamage = BonusCritDamage - (_Guard_CritDrain_Deboost_Effect(unit) * (0.01 * unit.impl.attack1.critDamage))
+		-- BonusCritDamage = BonusCritDamage - _Guard_CritDrain_Deboost_Effect(unit)
 	end
 	
 	return BonusCritDamage
@@ -1852,6 +1851,17 @@ end
 function _smns_flatAttackDrain(unit, damage, prev)
 	local mods = _GroupInfo_UnitModifiers(unit)
 	local BonusFlatDrain = 0
+	+ smnsConditions_permanentAura(unit, Id.new('g040um0139').value, damage * 0.1) 
+	+ smnsConditions_permanentAura(unit, Id.new('g040um0140').value, damage * 0.2) 
+	+ smnsConditions_permanentAura(unit, Id.new('g070um0380').value, damage * 0.15)
+
+	if _BloodRaven_Set_Deboost_Effect(unit) == 1 then
+		BonusFlatDrain = BonusFlatDrain - damage * 0.33
+	end
+
+	if smns_scenario.day >= 20 then
+		BonusFlatDrain = BonusFlatDrain - _Guard_CritDrain_Deboost_Effect(unit) * 0.01 * damage
+	end
 
 	return BonusFlatDrain
 end
@@ -1859,16 +1869,19 @@ end
 -- changes critical drain
 function _smns_multiplicativeAttackDrain(unit, damage, prev)
 	local mods = _GroupInfo_UnitModifiers(unit)
-	local BonusMultiplyDrain = 0 - _ForestSeal_Deboost_Effect(unit) * 0.5 + smnsConditions_permanentAura(unit, Id.new('g040um0139').value, 10) + smnsConditions_permanentAura(unit, Id.new('g040um0140').value, 20)
+	-- local BonusMultiplyDrain = 0 - _ForestSeal_Deboost_Effect(unit) * 0.5 + smnsConditions_permanentAura(unit, Id.new('g040um0139').value, 10) + smnsConditions_permanentAura(unit, Id.new('g040um0140').value, 20) + smnsConditions_permanentAura(unit, Id.new('g070um0080').value, 15)
+	local BonusMultiplyDrain = 0
+	-- + smnsConditions_permanentAura(unit, Id.new('g040um0139').value, damage * 0.1) 
+	-- + smnsConditions_permanentAura(unit, Id.new('g040um0140').value, damage * 0.2) 
+	-- + smnsConditions_permanentAura(unit, Id.new('g070um0080').value, damage * 0.15)
+	
+	-- if _BloodRaven_Set_Deboost_Effect(unit) == 1 then
+	-- 	BonusMultiplyDrain = BonusMultiplyDrain - 33 * 0.5
+	-- end
 
-	if _BloodRaven_Set_Deboost_Effect(unit) == 1 then
-		BonusMultiplyDrain = BonusMultiplyDrain - 33 * 0.5
-	end
-
-	if smns_scenario.day >= 20 then
-		BonusMultiplyDrain = BonusMultiplyDrain - _Guard_CritDrain_Deboost_Effect(unit) * 0.5
-	end
-
+	-- if smns_scenario.day >= 20 then
+	-- 	BonusMultiplyDrain = BonusMultiplyDrain - _Guard_CritDrain_Deboost_Effect(unit) * 0.5
+	-- end
 	return BonusMultiplyDrain
 end
 
