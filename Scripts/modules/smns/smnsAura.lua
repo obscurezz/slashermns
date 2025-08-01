@@ -1803,16 +1803,15 @@ function _smns_flatDamageHealBonus(unit, prev, attackN, unitMods)
 		BonusFlatDamage = BonusFlatDamage + 30
 	end
 	--END eira +flame damage
---Авангард
---	local HorsemanAmount = _GroupInfo_stackHasModifierAmount(Horseman)
---	if HorsemanAmount > 0 and _GroupInfo_UnitHasModifierValue(unit, Avangard) then
---		result = result + 5 * HorsemanAmount
---	end
-
+	--Авангард
 	if _GroupInfo_UnitHasModifierValue(unit, CentaurLeader) and _GroupInfo_stackHasModifierAmount(Praroditel) > 0 then
 		BonusFlatDamage = BonusFlatDamage + 10 
 	end
 	--Авангард END
+	if _GroupInfo_UnitHasModifierValue(unit, SuccubusTransform) then
+		BonusCritDamage = BonusCritDamage + 20 * _Transformed_Effect(unit)
+	end
+
 	return BonusFlatDamage
 end
 

@@ -178,3 +178,5 @@ Archmage = Id.new('g070um0151').value
 Ranger = Id.new('g070um0152').value
 
 Abyssal_Aura = Id.new('g070um0379').value
+Transformed_Mod = Id.new('g070um0380').value
+SuccubusTransform = Id.new('g070um0381').value

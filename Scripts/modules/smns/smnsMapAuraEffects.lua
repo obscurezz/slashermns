@@ -293,3 +293,16 @@ function _Abyssal_Deboost_Effect(unit)
 	
 	return _unitAura_NearestGroupsAuraEffect(unit, effectFunction_1, radius, for_what_diplomacy_apply)
 end
+
+function TransformedPartyFunction(group, groupModifiers, groupModifiersDead)
+	return _GroupInfo_UnitModifierAmount(groupModifiers, Transformed_Mod)
+
+end
+
+function _Transformed_Effect(unit)
+	local effectFunction_1 = TransformedPartyFunction
+	local radius = 1
+	local for_what_diplomacy_apply = {diplomacyStatus_War}
+	
+	return _unitAura_NearestGroupsAuraEffect(unit, effectFunction_1, radius, for_what_diplomacy_apply)
+end
