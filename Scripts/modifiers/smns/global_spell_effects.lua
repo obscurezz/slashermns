@@ -34,6 +34,8 @@ local groupBuffStronger15 = Id.new('g070um0346').value
 local groupBuffStronger30 = Id.new('g070um0347').value
 local groupBuffStronger50 = Id.new('g070um0348').value
 
+local Bracelet = Id.new('g002um0054').value
+
 local BurningBanner = Id.new('g014um1066').value
 local TomeOfSorcery = Id.new('g006um0070').value
 local Potion15 = Id.new('g006um0064').value
@@ -115,7 +117,7 @@ end
 function _ChangeGlobalDebuffEffect(unit, value)
     local unit_change_stats = 0
 
-    if _GroupInfo_UnitHasModifierValue(unit, DebuffImmunityModifier) then
+    if _GroupInfo_UnitHasModifierValue(unit, DebuffImmunityModifier) or _GroupInfo_UnitHasModifierValue(unit, Bracelet) then
         return 0
     else
 

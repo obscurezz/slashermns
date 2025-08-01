@@ -1853,7 +1853,7 @@ function _smns_flatAttackDrain(unit, damage, prev)
 	local BonusFlatDrain = 0
 	+ smnsConditions_permanentAura(unit, Id.new('g040um0139').value, damage * 0.1) 
 	+ smnsConditions_permanentAura(unit, Id.new('g040um0140').value, damage * 0.2) 
-	+ smnsConditions_permanentAura(unit, Id.new('g070um0380').value, damage * 0.15)
+	+ smnsConditions_permanentAura(unit, Id.new('g070um0080').value, damage * 0.15)
 
 	if _BloodRaven_Set_Deboost_Effect(unit) == 1 then
 		BonusFlatDrain = BonusFlatDrain - damage * 0.33
