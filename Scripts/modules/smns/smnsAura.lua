@@ -1809,7 +1809,7 @@ function _smns_flatDamageHealBonus(unit, prev, attackN, unitMods)
 	end
 	--Авангард END
 	if _GroupInfo_UnitHasModifierValue(unit, SuccubusTransform) then
-		BonusCritDamage = BonusCritDamage + 20 * _Transformed_Effect(unit)
+		BonusFlatDamage = BonusFlatDamage + unit.impl.attack1.damage * _Transformed_Effect(unit)
 	end
 
 	return BonusFlatDamage

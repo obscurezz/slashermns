@@ -232,7 +232,7 @@ textids = {
 		gameVersion = "",
 		-- Server name shown on main menu's button
 		-- Fallback text "ONLINE LOBBY"
-		serverName = "",
+		serverName = "X150TA1001",
 		-- Fallback text "Connection start failed"
 		connectStartFailed = "",
 		-- Client's connection attempt failed
