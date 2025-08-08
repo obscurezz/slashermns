@@ -11,9 +11,9 @@ function getModifierDescTxt(unit, prev)
 end
 
 
-function getAttackWards(unit, prev)
-	local result = {}
-	local level = unit.impl.level - unit.baseImpl.level + 1
-	table.insert(result, haisa_Mods[level])
-	return result
-end
+-- function getAttackWards(unit, prev)
+-- 	local result = {}
+-- 	local level = unit.impl.level - unit.baseImpl.level + 1
+-- 	table.insert(result, haisa_Mods[level])
+-- 	return result
+-- end
