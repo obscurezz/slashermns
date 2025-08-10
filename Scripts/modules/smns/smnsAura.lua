@@ -1321,12 +1321,16 @@ end
 
 function _smns_getExpGainBonus(currentValue, group, player, groupLeader)
 	local BonusEXP = 0
+
+	if player == nil or player.race == Race.Neutral then
+		return BonusEXP
+	end
 	
 --Ментор
     if _GroupInfo_stackHasModifierAmount(ExpMentor) > 0 then
         local u
         local mAmount = {}
-        local group = _GroupInfo_getCurrentGroup()
+        --local group = _GroupInfo_getCurrentGroup()
         local unitGroupSlots = group.slots
         local mentorValue = 0
         for i = 1, #unitGroupSlots do
@@ -1361,9 +1365,9 @@ function _smns_getExpGainBonus(currentValue, group, player, groupLeader)
     
  -- инструктор
 	if _GroupInfo_stackHasModifierAmount(Instruktor) > 0 then
-		local Leader = _GroupInfo_getCurrentGroupLeader()
-		if Leader ~= nil and Leader.hp > 0 then
-			local LeaderLVL = Leader.impl.level
+		-- local Leader = _GroupInfo_getCurrentGroupLeader()
+		if groupLeader ~= nil and groupLeader.hp > 0 then
+			local LeaderLVL = groupLeader.impl.level
 			BonusEXP = BonusEXP + math.min(18, 3 + 3 * LeaderLVL)
 		end
 	end
@@ -1805,7 +1809,7 @@ function _smns_flatDamageHealBonus(unit, prev, attackN, unitMods)
 	--END eira +flame damage
 	--Авангард
 	if _GroupInfo_UnitHasModifierValue(unit, CentaurLeader) and _GroupInfo_stackHasModifierAmount(Praroditel) > 0 then
-		BonusFlatDamage = BonusFlatDamage + 10 
+		BonusFlatDamage = BonusFlatDamage + 10 * _GroupInfo_stackHasModifierAmount(Praroditel)
 	end
 	--Авангард END
 	if _GroupInfo_UnitHasModifierValue(unit, SuccubusTransform) then
