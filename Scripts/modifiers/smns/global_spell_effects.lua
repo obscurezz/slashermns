@@ -42,6 +42,7 @@ local Potion15 = Id.new('g006um0064').value
 local Potion30 = Id.new('g001um2007').value
 local KhansSkull = Id.new('g002um0033').value
 local BannerOfDualFate = Id.new('g070um0374').value
+local RavenCuirass = Id.new('g070um0318').value
 
 function _ChangeGlobalBuffEffect(unit, value)
     local unit_change_stats = 0
@@ -151,6 +152,9 @@ function _ChangeGlobalDebuffEffect(unit, value)
             unit_change_stats = unit_change_stats - 0.15
         end
         if _GroupInfo_UnitHasModifierValue(unit, Id.new('g070um0156').value) and smnsConditions_heroCondition(unit, Ranger) then
+            unit_change_stats = unit_change_stats - 0.5
+        end
+        if _GroupInfo_UnitHasModifierValue(unit, RavenCuirass) then
             unit_change_stats = unit_change_stats - 0.5
         end
         if smnsConditions_isRodNearToStack(unit, 1, _unitAura_GetScenario()) then
