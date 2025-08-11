@@ -511,8 +511,9 @@ function _smns_multiplicativeDamageHealBonus(unit, prev, attackN, unitMods)
 	-- 	Attack1Source == Source.Fire  then
 	-- 	BonusDMG = BonusDMG + 10 * CountWrathOfHellBuffer
 	-- end	
+	local Attack1Source = unit.impl.attack1.source
 	if Attack1Source == Source.Fire then
-		BonusDMG = BonusDMG + smnsConditions_permanentAura(unit, WrathOfHellBuffer, 10)
+		BonusDMG = BonusDMG + smnsConditions_permanentAura(unit, WrathOfHellBuffer, 12)
 	end
 --Гнев преисподние +10% урона огню END
 
@@ -888,9 +889,9 @@ function _smns_ImmuneToAttack(unit, attack, prev, currentValue)
 		if  unit.hp / maxHP < 0.3 then
 		result = Immune.Once
 		end
-	end	
+	end		
+	--Сет феникса END
 	
---Сет феникса END
 	return result
 end
 

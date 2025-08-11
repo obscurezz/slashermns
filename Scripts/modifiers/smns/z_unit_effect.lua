@@ -193,17 +193,23 @@ function getAttackPower(unit, prev)
     return prev
 end
 
--- function getImmuneToSource(unit, source, prev)
---     return prev
--- end
+-- function getAttackId(unit, prev)
+--     if _PhoenixKnight(unit) then
+--         local group = _GroupInfo_getCurrentGroup()
+--         local units = group.units
 
--- function getImmuneToAttack(unit, attack, prev)
---     if attack == Attack.Poison and _Wyrm_Deboost_Effect(unit) == 1 then
--- 		if prev == Immune.Always then
--- 			return svAttackImmunityClass(unit, attack, prev, Immune.Once)
--- 		elseif prev == Immune.Once then
--- 			return svAttackImmunityClass(unit, attack, prev, Immune.NotImmune)
--- 		end
--- 	end
+--         local all_count = #units
+--         local dead_count = 0
+--         for i = 1, #units do
+--             u = units[i]
+--             if u ~= nil and u.hp == 0 then
+--                 dead_count = dead_count + 1
+--             end
+--         end
+
+--         if all_count - dead_count == 1 then
+--             return Id.new("g001aa2083")
+--         end
+--     end
 --     return prev
 -- end
