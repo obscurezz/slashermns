@@ -1217,14 +1217,7 @@ function _smns_flatMovementBonus(unit, prev, currentValue)
 	end
 -- Наездник END
 
---Прародитель с героем кентавром дает +4 мува
-  --  if _GroupInfo_UnitHasModifierValue(unit, CentaurLeader) and _GroupInfo_stackHasModifierAmount(Praroditel) > 0 then
-  --      Bonus = Bonus + 4
-   -- end
---Прародитель END
-
 --Благородный эльф +3 мува и +1 мув за 2 оверлевела
-
 	if unitGroup ~= nil then
 		if _GroupInfo_stackHasModifierAmount(ForestElfMovepoints) > 0 then
 			local u
@@ -1246,9 +1239,7 @@ function _smns_flatMovementBonus(unit, prev, currentValue)
 			Bonus = Bonus + 3 + scale
 		end
 	end
-
 --Благородный эльф END
-
 
 	return Bonus
 end
@@ -1776,6 +1767,28 @@ function _smns_multiplicativePower(unit, prev, attackN, unitMods)
         BonusPower = BonusPower + 15
     end
 	--END
+
+	if unitGroup ~= nil then
+		if _GroupInfo_stackHasModifierAmount(ForestElfMovepoints) > 0 then
+			local u
+			local mAmount = {}
+			local unitGroupSlots = unitGroup.slots
+			for i = 1, #unitGroupSlots do
+				u = unitGroupSlots[i].unit
+				if u ~= nil and u.hp > 0 and _GroupInfo_UnitHasModifierValue(u, ForestElfMovepoints) then
+					table.insert(mAmount, u)
+				end
+			end
+			local highest = mAmount[1]
+			for i = 1, #mAmount do
+				if mAmount[i].impl.level > highest.impl.level then
+					highest = mAmount[i]
+				end
+			end
+			local scale = 2 * (highest.impl.level - highest.baseImpl.level)
+			BonusPower = BonusPower + 4 + scale
+		end
+	end
 	
     return BonusPower
 end

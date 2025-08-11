@@ -16,3 +16,6 @@ function getImmuneToSource(unit, source, prev)
 	return prev
 end
 
+function getArmor(unit, prev)
+	return svFlatEffectArmor(unit, prev, 5)
+end
