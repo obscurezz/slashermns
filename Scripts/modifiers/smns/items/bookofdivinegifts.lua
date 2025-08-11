@@ -12,7 +12,7 @@ function getModifierDescTxt(unit, prev)
 end
 
 function getScout(unit, prev)
-	return svFlatEffectScout(unit, prev, 1)
+	return svFlatEffectScout(unit, prev, 2)
 end
 
 function _getLeftArtifact(unit)

@@ -18,9 +18,9 @@ function getAttack2Damage(unit, prev)
 end
 
 function getAttackPower(unit, prev)
-	return svMultimplyPower1(unit, prev, -0.25)
+	return svMultimplyPower1(unit, prev, -0.15)
 end
 
 function getAttack2Power(unit, prev)
-	return svMultimplyPower2(unit, prev, -0.25)
+	return svMultimplyPower2(unit, prev, -0.15)
 end

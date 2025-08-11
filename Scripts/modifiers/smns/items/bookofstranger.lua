@@ -31,7 +31,7 @@ end
 function getHitPoint(unit, prev)
 	local bonus = 0
     if _getBoots(unit) then
-		bonus = bonus + 0.25
+		bonus = bonus + 0.15
 	end
 	return svMultimplyHitPoint(unit, prev, bonus)
 end
