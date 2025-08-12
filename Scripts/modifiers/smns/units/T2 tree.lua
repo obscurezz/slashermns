@@ -29,12 +29,20 @@ function _get_Lowest_Tree_Level(unit)
 	return lowest.impl.level - lowest.baseImpl.level
 end
 
+function getElvenMana(unit)
+	local p = _GroupInfo_getUnitPlayer(unit)
+	if p ~= nil and p.race ~= Race.Neutral then
+		return p.bank.groveMana
+	end
+	return 0
+end
+
 function getAttackCritHit(unit, prev)
     return true
 end
 
 function getAttackCritDamage(unit, prev)	
-	local Baff = 20 + math.min(16, 4 * _get_Lowest_Tree_Level(unit))
+	local Baff = 15 + math.min(15, math.floor(getElvenMana(unit)/35))
     return svAddCrit1Damage(unit, prev, Baff)
 end
 
@@ -43,7 +51,7 @@ function getAttack2CritHit(unit, prev)
 end
 
 function getAttack2CritDamage(unit, prev)
-	local Baff = 20 + math.min(16, 4 * _get_Lowest_Tree_Level(unit))
+	local Baff = 15 + math.min(15, math.floor(getElvenMana(unit)/35))
     return svAddCrit2Damage(unit, prev, Baff)
 end
 
