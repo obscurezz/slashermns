@@ -179,6 +179,20 @@ function smnsConditions_isStackOnItsTerrain(scen, ps)
 	return false
 end
 
+function smnsConditions_isStackOnNeutralTerrain(scen, ps)
+	if ps == nil then
+		return false
+	end
+	
+	local stack_position = ps.position
+
+	if scen:getTile(ps.position).terrain == Terrain.Neutral then
+		return true
+	end
+
+	return false
+end
+
 function smnsConditions_isRodNearToStack(unit, range, scen)
 	local stack = _GroupInfo_getUnitStack(unit)
 	local player = _GroupInfo_getUnitPlayer(unit)

@@ -29,3 +29,15 @@ function smnsInfo_SetApplyApplyDmgBuffToHeal(value)
 end
 
 smnsInfo_LowerCostCap_Percent = 70
+
+smnsInfoRulesEnabled = false
+smnsInfoRulesFirstDay = 1
+
+function checkRulesImplemented(scen)
+    if smnsInfoRulesEnabled then
+        if scen.day >= smnsInfoRulesFirstDay then
+            return true
+        end
+    end
+    return false
+end

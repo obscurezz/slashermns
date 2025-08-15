@@ -93,7 +93,6 @@ function _smns_multiplicativeHitPointBonus(unit, prev)
         BonusHP = BonusHP + 10
     end
     --Взор Иллюмиэль II END
-		
 	return BonusHP
 end
 
@@ -891,7 +890,7 @@ function _smns_ImmuneToAttack(unit, attack, prev, currentValue)
 		end
 	end		
 	--Сет феникса END
-	
+
 	return result
 end
 
@@ -1322,7 +1321,7 @@ function _smns_getExpGainBonus(currentValue, group, player, groupLeader)
     if _GroupInfo_stackHasModifierAmount(ExpMentor) > 0 then
         local u
         local mAmount = {}
-        --local group = _GroupInfo_getCurrentGroup()
+        local group = _GroupInfo_getCurrentGroup()
         local unitGroupSlots = group.slots
         local mentorValue = 0
         for i = 1, #unitGroupSlots do
