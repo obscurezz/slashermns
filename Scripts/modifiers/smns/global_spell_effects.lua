@@ -125,7 +125,7 @@ function _ChangeGlobalBuffEffect(unit, value)
     end
     --
     if _GroupInfo_stackHasModifierAmount(BannerOfDualFate) > 0 then
-        unit_change_stats = unit_change_stats + 0.3
+        unit_change_stats = unit_change_stats + 0.2
     end
     --
     if unit_change_stats < -1 then
