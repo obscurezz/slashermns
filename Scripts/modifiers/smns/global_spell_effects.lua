@@ -47,6 +47,8 @@ local KhansSkull = Id.new('g002um0033').value
 local BannerOfDualFate = Id.new('g070um0374').value
 local RavenCuirass = Id.new('g070um0318').value
 
+local ShadowOfDeath = Id.new('g070um0386').value
+
 local BUFFS = {TEREBRARE_CORDE, VOTANS_BLESSING, ALLFATHERS_BLESSING, SPEED, CLANS_HYMN, ENCHANTED_WEAPONS, ICE_SHIELD, MIGHT, UNEVITABLE_REVENGE, CALL_TO_ARMS, SIR_ALLEMON, MORTIS_TOUCH, HOLY_ARMOR, HOLY_STRENGTH, STRENGTH, VITARS_STRENGTH, HURRYING_TIME, STEEL_BONES, ENDURANCE, GROVE_STAMINA, VAMPIRISM, HARVEST, VAMPIRE_TOUCH}
 
 function stackBuffs(unit)
@@ -102,6 +104,10 @@ function _ChangeGlobalBuffEffect(unit, value)
     end
     if _GroupInfo_UnitHasModifierValue(unit, Id.new('g070um0156').value) and smnsConditions_heroCondition(unit, Pepega) then
         unit_change_stats = unit_change_stats + 0.3
+    end
+    --
+    if _GroupInfo_UnitHasModifierValue(unit, ShadowOfDeath) and not _GroupInfo_UnitHasModifierValue(unit, BuffWeakerImmunityModifier) then
+        unit_change_stats = unit_change_stats - 0.1
     end
     --
 
