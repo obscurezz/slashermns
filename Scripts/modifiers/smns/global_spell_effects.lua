@@ -62,12 +62,14 @@ function stackBuffs(unit)
     return global_buff_counter
 end
 
-function _ChangeGlobalBuffEffect(unit, value)
+function getGlobalBuffEffect(unit)
     local unit_change_stats = 0
 
     -- -25% buffs on enemy territory
     if checkRulesImplemented(_unitAura_GetScenario()) then
-        if not smnsConditions_isStackOnItsTerrain(_unitAura_GetScenario(), _GroupInfo_getUnitStack(unit)) and not smnsConditions_isStackOnNeutralTerrain(_unitAura_GetScenario(), _GroupInfo_getUnitStack(unit)) then
+        if not smnsConditions_isStackOnItsTerrain(_unitAura_GetScenario(), _GroupInfo_getUnitStack(unit))
+        and not smnsConditions_isStackOnNeutralTerrain(_unitAura_GetScenario(), _GroupInfo_getUnitStack(unit))
+        and not _GroupInfo_UnitHasModifierValue(unit, BuffWeakerImmunityModifier) then
             unit_change_stats = unit_change_stats - 0.25
         end
     end
@@ -142,25 +144,10 @@ function _ChangeGlobalBuffEffect(unit, value)
         unit_change_stats = 1
     end
 
-
-    local modify_result = 0
-    if stackBuffs(unit) > 2 then
-        modify_result = math.sqrt(stackBuffs(unit) - 1)
-    end
-
-
-    local result = value + (value * unit_change_stats)
-
-    if checkRulesImplemented(_unitAura_GetScenario()) then
-        if modify_result > 1 then
-            result = result / modify_result
-        end
-    end
-
-    return result
+    return unit_change_stats
 end
 
-function _ChangeGlobalDebuffEffect(unit, value)
+function getGlobalDebuffEffect(unit)
     local unit_change_stats = 0
 
     if _GroupInfo_UnitHasModifierValue(unit, DebuffImmunityModifier) or _GroupInfo_UnitHasModifierValue(unit, Bracelet) then
@@ -187,12 +174,12 @@ function _ChangeGlobalDebuffEffect(unit, value)
         end
 
         --adding section
-        if _GroupInfo_UnitHasModifierValue(unit, Potion15) then
-            unit_change_stats = unit_change_stats - 0.15
-        end
-        if _GroupInfo_UnitHasModifierValue(unit, Potion30) then
-            unit_change_stats = unit_change_stats - 0.3
-        end
+        -- if _GroupInfo_UnitHasModifierValue(unit, Potion15) then
+        --     unit_change_stats = unit_change_stats - 0.15
+        -- end
+        -- if _GroupInfo_UnitHasModifierValue(unit, Potion30) then
+        --     unit_change_stats = unit_change_stats - 0.3
+        -- end
         if _GroupInfo_UnitHasModifierValue(unit, KhansSkull) then
             unit_change_stats = unit_change_stats - 0.15
         end
@@ -244,6 +231,31 @@ function _ChangeGlobalDebuffEffect(unit, value)
     if unit_change_stats > 1 then
         unit_change_stats = 1
     end
+
+    return unit_change_stats
+end
+
+function _ChangeGlobalBuffEffect(unit, value)
+    local unit_change_stats = getGlobalBuffEffect(unit)
+
+    local modify_result = 0
+    if stackBuffs(unit) > 2 then
+        modify_result = math.sqrt(stackBuffs(unit) - 1)
+    end
+
+    local result = value + (value * unit_change_stats)
+
+    if checkRulesImplemented(_unitAura_GetScenario()) then
+        if modify_result > 1 then
+            result = result / modify_result
+        end
+    end
+
+    return result
+end
+
+function _ChangeGlobalDebuffEffect(unit, value)
+    local unit_change_stats = getGlobalDebuffEffect(unit)
 
     return value + (value * unit_change_stats)
 end

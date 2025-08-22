@@ -38,6 +38,108 @@ function _smns_getUnitAttackDrainLevelBaseValue(attacker, target)
     return drain
 end
 
+function getMagicResistance(unit)
+	local mods = _GroupInfo_UnitModifiers(unit)
+
+	local MagicProtectChance = 0 + _Rod_Placer_Effect(unit)
+
+	--deep power
+	if _GroupInfo_UnitHasModifierValue(unit, DeepPower) then
+		MagicProtectChance = MagicProtectChance + 25
+	end
+	--end deep power
+
+	--potion
+	if _GroupInfo_UnitHasModifierValue(unit, Id.new('g070um0298').value) then
+		MagicProtectChance = MagicProtectChance + 100
+	end
+	--end potion
+	
+	if unitGroup ~= nil then		
+		local u
+		local unitGroupSlots = unitGroup.slots
+		
+		--hero shield
+		for i = 1, #unitGroupSlots do
+			u = unitGroupSlots[i].unit
+			if u ~= nil and u.hp > 0 and _GroupInfo_UnitHasModifierValue(u, HeroShield) then
+				MagicProtectChance = MagicProtectChance + 6 + 6 * (u.impl.level - u.baseImpl.level)
+				break
+			end
+		end
+		--end hero shield
+			
+		--Слезы грешников
+		for i = 1, #unitGroupSlots do
+			u = unitGroupSlots[i].unit
+			if u ~= nil and u.hp > 0 and _GroupInfo_UnitHasModifierValue(u, TearsOfSinners) then
+				MagicProtectChance = MagicProtectChance + 30
+				break
+			end
+		end
+		--Слезы грешников END
+			
+		--protector I
+		for i = 1, #unitGroupSlots do
+			u = unitGroupSlots[i].unit
+			if u ~= nil and u.hp > 0 and _GroupInfo_UnitHasModifierValue(u, ProtectorI) then
+				MagicProtectChance = MagicProtectChance + 10
+				break
+			end
+		end
+		--end protector I
+		
+		--protector II
+		for i = 1, #unitGroupSlots do
+			u = unitGroupSlots[i].unit
+			if u ~= nil and u.hp > 0 and _GroupInfo_UnitHasModifierValue(u, ProtectorII) then
+				MagicProtectChance = MagicProtectChance + 20 + 3 * (u.impl.level - u.baseImpl.level)
+				break
+			end
+		end
+		--end protector II
+		
+		--protector III
+		for i = 1, #unitGroupSlots do
+			u = unitGroupSlots[i].unit
+			if u ~= nil and u.hp > 0 and _GroupInfo_UnitHasModifierValue(u, ProtectorIII) then
+				MagicProtectChance = MagicProtectChance + 30 + 3 * (u.impl.level - u.baseImpl.level)
+				break
+			end
+		end
+		--end protector III
+		
+		--magic resistance
+		for i = 1, #unitGroupSlots do
+			u = unitGroupSlots[i].unit
+			if u ~= nil and u.hp > 0 and _GroupInfo_UnitHasModifierValue(u, SupUnitProtector) then
+				MagicProtectChance = MagicProtectChance + 10 + 2 * (u.impl.level - u.baseImpl.level)
+				break
+			end
+		end
+		--end magic resistance
+		--arcane aura
+		for i = 1, #unitGroupSlots do
+			u = unitGroupSlots[i].unit
+				if u ~= nil and u.hp > 0 and smnsConditions_isRodNearToStack(u, 1, smns_scenario) then
+				MagicProtectChance = MagicProtectChance + 15
+				break
+				end
+		end
+		--end arcane aura
+
+		--бонус Лорда-воина
+		local player = _GroupInfo_getUnitPlayer(unit)
+		if player ~= nil and player.lord == Lord.Warrior and player.race ~= Race.Neutral then
+			if smnsConditions_isStackOnItsTerrain(smns_scenario, _GroupInfo_getUnitStack(unit)) and unit.impl.leadership > 0 then
+				MagicProtectChance = MagicProtectChance + 100
+			end
+		end
+		--end бонус Лорда-воина
+	end
+	return math.min(100, MagicProtectChance)
+end
+
 function _smns_multiplicativeHitPointBonus(unit, prev)
 	local BonusHP = 0 + smnsConditions_permanentAura(unit, Id.new('g070um0242').value, 5) + smnsConditions_permanentAura(unit, Id.new('g070um0243').value, 10)
 	local mods = _GroupInfo_UnitModifiers(unit)
@@ -990,100 +1092,8 @@ function _smns_ImmuneToSource(unit, source, prev, currentValue)
 --Благословление вечных END
 
 -- Резисты от магии
-	if source == 8 then
-		local mods = _GroupInfo_UnitModifiers(unit)
-
-		--deep power
-		if _GroupInfo_UnitHasModifierValue(unit, DeepPower) then
-			MagicProtectChance = MagicProtectChance + 25
-		end
-		--end deep power
-	
-		if unitGroup ~= nil then		
-			local u
-			local unitGroupSlots = unitGroup.slots
-		
-			--hero shield
-			for i = 1, #unitGroupSlots do
-				u = unitGroupSlots[i].unit
-				if u ~= nil and u.hp > 0 and _GroupInfo_UnitHasModifierValue(u, HeroShield) then
-					MagicProtectChance = MagicProtectChance + 6 + 6 * (u.impl.level - u.baseImpl.level)
-					break
-				end
-			end
-			--end hero shield
-			
-			--Слезы грешников
-				for i = 1, #unitGroupSlots do
-				u = unitGroupSlots[i].unit
-				if u ~= nil and u.hp > 0 and _GroupInfo_UnitHasModifierValue(u, TearsOfSinners) then
-					MagicProtectChance = MagicProtectChance + 30
-					break
-				end
-			end
-			--Слезы грешников END
-			
-			--protector I
-			for i = 1, #unitGroupSlots do
-				u = unitGroupSlots[i].unit
-				if u ~= nil and u.hp > 0 and _GroupInfo_UnitHasModifierValue(u, ProtectorI) then
-					MagicProtectChance = MagicProtectChance + 10
-					break
-				end
-			end
-			--end protector I
-		
-			--protector II
-			for i = 1, #unitGroupSlots do
-				u = unitGroupSlots[i].unit
-				if u ~= nil and u.hp > 0 and _GroupInfo_UnitHasModifierValue(u, ProtectorII) then
-					MagicProtectChance = MagicProtectChance + 20 + 3 * (u.impl.level - u.baseImpl.level)
-					break
-				end
-			end
-			--end protector II
-		
-			--protector III
-			for i = 1, #unitGroupSlots do
-				u = unitGroupSlots[i].unit
-				if u ~= nil and u.hp > 0 and _GroupInfo_UnitHasModifierValue(u, ProtectorIII) then
-					MagicProtectChance = MagicProtectChance + 30 + 3 * (u.impl.level - u.baseImpl.level)
-					break
-				end
-			end
-			--end protector III
-		
-			--magic resistance
-			for i = 1, #unitGroupSlots do
-				u = unitGroupSlots[i].unit
-				if u ~= nil and u.hp > 0 and _GroupInfo_UnitHasModifierValue(u, SupUnitProtector) then
-					MagicProtectChance = MagicProtectChance + 10 + 2 * (u.impl.level - u.baseImpl.level)
-					break
-				end
-			end
-			--end magic resistance
-			--arcane aura
-			for i = 1, #unitGroupSlots do
-				u = unitGroupSlots[i].unit
-					if u ~= nil and u.hp > 0 and smnsConditions_isRodNearToStack(u, 1, smns_scenario) then
-					MagicProtectChance = MagicProtectChance + 15
-					break
-					end
-			end
-			--end arcane aura
-
-			--бонус Лорда-воина
-			local player = _GroupInfo_getUnitPlayer(unit)
-			if player ~= nil and player.lord == Lord.Warrior and player.race ~= Race.Neutral then
-				if smnsConditions_isStackOnItsTerrain(smns_scenario, _GroupInfo_getUnitStack(unit)) and unit.impl.leadership > 0 then
-					result = Immune.Always
-					--MagicProtectChance = MagicProtectChance + 10
-				end
-			end
-			--end бонус Лорда-воина
-		end
-		
-		if _mRnd_simpleRndEvent(MagicProtectChance) then
+	if source == 8 then		
+		if _mRnd_simpleRndEvent(getMagicResistance(unit)) then
 			result = Immune.Always
 		end
 	end	

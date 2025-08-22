@@ -9,9 +9,9 @@ function getModifierDescTxt(unit, prev)
 	return prev
 end
 
-function getImmuneToSource(unit, source, prev)
-	if source == 8 then
-		return svSourceImmunityClass(unit, source, prev, Immune.Always)
-	end
-	return prev
-end
+-- function getImmuneToSource(unit, source, prev)
+-- 	if source == 8 then
+-- 		return svSourceImmunityClass(unit, source, prev, Immune.Always)
+-- 	end
+-- 	return prev
+-- end
