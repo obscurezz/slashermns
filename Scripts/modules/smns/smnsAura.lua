@@ -537,11 +537,11 @@ function _smns_multiplicativeDamageHealBonus(unit, prev, attackN, unitMods)
     end
 	--END
 
-	--Мастер клинка +3% урона за каждый уровень лидера отряда
+	--Мастер клинка +4% урона за каждый уровень лидера отряда
 	if _GroupInfo_UnitHasModifierValue(unit, SwordMaster3DamagePerHeroLVL) then
 		local Leader = _GroupInfo_getCurrentGroupLeader()
 		if Leader ~= nil and Leader.hp > 0 then
-			BonusDMG = 3 * Leader.impl.level
+			BonusDMG = 4 * (Leader.impl.level - Leader.baseImpl.level)
 		end
 	end
 	--END
@@ -1827,12 +1827,12 @@ function _smns_CritPower(unit)
 	local mods = _GroupInfo_UnitModifiers(unit)
 	local BonusCritPower = 0
 --Мастер клинка +3% урона за каждый уровень лидера отряда
-	if _GroupInfo_UnitHasModifierValue(unit, SwordMaster3DamagePerHeroLVL) then
-		local Leader = _GroupInfo_getCurrentGroupLeader()
-		if Leader ~= nil and Leader.hp > 0 then
-			BonusCritPower = 3 * Leader.impl.level
-		end
-	end
+	-- if _GroupInfo_UnitHasModifierValue(unit, SwordMaster3DamagePerHeroLVL) then
+	-- 	local Leader = _GroupInfo_getCurrentGroupLeader()
+	-- 	if Leader ~= nil and Leader.hp > 0 then
+	-- 		BonusCritPower = 3 * Leader.impl.level
+	-- 	end
+	-- end
 --END
 	return BonusCritPower
 end
