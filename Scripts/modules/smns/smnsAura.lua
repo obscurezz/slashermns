@@ -417,14 +417,20 @@ function _smns_multiplicativeDamageHealBonus(unit, prev, attackN, unitMods)
 	
 	if player ~= nil and player.lord == Lord.Mage and player.race ~= Race.Neutral then
 		if smnsConditions_isStackOnItsTerrain(smns_scenario, _GroupInfo_getUnitStack(unit)) then
+			local base_attack
+			if not unit.impl.altAttack then
+				base_attack = smns_scenario:getUnit(unit.id).impl.attack1
+			else
+				base_attack = smns_scenario:getUnit(unit.id).impl.altAttack
+			end
 			if statsCheck_isDirectDmgType(unit.impl.attack1.type) or statsCheck_isDirectDmgType(unit.impl.altAttack.type) then
-				local fire = (smns_scenario:getUnit(unit.id).impl.attack1.source == Source.Fire or smns_scenario:getUnit(unit.id).impl.altAttack.source == Source.Fire)
-				local earth = (smns_scenario:getUnit(unit.id).impl.attack1.source == Source.Earth or smns_scenario:getUnit(unit.id).impl.altAttack.source == Source.Earth)
-				local air = (smns_scenario:getUnit(unit.id).impl.attack1.source == Source.Air or smns_scenario:getUnit(unit.id).impl.altAttack.source == Source.Air)
-				local water = (smns_scenario:getUnit(unit.id).impl.attack1.source == Source.Water or smns_scenario:getUnit(unit.id).impl.altAttack.source == Source.Water)
-				local water = (smns_scenario:getUnit(unit.id).impl.attack1.source == Source.Death or smns_scenario:getUnit(unit.id).impl.altAttack.source == Source.Death)
-				local mind = (smns_scenario:getUnit(unit.id).impl.attack1.source == Source.Mind or smns_scenario:getUnit(unit.id).impl.altAttack.source == Source.Mind)
-				local life = (smns_scenario:getUnit(unit.id).impl.altAttack.source == Source.Life)
+				local fire = (base_attack.source == Source.Fire)
+				local earth = (base_attack.source == Source.Earth)
+				local air = (base_attack.source == Source.Air)
+				local water = (base_attack.source == Source.Water)
+				local water = (base_attack.source == Source.Death)
+				local mind = (base_attack.source == Source.Mind)
+				local life = (base_attack.source == Source.Life)
 				if fire or earth or air or water or death or mind or life then
 					BonusDMG = BonusDMG + 7
 				end
@@ -553,8 +559,15 @@ function _smns_multiplicativeDamageHealBonus(unit, prev, attackN, unitMods)
 	end
 --END
 
+	local base_attack
+	if not unit.impl.altAttack then
+		base_attack = smns_scenario:getUnit(unit.id).impl.attack1
+	else
+		base_attack = smns_scenario:getUnit(unit.id).impl.altAttack
+	end
+
 -- Закаленная сталь I +10% урона		
-	if _GroupInfo_stackHasModifierAmount(HardenedSteelBuffer) > 0 and (smns_scenario:getUnit(unit.id).impl.attack1.source == Source.Weapon or smns_scenario:getUnit(unit.id).impl.altAttack.source == Source.Weapon) and _GroupInfo_stackHasModifierAmount(HardenedSteelBufferII) == 0 then
+	if _GroupInfo_stackHasModifierAmount(HardenedSteelBuffer) > 0 and (base_attack.source == Source.Weapon) and _GroupInfo_stackHasModifierAmount(HardenedSteelBufferII) == 0 then
 		if unit.impl.race == Race.Dwarf then
 			BonusDMG = BonusDMG + 10
 		end
@@ -562,7 +575,7 @@ function _smns_multiplicativeDamageHealBonus(unit, prev, attackN, unitMods)
 -- Закаленная сталь I +10% урона END
 
 -- Закаленная сталь II +15% урона		
-	if _GroupInfo_stackHasModifierAmount(HardenedSteelBufferII) > 0 and (smns_scenario:getUnit(unit.id).impl.attack1.source == Source.Weapon or smns_scenario:getUnit(unit.id).impl.altAttack.source == Source.Weapon) then
+	if _GroupInfo_stackHasModifierAmount(HardenedSteelBufferII) > 0 and (base_attack.source == Source.Weapon) then
 		if unit.impl.race == Race.Dwarf then
 			BonusDMG = BonusDMG + 15
 		end
@@ -577,7 +590,7 @@ function _smns_multiplicativeDamageHealBonus(unit, prev, attackN, unitMods)
 	-- 	Attack1Source == Source.Fire  then
 	-- 	BonusDMG = BonusDMG + 10 * CountWrathOfHellBuffer
 	-- end	
-	if _GroupInfo_stackHasModifierAmount(WrathOfHellBuffer) > 0 and (smns_scenario:getUnit(unit.id).impl.attack1.source == Source.Fire or smns_scenario:getUnit(unit.id).impl.altAttack.source == Source.Fire) then
+	if _GroupInfo_stackHasModifierAmount(WrathOfHellBuffer) > 0 and (base_attack.source == Source.Fire) then
 		BonusDMG = BonusDMG + smnsConditions_permanentAura(unit, WrathOfHellBuffer, 12)
 	end
 --Гнев преисподние +10% урона огню END
@@ -604,7 +617,7 @@ function _smns_multiplicativeDamageHealBonus(unit, prev, attackN, unitMods)
 	-- 	Attack1Source == Source.Water  then
 	-- 	BonusDMG = BonusDMG + 12 * CountWaterBuffer
 	-- end
-	if _GroupInfo_stackHasModifierAmount(WaterBuffer) > 0 and (smns_scenario:getUnit(unit.id).impl.attack1.source == Source.Water or smns_scenario:getUnit(unit.id).impl.altAttack.source == Source.Water) then
+	if _GroupInfo_stackHasModifierAmount(WaterBuffer) > 0 and (base_attack.source == Source.Water) then
 		BonusDMG = BonusDMG + smnsConditions_permanentAura(unit, WaterBuffer, 12)
 	end
 --Тайны льда END
@@ -651,7 +664,7 @@ function _smns_multiplicativeDamageHealBonus(unit, prev, attackN, unitMods)
 --Элитная стража END
 
 --Рефаим увеличивает на 5% + 5% за оверлевел урон воздухом в отряде, но не более 20%
-	if _GroupInfo_stackHasModifierAmount(RefaimInParty) > 0 and (smns_scenario:getUnit(unit.id).impl.attack1.source == Source.Air or smns_scenario:getUnit(unit.id).impl.altAttack.source == Source.Air) then
+	if _GroupInfo_stackHasModifierAmount(RefaimInParty) > 0 and (base_attack.source == Source.Air) then
 		-- local u
 		-- local mAmount = {}
 		-- local group = _GroupInfo_getCurrentGroup()
@@ -1238,25 +1251,37 @@ end
 
 function _smns_getNegotiate(unit, prev, currentValue)
 	local result = 0
---Бдительность
+	--Бдительность
 	if _GroupInfo_stackHasModifierAmount(VigilanceI) > 0 then
 		-- countBuffs = _GroupInfo_stackHasModifierAmount(VigilanceI)
 		result = result + 15
 	end
---Бдительность END
+	--Бдительность END
 
---Бдительность II
+	--Бдительность II
 	if _GroupInfo_stackHasModifierAmount(VigilanceII) > 0 then
 		-- countBuffs = _GroupInfo_stackHasModifierAmount(VigilanceII)
 		result = result + 25
 	end
---Бдительность II END
+	--Бдительность II END
 
---бонус Гильдмастера
+	--бонус Гильдмастера
 	if smnsConditions_getThiefActionBonus(unit, 1, smns_scenario) then
 		result = result - 5
 	end
---бонус Гильдмастера END
+	--бонус Гильдмастера END
+	if _GroupInfo_stackHasModifierAmount(Id.new('g000um2206').value) > 0 then
+		result = result + 15
+	end
+	-- Благородство
+	if _GroupInfo_stackHasModifierAmount(Id.new('g000um4018').value) > 0 then
+		result = result + 20
+	end
+
+	if _GroupInfo_stackHasModifierAmount(Id.new('g000um0039').value) > 0 then
+		result = result + 20
+	end
+	-- Благородство END
 
 	return result
 end
