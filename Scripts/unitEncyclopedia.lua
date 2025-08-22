@@ -1060,13 +1060,23 @@ function getInitField(unitImpl)
 end
 
 function getReachField(unitImpl)
-	local attack = unitImpl.attack1
-	return getModifiedStringText(getAttackReachName(attack.reach), attack.reach ~= attack.generated.reach)
+	local attack1
+	if not unitImpl.altAttack then
+		attack1 = unitImpl.attack1
+	else
+		attack1 = unitImpl.altAttack
+	end
+	return getModifiedStringText(getAttackReachName(attack1.reach), attack1.reach ~= attack1.generated.reach)
 end
 
 function getTargetsField(unitImpl)
-	local attack = unitImpl.attack1
-	return getModifiedStringText(getAttackTargetsName(attack.reach), attack.reach ~= attack.generated.reach)
+	local attack1
+	if not unitImpl.altAttack then
+		attack1 = unitImpl.attack1
+	else
+		attack1 = unitImpl.altAttack
+	end
+	return getModifiedStringText(getAttackTargetsName(attack1.reach), attack1.reach ~= attack1.generated.reach)
 end
 
 function doGetTxtStatsText(unit, unitImpl, isMaxLevel, isInBattle, fortificationArmor, shatteredArmor, removedSourceWards, removedClassWards)

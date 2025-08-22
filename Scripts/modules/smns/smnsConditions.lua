@@ -297,3 +297,26 @@ function smnsConditions_permanentAura(unit, aura_mod, aura_value)
 		end
 	end	
 end
+
+function smnsConditions_highestWithModifier(unit, mod)
+	local group = _GroupInfo_getCurrentGroup()
+	local u
+	local mAmount = {}	
+	local unitGroupSlots = group.slots
+	for i = 1, #unitGroupSlots do
+		u = unitGroupSlots[i].unit
+		if u ~= nil and u.hp > 0 and _GroupInfo_UnitHasModifierValue(u, mod) then
+			table.insert(mAmount, u)
+		end
+	end
+	local highest
+	if mAmount[1] then 
+		highest = mAmount[1]
+		for i = 1, #mAmount do
+			if mAmount[i].impl.level > highest.impl.level then
+				highest = mAmount[i]
+			end
+		end
+	end
+	return highest
+end
