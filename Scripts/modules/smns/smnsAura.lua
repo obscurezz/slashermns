@@ -456,9 +456,15 @@ function _smns_multiplicativeDamageHealBonus(unit, prev, attackN, unitMods)
 	
 	if player ~= nil and player.lord == Lord.Mage and player.race ~= Race.Neutral then
 		if smnsConditions_isStackOnItsTerrain(smns_scenario, _GroupInfo_getUnitStack(unit)) then
-			if statsCheck_isDirectDmgType(unit.impl.attack1.type) then
-				local uias = unit.impl.attack1.source
-				if uias == Source.Fire or uias == Source.Earth or uias == Source.Air or uias == Source.Water or uias == Source.Death or uias == Source.Mind or uias == Source.Life then
+			if statsCheck_isDirectDmgType(unit.impl.attack1.type) or statsCheck_isDirectDmgType(unit.impl.altAttack.type) then
+				local fire = (smns_scenario:getUnit(unit.id).impl.attack1.source == Source.Fire or smns_scenario:getUnit(unit.id).impl.altAttack.source == Source.Fire)
+				local earth = (smns_scenario:getUnit(unit.id).impl.attack1.source == Source.Earth or smns_scenario:getUnit(unit.id).impl.altAttack.source == Source.Earth)
+				local air = (smns_scenario:getUnit(unit.id).impl.attack1.source == Source.Air or smns_scenario:getUnit(unit.id).impl.altAttack.source == Source.Air)
+				local water = (smns_scenario:getUnit(unit.id).impl.attack1.source == Source.Water or smns_scenario:getUnit(unit.id).impl.altAttack.source == Source.Water)
+				local water = (smns_scenario:getUnit(unit.id).impl.attack1.source == Source.Death or smns_scenario:getUnit(unit.id).impl.altAttack.source == Source.Death)
+				local mind = (smns_scenario:getUnit(unit.id).impl.attack1.source == Source.Mind or smns_scenario:getUnit(unit.id).impl.altAttack.source == Source.Mind)
+				local life = (smns_scenario:getUnit(unit.id).impl.altAttack.source == Source.Life)
+				if fire or earth or air or water or death or mind or life then
 					BonusDMG = BonusDMG + 7
 				end
 			end
@@ -587,8 +593,7 @@ function _smns_multiplicativeDamageHealBonus(unit, prev, attackN, unitMods)
 --END
 
 -- Закаленная сталь I +10% урона		
-	local Attack1Source = unit.impl.attack1.source
-	if _GroupInfo_stackHasModifierAmount(HardenedSteelBuffer) > 0 and Attack1Source == Source.Weapon and _GroupInfo_stackHasModifierAmount(HardenedSteelBufferII) == 0 then
+	if _GroupInfo_stackHasModifierAmount(HardenedSteelBuffer) > 0 and (smns_scenario:getUnit(unit.id).impl.attack1.source == Source.Weapon or smns_scenario:getUnit(unit.id).impl.altAttack.source == Source.Weapon) and _GroupInfo_stackHasModifierAmount(HardenedSteelBufferII) == 0 then
 		if unit.impl.race == Race.Dwarf then
 			BonusDMG = BonusDMG + 10
 		end
@@ -596,8 +601,7 @@ function _smns_multiplicativeDamageHealBonus(unit, prev, attackN, unitMods)
 -- Закаленная сталь I +10% урона END
 
 -- Закаленная сталь II +15% урона		
-	local Attack1Source = unit.impl.attack1.source
-	if _GroupInfo_stackHasModifierAmount(HardenedSteelBufferII) > 0 and Attack1Source == Source.Weapon then
+	if _GroupInfo_stackHasModifierAmount(HardenedSteelBufferII) > 0 and (smns_scenario:getUnit(unit.id).impl.attack1.source == Source.Weapon or smns_scenario:getUnit(unit.id).impl.altAttack.source == Source.Weapon) then
 		if unit.impl.race == Race.Dwarf then
 			BonusDMG = BonusDMG + 15
 		end
@@ -612,8 +616,7 @@ function _smns_multiplicativeDamageHealBonus(unit, prev, attackN, unitMods)
 	-- 	Attack1Source == Source.Fire  then
 	-- 	BonusDMG = BonusDMG + 10 * CountWrathOfHellBuffer
 	-- end	
-	local Attack1Source = unit.impl.attack1.source
-	if Attack1Source == Source.Fire then
+	if _GroupInfo_stackHasModifierAmount(WrathOfHellBuffer) > 0 and (smns_scenario:getUnit(unit.id).impl.attack1.source == Source.Fire or smns_scenario:getUnit(unit.id).impl.altAttack.source == Source.Fire) then
 		BonusDMG = BonusDMG + smnsConditions_permanentAura(unit, WrathOfHellBuffer, 12)
 	end
 --Гнев преисподние +10% урона огню END
@@ -640,7 +643,7 @@ function _smns_multiplicativeDamageHealBonus(unit, prev, attackN, unitMods)
 	-- 	Attack1Source == Source.Water  then
 	-- 	BonusDMG = BonusDMG + 12 * CountWaterBuffer
 	-- end
-	if Attack1Source == Source.Water then
+	if _GroupInfo_stackHasModifierAmount(WaterBuffer) > 0 and (smns_scenario:getUnit(unit.id).impl.attack1.source == Source.Water or smns_scenario:getUnit(unit.id).impl.altAttack.source == Source.Water) then
 		BonusDMG = BonusDMG + smnsConditions_permanentAura(unit, WaterBuffer, 12)
 	end
 --Тайны льда END
@@ -687,7 +690,7 @@ function _smns_multiplicativeDamageHealBonus(unit, prev, attackN, unitMods)
 --Элитная стража END
 
 --Рефаим увеличивает на 5% + 5% за оверлевел урон воздухом в отряде, но не более 20%
-	if _GroupInfo_stackHasModifierAmount(RefaimInParty) > 0 and unit.impl.attack1.source == Source.Air then
+	if _GroupInfo_stackHasModifierAmount(RefaimInParty) > 0 and (smns_scenario:getUnit(unit.id).impl.attack1.source == Source.Air or smns_scenario:getUnit(unit.id).impl.altAttack.source == Source.Air) then
 		-- local u
 		-- local mAmount = {}
 		-- local group = _GroupInfo_getCurrentGroup()
