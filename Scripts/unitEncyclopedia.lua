@@ -651,7 +651,7 @@ function getTxtStatsWithDynUpgradeText(text, unitImpl)
 	end
 
 	-- Replace hard-coded string with getInterfaceText of your dynamicUpgradeLevel from textids.lua
-	local result = replace(text, "%LEVEL%", replace("%LEVEL% (before | after %UPGLV%)", "%UPGLV%", getNumberText(unitImpl.dynUpgLvl, false)))
+	local result = replace(text, "%LEVEL%", replace(getInterfaceText("X150TA1010"), "%UPGLV%", getNumberText(unitImpl.dynUpgLvl, false)))
 	result = replace(result, "%HP2%", getDynUpgradeText("%HP2%", upg1.hp, upg2.hp, false))
 	result = replace(result, "%ARMOR%", getDynUpgradeText("%ARMOR%", upg1.armor, upg2.armor, false))
 	result = replace(result, "%XP%", getDynUpgradeText("%XP%", upg1.xpNext, upg2.xpNext, false))
