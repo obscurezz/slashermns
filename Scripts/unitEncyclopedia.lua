@@ -429,7 +429,7 @@ end
 
 function getSplitDamageText(damageText)
 	-- Replace hard-coded string with getInterfaceText of your splitDamage from textids.lua
-	return replace("%DMG% split between targets", "%DMG%", damageText)
+	return replace(getInterfaceText("X015TA0006"), "%DMG%", damageText)
 end
 
 function getRatedDamageText(damage, critDamage, ratio)
@@ -640,7 +640,7 @@ function getDynUpgradeText(field, upgrade1, upgrade2, percent)
 	local upgrade2Text = getSignedNumberText(upgrade2, percent)
 
 	-- Replace hard-coded string with getInterfaceText of your dynamicUpgradeValues from textids.lua
-	return replace(replace(replace("%STAT% (%UPG1% | %UPG2% per level)", "%STAT%", field), "%UPG1%", upgrade1Text), "%UPG2%", upgrade2Text)
+	return replace(replace(replace(getInterfaceText("X015TA0012"), "%STAT%", field), "%UPG1%", upgrade1Text), "%UPG2%", upgrade2Text)
 end
 
 function getTxtStatsWithDynUpgradeText(text, unitImpl)
@@ -993,7 +993,6 @@ function getDamageField(unitImpl, boostDamageLevel, lowerDamageLevel)
 	if unitImpl.attack2 then
 		result = getAttackWithAttack2NumberText(result, getAttackDamageText(unitImpl, unitImpl.attack2, boostDamageLevel, lowerDamageLevel, maxTargets))
 	end
-
 	return result
 end
 
