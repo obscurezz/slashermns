@@ -28,21 +28,21 @@ end
 -- 	return prev
 -- end
 
-function getAttackReach(unit, prev)
-	local check_range = unit.impl.attack1.reach
-	-- if unit.impl.altAttack ~= nil then
-	-- 	check_range = unit.impl.altAttack.reach
-	-- else
-	-- 	check_range = unit.impl.attack1.reach
-	-- end
+-- function getAttackReach(unit, prev)
+-- 	local check_range = unit.impl.attack1.reach
+-- 	-- if unit.impl.altAttack ~= nil then
+-- 	-- 	check_range = unit.impl.altAttack.reach
+-- 	-- else
+-- 	-- 	check_range = unit.impl.attack1.reach
+-- 	-- end
 
-	if check_range == 103 then
-		return 805
-	end
+-- 	if check_range == 103 then
+-- 		return 805
+-- 	end
 
-	if check_range == 27 then
-		return 806
-	end
+-- 	if check_range == 27 then
+-- 		return 806
+-- 	end
 
-	return prev
-end
+-- 	return prev
+-- end

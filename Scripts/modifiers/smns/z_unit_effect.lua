@@ -193,23 +193,23 @@ function getAttackPower(unit, prev)
     return prev
 end
 
--- function getAttackId(unit, prev)
---     if _PhoenixKnight(unit) then
---         local group = _GroupInfo_getCurrentGroup()
---         local units = group.units
+function getAttackId(unit, prev)
+    if _PhoenixKnight(unit) then
+        local group = _GroupInfo_getCurrentGroup()
+        local units = group.units
 
---         local all_count = #units
---         local dead_count = 0
---         for i = 1, #units do
---             u = units[i]
---             if u ~= nil and u.hp == 0 then
---                 dead_count = dead_count + 1
---             end
---         end
+        local all_count = #units
+        local dead_count = 0
+        for i = 1, #units do
+            u = units[i]
+            if u ~= nil and u.hp == 0 then
+                dead_count = dead_count + 1
+            end
+        end
 
---         if all_count - dead_count == 1 then
---             return Id.new("g001aa2083")
---         end
---     end
---     return prev
--- end
+        if all_count - dead_count == 1 then
+            return Id.new("g001aa2083")
+        end
+    end
+    return prev
+end

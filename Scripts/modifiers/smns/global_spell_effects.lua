@@ -48,6 +48,7 @@ local BannerOfDualFate = Id.new('g070um0374').value
 local RavenCuirass = Id.new('g070um0318').value
 
 local ShadowOfDeath = Id.new('g070um0386').value
+local PhoenixShield = Id.new('g070um0313').value
 
 local BUFFS = {TEREBRARE_CORDE, VOTANS_BLESSING, ALLFATHERS_BLESSING, SPEED, CLANS_HYMN, ENCHANTED_WEAPONS, ICE_SHIELD, MIGHT, UNEVITABLE_REVENGE, CALL_TO_ARMS, SIR_ALLEMON, MORTIS_TOUCH, HOLY_ARMOR, HOLY_STRENGTH, STRENGTH, VITARS_STRENGTH, HURRYING_TIME, STEEL_BONES, ENDURANCE, GROVE_STAMINA, VAMPIRISM, HARVEST, VAMPIRE_TOUCH}
 
@@ -85,13 +86,13 @@ function getGlobalBuffEffect(unit)
         unit_change_stats = unit_change_stats - 0.5
     end
     if _GroupInfo_UnitHasModifierValue(unit, unitBuffStronger10) then
-        unit_change_stats = unit_change_stats + 0.15
+        unit_change_stats = unit_change_stats + 0.1
     end
     if _GroupInfo_UnitHasModifierValue(unit, unitBuffStronger20) then
-        unit_change_stats = unit_change_stats + 0.3
+        unit_change_stats = unit_change_stats + 0.2
     end
     if _GroupInfo_UnitHasModifierValue(unit, unitBuffStronger30) then
-        unit_change_stats = unit_change_stats + 0.5
+        unit_change_stats = unit_change_stats + 0.3
     end
 
     --adding section
@@ -105,6 +106,9 @@ function getGlobalBuffEffect(unit)
         unit_change_stats = unit_change_stats + 0.2
     end
     if _GroupInfo_UnitHasModifierValue(unit, Id.new('g070um0156').value) and smnsConditions_heroCondition(unit, Pepega) then
+        unit_change_stats = unit_change_stats + 0.3
+    end
+    if _GroupInfo_UnitHasModifierValue(unit, Id.new('g070um0314').value) then
         unit_change_stats = unit_change_stats + 0.3
     end
     --
@@ -163,13 +167,13 @@ function getGlobalDebuffEffect(unit)
         if _GroupInfo_UnitHasModifierValue(unit, unitDebuffWeaker50) then
             unit_change_stats = unit_change_stats - 0.5
         end
-        if _GroupInfo_UnitHasModifierValue(unit, unitDebuffStronger15) and not _GroupInfo_UnitHasModifierValue(unit, DebuffStrongerImmunityModifier) then
+        if _GroupInfo_UnitHasModifierValue(unit, unitDebuffStronger15) and not _GroupInfo_UnitHasModifierValue(unit, DebuffStrongerImmunityModifier) and not _GroupInfo_UnitHasModifierValue(unit, PhoenixShield) then
             unit_change_stats = unit_change_stats + 0.15
         end
-        if _GroupInfo_UnitHasModifierValue(unit, unitDebuffStronger30) and not _GroupInfo_UnitHasModifierValue(unit, DebuffStrongerImmunityModifier) then
+        if _GroupInfo_UnitHasModifierValue(unit, unitDebuffStronger30) and not _GroupInfo_UnitHasModifierValue(unit, DebuffStrongerImmunityModifier) and not _GroupInfo_UnitHasModifierValue(unit, PhoenixShield) then
             unit_change_stats = unit_change_stats + 0.3
         end
-        if _GroupInfo_UnitHasModifierValue(unit, unitDebuffStronger50) and not _GroupInfo_UnitHasModifierValue(unit, DebuffStrongerImmunityModifier) then
+        if _GroupInfo_UnitHasModifierValue(unit, unitDebuffStronger50) and not _GroupInfo_UnitHasModifierValue(unit, DebuffStrongerImmunityModifier) and not _GroupInfo_UnitHasModifierValue(unit, PhoenixShield) then
             unit_change_stats = unit_change_stats + 0.5
         end
 
@@ -203,22 +207,22 @@ function getGlobalDebuffEffect(unit)
         if _GroupInfo_stackHasModifierAmount(groupDebuffWeaker50) > 0 or _GroupInfo_stackHasModifierAmount(Id.new('g014um1066').value) > 0 then 
             unit_change_stats = unit_change_stats - 0.5
         end
-        if _GroupInfo_stackHasModifierAmount(groupDebuffStronger15) > 0 and not _GroupInfo_UnitHasModifierValue(unit, DebuffStrongerImmunityModifier) then
+        if _GroupInfo_stackHasModifierAmount(groupDebuffStronger15) > 0 and not _GroupInfo_UnitHasModifierValue(unit, DebuffStrongerImmunityModifier) and not _GroupInfo_UnitHasModifierValue(unit, PhoenixShield) then
             unit_change_stats = unit_change_stats + 0.15
         end
-        if _GroupInfo_stackHasModifierAmount(groupDebuffStronger30) > 0 and not _GroupInfo_UnitHasModifierValue(unit, DebuffStrongerImmunityModifier) then
+        if _GroupInfo_stackHasModifierAmount(groupDebuffStronger30) > 0 and not _GroupInfo_UnitHasModifierValue(unit, DebuffStrongerImmunityModifier) and not _GroupInfo_UnitHasModifierValue(unit, PhoenixShield) then
             unit_change_stats = unit_change_stats + 0.3
         end
-        if _GroupInfo_stackHasModifierAmount(groupDebuffStronger50) > 0 and not _GroupInfo_UnitHasModifierValue(unit, DebuffStrongerImmunityModifier) then
+        if _GroupInfo_stackHasModifierAmount(groupDebuffStronger50) > 0 and not _GroupInfo_UnitHasModifierValue(unit, DebuffStrongerImmunityModifier) and not _GroupInfo_UnitHasModifierValue(unit, PhoenixShield) then
             unit_change_stats = unit_change_stats + 0.5
         end
 
         --
-        if _GroupInfo_stackHasModifierAmount(BannerOfDualFate) > 0 and not _GroupInfo_UnitHasModifierValue(unit, DebuffStrongerImmunityModifier) then
+        if _GroupInfo_stackHasModifierAmount(BannerOfDualFate) > 0 and not _GroupInfo_UnitHasModifierValue(unit, DebuffStrongerImmunityModifier) and not _GroupInfo_UnitHasModifierValue(unit, PhoenixShield) then
             unit_change_stats = unit_change_stats + 0.3
         end
 
-        if _Abyssal_Deboost_Effect(unit) >= 1 and not _GroupInfo_UnitHasModifierValue(unit, DebuffStrongerImmunityModifier) then
+        if _Abyssal_Deboost_Effect(unit) >= 1 and not _GroupInfo_UnitHasModifierValue(unit, DebuffStrongerImmunityModifier) and not _GroupInfo_UnitHasModifierValue(unit, PhoenixShield) then
             unit_change_stats = unit_change_stats + 0.3
         end
         --

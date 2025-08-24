@@ -395,6 +395,26 @@ function _unitAura_ImmuneToSource(unit, source, prev)
 		svSetAttackSourceVulnerability(unit, Source.Death, false)
 	end
 
+	if _Phoenix_Deboost_Effect(unit) >= 1 then
+		local group = _GroupInfo_getCurrentGroup()
+		local slots = group.slots
+		local u
+		local s
+		for i = 1, #slots do
+			s = slots[i]
+			u = s.unit
+			if u ~= nil and u.id.value == unit.id.value and slots[i].line == 0 then
+				if _GroupInfo_UnitHasModifierValue(u, Id.new('g000um2024').value) and u.impl:getImmuneToAttackSource(Source.Fire) ~= Immune.Always then
+					svSetAttackSourceVulnerability(u, Source.Fire, false)
+				else
+					svSetAttackSourceVulnerability(u, Source.Fire, true)
+				end
+			end
+		end
+	else
+		svSetAttackSourceVulnerability(unit, Source.Fire, false)
+	end
+
 	local alwaysWard = nil
 	local onceWard   = nil
 	if source == Source.Weapon then

@@ -358,9 +358,9 @@ function _smns_multiplicativeDamageHealBonus(unit, prev, attackN, unitMods)
 		BonusDMG = BonusDMG + _Draug_Deboost_Effect(unit) + _Spawn_Tiamat_Deboost_Effect(unit)
 	end
 
-	if unit.impl.attack1.source == Source.Fire then
-		BonusDMG = BonusDMG + _Phoenix_Deboost_Effect(unit)
-	end
+	-- if unit.impl.attack1.source == Source.Fire then
+	-- 	BonusDMG = BonusDMG + _Phoenix_Deboost_Effect(unit)
+	-- end
 
 	if _BloodRaven_Set_Deboost_Effect(unit) == 1 then
 		BonusDMG = BonusDMG - 10
@@ -727,12 +727,12 @@ function _smns_percentInitiativeBonus(unit, prev)
 	--Аура ловкости END
 
 	--Сет феникса
-	if _GroupInfo_stackHasModifierAmount(PhoenixShield) > 0 and _GroupInfo_stackHasModifierAmount(PhoenixSword) > 0 and _GroupInfo_stackHasModifierAmount(PhoenixArmor) > 0 then
-		local maxHP = smns_scenario:getUnit(unit.id).hpMax
-		if  unit.hp / maxHP < 0.3 then
-			BonusIni = BonusIni + 15
-		end
-	end	
+	-- if _GroupInfo_stackHasModifierAmount(PhoenixShield) > 0 and _GroupInfo_stackHasModifierAmount(PhoenixSword) > 0 and _GroupInfo_stackHasModifierAmount(PhoenixArmor) > 0 then
+	-- 	local maxHP = smns_scenario:getUnit(unit.id).hpMax
+	-- 	if  unit.hp / maxHP < 0.3 then
+	-- 		BonusIni = BonusIni + 15
+	-- 	end
+	-- end	
 	--сет феникса END
 
 	return BonusIni
@@ -863,12 +863,12 @@ function _smns_ImmuneToAttack(unit, attack, prev, currentValue)
 	--аура стабильности END
 
 	--Сет феникса
-	if _GroupInfo_stackHasModifierAmount(PhoenixShield) > 0 and  _GroupInfo_stackHasModifierAmount(PhoenixSword) > 0 and  _GroupInfo_stackHasModifierAmount(PhoenixArmor) > 0 and attack == Attack.Damage then
-	local maxHP = smns_scenario:getUnit(unit.id).hpMax
-		if  unit.hp / maxHP < 0.3 then
-		result = Immune.Once
-		end
-	end		
+	-- if _GroupInfo_stackHasModifierAmount(PhoenixShield) > 0 and  _GroupInfo_stackHasModifierAmount(PhoenixSword) > 0 and  _GroupInfo_stackHasModifierAmount(PhoenixArmor) > 0 and attack == Attack.Damage then
+	-- local maxHP = smns_scenario:getUnit(unit.id).hpMax
+	-- 	if  unit.hp / maxHP < 0.3 then
+	-- 	result = Immune.Once
+	-- 	end
+	-- end		
 	--Сет феникса END
 
 	return result
@@ -881,6 +881,36 @@ function _smns_ImmuneToSource(unit, source, prev, currentValue)
 	local MagicProtectChance = 0 + _Rod_Placer_Effect(unit)
 	local result = currentValue
 	_get_Group_and_Mods(unit)
+
+	-- phoenix shield
+	if source == Source.Fire and _GroupInfo_stackHasModifierAmount(PhoenixShield) > 0 then
+		local group = _GroupInfo_getCurrentGroup()
+		local slots = group.slots
+		local s
+		local u
+		local n = 0
+		local FSlots = {}
+		for i = 1, #slots do
+			s = slots[i]
+			u = s.unit
+			if u ~= nil then
+				n = n + 1
+				FSlots[n] = slots[i]
+			end
+		end
+		local FrontLine = _common_GetFrontline(FSlots)
+		for i = 1, #slots do
+			s = slots[i]
+			u = s.unit
+			if u ~= nil and u.id.value == unit.id.value then
+				if s.line == FrontLine then
+					result = Immune.Once
+				end
+				break
+			end
+		end
+	end
+	-- phoenix shield END
 
 	--перманентные ауры
 	if smnsConditions_permanentAura(unit, Id.new('g070um0364').value, 1) >= 1 and source == Source.Water and currentValue ~= Immune.Always then
@@ -944,9 +974,9 @@ function _smns_ImmuneToSource(unit, source, prev, currentValue)
 	--Знамена END
 	
 	--Щит рыцаря Феникса
-	if _GroupInfo_stackHasModifierAmount(PhoenixShield) > 0 and source == Source.Fire and currentValue ~= Immune.Always then
-		result = Immune.Once
-	end
+	-- if _GroupInfo_stackHasModifierAmount(PhoenixShield) > 0 and source == Source.Fire and currentValue ~= Immune.Always then
+	-- 	result = Immune.Once
+	-- end
 	--Щит рыцаря Феникса END
 
 	--Игнар даёт защиту от огня в той же колонне
@@ -1164,6 +1194,12 @@ function _smns_getNegotiate(unit, prev, currentValue)
 		result = result + 20
 	end
 	-- Благородство END
+
+	-- phoenix
+	if _GroupInfo_stackHasModifierAmount(Id.new('g070um0314').value) > 0 then
+		result = result + 30
+	end
+	-- phoenix END
 
 	return result
 end
