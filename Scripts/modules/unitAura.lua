@@ -242,25 +242,35 @@ function _unitAura_ImmuneToAttack(unit, attack, prev)
 			svSetAttackClassVulnerabilty(unit, Attack.Poison, false)
 		else
 			svSetAttackClassVulnerabilty(unit, Attack.Poison, true)
-		end
+		end	
+	else
+		svSetAttackClassVulnerabilty(unit, Attack.Poison, false)
 	end
+
 	if _Flamethrower_Deboost_Effect(unit) >= 1 then
 		if _GroupInfo_UnitHasModifierValue(unit, Id.new('g014um1022').value) and unit.impl:getImmuneToAttackClass(Attack.Blister) ~= Immune.Always then
 			svSetAttackClassVulnerabilty(unit, Attack.Blister, false)
 		else
 			svSetAttackClassVulnerabilty(unit, Attack.Blister, true)
 		end
+	else
+		svSetAttackClassVulnerabilty(unit, Attack.Blister, false)
 	end
+
 	if _Kriomant_Deboost_Effect(unit) >= 1 then
 		if _GroupInfo_UnitHasModifierValue(unit, Id.new('g014um1022').value) and unit.impl:getImmuneToAttackClass(Attack.Frostbite) ~= Immune.Always then
 			svSetAttackClassVulnerabilty(unit, Attack.Frostbite, false)
 		else
 			svSetAttackClassVulnerabilty(unit, Attack.Frostbite, true)
 		end
+	else
+		svSetAttackClassVulnerabilty(unit, Attack.Frostbite, false)
 	end
 
 	if scenario.day >= 10 and _Guard_Resistance_Deboost_Effect(unit) >= 1 then
 		svSetAttackClassVulnerabilty(unit, Attack.Shatter, true)
+	else
+		svSetAttackClassVulnerabilty(unit, Attack.Shatter, false)
 	end
 	
 	if result == Immune.NotImmune then
@@ -381,15 +391,9 @@ function _unitAura_ImmuneToSource(unit, source, prev)
 		else
 			svSetAttackSourceVulnerability(unit, Source.Death, true)
 		end
+	else
+		svSetAttackSourceVulnerability(unit, Source.Death, false)
 	end
-
-	-- if _Konsul_Deboost_Effect(unit) == 1 then 
-	-- 	if _GroupInfo_UnitHasModifierValue(unit, Id.new('g000um2023').value) and unit.impl:getImmuneToAttackSource(Source.Earth) ~= Immune.Always then
-	-- 		svSetAttackSourceVulnerability(unit, Source.Earth, false)
-	-- 	else
-	-- 		svSetAttackSourceVulnerability(unit, Source.Earth, true)
-	-- 	end
-	-- end
 
 	local alwaysWard = nil
 	local onceWard   = nil
