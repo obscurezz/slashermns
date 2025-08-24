@@ -476,22 +476,6 @@ function _smns_multiplicativeDamageHealBonus(unit, prev, attackN, unitMods)
 	end
 	--Пророчество END
 
-	--Путь боли
-	if _GroupInfo_UnitHasModifierValue(unit, TormentorSameColResist) then
-		local Leader = _GroupInfo_getCurrentGroupLeader()
-		if Leader ~= nil and Leader.hp > 0 and _GroupInfo_UnitHasModifierValue(Leader, PathOfPain) then
-			BonusDMG = BonusDMG + 4 * Leader.impl.level
-		end
-	end
-
-	if _GroupInfo_UnitHasModifierValue(unit, TorturerCrossResist) then
-		local Leader = _GroupInfo_getCurrentGroupLeader()
-		if Leader ~= nil and Leader.hp > 0 and _GroupInfo_UnitHasModifierValue(Leader, PathOfPain) then
-			BonusDMG = BonusDMG + 7 * Leader.impl.level
-		end
-	end
-	--Путь боли END
-
 	--Оборотни
     local WerewolfAmount = _GroupInfo_stackHasModifierAmount(WerewolfInParty)
     if WerewolfAmount > 1 and _GroupInfo_UnitHasModifierValue(unit, T2Werewolf15DmgPerEach) then
@@ -1749,6 +1733,22 @@ function _smns_flatAttackDrain(unit, damage, prev)
 	if smns_scenario.day >= 20 then
 		BonusFlatDrain = BonusFlatDrain - _Guard_CritDrain_Deboost_Effect(unit) * 0.01 * current_vamp
 	end
+
+	--Путь боли
+	if _GroupInfo_UnitHasModifierValue(unit, TormentorSameColResist) then
+		local Leader = _GroupInfo_getCurrentGroupLeader()
+		if Leader ~= nil and Leader.hp > 0 and _GroupInfo_UnitHasModifierValue(Leader, PathOfPain) then
+			BonusFlatDrain = BonusFlatDrain + 4 * (Leader.impl.level - Leader.baseImpl.level)
+		end
+	end
+
+	if _GroupInfo_UnitHasModifierValue(unit, TorturerCrossResist) then
+		local Leader = _GroupInfo_getCurrentGroupLeader()
+		if Leader ~= nil and Leader.hp > 0 and _GroupInfo_UnitHasModifierValue(Leader, PathOfPain) then
+			BonusFlatDrain = BonusFlatDrain + 7 * (Leader.impl.level - Leader.baseImpl.level)
+		end
+	end
+	--Путь боли END
 
 	return BonusFlatDrain
 end
