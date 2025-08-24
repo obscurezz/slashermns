@@ -306,3 +306,18 @@ function _Transformed_Effect(unit)
 	
 	return _unitAura_NearestGroupsAuraEffect(unit, effectFunction_1, radius, for_what_diplomacy_apply)
 end
+
+function ScourgeDeboost(group, groupModifiers, groupModifiersDead)
+	if _GroupInfo_UnitModifierAmount(groupModifiers, ScourgeDeboost) > 0 then
+		return -5 * _GroupInfo_UnitModifierAmount(groupModifiers, ScourgeDeboost)
+	end
+	return 0
+end
+
+function _Scourge_Deboost_Effect(unit)
+	local effectFunction_1 = ScourgeDeboost
+	local radius = 1
+	local for_what_diplomacy_apply = {diplomacyStatus_War}
+	
+	return _unitAura_NearestGroupsAuraEffect(unit, effectFunction_1, radius, for_what_diplomacy_apply)
+end

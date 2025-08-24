@@ -1132,7 +1132,7 @@ function _smns_hasMovementBonus(unit, ground, prev, currentValue)
 end
 
 function _smns_getNegotiate(unit, prev, currentValue)
-	local result = 0
+	local result = 0 + _Scourge_Deboost_Effect(unit)
 	--Бдительность
 	if _GroupInfo_stackHasModifierAmount(VigilanceI) > 0 then
 		-- countBuffs = _GroupInfo_stackHasModifierAmount(VigilanceI)
@@ -1686,31 +1686,32 @@ end
 function _smns_CritPower(unit)
 	local mods = _GroupInfo_UnitModifiers(unit)
 	local BonusCritPower = 0
---Мастер клинка +3% урона за каждый уровень лидера отряда
+	--Мастер клинка +3% урона за каждый уровень лидера отряда
 	-- if _GroupInfo_UnitHasModifierValue(unit, SwordMaster3DamagePerHeroLVL) then
 	-- 	local Leader = _GroupInfo_getCurrentGroupLeader()
 	-- 	if Leader ~= nil and Leader.hp > 0 then
 	-- 		BonusCritPower = 3 * Leader.impl.level
 	-- 	end
 	-- end
---END
+	--END
 	return BonusCritPower
 end
 
 -- changes critical drain
 function _smns_flatAttackDrain(unit, damage, prev)
 	local mods = _GroupInfo_UnitModifiers(unit)
+	local current_vamp = unit.impl.attack1:getDrain(damage) + damage * 0.5
 	local BonusFlatDrain = 0
 	+ smnsConditions_permanentAura(unit, Id.new('g040um0139').value, damage * 0.1) 
 	+ smnsConditions_permanentAura(unit, Id.new('g040um0140').value, damage * 0.2) 
 	+ smnsConditions_permanentAura(unit, Id.new('g070um0080').value, damage * 0.15)
 
 	if _BloodRaven_Set_Deboost_Effect(unit) == 1 then
-		BonusFlatDrain = BonusFlatDrain - damage * 0.33
+		BonusFlatDrain = BonusFlatDrain - current_vamp * 0.33
 	end
 
 	if smns_scenario.day >= 20 then
-		BonusFlatDrain = BonusFlatDrain - _Guard_CritDrain_Deboost_Effect(unit) * 0.01 * damage
+		BonusFlatDrain = BonusFlatDrain - _Guard_CritDrain_Deboost_Effect(unit) * 0.01 * current_vamp
 	end
 
 	return BonusFlatDrain
