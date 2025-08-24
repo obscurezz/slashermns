@@ -97,7 +97,7 @@ function getGlobalBuffEffect(unit)
 
     --adding section
     if _GroupInfo_UnitHasModifierValue(unit, TomeOfSorcery) then
-        unit_change_stats = unit_change_stats + 0.15
+        unit_change_stats = unit_change_stats + 0.1
     end
     if _GroupInfo_UnitHasModifierValue(unit, Potion10) then
         unit_change_stats = unit_change_stats + 0.1
