@@ -151,7 +151,7 @@ function getGlobalDebuffEffect(unit)
     local unit_change_stats = 0
 
     if _GroupInfo_UnitHasModifierValue(unit, DebuffImmunityModifier) or _GroupInfo_UnitHasModifierValue(unit, Bracelet) then
-        return 0
+        return -1
     else
 
         if _GroupInfo_UnitHasModifierValue(unit, unitDebuffWeaker15) then
