@@ -31,23 +31,23 @@ end
 
 function getAttackDrain(unit, damage, prev)
 	local value = -0.35
-	local current_vamp = unit.impl.attack1:getDrain(damage) + damage * 0.5
+	--local current_vamp = unit.impl.attack1:getDrain(damage) + damage * 0.5
 	local res = _ChangeGlobalDebuffEffect(unit, value)
-	return svAddDrain1(unit, prev, damage, (current_vamp / damage * res))
+	return svAddDrain1(unit, prev, damage, res)
 end
 
 function getAttack2Drain(unit, damage, prev)
 	local value = -0.35
-	local current_vamp = unit.impl.attack2:getDrain(damage) + damage * 0.5
+	--local current_vamp = unit.impl.attack2:getDrain(damage) + damage * 0.5
 	local res = _ChangeGlobalDebuffEffect(unit, value)
-	return svAddDrain2(unit, prev, damage, (current_vamp / damage * res))
+	return svAddDrain2(unit, prev, damage, res)
 end
 
-function getAttack2Damage(unit, prev)
-	local value = 0.35
-	local res = _ChangeGlobalDebuffEffect(unit, 1 - value)
-	if unit.impl.attack2.type == Attack.Shatter then
-		return prev * res
-	end
-	return prev
-end
+-- function getAttack2Damage(unit, prev)
+-- 	local value = 0.35
+-- 	local res = _ChangeGlobalDebuffEffect(unit, 1 - value)
+-- 	if unit.impl.attack2.type == Attack.Shatter then
+-- 		return prev * res
+-- 	end
+-- 	return prev
+-- end

@@ -75,6 +75,12 @@ function getMagicResistance(unit)
 		MagicProtectChance = MagicProtectChance + 30
 	end
 	--Слезы грешников END
+
+	--Infernus
+	if _GroupInfo_UnitHasModifierValue(unit, Id.new('g070um0185').value) then
+		MagicProtectChance = MagicProtectChance - 35
+	end
+	--Infernus END
 		
 	if unitGroup ~= nil then
 		local highest_hero_shield = smnsConditions_highestWithModifier(unit, HeroShield)
@@ -1720,18 +1726,19 @@ end
 -- changes critical drain
 function _smns_flatAttackDrain(unit, damage, prev)
 	local mods = _GroupInfo_UnitModifiers(unit)
-	local current_vamp = unit.impl.attack1:getDrain(damage) + damage * 0.5
+	-- local current_vamp = unit.impl.attack1:getDrain(damage) + damage * 0.5
 	local BonusFlatDrain = 0
 	+ smnsConditions_permanentAura(unit, Id.new('g040um0139').value, damage * 0.1) 
 	+ smnsConditions_permanentAura(unit, Id.new('g040um0140').value, damage * 0.2) 
 	+ smnsConditions_permanentAura(unit, Id.new('g070um0080').value, damage * 0.15)
 
-	if _BloodRaven_Set_Deboost_Effect(unit) == 1 then
-		BonusFlatDrain = BonusFlatDrain - current_vamp * 0.33
+	if _BloodRaven_Set_Deboost_Effect(unit) >= 1 then
+		BonusFlatDrain = BonusFlatDrain - damage * 0.33
+		--BonusFlatDrain = BonusFlatDrain - 33
 	end
 
 	if smns_scenario.day >= 20 then
-		BonusFlatDrain = BonusFlatDrain - _Guard_CritDrain_Deboost_Effect(unit) * 0.01 * current_vamp
+		BonusFlatDrain = BonusFlatDrain - _Guard_CritDrain_Deboost_Effect(unit) * 0.01 * damage
 	end
 
 	--Путь боли

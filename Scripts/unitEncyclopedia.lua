@@ -814,7 +814,7 @@ function getMagResField(unit)
 	else
 		result = getMagicResistance(unit)
 	end
-	return replace(getInterfaceText("X150TA1005"), "%MAGRES%", getNumberText(result, true))
+	return replace(getInterfaceText("X150TA1005"), "%MAGRES%", getNumberText(math.max(0, result), true))
 end
 
 function getEffBuffField(unit)
