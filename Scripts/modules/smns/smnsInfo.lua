@@ -31,11 +31,11 @@ end
 smnsInfo_LowerCostCap_Percent = 70
 
 smnsInfoRulesEnabled = false
-smnsInfoRulesFirstDay = 1
+smnsInfoRulesFirstTrun = 1
 
 function checkRulesImplemented(scen)
     if smnsInfoRulesEnabled then
-        if scen.day >= smnsInfoRulesFirstDay then
+        if scen.day >= smnsInfoRulesFirstTrun then
             return true
         end
     end
