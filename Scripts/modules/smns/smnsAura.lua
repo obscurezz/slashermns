@@ -1191,6 +1191,12 @@ function _smns_getNegotiate(unit, prev, currentValue)
 	end
 	-- phoenix END
 
+	-- Пламенные небеса
+	if _GroupInfo_stackHasModifierAmount(Id.new('g070um0388').value) > 0 then
+		result = result - 15
+	end
+	-- Пламенные небеса END
+
 	return result
 end
 
