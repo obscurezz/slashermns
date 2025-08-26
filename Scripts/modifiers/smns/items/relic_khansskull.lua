@@ -10,7 +10,7 @@ function getModifierDescTxt(unit, prev)
 end
 
 function getHitPoint(unit, prev)
-	return svMultimplyHitPoint(unit, prev, 0.2)
+	return svMultimplyHitPoint(unit, prev, 0.15)
 end
 
 -- function getArmor(unit, prev)
