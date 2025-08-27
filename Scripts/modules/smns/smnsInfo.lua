@@ -1,4 +1,3 @@
-
 smnsEnabled = true
 smnsInfoApplyDmgBuffToHeal = false
 smnsInfoApplyAccuracyBuffToAttack2 = false
@@ -31,7 +30,7 @@ end
 smnsInfo_LowerCostCap_Percent = 70
 
 smnsInfoRulesEnabled = false
-smnsInfoRulesFirstTrun = 1
+smnsInfoRulesFirstTrun = 999
 
 function checkRulesImplemented(scen)
     if smnsInfoRulesEnabled then

@@ -81,6 +81,12 @@ function getMagicResistance(unit)
 		MagicProtectChance = MagicProtectChance - 35
 	end
 	--Infernus END
+
+	-- Пламенные небеса
+	if _GroupInfo_UnitHasModifierValue(unit, Id.new('g070um0388').value) then
+		result = result - 30
+	end
+	-- Пламенные небеса END
 		
 	if unitGroup ~= nil then
 		local highest_hero_shield = smnsConditions_highestWithModifier(unit, HeroShield)
@@ -1190,12 +1196,6 @@ function _smns_getNegotiate(unit, prev, currentValue)
 		result = result + 30
 	end
 	-- phoenix END
-
-	-- Пламенные небеса
-	if _GroupInfo_stackHasModifierAmount(Id.new('g070um0388').value) > 0 then
-		result = result - 15
-	end
-	-- Пламенные небеса END
 
 	return result
 end
