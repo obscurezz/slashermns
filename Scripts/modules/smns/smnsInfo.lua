@@ -29,12 +29,13 @@ end
 
 smnsInfo_LowerCostCap_Percent = 70
 
-smnsInfoRulesEnabled = false
-smnsInfoRulesFirstTrun = 999
+smnsInfoRulesEnabled = true
 
 function checkRulesImplemented(scen)
     if smnsInfoRulesEnabled then
-        if scen.day >= smnsInfoRulesFirstTrun then
+        -- if scen.day >= smnsInfoRulesFirstTrun then
+        local smnsInfoRulesFirstTrun = scen.variables:getVariable('SMNS_INFO_TURN')
+        if smnsInfoRulesFirstTrun ~= nil and smnsInfoRulesFirstTrun.value > 0 and scen.day >= smnsInfoRulesFirstTrun.value then
             return true
         end
     end
