@@ -4,7 +4,6 @@
 #Except these
 !/Globals
 !/Scripts
-!/Templates
 !/Interf
 !README.md
 !.gitignore
