@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <gameConfig name="sMNS">
+    <GamePath>E:\slasher_actual</GamePath>
+  </gameConfig>
+  <gameConfig name="MNS">
+    <GamePath>D:\games\D2\D2MNS</GamePath>
+  </gameConfig>
+  <setting name="D2quicksave">D:\games\D2\d2_quicksave_v1.0\d2_quicksave.exe</setting>
+  <setting name="GameRanger">C:\Users\iSkromny\AppData\Roaming\GameRanger\GameRanger\GameRanger.exe</setting>
+  <setting name="D2Info">D:\games\D2\Disciples2Info\Disciples2Info.exe</setting>
+  <setting name="EnableLogging">true</setting>
+</settings>
