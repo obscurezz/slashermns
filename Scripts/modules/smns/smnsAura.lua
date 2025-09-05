@@ -76,6 +76,12 @@ function getMagicResistance(unit)
 	end
 	--Слезы грешников END
 
+	--Штандарт Бернинга
+	if _GroupInfo_stackHasModifierAmount(Id.new('g014um1066').value) > 0 then
+		MagicProtectChance = MagicProtectChance + 50
+	end
+	--Штандарт Бернинга END
+
 	--Infernus
 	if _GroupInfo_UnitHasModifierValue(unit, Id.new('g070um0185').value) then
 		MagicProtectChance = MagicProtectChance - 35
