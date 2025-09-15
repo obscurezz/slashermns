@@ -11,7 +11,7 @@ function getModifierDescTxt(unit, prev)
 end
 
 function getRNG(unit)
-	local chance = 20 + 10 * ( unit.impl.level - unit.baseImpl.level )
+	local chance = 50 + 10 * ( unit.impl.level - unit.baseImpl.level )
 	return _mRnd_simpleRndEvent(chance)	
 end
 

@@ -1,13 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <settings>
   <gameConfig name="sMNS">
+    <setting name="GamePath">E:\slasher_actual</setting>
+    <setting name="TemplatesPath">E:\slasher_actual\Templates</setting>
     <GamePath>E:\slasher_actual</GamePath>
   </gameConfig>
+  <setting name="D2Info">D:\Games\D2Info</setting>
+  <setting name="EnableLogging">false</setting>
   <gameConfig name="MNS">
-    <GamePath>D:\games\D2\D2MNS</GamePath>
+    <GamePath>E:\nazar_check</GamePath>
+    <TemplatesPath>E:\nazar_check\Templates</TemplatesPath>
   </gameConfig>
-  <setting name="D2quicksave">D:\games\D2\d2_quicksave_v1.0\d2_quicksave.exe</setting>
-  <setting name="GameRanger">C:\Users\iSkromny\AppData\Roaming\GameRanger\GameRanger\GameRanger.exe</setting>
-  <setting name="D2Info">D:\games\D2\Disciples2Info\Disciples2Info.exe</setting>
-  <setting name="EnableLogging">true</setting>
 </settings>

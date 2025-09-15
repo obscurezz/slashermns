@@ -501,11 +501,11 @@ function _smns_multiplicativeDamageHealBonus(unit, prev, attackN, unitMods)
     end
 	--END
 
-	--Мастер клинка +4% урона за каждый уровень лидера отряда
+	--Мастер клинка +3% урона за каждый уровень лидера отряда
 	if _GroupInfo_UnitHasModifierValue(unit, SwordMaster3DamagePerHeroLVL) then
 		local Leader = _GroupInfo_getCurrentGroupLeader()
 		if Leader ~= nil and Leader.hp > 0 then
-			BonusDMG = 4 * (Leader.impl.level - Leader.baseImpl.level)
+			BonusDMG = 3 * (Leader.impl.level - Leader.baseImpl.level)
 		end
 	end
 	--END
@@ -553,10 +553,10 @@ function _smns_multiplicativeDamageHealBonus(unit, prev, attackN, unitMods)
     end
 	--END
 
-	--Игнар если не прикрыт наносит на 30% урона больше
+	--Игнар если не прикрыт наносит на 25% урона больше
     coveringUnit = _GroupInfo_getCoveringUnit(unit, nil)
     if _GroupInfo_UnitHasModifierValue(unit, IgnarIfNotCovered) and (coveringUnit == nil or coveringUnit.hp == 0 or _GroupInfo_UnitHasModifierValue(coveringUnit, Reconnaissance)) then
-        BonusDMG = BonusDMG + 30
+        BonusDMG = BonusDMG + 25
     end
 	--END
 
