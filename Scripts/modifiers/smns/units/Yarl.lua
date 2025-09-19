@@ -6,14 +6,14 @@ function getModifierDescTxt(unit, prev)
 	return prev
 end
 
-function getAttackReach(unit, prev)
-	if (unit.hp / unit.hpMax) < 0.5 then
-		return 14
-	end
+-- function getAttackReach(unit, prev)
+-- 	if (unit.hp / unit.hpMax) < 0.5 then
+-- 		return 14
+-- 	end
 
-	return prev
-end
+-- 	return prev
+-- end
 
 function getAttackDamRatio(unit, prev)
-	return 25
-	end
+	return prev + 40
+end
