@@ -26,11 +26,11 @@ local groupDebuffWeaker30 = Id.new('g070um0350').value
 local groupDebuffWeaker50 = Id.new('g070um0351').value
 
 local groupDebuffStronger15 = Id.new('').value
-local groupDebuffStronger30 = Id.new('g070um0388').value
+local groupDebuffStronger30 = Id.new('').value
 local groupDebuffStronger50 = Id.new('').value
 
 local groupBuffWeaker15 = Id.new('').value
-local groupBuffWeaker30 = Id.new('').value
+local groupBuffWeaker30 = Id.new('g070um0388').value
 local groupBuffWeaker50 = Id.new('').value
 
 local groupBuffStronger10 = Id.new('g070um0346').value

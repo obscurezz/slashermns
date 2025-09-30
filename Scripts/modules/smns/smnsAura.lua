@@ -1724,13 +1724,13 @@ end
 function _smns_CritPower(unit)
 	local mods = _GroupInfo_UnitModifiers(unit)
 	local BonusCritPower = 0
-	--Мастер клинка +3% урона за каждый уровень лидера отряда
-	-- if _GroupInfo_UnitHasModifierValue(unit, SwordMaster3DamagePerHeroLVL) then
-	-- 	local Leader = _GroupInfo_getCurrentGroupLeader()
-	-- 	if Leader ~= nil and Leader.hp > 0 then
-	-- 		BonusCritPower = 3 * Leader.impl.level
-	-- 	end
-	-- end
+	--Мастер клинка +2% критического удара за каждый уровень лидера отряда
+	if _GroupInfo_UnitHasModifierValue(unit, SwordMaster3DamagePerHeroLVL) then
+		local Leader = _GroupInfo_getCurrentGroupLeader()
+		if Leader ~= nil and Leader.hp > 0 then
+			BonusCritPower = 2 * (Leader.impl.level - Leader.baseImpl.level)
+		end
+	end
 	--END
 	return BonusCritPower
 end
