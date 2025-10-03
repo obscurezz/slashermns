@@ -153,7 +153,7 @@ end
 
 function StormCentaurDeboost(group, groupModifiers, groupModifiersDead)
 	if _GroupInfo_UnitModifierAmount(groupModifiers, EndlessStorm) > 0 then
-		return -3 * _GroupInfo_UnitModifierAmount(groupModifiers, EndlessStorm)
+		return -4 * _GroupInfo_UnitModifierAmount(groupModifiers, EndlessStorm)
 	end
 	return 0
 end
