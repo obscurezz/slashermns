@@ -322,6 +322,7 @@ textids = {
         -- Fallback text "Could not generate scenario map after %NUM% attempts.\nPlease, adjust template contents or settings"
         limitExceeded = "X015TA0038",
     },
+
 	resourceMarket = {
         -- Resource market site description for encyclopedia
         -- Fallback text is "(Resource market)"
@@ -336,5 +337,17 @@ textids = {
         -- Exchange is not available hint for market window in game.
         -- Fallback text is "N/A"
         exchangeNotAvailable = "X070TA1008",
-    }
+    },
+
+	nobleActions = {
+        -- Resource was successfully stolen from market by thief (noble)
+        -- Fallback text is "\c000;000;000;\hC;\vC;\fNormal;Resources have been stolen from the market!"
+        stealMarketSuccess = "X151TA0001",
+        -- Resource market was successfully sabotaged by thief
+        -- Fallback text is "\\c000;000;000;\\hC;\\vC;\\fNormal;Sabotage was carried out at the market!"
+        sabotageMarketSuccess = "X151TA0002",
+        -- Message that is shown to visiting stacks during sabotage on the market
+        -- Fallback text is "The market is closed due to sabotage, please come back another day."
+        marketIsSabotaged = "X151TA0003",
+    },
 }
