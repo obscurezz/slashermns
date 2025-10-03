@@ -251,6 +251,10 @@ function _smns_flatArmorBonus(unit, prev)
 	BonusArmor = BonusArmor + smnsConditions_permanentAura(unit, Id.new('g040um0151').value, 5)
 	--аура твердости END
 
+	--Стойкость камня
+	BonusArmor - BonusArmor + smnsConditions_permanentAura(unit, Id.new('g040um0100').value, 10)
+	--Стойкость камня END
+
 	--Броня предков
 	if _GroupInfo_stackHasModifierAmount(ArcaneArmor) > 0 then
 		local p = _GroupInfo_getUnitPlayer(unit)
