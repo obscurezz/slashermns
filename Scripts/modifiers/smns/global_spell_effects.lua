@@ -49,6 +49,7 @@ local RavenCuirass = Id.new('g070um0318').value
 
 local ShadowOfDeath = Id.new('g070um0386').value
 local PhoenixShield = Id.new('g070um0313').value
+local FallenGuardian = Id.new('g040um0002').value
 
 local BUFFS = {TEREBRARE_CORDE, VOTANS_BLESSING, ALLFATHERS_BLESSING, SPEED, CLANS_HYMN, ENCHANTED_WEAPONS, ICE_SHIELD, MIGHT, UNEVITABLE_REVENGE, CALL_TO_ARMS, SIR_ALLEMON, MORTIS_TOUCH, HOLY_ARMOR, HOLY_STRENGTH, STRENGTH, VITARS_STRENGTH, HURRYING_TIME, STEEL_BONES, ENDURANCE, GROVE_STAMINA, VAMPIRISM, HARVEST, VAMPIRE_TOUCH}
 
@@ -201,7 +202,7 @@ function getGlobalDebuffEffect(unit)
         if _GroupInfo_stackHasModifierAmount(groupDebuffWeaker15) > 0 then
             unit_change_stats = unit_change_stats - 0.15
         end
-        if _GroupInfo_stackHasModifierAmount(groupDebuffWeaker30) > 0 then
+        if _GroupInfo_stackHasModifierAmount(groupDebuffWeaker30) > 0 or _GroupInfo_stackHasModifierAmount(FallenGuardian) > 0 then
             unit_change_stats = unit_change_stats - 0.3
         end
         if _GroupInfo_stackHasModifierAmount(groupDebuffWeaker50) > 0 or _GroupInfo_stackHasModifierAmount(Id.new('g014um1066').value) > 0 then 

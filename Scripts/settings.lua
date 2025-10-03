@@ -97,18 +97,6 @@ settings = {
 		veryHard = 10
 	},
 
-	movementCost = {
-		-- Show stacks movement cost
-		show = true,
-		-- Color components are all in range [0 : 255]
-		textColor = {
-			red = 200, green = 200, blue = 200
-		},
-		outlineColor = {
-			red = 0, green = 0, blue = 0
-		}
-	},
-
 	-- If true, switches attacks miss check to a single random value roll
 	-- instead of check against arithmetic mean of two random numbers
 	missChanceSingleRoll = false,

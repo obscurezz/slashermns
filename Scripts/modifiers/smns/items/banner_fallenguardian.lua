@@ -10,27 +10,47 @@ function getModifierDescTxt(unit, prev)
 	return prev
 end
 
-function getRegen(unit, prev)
-	local a1 = unit.impl.attack1
-	local a2 = unit.impl.attack2
-	if statsCheck_isHealAttack(a1)
-	or statsCheck_isHealAttack(a2)
-	or statsCheck_isCurseAttack(a1)
-	or statsCheck_isCurseAttack(a2) then
-		return prev + 30
-	else
-		return prev
+-- function getRegen(unit, prev)
+-- 	local a1 = unit.impl.attack1
+-- 	local a2 = unit.impl.attack2
+-- 	if statsCheck_isHealAttack(a1)
+-- 	or statsCheck_isHealAttack(a2)
+-- 	or statsCheck_isCurseAttack(a1)
+-- 	or statsCheck_isCurseAttack(a2) then
+-- 		return prev + 30
+-- 	else
+-- 		return prev
+-- 	end
+-- end
+
+-- function getImmuneToAttack(unit, attack, prev)
+-- 	if statsCheck_isCurseType(attack) and attack ~= Attack.LowerDamage then
+-- 		if statsCheck_isHealAttack(unit.impl.attack1)
+-- 		or statsCheck_isHealAttack(unit.impl.attack2) then
+-- 			return svAttackImmunityClass(unit, attack, prev, Immune.Always)
+-- 		end
+-- 	end
+-- 	return prev
+-- end
+
+function getAttackHeal(unit, prev)
+	local result = prev
+	if statsCheck_isHealAttack(unit.impl.attack1) then
+		smnsInfo_SetApplyApplyDmgBuffToHeal(true)
+		result = svMultimplyHeal1(unit, prev, 0.2)
+		smnsInfo_SetApplyApplyDmgBuffToHeal(false)
 	end
+	return result
 end
 
-function getImmuneToAttack(unit, attack, prev)
-	if statsCheck_isCurseType(attack) and attack ~= Attack.LowerDamage then
-		if statsCheck_isHealAttack(unit.impl.attack1)
-		or statsCheck_isHealAttack(unit.impl.attack2) then
-			return svAttackImmunityClass(unit, attack, prev, Immune.Always)
-		end
+function getAttack2Heal(unit, prev)
+	local result = prev
+	if statsCheck_isHealAttack(unit.impl.attack2) then
+		smnsInfo_SetApplyApplyDmgBuffToHeal(true)
+		result = svMultimplyHeal2(unit, prev, 0.2)
+		smnsInfo_SetApplyApplyDmgBuffToHeal(false)
 	end
-	return prev
+	return result
 end
 
 function getAttackPower(unit, prev)
