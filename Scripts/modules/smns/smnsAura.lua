@@ -252,7 +252,7 @@ function _smns_flatArmorBonus(unit, prev)
 	--аура твердости END
 
 	--Стойкость камня
-	BonusArmor - BonusArmor + smnsConditions_permanentAura(unit, Id.new('g040um0100').value, 10)
+	BonusArmor = BonusArmor + smnsConditions_permanentAura(unit, Id.new('g040um0100').value, 10)
 	--Стойкость камня END
 
 	--Броня предков
