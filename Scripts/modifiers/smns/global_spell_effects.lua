@@ -159,6 +159,12 @@ function getGlobalDebuffEffect(unit)
         return -1
     else
 
+        if unit.impl.id ~= Id.new('G000UU3004') then
+            if unit.impl.subrace == 2 then
+		        unit_change_stats = unit_change_stats - 0.01 * (_unitAura_GetScenario().day - 1)
+            end
+	    end
+
         if _GroupInfo_UnitHasModifierValue(unit, unitDebuffWeaker15) then
             unit_change_stats = unit_change_stats - 0.15
         end

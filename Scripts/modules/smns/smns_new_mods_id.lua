@@ -181,3 +181,6 @@ Abyssal_Aura = Id.new('g070um0379').value
 Transformed_Mod = Id.new('g070um0380').value
 SuccubusTransform = Id.new('g070um0381').value
 ScourgeDeboost = Id.new('g070um0371').value
+
+EarthSon = Id.new('g070um0391').value
+Smasher = Id.new('g070um0390').value

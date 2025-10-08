@@ -43,6 +43,12 @@ function getMagicResistance(unit)
 
 	local MagicProtectChance = 0 + _Rod_Placer_Effect(unit)
 
+	if unit.impl.id ~= Id.new('G000UU3004') then
+		if unit.impl.subrace == 2 then
+			MagicProtectChance = MagicProtectChance + (smns_scenario.day - 1)
+		end
+	end
+
 	-- rod of power
 	if smnsConditions_isRodNearToStack(unit, 1, smns_scenario) then
 		MagicProtectChance = MagicProtectChance + 15
@@ -1364,20 +1370,24 @@ function _smns_getAttack2Id(unit, currentValue)
 		return Id.new('g070aa0173')
 	end
 
---Коррозия I
+	--Коррозия I
 	if smnsConditions_LichShatter(unit) then
         return Id.new('g070aa0129')
     end
---Коррозия I END
+	--Коррозия I END
 
---Коррозия II
+	--Коррозия II
 	if smnsConditions_ArchLichShatter(unit) then
         return Id.new('g070aa0130')
     end
---Коррозия II END
+	--Коррозия II END
 
 	if smnsConditions_StingerShatter(unit) then
 		return Id.new('g070aa0127')
+	end
+
+	if smnsConditions_SmasherEarthquake(unit) then
+		return Id.new('g070aa0218')
 	end
 
 	if smnsConditions_CryomantFrost(unit) then
@@ -1455,17 +1465,17 @@ function _smns_getAttack2Type(unit, currentValue)
 		return Attack.LowerDamage
 	end
 
---Коррозия I
+	--Коррозия I
     if smnsConditions_LichShatter(unit) then
         return Attack.Shatter
     end
---Коррозия I END
+	--Коррозия I END
     
---Коррозия II
+	--Коррозия II
     if smnsConditions_ArchLichShatter(unit) then
         return Attack.Shatter
     end
---Коррозия II END
+	--Коррозия II END
 
 	if smnsConditions_StingerShatter(unit) then
 		return Attack.Shatter
@@ -1473,6 +1483,10 @@ function _smns_getAttack2Type(unit, currentValue)
 
 	if smnsConditions_CryomantFrost(unit) then
 		return Attack.Frostbite
+	end
+
+	if smnsConditions_SmasherEarthquake(unit) then
+		return Attack.LowerInitiative
 	end
 
     return currentValue
@@ -1534,17 +1548,17 @@ function _smns_getAttack2BasePower(unit, currentValue)
 		return 55
 	end
 
---Коррозия I
+	--Коррозия I
     if smnsConditions_LichShatter(unit) then
         return 70
     end
---Коррозия I END
+	--Коррозия I END
     
---Коррозия II
+	--Коррозия II
     if smnsConditions_ArchLichShatter(unit) then
         return 70
     end
---Коррозия II END
+	--Коррозия II END
 
 	if smnsConditions_StingerShatter(unit) then
 		return 85
@@ -1552,6 +1566,10 @@ function _smns_getAttack2BasePower(unit, currentValue)
 
 	if smnsConditions_CryomantFrost(unit) then
 		return 80
+	end
+
+	if smnsConditions_SmasherEarthquake(unit) then
+		return 35
 	end
 	
     return currentValue
