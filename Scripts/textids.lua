@@ -8,6 +8,12 @@ https://github.com/VladimirMakeev/D2ModdingToolset/blob/master/README.md
 textids = {
 	-- Interface text ids from either TApp.dbf or TAppEdit.dbf
 	interf = {
+		-- Defines text id to format the "current turn" label
+    	-- in the strategic interface.
+    	-- The text must contain the keyword "%TURN%".
+    	-- Fallback text is "Turn %TURN%".
+   		currentTurn = "X070TA1030",
+		
 		-- Defines text id to use as "sell all valuables" message.
 		-- The text must contain keyword "%PRICE%".
 		-- Fallback text is "Do you want to sell all valuables? Revenue will be:\n%PRICE%"
