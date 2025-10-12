@@ -1249,7 +1249,7 @@ function _smns_getExpGainBonus(currentValue, group, player, groupLeader)
 	--Ментор
     if _GroupInfo_stackHasModifierAmount(ExpMentor) > 0 then
         local highest_mentor = smnsConditions_highestWithModifier(unit, ExpMentor)
-        mentorValue = math.max( mentorValue, 4 + 2 * (highest_mentor.impl.level - highest_mentor.baseImpl.level) )
+        mentorValue = 4 + 2 * (highest_mentor.impl.level - highest_mentor.baseImpl.level)
         BonusEXP = BonusEXP + mentorValue
     end
 	--Ментор END
