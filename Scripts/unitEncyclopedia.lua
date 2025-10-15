@@ -1145,6 +1145,13 @@ function doGetTxtAttackInfoText(unit, unitImpl, boostDamageLevel, lowerDamageLev
 	-- \fMedBoldReach:\t\fNormal%REACH%\n
 	-- \fMedBoldTargets:\t\fNormal%TARGETS%
 	text = replace(text, "%PART2%", getInterfaceText("X005TA0788"))
+
+	if unit and _GroupInfo_UnitHasModifierValue(unit, Id.new('g040um0153').value) then
+		text = replace(text, "%PART3%", getInterfaceText("X070TA1031"))
+	else
+		text = replace(text, "%PART3%", '')
+	end
+
 	if not unit then
 		-- Only add dynamic upgrade values for unit-type encyclopedia (to avoid screen cluttering)
 		text = getTxtAttackInfoWithDynUpgradeText(text, unitImpl)
@@ -1163,7 +1170,8 @@ function doGetTxtAttackInfoText(unit, unitImpl, boostDamageLevel, lowerDamageLev
 	text = replace(text, "%SOURCE2%", getSource2Field(unitImpl))
 	text = replace(text, "%INIT%", getInitField(unitImpl))
 	text = replace(text, "%REACH%", getReachField(unitImpl))
-	text = replace(text, "%TARGETS%", getTargetsField(unitImpl))	
+	text = replace(text, "%TARGETS%", getTargetsField(unitImpl))
+
 	return text
 end
 
