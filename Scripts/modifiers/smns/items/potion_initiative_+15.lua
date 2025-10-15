@@ -12,7 +12,7 @@ function getModifierDescTxt(unit, prev)
 end
 
 function getAttackInitiative(unit, prev)
-	value = _ChangePotionEffect(unit, 0.15)
+	value = _ChangePotionEffect(unit, 0.1)
 	if smnsConditions_isBigUnit(unit) then
     	return svMultimplyInitiative(unit, prev, value * 0.75)
 	end
