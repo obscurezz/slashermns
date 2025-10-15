@@ -208,7 +208,10 @@ function getGlobalDebuffEffect(unit)
         if _GroupInfo_stackHasModifierAmount(groupDebuffWeaker15) > 0 then
             unit_change_stats = unit_change_stats - 0.15
         end
-        if _GroupInfo_stackHasModifierAmount(groupDebuffWeaker30) > 0 or _GroupInfo_stackHasModifierAmount(FallenGuardian) > 0 then
+        if _GroupInfo_stackHasModifierAmount(FallenGuardian) > 0 then
+            unit_change_stats = unit_change_stats - 0.2
+        end
+        if _GroupInfo_stackHasModifierAmount(groupDebuffWeaker30) > 0 then
             unit_change_stats = unit_change_stats - 0.3
         end
         if _GroupInfo_stackHasModifierAmount(groupDebuffWeaker50) > 0 or _GroupInfo_stackHasModifierAmount(Id.new('g014um1066').value) > 0 then 
