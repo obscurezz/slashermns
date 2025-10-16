@@ -45,7 +45,7 @@ function getMagicResistance(unit)
 
 	if unit.impl.id ~= Id.new('G000UU3004') then
 		if unit.impl.subrace == 2 then
-			MagicProtectChance = MagicProtectChance + (smns_scenario.day - 1)
+			MagicProtectChance = MagicProtectChance + math.max(0, (smns_scenario.day - 1))
 		end
 	end
 
