@@ -41,3 +41,35 @@ function getAttackReach(unit, prev)
 		end
 	end
 end
+
+function getAttackDamage(unit, prev)
+	_get_Group_and_Mods(unit)
+	
+	local group = _GroupInfo_getCurrentGroup()
+	local slots = group.slots
+	local s
+	local u
+	local n = 0
+	local FSlots = {}
+	for i = 1, #slots do
+		s = slots[i]
+		u = s.unit
+		if u ~= nil then
+			n = n + 1
+			FSlots[n] = slots[i]
+		end
+	end
+	local FrontLine = _common_GetFrontline(FSlots)
+	for i = 1, #slots do
+		s = slots[i]
+		u = s.unit
+		if u ~= nil and u.id.value == unit.id.value then
+			if s.line == FrontLine then
+				return prev
+            else
+                return svMultimplyDamage1(unit, prev, -0.25)
+			end
+			break
+		end
+	end
+end

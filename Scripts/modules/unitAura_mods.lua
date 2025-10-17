@@ -65,6 +65,7 @@ G040UM0161 = Id.new('g040um0161').value
 G040UM0162 = Id.new('g040um0162').value
 G040UM0163 = Id.new('g040um0163').value
 G070UM0017 = Id.new('g070um0017').value
+G070UM0372 = Id.new('g070um0372').value
 G040UM0164 = Id.new('g040um0164').value
 G040UM0165 = Id.new('g040um0165').value
 G040UM0166 = Id.new('g040um0166').value

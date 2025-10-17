@@ -2,9 +2,11 @@
 /*
 
 #Except these
+!/D2launcher/D2launcher.exe
 !/Globals
 !/Scripts
-!/Templates
 !/Interf
 !README.md
 !.gitignore
+!changelog.md
+!/English

@@ -16,15 +16,28 @@ function getArmor(unit, prev)
 	local result = prev
 	local konung = Id.new('g070um0069').value
 	local guardian = Id.new('g070um0055').value
-	if _GroupInfo_UnitModifierAmount(umods, konung) > 0
-	or _GroupInfo_UnitModifierAmount(umods, guardian) > 0 then
+	if _GroupInfo_UnitModifierAmount(umods, konung) > 0 then
+	-- or _GroupInfo_UnitModifierAmount(umods, guardian) > 0 then
 		local nearUnits = _GroupInfo_getLeftAndRightNearestUnits(unit, true)
 		local mods
 		for i = 1, #nearUnits do
 			mods = _GroupInfo_UnitModifiers(nearUnits[i])
-			if _GroupInfo_UnitModifierAmount(mods, konung) > 0
-			or _GroupInfo_UnitModifierAmount(mods, guardian) > 0 then
-	            		result = result + 15
+			--if _GroupInfo_UnitModifierAmount(mods, konung) > 0
+			if _GroupInfo_UnitModifierAmount(mods, guardian) > 0 then
+	            		result = svFlatEffectArmor(unit, prev, 15)
+        	    		break
+            		end
+        	end	
+	end
+	if _GroupInfo_UnitModifierAmount(umods, guardian) > 0 then
+	-- or _GroupInfo_UnitModifierAmount(umods, guardian) > 0 then
+		local nearUnits = _GroupInfo_getLeftAndRightNearestUnits(unit, true)
+		local mods
+		for i = 1, #nearUnits do
+			mods = _GroupInfo_UnitModifiers(nearUnits[i])
+			--if _GroupInfo_UnitModifierAmount(mods, konung) > 0
+			if _GroupInfo_UnitModifierAmount(mods, konung) > 0 then
+	            		result = svFlatEffectArmor(unit, prev, 15)
         	    		break
             		end
         	end	

@@ -237,30 +237,40 @@ function _unitAura_ImmuneToAttack(unit, attack, prev)
 		result = Workshop_changeImmuneClass(result, workshopBonus_Once, workshopBonus_Always)
 	end
 	
-	if _Wyrm_Deboost_Effect(unit) == 1 then 
+	if _Wyrm_Deboost_Effect(unit) >= 1 or _Konsul_Deboost_Effect(unit) >= 1 then 
 		if _GroupInfo_UnitHasModifierValue(unit, Id.new('g014um1022').value) and unit.impl:getImmuneToAttackClass(Attack.Poison) ~= Immune.Always then
 			svSetAttackClassVulnerabilty(unit, Attack.Poison, false)
 		else
 			svSetAttackClassVulnerabilty(unit, Attack.Poison, true)
-		end
+		end	
+	else
+		svSetAttackClassVulnerabilty(unit, Attack.Poison, false)
 	end
-	if _Flamethrower_Deboost_Effect(unit) == 1 then
+
+	if _Flamethrower_Deboost_Effect(unit) >= 1 then
 		if _GroupInfo_UnitHasModifierValue(unit, Id.new('g014um1022').value) and unit.impl:getImmuneToAttackClass(Attack.Blister) ~= Immune.Always then
 			svSetAttackClassVulnerabilty(unit, Attack.Blister, false)
 		else
 			svSetAttackClassVulnerabilty(unit, Attack.Blister, true)
 		end
+	else
+		svSetAttackClassVulnerabilty(unit, Attack.Blister, false)
 	end
-	if _Kriomant_Deboost_Effect(unit) == 1 then
+
+	if _Kriomant_Deboost_Effect(unit) >= 1 then
 		if _GroupInfo_UnitHasModifierValue(unit, Id.new('g014um1022').value) and unit.impl:getImmuneToAttackClass(Attack.Frostbite) ~= Immune.Always then
 			svSetAttackClassVulnerabilty(unit, Attack.Frostbite, false)
 		else
 			svSetAttackClassVulnerabilty(unit, Attack.Frostbite, true)
 		end
+	else
+		svSetAttackClassVulnerabilty(unit, Attack.Frostbite, false)
 	end
 
-	if scenario.day >= 10 and _Guard_Resistance_Deboost_Effect(unit) == 1 then
+	if scenario.day >= 10 and _Guard_Resistance_Deboost_Effect(unit) >= 1 then
 		svSetAttackClassVulnerabilty(unit, Attack.Shatter, true)
+	else
+		svSetAttackClassVulnerabilty(unit, Attack.Shatter, false)
 	end
 	
 	if result == Immune.NotImmune then
@@ -375,20 +385,34 @@ function _unitAura_ImmuneToSource(unit, source, prev)
 		svSetAttackSourceVulnerability(unit, source, false)
 	end
 
-	if _Wyrm_Deboost_Effect(unit) == 1 then 
+	if _Wyrm_Deboost_Effect(unit) >= 1 then 
 		if _GroupInfo_UnitHasModifierValue(unit, Id.new('g090um0001').value) and unit.impl:getImmuneToAttackSource(Source.Death) ~= Immune.Always then
 			svSetAttackSourceVulnerability(unit, Source.Death, false)
 		else
 			svSetAttackSourceVulnerability(unit, Source.Death, true)
 		end
+	else
+		svSetAttackSourceVulnerability(unit, Source.Death, false)
 	end
 
-	if _Konsul_Deboost_Effect(unit) == 1 then 
-		if _GroupInfo_UnitHasModifierValue(unit, Id.new('g000um2023').value) and unit.impl:getImmuneToAttackSource(Source.Earth) ~= Immune.Always then
-			svSetAttackSourceVulnerability(unit, Source.Earth, false)
-		else
-			svSetAttackSourceVulnerability(unit, Source.Earth, true)
+	if _Phoenix_Deboost_Effect(unit) >= 1 then
+		local group = _GroupInfo_getCurrentGroup()
+		local slots = group.slots
+		local u
+		local s
+		for i = 1, #slots do
+			s = slots[i]
+			u = s.unit
+			if u ~= nil and u.id.value == unit.id.value and slots[i].line == 0 then
+				if _GroupInfo_UnitHasModifierValue(u, Id.new('g000um2024').value) and u.impl:getImmuneToAttackSource(Source.Fire) ~= Immune.Always then
+					svSetAttackSourceVulnerability(u, Source.Fire, false)
+				else
+					svSetAttackSourceVulnerability(u, Source.Fire, true)
+				end
+			end
 		end
+	else
+		svSetAttackSourceVulnerability(unit, Source.Fire, false)
 	end
 
 	local alwaysWard = nil
@@ -2354,7 +2378,7 @@ uaAttackCrit_valFlat10               = {}
 umAttackProtection5                  = {G201UM9245}
 umAttackProtection25                 = {G040UM0164, G040UM0168, G040UM0171, G040UM0192, G040UM0224, G201UM9182}
 umAttackProtection35                 = {G070UM0017}
-umAttackProtection50                 = {G040UM0165, G040UM0169, G040UM0172, G040UM0174, G040UM0319}
+umAttackProtection50                 = {G040UM0165, G040UM0169, G040UM0172, G040UM0174, G040UM0319, G070UM0372}
 umAttackProtection75                 = {G040UM0166, G040UM0170, G040UM0173}
 umAttackProtection100                = {G040UM0167}
 umAttackProtectionIgnorance          = {G040UM0282, G040UM0320}

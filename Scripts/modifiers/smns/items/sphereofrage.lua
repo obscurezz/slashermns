@@ -9,13 +9,6 @@ function getModifierDescTxt(unit, prev)
 	return prev
 end
 
-local sphere_of_rage = Id.new('g070um0228').value
-
 function getAttackInitiative(unit, prev)
-    local mods = _GroupInfo_UnitModifiers(unit)
-	if _GroupInfo_UnitModifierAmount(mods, sphere_of_rage) > 0 then
-        return svMultimplyInitiative(unit, prev, -0.33)
-    end
-
-	return prev
+    return svMultimplyInitiative(unit, prev, -0.4)
 end

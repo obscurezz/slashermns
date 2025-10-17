@@ -1,4 +1,3 @@
-
 smnsEnabled = true
 smnsInfoApplyDmgBuffToHeal = false
 smnsInfoApplyAccuracyBuffToAttack2 = false
@@ -29,3 +28,16 @@ function smnsInfo_SetApplyApplyDmgBuffToHeal(value)
 end
 
 smnsInfo_LowerCostCap_Percent = 70
+
+smnsInfoRulesEnabled = true
+
+function checkRulesImplemented(scen)
+    if smnsInfoRulesEnabled then
+        -- if scen.day >= smnsInfoRulesFirstTrun then
+        local smnsInfoRulesFirstTrun = scen.variables:getVariable('SMNS_INFO_TURN')
+        if smnsInfoRulesFirstTrun ~= nil and smnsInfoRulesFirstTrun.value > 0 and scen.day >= smnsInfoRulesFirstTrun.value then
+            return true
+        end
+    end
+    return false
+end

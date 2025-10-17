@@ -18,9 +18,9 @@ function getAttackDamage(unit, prev)
 	return prev
 end
 
-function getAttackDrain(unit, damage, prev)
-    if smnsConditions_stackHasCorpse(unit) then
-        return prev + damage * 0.1
-    end
-    return prev
-end
+-- function getAttackDrain(unit, damage, prev)
+--     if smnsConditions_stackHasCorpse(unit) then
+--         return prev + damage * 0.1
+--     end
+--     return prev
+-- end

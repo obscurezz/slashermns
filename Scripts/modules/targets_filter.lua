@@ -34,6 +34,7 @@ G000UU7619 = Id.new('g000uu7619')
 
 --buff attractor
 G040UM0232 = Id.new('g040um0232').value
+KERAST = Id.new('g070um0389').value
 
 --chance to attack all
 G040UM0243 = Id.new('g040um0243').value
@@ -493,7 +494,7 @@ function _targets_filter_BuffsAttraction(methodName, attacker, selected, allies,
 	for i = 1, #targets do
 		if _common_IsAddedFilter(result, targets[i]) then
 			mods = _GroupInfo_UnitModifiers(targets[i].unit)
-			if _GroupInfo_UnitModifierAmount(mods, G040UM0232) > 0 then
+			if _GroupInfo_UnitModifierAmount(mods, G040UM0232) > 0 or _GroupInfo_UnitModifierAmount(mods, KERAST) > 0 then
 				table.insert(result, targets[i])
 			end
 		end

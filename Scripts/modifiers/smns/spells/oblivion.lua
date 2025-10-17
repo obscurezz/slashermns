@@ -17,7 +17,7 @@ function canApplyAsBoostSpell()
 end
 
 function hasAbility(unit, ability, prev)
-	if ability == Ability.WandScrollUse or ability == Ability.OrbUse or ability == TalismanUse then
+	if ability == Ability.WandScrollUse or ability == Ability.OrbUse or ability == Ability.TalismanUse then
 		return false
 	end
 	return prev

@@ -17,7 +17,7 @@ function getImmuneToSource(unit, source, prev)
 end
 
 function getAttackDamage(unit, prev)
-	if unit.impl.attack1.source == Source.Air then 
+	if (getScenario():getUnit(unit.id).impl.attack1.source == Source.Air or getScenario():getUnit(unit.id).impl.altAttack.source == Source.Air) then 
 		return svMultimplyDamage1(unit, prev, 0.15)
 	end
 	return prev

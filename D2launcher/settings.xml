@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <gameConfig name="sMNS">
+    <setting name="GamePath">E:\slasher_actual</setting>
+    <setting name="TemplatesPath">E:\slasher_actual\Templates</setting>
+    <GamePath>E:\slasher_actual</GamePath>
+  </gameConfig>
+  <setting name="D2Info">D:\Games\D2Info</setting>
+  <setting name="EnableLogging">false</setting>
+  <gameConfig name="MNS">
+    <GamePath>E:\nazar_check</GamePath>
+    <TemplatesPath>E:\nazar_check\Templates</TemplatesPath>
+  </gameConfig>
+</settings>

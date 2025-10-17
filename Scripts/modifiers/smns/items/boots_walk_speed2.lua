@@ -10,5 +10,9 @@ function getModifierDescTxt(unit, prev)
 end
 
 function getMovement(unit, prev)
-	return svFlatEffectMovement(unit, prev, 7)
+	return svFlatEffectMovement(unit, prev, 5)
+end
+
+function getRegen(unit, prev)
+	return prev + 25
 end

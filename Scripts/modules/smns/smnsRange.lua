@@ -60,6 +60,26 @@ function _smns_ChangeTargets(currentResult, methodName, attacker, selected, alli
 	end
 --Руна тайного знания END
 
+--Хранитель леса и Знахарь
+	local znahar = Id.new('g070um0382').value
+	local hranitel = Id.new('g070um0369').value
+	if _GroupInfo_stackHasModifierAmount(hranitel) > 0 and _GroupInfo_UnitModifierAmount(mods, znahar) > 0 then
+		local group = _GroupInfo_getCurrentGroup()
+		local units = group.units
+		local u
+		for i = 1, #units do
+			u = units[i]
+			if u.hp > 0 then
+				local modUnits = _GroupInfo_UnitModifiers(u)
+				if _GroupInfo_UnitModifierAmount(modUnits, znahar) > 0 then
+					nRandomTarg = nRandomTarg + math.max(2, (u.impl.level - u.baseImpl.level))
+				end
+			end
+		end		
+	end
+
+--Хранитель леса и Знахарь end
+
 -- Рикошет
 	if _GroupInfo_UnitModifierAmount(mods, Id.new('g070um0033').value) > 0 then
 		nRandomTarg = nRandomTarg + (AUnit.impl.level - AUnit.baseImpl.level)

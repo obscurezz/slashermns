@@ -97,18 +97,6 @@ settings = {
 		veryHard = 10
 	},
 
-	movementCost = {
-		-- Show stacks movement cost
-		show = true,
-		-- Color components are all in range [0 : 255]
-		textColor = {
-			red = 200, green = 200, blue = 200
-		},
-		outlineColor = {
-			red = 0, green = 0, blue = 0
-		}
-	},
-
 	-- If true, switches attacks miss check to a single random value roll
 	-- instead of check against arithmetic mean of two random numbers
 	missChanceSingleRoll = false,
@@ -178,7 +166,7 @@ settings = {
 	},
 
 	-- Create mss32 proxy dll log files with debug info
-	--debugHooks = true,
+	-- debugHooks = true,
 	movementCost = {
         -- Show stacks movement cost
         show = true,
@@ -199,7 +187,7 @@ settings = {
             withBonus = 2,
             -- Movement cost for water-only stacks
             waterOnly = 2,
-    },
+    	},
     
         -- Movement cost on forest tiles
         forest = {
@@ -209,7 +197,7 @@ settings = {
             withDeadLeader = 6,
             -- Movement cost for stacks with forest movement bonus 
             withBonus = 2,
-    },
+    	},
     
         -- Movement cost on plain tiles
         plain = {
@@ -219,7 +207,7 @@ settings = {
             withDeadLeader = 4,
             -- Movement cost for stacks without plain movement bonus on road tiles
             onRoad = 1,
-    },
-},
+    	},
+	},
 }
 

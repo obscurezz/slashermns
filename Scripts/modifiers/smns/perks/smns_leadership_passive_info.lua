@@ -31,9 +31,9 @@ function _leadership_passive_info_getModifierDescTxt(unit, prev, scen)
 	return prev
 end
 
--- 0 - лорд-маг
--- 1 - лорд-полководец
--- 2 - лорд-правитель
+-- 0 - пїЅпїЅпїЅпїЅ-пїЅпїЅпїЅ
+-- 1 - пїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+-- 2 - пїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
 function _leadership_passive_info_getLeadership(unit, prev, scen)
 	_GroupInfo_SetScenario(scen)
@@ -44,6 +44,7 @@ function _leadership_passive_info_getLeadership(unit, prev, scen)
 	local lord = p.lord
 	local bonus = 0
 	local level = unit.impl.level
+
 	if lord == 0 then
 		if level >= 10 then
 			bonus = 4

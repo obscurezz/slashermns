@@ -10,9 +10,9 @@ function getModifierDescTxt(unit, prev)
 end
 
 function getArmor(unit, prev)
-	return svFlatEffectArmor(unit, prev, 5)
+	return svFlatEffectArmor(unit, prev, 7)
 end
 
 function getScout(unit, prev)
-	return svFlatEffectScout(unit, prev, 1)
+	return svFlatEffectScout(unit, prev, 2)
 end

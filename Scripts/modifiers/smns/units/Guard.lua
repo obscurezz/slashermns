@@ -52,11 +52,11 @@ function getArmor(unit, prev)
 end
 
 function getAttackInitiative(unit, prev)
-	return svFlatEffectInitiative(unit, prev, 5 * _ProgressionCounter())
+	return svFlatEffectInitiative(unit, prev, 3 * _ProgressionCounter())
 end
 
 function getAttackDamage(unit, prev)
-	return svFlatEffectDamage1(unit, prev, 15 * _ProgressionCounter())
+	return svFlatEffectDamage1(unit, prev, 12 * _ProgressionCounter())
 end
 
 -- function getAttackDrain(unit, damage, prev)
@@ -71,9 +71,9 @@ function getAttackCritHit(unit, prev)
 end
 
 function getAttackCritDamage(unit, prev)
-	return svAddCrit1Damage(unit, prev, 2 * _ProgressionCounter())
+	return svAddCrit1Damage(unit, prev, 1 * _ProgressionCounter())
 end
 
 function getAttackCritPower(unit, prev)
-	return svAddCrit1Power(unit, prev, 2 * _ProgressionCounter())
+	return svAddCrit1Power(unit, prev, 1 * _ProgressionCounter())
 end

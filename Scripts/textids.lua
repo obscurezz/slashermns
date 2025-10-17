@@ -8,6 +8,12 @@ https://github.com/VladimirMakeev/D2ModdingToolset/blob/master/README.md
 textids = {
 	-- Interface text ids from either TApp.dbf or TAppEdit.dbf
 	interf = {
+		-- Defines text id to format the "current turn" label
+    	-- in the strategic interface.
+    	-- The text must contain the keyword "%TURN%".
+    	-- Fallback text is "Turn %TURN%".
+   		currentTurn = "X070TA1030",
+		
 		-- Defines text id to use as "sell all valuables" message.
 		-- The text must contain keyword "%PRICE%".
 		-- Fallback text is "Do you want to sell all valuables? Revenue will be:\n%PRICE%"
@@ -232,7 +238,7 @@ textids = {
 		gameVersion = "",
 		-- Server name shown on main menu's button
 		-- Fallback text "ONLINE LOBBY"
-		serverName = "",
+		serverName = "X150TA1001",
 		-- Fallback text "Connection start failed"
 		connectStartFailed = "",
 		-- Client's connection attempt failed
@@ -322,6 +328,7 @@ textids = {
         -- Fallback text "Could not generate scenario map after %NUM% attempts.\nPlease, adjust template contents or settings"
         limitExceeded = "X015TA0038",
     },
+
 	resourceMarket = {
         -- Resource market site description for encyclopedia
         -- Fallback text is "(Resource market)"
@@ -336,5 +343,17 @@ textids = {
         -- Exchange is not available hint for market window in game.
         -- Fallback text is "N/A"
         exchangeNotAvailable = "X070TA1008",
-    }
+    },
+
+	nobleActions = {
+        -- Resource was successfully stolen from market by thief (noble)
+        -- Fallback text is "\c000;000;000;\hC;\vC;\fNormal;Resources have been stolen from the market!"
+        stealMarketSuccess = "X151TA0001",
+        -- Resource market was successfully sabotaged by thief
+        -- Fallback text is "\\c000;000;000;\\hC;\\vC;\\fNormal;Sabotage was carried out at the market!"
+        sabotageMarketSuccess = "X151TA0002",
+        -- Message that is shown to visiting stacks during sabotage on the market
+        -- Fallback text is "The market is closed due to sabotage, please come back another day."
+        marketIsSabotaged = "X151TA0003",
+    },
 }

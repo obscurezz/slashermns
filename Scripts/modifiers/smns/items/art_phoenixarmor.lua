@@ -12,21 +12,21 @@ function getModifierDescTxt(unit, prev)
 	return prev
 end
 
-function getHitPoint(unit, prev)
-	return svFlatEffectHitPoint(unit, prev, 40)
-end
+-- function getHitPoint(unit, prev)
+-- 	return svFlatEffectHitPoint(unit, prev, 30)
+-- end
 
 function getArmor(unit, prev)
-	return svFlatEffectArmor(unit, prev, 15)
+	return svFlatEffectArmor(unit, prev, 30)
 end
 
-function getImmuneToAttack(unit, attack, prev)
-	if attack == Attack.Petrify or attack == Attack.Paralyze or attack == Attack.TransformOther or attack == Attack.Fear then
-		return svAttackImmunityClass(unit, attack, prev, Immune.Once)
-	end
-	return prev
-end
+-- function getImmuneToAttack(unit, attack, prev)
+-- 	if attack == Attack.Petrify or attack == Attack.Paralyze or attack == Attack.TransformOther or attack == Attack.Fear then
+-- 		return svAttackImmunityClass(unit, attack, prev, Immune.Once)
+-- 	end
+-- 	return prev
+-- end
 
-function getNegotiate(unit, prev)
-	return prev + 50
-end
+-- function getNegotiate(unit, prev)
+-- 	return prev + 50
+-- end

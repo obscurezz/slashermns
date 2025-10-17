@@ -15,6 +15,10 @@ function canApplyAsBoostSpell()
 end
 
 function getImmuneToAttack(unit, attack, prev)
+	local mods = _GroupInfo_UnitModifiers(unit)
+	if _GroupInfo_UnitModifierAmount(mods, immunetosourcevulnerability_mod) > 0 or getGlobalDebuffEffect(unit) <= -1 then
+		return prev
+	end
 	if attack == Attack.Petrify or attack == Attack.TransformOther then
 		if prev == Immune.Always then
 			return Immune.Once

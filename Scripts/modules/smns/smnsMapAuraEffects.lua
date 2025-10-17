@@ -39,20 +39,20 @@ function _BloodRaven_Deboost_Effect(unit)
 	return _unitAura_NearestGroupsAuraEffect(unit, effectFunction_1, radius, for_what_diplomacy_apply)
 end
 
-function PhoienixFireDeboost(group, groupModifiers, groupModifiersDead)
-	if _GroupInfo_UnitModifierAmount(groupModifiers, PhoenixShield) > 0 then
-		return -25
-	end
-	return 0
-end
+-- function PhoienixFireDeboost(group, groupModifiers, groupModifiersDead)
+-- 	if _GroupInfo_UnitModifierAmount(groupModifiers, PhoenixShield) > 0 then
+-- 		return 1
+-- 	end
+-- 	return 0
+-- end
 
-function _Phoenix_Deboost_Effect(unit)
-	local effectFunction_1 = PhoienixFireDeboost
-	local radius = 1
-	local for_what_diplomacy_apply = {diplomacyStatus_War}
+-- function _Phoenix_Deboost_Effect(unit)
+-- 	local effectFunction_1 = PhoienixFireDeboost
+-- 	local radius = 1
+-- 	local for_what_diplomacy_apply = {diplomacyStatus_War}
 
-	return _unitAura_NearestGroupsAuraEffect(unit, effectFunction_1, radius, for_what_diplomacy_apply)
-end
+-- 	return _unitAura_NearestGroupsAuraEffect(unit, effectFunction_1, radius, for_what_diplomacy_apply)
+-- end
 
 function HeritageBannerDeboost(group, groupModifiers, groupModifiersDead)
 	if _GroupInfo_UnitModifierAmount(groupModifiers, Id.new('g014um1068').value) > 0 then
@@ -153,7 +153,7 @@ end
 
 function StormCentaurDeboost(group, groupModifiers, groupModifiersDead)
 	if _GroupInfo_UnitModifierAmount(groupModifiers, EndlessStorm) > 0 then
-		return -3 * _GroupInfo_UnitModifierAmount(groupModifiers, EndlessStorm)
+		return -4 * _GroupInfo_UnitModifierAmount(groupModifiers, EndlessStorm)
 	end
 	return 0
 end
@@ -276,5 +276,63 @@ function _Draug_Deboost_Effect(unit)
 	local radius = 1
 	local for_what_diplomacy_apply = {diplomacyStatus_War}
 	
+	return _unitAura_NearestGroupsAuraEffect(unit, effectFunction_1, radius, for_what_diplomacy_apply)
+end
+
+function AbyssalDeboostFunction(group, groupModifiers, groupModifiersDead)
+	if _GroupInfo_UnitModifierAmount(groupModifiers, Abyssal_Aura) > 0 then
+		return 1
+	end
+	return 0
+end
+
+function _Abyssal_Deboost_Effect(unit)
+	local effectFunction_1 = AbyssalDeboostFunction
+	local radius = 1
+	local for_what_diplomacy_apply = {diplomacyStatus_War}
+	
+	return _unitAura_NearestGroupsAuraEffect(unit, effectFunction_1, radius, for_what_diplomacy_apply)
+end
+
+function TransformedPartyFunction(group, groupModifiers, groupModifiersDead)
+	return _GroupInfo_UnitModifierAmount(groupModifiers, Transformed_Mod)
+
+end
+
+function _Transformed_Effect(unit)
+	local effectFunction_1 = TransformedPartyFunction
+	local radius = 1
+	local for_what_diplomacy_apply = {diplomacyStatus_War}
+	
+	return _unitAura_NearestGroupsAuraEffect(unit, effectFunction_1, radius, for_what_diplomacy_apply)
+end
+
+function ScourgeDeboost(group, groupModifiers, groupModifiersDead)
+	if _GroupInfo_UnitModifierAmount(groupModifiers, ScourgeDeboost) > 0 then
+		return -5 * _GroupInfo_UnitModifierAmount(groupModifiers, ScourgeDeboost)
+	end
+	return 0
+end
+
+function _Scourge_Deboost_Effect(unit)
+	local effectFunction_1 = ScourgeDeboost
+	local radius = 1
+	local for_what_diplomacy_apply = {diplomacyStatus_War}
+	
+	return _unitAura_NearestGroupsAuraEffect(unit, effectFunction_1, radius, for_what_diplomacy_apply)
+end
+
+function PhoienixFireDeboost(group, groupModifiers, groupModifiersDead)
+	if _GroupInfo_UnitModifierAmount(groupModifiers, PhoenixSword) > 0 then
+		return 1
+	end
+	return 0
+end
+
+function _Phoenix_Deboost_Effect(unit)
+	local effectFunction_1 = PhoienixFireDeboost
+	local radius = 1
+	local for_what_diplomacy_apply = {diplomacyStatus_War}
+
 	return _unitAura_NearestGroupsAuraEffect(unit, effectFunction_1, radius, for_what_diplomacy_apply)
 end

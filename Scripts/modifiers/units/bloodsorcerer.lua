@@ -19,9 +19,9 @@ function getAtckTwice(unit, prev)
 	return _mRnd_simpleRndEvent(chance)
 end
 
-function getAttackWards(unit, prev)
-	local result = {}
-	local level = unit.impl.level - unit.baseImpl.level + 1
-	table.insert(result, bloodSorcerer_Mods[level])
-	return result
-end
+-- function getAttackWards(unit, prev)
+-- 	local result = {}
+-- 	local level = unit.impl.level - unit.baseImpl.level + 1
+-- 	table.insert(result, bloodSorcerer_Mods[level])
+-- 	return result
+-- end

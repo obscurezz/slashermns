@@ -16,16 +16,16 @@ function getHitPoint(unit, prev)
 end
 
 
-function getScout(unit, prev)
-	return svFlatEffectScout(unit, prev, 2)
-end
+-- function getScout(unit, prev)
+-- 	return svFlatEffectScout(unit, prev, 2)
+-- end
 
-function getImmuneToSource(unit, source, prev)
-		if source == 8 then
-		return svSourceImmunityClass(unit, source, prev, Immune.Always)
-	end
-	return prev
-end
+-- function getImmuneToSource(unit, source, prev)
+-- 		if source == 8 then
+-- 		return svSourceImmunityClass(unit, source, prev, Immune.Always)
+-- 	end
+-- 	return prev
+-- end
 
 function getAttackDrain(unit, damage, prev)
 	local maxHP = getScenario():getUnit(unit.id).hpMax
@@ -34,6 +34,6 @@ function getAttackDrain(unit, damage, prev)
 	return svAddDrain1(unit, prev, damage, stackPerk / 100)
 end
 
-function getAttackInitiative(unit, prev)
-	return svMultimplyInitiative(unit, prev, 0.10)
-end
+-- function getAttackInitiative(unit, prev)
+-- 	return svMultimplyInitiative(unit, prev, 0.10)
+-- end

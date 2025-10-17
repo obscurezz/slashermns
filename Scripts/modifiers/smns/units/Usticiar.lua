@@ -9,7 +9,19 @@ end
 function getModifierDescTxt(unit, prev)
 	return prev
 end
-function getAtckTwice(unit, prev)
-	local chance = 20 + 10 * ( unit.impl.level - unit.baseImpl.level )
-	return _mRnd_simpleRndEvent(chance)
+
+function getRNG(unit)
+	local chance = 50 + 10 * ( unit.impl.level - unit.baseImpl.level )
+	return _mRnd_simpleRndEvent(chance)	
+end
+
+function getAttackReach(unit, prev)
+	if getRNG(unit) then
+		return 15
+	end
+	return prev
+end
+
+function getAttackDamRatio(unit, prev)
+	return 50
 end

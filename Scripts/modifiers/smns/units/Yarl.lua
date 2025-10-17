@@ -15,5 +15,9 @@ function getAttackReach(unit, prev)
 end
 
 function getAttackDamRatio(unit, prev)
-	return 25
+	if (unit.hp / unit.hpMax) < 0.5 then
+		return 50
 	end
+
+	return prev
+end

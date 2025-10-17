@@ -13,6 +13,10 @@ function getModifierDescTxt(unit, prev)
 end
 	
 
-function getArmor(unit, prev)
-	return svFlatEffectArmor(unit, prev, 15)
+-- function getArmor(unit, prev)
+-- 	return svFlatEffectArmor(unit, prev, 15)
+-- end
+
+function getHitPoint(unit, prev)
+	return svFlatEffectHitPoint(unit, prev, 90)
 end

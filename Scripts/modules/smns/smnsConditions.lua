@@ -85,7 +85,20 @@ function smnsConditions_EmyssarySparePotion(unit)
 	return false
 end
 
+function smnsConditions_SmasherEarthquake(unit)
+	if _GroupInfo_UnitHasModifierValue(unit, Smasher) and _GroupInfo_stackHasModifierAmount(EarthSon) > 0 then
+		return true
+	end
+	return false
+end
 
+function smnsConditions_heroCondition(unit, hero_modifier)
+    local Leader = _GroupInfo_getCurrentGroupLeader()
+	if Leader ~= nil and Leader.hp > 0 and _GroupInfo_UnitHasModifierValue(Leader, hero_modifier) then
+		return true
+	end
+	return false
+end
 
 function smnsConditions_getBonusIfGiant(unit, value)
 	local group = _GroupInfo_getCurrentGroup()
@@ -167,6 +180,20 @@ function smnsConditions_isStackOnItsTerrain(scen, ps)
 	local player_race = ps.owner.race
 
 	if _terrainToPlayerRace[scen:getTile(ps.position).terrain] == player_race then
+		return true
+	end
+
+	return false
+end
+
+function smnsConditions_isStackOnNeutralTerrain(scen, ps)
+	if ps == nil then
+		return false
+	end
+	
+	local stack_position = ps.position
+
+	if scen:getTile(ps.position).terrain == Terrain.Neutral then
 		return true
 	end
 
@@ -276,4 +303,27 @@ function smnsConditions_permanentAura(unit, aura_mod, aura_value)
 			return aura_value * group_aura_modifiers
 		end
 	end	
+end
+
+function smnsConditions_highestWithModifier(unit, mod)
+	local group = _GroupInfo_getCurrentGroup()
+	local u
+	local mAmount = {}	
+	local unitGroupSlots = group.slots
+	for i = 1, #unitGroupSlots do
+		u = unitGroupSlots[i].unit
+		if u ~= nil and u.hp > 0 and _GroupInfo_UnitHasModifierValue(u, mod) then
+			table.insert(mAmount, u)
+		end
+	end
+	local highest
+	if mAmount[1] then 
+		highest = mAmount[1]
+		for i = 1, #mAmount do
+			if mAmount[i].impl.level > highest.impl.level then
+				highest = mAmount[i]
+			end
+		end
+	end
+	return highest
 end

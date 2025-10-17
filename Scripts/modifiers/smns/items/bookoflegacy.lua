@@ -22,16 +22,25 @@ function hasAbility(unit, ability, prev)
 	return prev
 end
 
+function _getBanner(unit)
+	local stack = _GroupInfo_getUnitStack(unit)
+	local banner = stack:getEquippedItem(Equipment.Banner)
+    return banner
+end
+
 function getAttackPower(unit, prev)
-    if unit.impl:hasAbility(Ability.BannerUse) then
-        return svMultimplyPower1(unit, prev, 0.05)
+    bonus = 0
+    if _getBanner(unit) then
+        bonus = bonus + 0.08
     end
-    return prev
+    return svMultimplyPower1(unit, prev, bonus)
+
 end
 
 function getAttackInitiative(unit, prev)
-    if unit.impl:hasAbility(Ability.BannerUse) then
-        return svMultimplyInitiative(unit, prev, 0.05)
+    bonus = 0
+    if _getBanner(unit) then
+        bonus = bonus + 0.08
     end
-    return prev
+    return svMultimplyInitiative(unit, prev, bonus)
 end

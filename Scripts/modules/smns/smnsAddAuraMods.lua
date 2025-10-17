@@ -63,7 +63,7 @@ function _smns_addMod_uaAttackDrain_valFlat10(mods)
 end
 -- increase stack vampirism by 20%
 function _smns_addMod_uaAttackDrain_valFlat20(mods)
-	return _smns_addMod_Common(mods, {'g070um0080'})
+	return _smns_addMod_Common(mods, nil)
 end
 -- increase stack vampirism by 35%
 function _smns_addMod_uaAttackDrain_valFlat35(mods)
