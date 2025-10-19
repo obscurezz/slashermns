@@ -209,5 +209,37 @@ settings = {
             onRoad = 1,
     	},
 	},
+
+	additionalLordIncome = {
+		gold = {
+			warrior = 0,
+			mage = 0,
+			guildmaster = 0,
+		},
+		mana = {
+			warrior = 0,
+			mage = 0,
+			guildmaster = 0,
+		}
+	},
+
+	additionalCityIncome = {
+		gold = {
+			capital = 0,
+			tier1 = 0,
+			tier2 = 0,
+			tier3 = 0,
+			tier4 = 0,
+			tier5 = 0
+		},
+		mana = {
+			capital = 0,
+			tier1 = 0,
+			tier2 = 0,
+			tier3 = 0,
+			tier4 = 0,
+			tier5 = 0
+		}
+	},
 }
 
