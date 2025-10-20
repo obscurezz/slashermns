@@ -308,8 +308,8 @@ function _Transformed_Effect(unit)
 end
 
 function ScourgeDeboost(group, groupModifiers, groupModifiersDead)
-	if _GroupInfo_UnitModifierAmount(groupModifiers, ScourgeDeboost) > 0 then
-		return -5 * _GroupInfo_UnitModifierAmount(groupModifiers, ScourgeDeboost)
+	if _GroupInfo_UnitModifierAmount(groupModifiers, Id.new('g070um0371').value) > 0 then
+		return -5 * _GroupInfo_UnitModifierAmount(groupModifiers, Id.new('g070um0371').value)
 	end
 	return 0
 end
