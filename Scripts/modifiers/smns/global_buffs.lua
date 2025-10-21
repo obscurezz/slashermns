@@ -21,3 +21,4 @@ GROVE_STAMINA = Id.new('g070um7500').value
 VAMPIRISM = Id.new('g002um0030').value
 HARVEST = Id.new('g040um0195').value
 VAMPIRE_TOUCH = Id.new('g070um0003').value
+GALEANS_BLESSING = Id.new('g000um7545').value
