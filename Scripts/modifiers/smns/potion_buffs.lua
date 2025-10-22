@@ -22,3 +22,5 @@ CRIT10 = Id.new('g040um0098').value
 CRIT20 = Id.new('g040um0179').value
 
 HP50 = Id.new('g001um2010').value
+BLESS10 = Id.new('g006um0064').value
+BLESS20 = Id.new('g001um2007').value

@@ -1,4 +1,5 @@
 require('global_buffs')
+require('potion_effects')
 require('smnsInfo')
 
 local DebuffImmunityModifier = Id.new('g070um0338').value
@@ -101,10 +102,10 @@ function getGlobalBuffEffect(unit)
         unit_change_stats = unit_change_stats + 0.1
     end
     if _GroupInfo_UnitHasModifierValue(unit, Potion10) then
-        unit_change_stats = unit_change_stats + 0.1
+        unit_change_stats = unit_change_stats + _ChangePotionEffect(unit, 0.1)
     end
     if _GroupInfo_UnitHasModifierValue(unit, Potion20) then
-        unit_change_stats = unit_change_stats + 0.2
+        unit_change_stats = unit_change_stats + _ChangePotionEffect(unit, 0.2)
     end
     if _GroupInfo_UnitHasModifierValue(unit, Id.new('g070um0156').value) and smnsConditions_heroCondition(unit, Pepega) then
         unit_change_stats = unit_change_stats + 0.3
