@@ -13,6 +13,11 @@ textids = {
     	-- The text must contain the keyword "%TURN%".
     	-- Fallback text is "Turn %TURN%".
    		currentTurn = "X070TA1030",
+
+		-- Defines text id to use as "sell all unequipped items" message.
+        -- The text must contain keyword "%PRICE%".
+        -- Fallback text is "Do you want to sell all unequipped items? Revenue will be:\n%PRICE%"
+        sellAllItemsUnequipped = "X015TA0039",
 		
 		-- Defines text id to use as "sell all valuables" message.
 		-- The text must contain keyword "%PRICE%".
