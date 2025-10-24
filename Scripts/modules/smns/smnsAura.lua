@@ -1533,11 +1533,11 @@ function _smns_getAttack2BasePower(unit, currentValue)
 	end
 
 	if smnsConditions_RunekeeperWithLoremaster(unit) then
-		return 60
+		return 70
 	end
 
 	if smnsConditions_RunekeeperWithEngineer(unit) then
-		return 60
+		return 70
 	end
 	
 	if smnsConditions_DetectiveSparePotion(unit) then

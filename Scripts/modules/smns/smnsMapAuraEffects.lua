@@ -316,7 +316,7 @@ end
 
 function _Scourge_Deboost_Effect(unit)
 	local effectFunction_1 = ScourgeDeboost
-	local radius = 1
+	local radius = 2
 	local for_what_diplomacy_apply = {diplomacyStatus_War}
 	
 	return _unitAura_NearestGroupsAuraEffect(unit, effectFunction_1, radius, for_what_diplomacy_apply)
