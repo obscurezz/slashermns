@@ -409,15 +409,15 @@ function _smns_multiplicativeDamageHealBonus(unit, prev, attackN, unitMods)
 			else
 				base_attack = smns_scenario:getUnit(unit.id).impl.altAttack
 			end
-			if statsCheck_isDirectDmgType(unit.impl.attack1.type) or statsCheck_isDirectDmgType(unit.impl.altAttack.type) then
-				local fire = (base_attack.source == Source.Fire)
-				local earth = (base_attack.source == Source.Earth)
-				local air = (base_attack.source == Source.Air)
-				local water = (base_attack.source == Source.Water)
-				local water = (base_attack.source == Source.Death)
-				local mind = (base_attack.source == Source.Mind)
-				local life = (base_attack.source == Source.Life)
-				if fire or earth or air or water or death or mind or life then
+			-- if statsCheck_isDirectDmgType(unit.impl.attack1.type) or statsCheck_isDirectDmgType(unit.impl.altAttack.type) then
+			if statsCheck_isDirectDmgType(base_attack.type) then
+				if (base_attack.source == Source.Fire) or
+					(base_attack.source == Source.Earth) or
+					(base_attack.source == Source.Air) or
+					(base_attack.source == Source.Water) or
+					(base_attack.source == Source.Death) or
+					(base_attack.source == Source.Mind) or
+					(base_attack.source == Source.Life) then
 					BonusDMG = BonusDMG + 7
 				end
 			end

@@ -17,7 +17,13 @@ function getImmuneToSource(unit, source, prev)
 end
 
 function getAttackDamage(unit, prev)
-	if (getScenario():getUnit(unit.id).impl.attack1.source == Source.Water or getScenario():getUnit(unit.id).impl.altAttack.source == Source.Water) then 
+	local base_attack
+	if not unit.impl.altAttack then
+		base_attack = getScenario():getUnit(unit.id).impl.attack1
+	else
+		base_attack = getScenario():getUnit(unit.id).impl.altAttack
+	end
+	if base_attack.source == Source.Water then 
 		return svMultimplyDamage1(unit, prev, 0.15)
 	end
 	return prev
