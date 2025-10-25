@@ -26,7 +26,11 @@ function _get_Lowest_Tree_Level(unit)
 			lowest = H[i]
 		end
 	end
-	return lowest.impl.level - lowest.baseImpl.level
+	if lowest then
+		return lowest.impl.level - lowest.baseImpl.level
+	else
+		return 0
+	end
 end
 
 function getElvenMana(unit)

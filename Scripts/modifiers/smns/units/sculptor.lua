@@ -27,7 +27,11 @@ function _get_Lowest_Sculptor_Level(unit)
 			lowest = H[i]
 		end
 	end
-	return lowest.impl.level - lowest.baseImpl.level
+	if lowest then
+		return lowest.impl.level - lowest.baseImpl.level
+	else
+		return 0
+	end
 end
 
 function getAttackDrain(unit, damage, prev)
@@ -59,7 +63,11 @@ function getAttack2CritDamage(unit, prev)
 end
 
 function getAttack2CritPower(unit, prev)
-    return svAddCrit2Power(unit, prev, 10)
+	if _get_Lowest_Sculptor_Level(unit) > 0 then
+    	return svAddCrit2Power(unit, prev, 10)
+	else
+		return prev
+	end
 end
 
 

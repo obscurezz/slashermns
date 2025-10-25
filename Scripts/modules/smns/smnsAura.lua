@@ -577,7 +577,7 @@ function _smns_multiplicativeDamageHealBonus(unit, prev, attackN, unitMods)
 	--Тайны льда END
 
 	--Волчья стая
-	if _GroupInfo_stackHasModifierAmount(Wolf) > 0 then
+	if _GroupInfo_stackHasModifierAmount(Wolf) > 0 and _GroupInfo_UnitHasModifierValue(unit, Wolf) then
 		BonusDMG = BonusDMG + smnsConditions_permanentAura(unit, Wolf, 8)
 	end
 	--Волчья стая END
@@ -729,7 +729,7 @@ function _smns_percentInitiativeBonus(unit, prev)
 	--В тени Иггдрасиля II END
 	
 	--Волчья стая
-	if _GroupInfo_stackHasModifierAmount(Wolf) > 0 then
+	if _GroupInfo_stackHasModifierAmount(Wolf) > 0 and _GroupInfo_UnitHasModifierValue(unit, Wolf) then
 		BonusIni = BonusIni + smnsConditions_permanentAura(unit, Wolf, 4)
 	end
 	--Волчья стая END
