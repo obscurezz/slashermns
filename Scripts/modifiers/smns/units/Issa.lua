@@ -9,17 +9,16 @@ function getModifierDescTxt(unit, prev)
 	return prev
 end
 
-
 function getAttackPower(unit, prev)
 	return svMultimplyPower1(unit, prev, 0.1)
 end
 
-function getAttack2Power(unit, prev)
-	smnsInfo_SetApplyAccuracyBuffToAttack2(true)
-	local res = svMultimplyPower2(unit, prev, 0.1)
-	smnsInfo_SetApplyAccuracyBuffToAttack2(false)
-	return res
-end
+-- function getAttack2Power(unit, prev)
+-- 	smnsInfo_SetApplyAccuracyBuffToAttack2(true)
+-- 	local res = svMultimplyPower2(unit, prev, 0.1)
+-- 	smnsInfo_SetApplyAccuracyBuffToAttack2(false)
+-- 	return res
+-- end
 
 function getAttackDamage(unit, prev)
     return svMultimplyDamage1(unit, prev, 0.40)
