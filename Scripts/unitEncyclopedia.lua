@@ -1054,8 +1054,14 @@ function getSource2Field(unitImpl)
 end
 
 function getInitField(unitImpl)
-	local attack = unitImpl.attack1
-	return getModifiedNumberText(attack.initiative, attack.generated.initiative, false)
+	-- local attack = unitImpl.attack1
+	local attack1
+	if not unitImpl.altAttack then
+		attack1 = unitImpl.attack1
+	else
+		attack1 = unitImpl.altAttack
+	end
+	return getModifiedNumberText(attack1.initiative, attack1.generated.initiative, false)
 end
 
 function getReachField(unitImpl)
