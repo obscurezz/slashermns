@@ -1011,11 +1011,17 @@ end
 -- end
 
 function getDrainField(unit, unitImpl, boostDamageLevel, lowerDamageLevel)
-	if not attackHasDrain(unitImpl.attack1) and not attackHasDrain(unitImpl.attack2) then
+	local attack1
+	if not unitImpl.altAttack then
+		attack1 = unitImpl.attack1
+	else
+		attack1 = unitImpl.altAttack
+	end
+	if not attackHasDrain(attack1) and not attackHasDrain(unitImpl.attack2) then
 		return ""
 	end
 
-	local drain = getAttackDrainText(unitImpl, unitImpl.attack1, boostDamageLevel, lowerDamageLevel)
+	local drain = getAttackDrainText(unitImpl, attack1, boostDamageLevel, lowerDamageLevel)
 	if unitImpl.attack2 then
 		drain = getAttackWithAttack2NumberText(drain, getAttackDrainText(unitImpl, unitImpl.attack2, boostDamageLevel, lowerDamageLevel))
 	end
